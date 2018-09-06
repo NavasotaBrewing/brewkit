@@ -1,6 +1,7 @@
 CHANGES
 =======
 
+* Adds entry points for each package
 * Adds brewkit package
 * Adds an \_\_init\_\_ file to packages and setup.cfg and py
 * Initial Commit
