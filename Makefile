@@ -12,3 +12,6 @@ version:
 
 clean:
 	rm -rf dist/*
+
+test:
+	pytest $(package)
