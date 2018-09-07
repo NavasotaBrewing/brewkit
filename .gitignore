@@ -4,3 +4,5 @@ dist/*
 __pycache__
 env
 *.pyc
+.eggs/
+.cache/

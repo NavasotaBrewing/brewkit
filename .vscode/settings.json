@@ -5,6 +5,9 @@
     "**/.hg": true,
     "**/CVS": true,
     "**/.DS_Store": true,
-    "**/*.egg-info": true
+    "**/*.egg-info": true,
+    ".eggs/": true,
+    "dist": true,
+    "env": true
   }
 }
