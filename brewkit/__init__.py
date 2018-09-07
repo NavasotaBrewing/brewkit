@@ -12,7 +12,7 @@ Options:
 from docopt import docopt
 
 def main():
-    args = docopt(__doc__)
+    args = docopt(__doc__, version="0.0.0")
 
     if args['interface']:
         print('starting interface')
