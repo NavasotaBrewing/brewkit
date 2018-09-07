@@ -14,4 +14,9 @@ clean:
 	rm -rf dist/*
 
 test:
-	pytest $(package)
+	# Use it like this:
+	# make test
+	# make test the=api
+	# make test the=app
+	pytest $(the)
+
