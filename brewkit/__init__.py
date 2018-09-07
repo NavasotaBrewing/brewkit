@@ -11,17 +11,21 @@ Options:
 
 from docopt import docopt
 
-def main():
-    args = docopt(__doc__, version="0.0.0")
+def main(args=None):
+    if not args:
+        args = docopt(__doc__, version="0.0.0")
 
     if args['interface']:
         print('starting interface')
+        return 'interface'
 
     elif args['api']:
         print('starting API')
+        return 'api'
 
     else:
         print('starting CLI')
+        return 'cli'
 
 if __name__ == '__main__':
     main()
