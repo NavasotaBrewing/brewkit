@@ -18,5 +18,7 @@ test:
 	# make test
 	# make test the=api
 	# make test the=app
-	pytest $(the)
+	python -m pytest $(the)
 
+install_deps:
+	pip install -r requirements.txt

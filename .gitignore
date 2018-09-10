@@ -6,3 +6,4 @@ env
 *.pyc
 .eggs/
 .cache/
+.pytest_cache/
