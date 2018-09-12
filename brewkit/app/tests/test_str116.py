@@ -50,13 +50,11 @@ class TestSTR116(unittest.TestCase):
             self.board.relay(45234)
 
     def test_construct_bytestring(self):
-        bytestring = self.board.construct_bytestring('get', '0010')
+        bytestring = self.board.construct_bytestring('14', '0010')
         assert bytestring == '55AA07140200102d77'
 
-        bytestring = self.board.construct_bytestring('set', '040100')
+        bytestring = self.board.construct_bytestring('17', '040100')
         assert bytestring == '55AA0817020401002677'
-
-
 
     # def test_gig_em(self):
     #     """

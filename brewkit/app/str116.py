@@ -19,13 +19,6 @@ class STR116(object):
 
         self.device.timeout = timeout
 
-
-        # These are the commands I use. See the command reference pdf
-        self.byte_commands = {
-            'get': '14',
-            'set': '17'
-        }
-
     def relay(self, relay_num, state=None):
         if state == None:
             return self.get_relay(relay_num)
@@ -38,7 +31,6 @@ class STR116(object):
 
         if type(datastring) is not str or len(datastring) == 0:
             raise ValueError("Please supply a valid datastring, you gave: '" + str(datastring) + "'")
-
 
         # All the pieces in order
 
@@ -55,7 +47,7 @@ class STR116(object):
         BC = str(BC).zfill(2)
         assert len(BC) == 2
 
-        CC = self.byte_commands[command]
+        CC = command
         assert len(CC) == 2
 
         # Controller number
@@ -73,23 +65,22 @@ class STR116(object):
         bytestring = MA0 + MA1 + BC + CC + CN + datastring + CS + MAE
         return bytestring
 
+    def num_in_hex(self, relay_num):
+        return str(hex(relay_num).replace('0x', '').zfill(2))
 
     def get_relay(self, relay_num):
-        '''Get the status of the requested relay (1/0)'''
         time.sleep(0.005)
 
-        bytestring = self.construct_bytestring('get', '0010')
+        # Convert to hex
+        relay_num = self.num_in_hex(relay_num)
 
-        relaystatus = self.write_message_with_response(bytestring)[6:-4]
-        log.debug(relaystatus)
-        log.debug('I think whats happening here is dad is getting all the relay statuses at once and reading them. I can optimize that.')
+        if len(relay_num) > 2:
+            raise RelayNotFoundError('Relay not found, could be out of bounds')
 
-        try:
-            return int(relaystatus[relay_num*2:relay_num*2+2])
-        except ValueError as er:
-            log.error("Relay couldn't be found, see error below")
-            log.exception(er)
-            raise RelayNotFoundError('Relay %s couldn\'t be found, make sure it is in range' % relay_num)
+        bytestring = self.construct_bytestring('14', relay_num + '01')
+
+        relay_status = self.write(bytestring)
+        return int(relay_status[7:8])
 
     def set_relay(self, relay_num, state):
 
@@ -97,42 +88,29 @@ class STR116(object):
 
 
         datastring = relay_num_hex + '01' + str(state).zfill(2)
-        bytestring = self.construct_bytestring('set', datastring)
+        bytestring = self.construct_bytestring('17', datastring)
 
-        self.write_message(bytestring)
+        self.write(bytestring)
         if self.get_relay(relay_num) == state:
             log.info('Setting relay %s to %s: success' % (relay_num, state))
 
-    def write_message_with_response(self, data):
+    def write(self, data):
         # message_bytes = data.decode("hex")
         message_bytes = binascii.unhexlify(data)
         try:
             self.device.write(message_bytes)
-            #print self.device.open  # True for opened
             if self.device.open:
                 time.sleep(0.02)
                 size = self.device.inWaiting()
                 if size:
                     data = self.device.read(size)
-                    # print binascii.hexlify(data)
+                    return binascii.hexlify(data)
                 else:
                     log.error('no data')
             else:
                 log.error('device not open')
         except IOError as e:
-            # Failed to write to port
             log.exception(e)
-        return binascii.hexlify(data)
-
-    def write_message(self, data):
-        # message_bytes = data.decode("hex")
-        message_bytes = binascii.unhexlify(data)
-        try:
-            self.device.write(message_bytes)
-            log.debug('Writing message: success')
-        except IOError as e:
-            log.error('Failed to write message')
-            raise
 
     def get_checksum(self, data):
         checksum = sum(bytearray.fromhex(data))
