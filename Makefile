@@ -14,10 +14,6 @@ clean:
 	rm -rf dist/*
 
 test:
-	# Use it like this:
-	# make test
-	# make test the=api
-	# make test the=app
 	python -m pytest $(the)
 
 install_deps:

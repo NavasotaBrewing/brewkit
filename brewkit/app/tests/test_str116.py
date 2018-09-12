@@ -3,6 +3,7 @@ import serial
 from time import sleep
 
 from brewkit.app.str116 import STR116
+from brewkit.app.log import log
 from brewkit.app.exceptions import InvalidHardwareError, RelayNotFoundError
 
 class TestSTR116(unittest.TestCase):
@@ -23,13 +24,11 @@ class TestSTR116(unittest.TestCase):
             board = STR116('/dev/notaport', 4)
 
     def test_get_and_set_relay_state(self):
-        # Set
-        self.board.relay(7, 1)
-        # Get
-        assert self.board.relay(7) == 1
+        self.board.relay(4, 1)
+        assert self.board.relay(4) == 1
 
-        self.board.relay(7, 0)
-        assert self.board.relay(7) == 0
+        self.board.relay(4, 0)
+        assert self.board.relay(4) == 0
 
     def test_repeated_switches(self):
         i = 0
