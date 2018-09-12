@@ -8,3 +8,4 @@ env
 .eggs/
 .cache/
 .pytest_cache/
+brewkit.log

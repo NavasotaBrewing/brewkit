@@ -30,6 +30,12 @@ class TestSTR116(unittest.TestCase):
         self.board.relay(4, 0)
         assert self.board.relay(4) == 0
 
+        self.board.relay(6, 1)
+        assert self.board.relay(6) == 1
+
+        self.board.relay(6, 0)
+        assert self.board.relay(6) == 0
+
     def test_repeated_switches(self):
         i = 0
         while i < 5:

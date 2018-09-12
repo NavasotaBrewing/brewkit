@@ -21,54 +21,64 @@ class STR116(object):
 
     def relay(self, relay_num, state=None):
         if state == None:
-            '''Get the status of the requested relay (1/0)'''
-            time.sleep(0.005)
-
-            # formerly str_to_checksum
-            parts = '0714'
-            parts += '02' # Controller Number (CN)
-            parts += '0010'
-
-            checksum = self.get_checksum(parts)
-
-            bytestring = '55' # MA0
-            bytestring += 'AA' # MA1
-            bytestring += parts
-            bytestring += str(checksum)
-            bytestring += '77' # MAE
-
-            relaystatus = self.write_message_with_response(bytestring)[6:-4]
-
-            try:
-                return int(relaystatus[relay_num*2:relay_num*2+2])
-            except ValueError as er:
-                log.error("Relay couldn't be found, see error below")
-                log.exception(er)
-                raise RelayNotFoundError('Relay %s couldn\'t be found, make sure it is in range' % relay_num)
+            return self.get_relay(relay_num)
         else:
-            #command to turn on relay is 0x08 0x17
-            #format is
-            #MA0, MA1, 0x08, 0x17, CN, start number output (relaynumber), \
-            #number of outputs (usually 0x01), 00/01 (off/on), CS (calculated), MAE
-            #need to do a checksum on 0x08, 0x17, CN, relaynumber, 0x01, 0x01
-            relay_num_hex = hex(relay_num).replace('0x', '').zfill(2)
+            return self.set_relay(relay_num, state)
 
-            # Formerly str_to_checksum
-            parts = '0817'
-            parts += '02' # Controller Number (CN)
-            parts += str(relay_num_hex)
-            parts += '01'
-            parts += str(state).zfill(2)
+    def get_relay(self, relay_num):
+        '''Get the status of the requested relay (1/0)'''
+        time.sleep(0.005)
 
-            checksum = self.get_checksum(parts)
+        # formerly str_to_checksum
+        parts = '0714'
+        parts += str(self.address).zfill(2) # Controller Number (CN)
+        parts += '0010'
 
-            bytestring = '55' # MA0
-            bytestring += 'AA' # MA1
-            bytestring += parts
-            bytestring += str(checksum)
-            bytestring += '77' # MAE
+        bytestring = '55' # MA0
+        bytestring += 'AA' # MA1
+        bytestring += parts
+        bytestring += self.get_checksum(parts)
+        bytestring += '77' # MAE
 
-            self.write_message(bytestring)
+        log.debug("Get relay bytestring for relay %s: " % (relay_num) + bytestring + "\nChecksum: " + self.get_checksum(parts))
+        relaystatus = self.write_message_with_response(bytestring)[6:-4]
+        log.debug(relaystatus)
+        log.debug('I think whats happening here is dad is getting all the relay statuses at once and reading them. I can optimize that.')
+
+        try:
+            return int(relaystatus[relay_num*2:relay_num*2+2])
+        except ValueError as er:
+            log.error("Relay couldn't be found, see error below")
+            log.exception(er)
+            raise RelayNotFoundError('Relay %s couldn\'t be found, make sure it is in range' % relay_num)
+
+    def set_relay(self, relay_num, state):
+        #command to turn on relay is 0x08 0x17
+        #format is
+        #MA0, MA1, 0x08, 0x17, CN, start number output (relaynumber), \
+        #number of outputs (usually 0x01), 00/01 (off/on), CS (calculated), MAE
+        #need to do a checksum on 0x08, 0x17, CN, relaynumber, 0x01, 0x01
+        relay_num_hex = hex(relay_num).replace('0x', '').zfill(2)
+
+        # Formerly str_to_checksum
+        parts = '0817'
+        parts += str(self.address).zfill(2) # Controller Number (CN)
+        parts += str(relay_num_hex)
+        parts += '01'
+        parts += str(state).zfill(2)
+
+        bytestring = '55' # MA0
+        bytestring += 'AA' # MA1
+        bytestring += parts
+        bytestring += self.get_checksum(parts)
+        bytestring += '77' # MAE
+
+        log.debug("set relay bytestring for relay %s to state %s: " % (relay_num, state) + bytestring + "\nChecksum: " + self.get_checksum(parts))
+
+
+        self.write_message(bytestring)
+        if self.get_relay(relay_num) == state:
+            log.info('Setting relay %s to %s: success' % (relay_num, state))
 
     def write_message_with_response(self, data):
         # message_bytes = data.decode("hex")
