@@ -1,6 +1,5 @@
 """
 Usage:
-    brewkit
     brewkit api
     brewkit interface
 
@@ -8,6 +7,8 @@ Options:
   -h --help     Show this screen.
   --version     Show version.
 """
+
+from app import str116, omega
 
 from docopt import docopt
 
@@ -22,10 +23,6 @@ def main(args=None):
     elif args['api']:
         print('starting API')
         return 'api'
-
-    else:
-        print('starting CLI')
-        return 'cli'
 
 if __name__ == '__main__':
     main()

@@ -1,6 +1,27 @@
 CHANGES
 =======
 
+0.0.3
+-----
+
+* Readds all files because they got deleted?
+* Adds str116 module
+
+0.0.2
+-----
+
+* Adds logging to omega.py
+* Adds logger
+* Adds omega docs
+* Small readme change
+
+0.0.1
+-----
+
+* Adds omega class and tests
+* Adds a few tests for cli
+* Adds a small cli doc
+* adds basic docopt interface in brewkit
 * Changes entry points
 * Adds some things to the gitignore
 * Renames packages to app, api, and interface because the old ones were shitty
