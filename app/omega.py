@@ -4,17 +4,14 @@ This is my best option. Sometimes the serial communication fails and you have to
 
 Note: This module will always prefer floats over ints
 """
-try:
-    from contextlib import suppress
-except ImportError as er:
-    print("Please upgrade python")
-    raise
 from os import getenv
 import warnings
 
 from omegacn7500 import OmegaCN7500
 import minimalmodbus
 import serial
+
+from .log import log
 
 class InvalidHardwareError(RuntimeError):
     pass
@@ -52,44 +49,56 @@ class Omega():
         Get the Proccess Value (PV)
         """
         while True:
-            with suppress(IOError):
+            try:
                 return float(self.instrument.get_pv())
+            except IOError as err:
+                log.exception(err)
 
     def sv(self, temp=None):
         if temp:
             # Set sv
             while True:
-                with suppress(IOError):
+                try:
                     self.instrument.set_setpoint(float(temp))
                     return float(temp)
+                except IOError as err:
+                    log.exception(err)
         else:
             # get sv
             while True:
-                with suppress(IOError):
+                try:
                     return float(self.instrument.get_setpoint())
+                except IOError as err:
+                    log.exception(err)
 
     def is_running(self):
         """
         Returns `True` if the CN7500 is powering the heating element, AKA it's "on"
         """
         while True:
-            with suppress(IOError):
+            try:
                 return self.instrument.is_running()
+            except IOError as err:
+                log.exception(err)
 
     def run(self):
         """
         Turn on the CN7500
         """
         while True:
-            with suppress(IOError):
+            try:
                 self.instrument.run()
                 return True
+            except IOError as err:
+                log.exception(err)
 
     def stop(self):
         """
         Turns off the CN7500
         """
         while True:
-            with suppress(IOError):
+            try:
                 self.instrument.stop()
                 return True
+            except IOError as err:
+                log.exception(err)
