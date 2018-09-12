@@ -2,13 +2,10 @@
 Usage:
     brewkit api
     brewkit interface
-
-Options:
-  -h --help     Show this screen.
-  --version     Show version.
 """
 
 from app import str116, omega
+from app.log import log
 
 from docopt import docopt
 
@@ -17,12 +14,10 @@ def main(args=None):
         args = docopt(__doc__, version="0.0.0")
 
     if args['interface']:
-        print('starting interface')
-        return 'interface'
+        log.info('starting interface')
 
     elif args['api']:
-        print('starting API')
-        return 'api'
+        log.info('starting API')
 
 if __name__ == '__main__':
     main()
