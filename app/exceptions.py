@@ -1,0 +1,2 @@
+class InvalidHardwareError(RuntimeError):
+    pass

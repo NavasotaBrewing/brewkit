@@ -1,0 +1,71 @@
+import unittest
+import serial
+from time import sleep
+
+from ..str116 import STR116
+from ..exceptions import InvalidHardwareError
+
+class TestSTR116(unittest.TestCase):
+    def setUp(self):
+        self.port = '/dev/ttyAMA0'
+        self.address = 2
+        self.board = STR116(self.port, self.address)
+
+    def test_type(self):
+        assert type(self.board) is STR116
+
+    def test_serial(self):
+        assert type(self.board.device) is serial.Serial
+        assert self.board.device.timeout == 0.05
+
+    def test_invalid_hardware(self):
+        with self.assertRaises(InvalidHardwareError):
+            board = STR116('/dev/notaport', 4)
+
+    def test_get_and_set_relay_state(self):
+        # Set
+        self.board.relay(7, 1)
+        # Get
+        assert self.board.relay(7) == 1
+
+        self.board.relay(7, 0)
+        assert self.board.relay(7) == 0
+
+    def test_repeated_switches(self):
+        i = 0
+        while i < 5:
+            self.board.relay(7, 1)
+            sleep(0.04)
+            self.board.relay(7, 0)
+            sleep(0.04)
+            i += 1
+
+    # def test_gig_em(self):
+    #     """
+    #     Just for fun
+    #     """
+    #     def toggle():
+    #         state = self.board.relay(2)
+    #         if state == 1:
+    #             self.board.relay(2, 0)
+    #         else:
+    #             self.board.relay(2, 1)
+
+    #     sleep(0.5)
+    #     toggle() # Hu
+    #     sleep(0.18)
+    #     toggle() # la
+    #     sleep(0.18)
+    #     toggle() # ba
+    #     sleep(0.18)
+    #     toggle() # loo
+    #     sleep(0.42)
+
+    #     toggle() # ken
+    #     sleep(0.16)
+    #     toggle() # nek
+    #     sleep(0.38)
+
+    #     toggle() # ken
+    #     sleep(0.16)
+    #     toggle() # nek
