@@ -71,7 +71,8 @@ class STR116(object):
             self.write_message(bytestring)
 
     def write_message_with_response(self, data):
-        message_bytes = data.decode("hex")
+        # message_bytes = data.decode("hex")
+        message_bytes = binascii.unhexlify(data)
         try:
             self.device.write(message_bytes)
             #print self.device.open  # True for opened
@@ -91,7 +92,8 @@ class STR116(object):
         return binascii.hexlify(data)
 
     def write_message(self, data):
-        message_bytes = data.decode("hex")
+        # message_bytes = data.decode("hex")
+        message_bytes = binascii.unhexlify(data)
         try:
             self.device.write(message_bytes)
             log.debug('Writing message: success')

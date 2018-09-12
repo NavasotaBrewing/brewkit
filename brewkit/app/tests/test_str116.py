@@ -2,8 +2,8 @@ import unittest
 import serial
 from time import sleep
 
-from ..str116 import STR116
-from ..exceptions import InvalidHardwareError, RelayNotFoundError
+from brewkit.app.str116 import STR116
+from brewkit.app.exceptions import InvalidHardwareError, RelayNotFoundError
 
 class TestSTR116(unittest.TestCase):
     def setUp(self):

@@ -4,8 +4,8 @@ Usage:
     brewkit interface
 """
 
-from app import str116, omega
-from app.log import log
+from brewkit.app import str116, omega
+from brewkit.app.log import log
 
 from docopt import docopt
 

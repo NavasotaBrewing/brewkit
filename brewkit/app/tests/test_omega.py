@@ -1,7 +1,7 @@
 import unittest
 
-from ..omega import Omega
-from ..exceptions import InvalidHardwareError
+from brewkit.app.omega import Omega
+from brewkit.app.exceptions import InvalidHardwareError
 
 class TestOmega(unittest.TestCase):
     def setUp(self):
