@@ -3,7 +3,7 @@ import time
 import binascii
 
 from .log import log
-from .exceptions import InvalidHardwareError
+from .exceptions import InvalidHardwareError, RelayNotFoundError
 
 class STR116(object):
     def __init__(self, port, address, baud_rate=19200, timeout=0.05):
@@ -39,7 +39,12 @@ class STR116(object):
 
             relaystatus = self.write_message_with_response(bytestring)[6:-4]
 
-            return int(relaystatus[relay_num*2:relay_num*2+2])
+            try:
+                return int(relaystatus[relay_num*2:relay_num*2+2])
+            except ValueError as er:
+                log.error("Relay couldn't be found, see error below")
+                log.exception(er)
+                raise RelayNotFoundError('Relay %s couldn\'t be found, make sure it is in range' % relay_num)
         else:
             #command to turn on relay is 0x08 0x17
             #format is

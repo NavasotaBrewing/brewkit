@@ -3,7 +3,7 @@ import serial
 from time import sleep
 
 from ..str116 import STR116
-from ..exceptions import InvalidHardwareError
+from ..exceptions import InvalidHardwareError, RelayNotFoundError
 
 class TestSTR116(unittest.TestCase):
     def setUp(self):
@@ -39,6 +39,10 @@ class TestSTR116(unittest.TestCase):
             self.board.relay(7, 0)
             sleep(0.04)
             i += 1
+
+    def test_relay_not_found(self):
+        with self.assertRaises(RelayNotFoundError):
+            self.board.relay(45234)
 
     # def test_gig_em(self):
     #     """
