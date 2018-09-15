@@ -69,8 +69,6 @@ class STR116(object):
         return str(hex(relay_num).replace('0x', '').zfill(2))
 
     def get_relay(self, relay_num):
-        time.sleep(0.005)
-
         # Convert to hex
         relay_num = self.num_in_hex(relay_num)
 
@@ -95,18 +93,19 @@ class STR116(object):
             log.info('Setting relay %s to %s: success' % (relay_num, state))
 
     def write(self, data):
-        # message_bytes = data.decode("hex")
+        # Write data to board and return a response if there is one
         message_bytes = binascii.unhexlify(data)
+        log.debug(message_bytes)
         try:
             self.device.write(message_bytes)
             if self.device.open:
-                time.sleep(0.02)
-                size = self.device.inWaiting()
+                time.sleep(0.05)
+                size = self.device.in_waiting
                 if size:
                     data = self.device.read(size)
                     return binascii.hexlify(data)
                 else:
-                    log.error('no data')
+                    log.info('no data returned')
             else:
                 log.error('device not open')
         except IOError as e:
