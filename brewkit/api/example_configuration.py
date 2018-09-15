@@ -2,6 +2,7 @@
 
 example = {
     'controllers': {
+        # STR116 Relay Board
         'STR116': [
             {
                 'address': 0,
@@ -9,6 +10,7 @@ example = {
                 'name': 'Main STR116'
             }
         ],
+        # Omega CN7500 PID controller
         'OmegaCN7500': [
             {
                 'address': 1,
