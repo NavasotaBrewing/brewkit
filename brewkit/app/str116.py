@@ -95,7 +95,6 @@ class STR116(object):
     def write(self, data):
         # Write data to board and return a response if there is one
         message_bytes = binascii.unhexlify(data)
-        log.debug(message_bytes)
         try:
             self.device.write(message_bytes)
             if self.device.open:

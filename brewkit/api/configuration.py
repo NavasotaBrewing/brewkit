@@ -1,6 +1,6 @@
 import json
 
-# from ..app.log import log
+from ..app.log import log
 
 class Configuration():
     def __init__(self, datastring):
@@ -15,20 +15,16 @@ class Configuration():
         self.populate(datastring)
 
     def populate(self, datastring):
-        """
-        Reads data passed in and sets to object attributes
-        """
+        # Reads data passed in and sets to object attributes
         data = json.loads(datastring)
         for key in data.keys():
             setattr(self, key, data[key])
+        log.info("Configuration named '%s' loaded successfully" % data['name'])
 
     def to_json(self):
-        """
-        Returns as a json string
-        """
+        # Returns configuration as a json string
         return json.dumps(self.original)
 
     def __str__(self):
         # Alias for to_json()
         return self.to_json()
-
