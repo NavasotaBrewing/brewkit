@@ -5,7 +5,8 @@ example = {
         # STR116 Relay Board
         'STR116': [
             {
-                'address': 0,
+                'port': '/dev/ttyAMA0',
+                'address': 2,
                 'type': 'STR116',
                 'name': 'Main STR116'
             }
@@ -13,6 +14,7 @@ example = {
         # Omega CN7500 PID controller
         'OmegaCN7500': [
             {
+                'port': '/dev/ttyAMA0',
                 'address': 1,
                 'type': 'OmegaCN7500',
                 'name': 'RIMS Omega'

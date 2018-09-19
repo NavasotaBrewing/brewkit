@@ -10,6 +10,7 @@ class STR116(object):
         self.port = str(port)
         self.address = int(address)
         self.baud_rate = baud_rate
+        self.name = 'default'
 
         try:
             self.device = serial.Serial(self.port, self.baud_rate)

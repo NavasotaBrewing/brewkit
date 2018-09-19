@@ -12,11 +12,13 @@ class TestConfiguration(unittest.TestCase):
         self.example = example
         self.con = Configuration(self.example)
 
-    def test_populate(self):
+    def test_populate_controllers(self):
         con = Configuration(example)
-        assert con.devices
-        assert con.controllers
-        assert con.name
+        assert len(con.controllers) > 1
+
+    # def test_populate_devices(self):
+    #     con = Configuration(example)
+    #     assert len(con.devices) > 2
 
     def test_wrong_type_of_data(self):
         with self.assertRaises(ValueError):
