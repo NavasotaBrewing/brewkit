@@ -26,6 +26,7 @@ class Omega():
         self.instrument = OmegaCN7500(port, address)
         self.instrument.serial.baudrate = baudrate
         self.instrument.serial.timeout = timeout
+        self.name = None
 
     @staticmethod
     def test_connection(port, address):
