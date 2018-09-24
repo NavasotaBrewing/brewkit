@@ -26,7 +26,6 @@ class Omega():
         self.instrument = OmegaCN7500(port, address)
         self.instrument.serial.baudrate = baudrate
         self.instrument.serial.timeout = timeout
-        self.name = 'default'
 
     @staticmethod
     def test_connection(port, address):
@@ -58,6 +57,8 @@ class Omega():
             while True:
                 try:
                     self.instrument.set_setpoint(float(temp))
+                    if self.name:
+                        log.info("Setting '%s' setpoint value to %s" % (self.name, str(temp)))
                     return float(temp)
                 except IOError as err:
                     log.exception(err)
@@ -86,6 +87,8 @@ class Omega():
         while True:
             try:
                 self.instrument.run()
+                if self.name:
+                    log.info("Turning on " + self.name)
                 return True
             except IOError as err:
                 log.exception(err)
@@ -97,6 +100,8 @@ class Omega():
         while True:
             try:
                 self.instrument.stop()
+                if self.name:
+                    log.info("Turning off " + self.name)
                 return True
             except IOError as err:
                 log.exception(err)

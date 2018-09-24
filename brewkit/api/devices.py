@@ -1,15 +1,17 @@
 from .controllers import STR116
 from .controllers import Omega
+from ..app.log import log
 
 class Thermostat(object):
     """
     This class just returns an Omega object because there can only ever be one thermostat per omega
     """
     def __new__(self, controller, name=None):
-        self.name = name
 
         if not type(controller) is Omega:
             raise ValueError("Wrong type of controller. Thermostat must have an Omega controller")
+        if name:
+            controller.name = name
         return controller
 
 class Relay(object):
@@ -25,9 +27,9 @@ class Relay(object):
         self.board = controller
 
     def set(self, state):
+        if self.name:
+            log.info("Setting '%s' to %s" % (self.name, state))
         self.board.relay(self.num, state)
 
     def get(self):
         return self.board.relay(self.num)
-
-

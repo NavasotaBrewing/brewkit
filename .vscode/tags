@@ -1,0 +1,1135 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+APIAutoDocTest	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^class APIAutoDocTest(base.BaseTestCase):$/;"	kind:class	line:376
+BOOL_FIELDS	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^BOOL_FIELDS = ("use_2to3", "zip_safe", "include_package_data")$/;"	kind:variable	line:158
+BackwardsCompatConfig	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/backwards.py	/^class BackwardsCompatConfig(base.BaseConfig):$/;"	kind:class	line:20
+BaseConfig	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/base.py	/^class BaseConfig(object):$/;"	kind:class	line:17
+BaseSphinxTest	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^class BaseSphinxTest(base.BaseTestCase):$/;"	kind:class	line:228
+BaseTestCase	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/base.py	/^class BaseTestCase(testtools.TestCase, testresources.ResourcedTestCase):$/;"	kind:class	line:70
+BuildSphinxTest	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^class BuildSphinxTest(BaseSphinxTest):$/;"	kind:class	line:274
+BytesIO	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^    BytesIO = io.BytesIO$/;"	kind:variable	line:26
+BytesIO	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^    BytesIO = io.StringIO$/;"	kind:variable	line:23
+CR	../env/bin/miniterm.py	/^class CR(Transform):$/;"	kind:class	line:199
+CRLF	../env/bin/miniterm.py	/^class CRLF(Transform):$/;"	kind:class	line:192
+CSV_FIELDS	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^CSV_FIELDS = ("keywords",)$/;"	kind:variable	line:161
+CapturedSubprocess	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/base.py	/^class CapturedSubprocess(fixtures.Fixture):$/;"	kind:class	line:154
+Colorize	../env/bin/miniterm.py	/^class Colorize(Transform):$/;"	kind:class	line:259
+CommandsConfig	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/commands.py	/^class CommandsConfig(base.BaseConfig):$/;"	kind:class	line:25
+Configuration	../brewkit/api/configuration.py	/^class Configuration():$/;"	kind:class	line:7
+Configuration	../brewkit/api/tests/test_configuration.py	/^from ..configuration import Configuration$/;"	kind:namespace	line:5
+Console	../env/bin/miniterm.py	/^    class Console(ConsoleBase):$/;"	kind:class	line:102
+Console	../env/bin/miniterm.py	/^    class Console(ConsoleBase):$/;"	kind:class	line:140
+ConsoleBase	../env/bin/miniterm.py	/^class ConsoleBase(object):$/;"	kind:class	line:41
+CreatePackages	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^class CreatePackages(fixtures.Fixture):$/;"	kind:class	line:201
+D1_D2_SETUP_ARGS	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^D1_D2_SETUP_ARGS = {$/;"	kind:variable	line:96
+DebugIO	../env/bin/miniterm.py	/^class DebugIO(Transform):$/;"	kind:class	line:274
+DefaultGetDict	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^class DefaultGetDict(defaultdict):$/;"	kind:class	line:602
+DiveDir	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/base.py	/^class DiveDir(fixtures.Fixture):$/;"	kind:class	line:55
+ENABLE_USER_SITE	../env/lib/python3.4/site.py	/^ENABLE_USER_SITE = None$/;"	kind:variable	line:81
+ENTRY_POINTS_MAP	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^ENTRY_POINTS_MAP = {$/;"	kind:variable	line:371
+EOL_TRANSFORMATIONS	../env/bin/miniterm.py	/^EOL_TRANSFORMATIONS = {$/;"	kind:variable	line:292
+FilesConfig	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/files.py	/^class FilesConfig(base.BaseConfig):$/;"	kind:class	line:38
+FilesConfigTest	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_files.py	/^class FilesConfigTest(base.BaseTestCase):$/;"	kind:class	line:26
+Foo	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/cmd.py	/^class Foo(object):$/;"	kind:class	line:22
+GPGKeyFixture	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^class GPGKeyFixture(fixtures.Fixture):$/;"	kind:class	line:102
+GitLogsTest	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^class GitLogsTest(base.BaseTestCase):$/;"	kind:class	line:133
+InstallWithGit	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^class InstallWithGit(install.install):$/;"	kind:class	line:187
+InvalidHardwareError	../brewkit/app/exceptions.py	/^class InvalidHardwareError(RuntimeError):$/;"	kind:class	line:1
+InvalidHardwareError	../brewkit/app/omega.py	/^from .exceptions import InvalidHardwareError$/;"	kind:namespace	line:15
+InvalidHardwareError	../brewkit/app/str116.py	/^from .exceptions import InvalidHardwareError, RelayNotFoundError$/;"	kind:namespace	line:6
+InvalidHardwareError	../brewkit/app/tests/test_omega.py	/^from brewkit.app.exceptions import InvalidHardwareError$/;"	kind:namespace	line:4
+InvalidHardwareError	../brewkit/app/tests/test_str116.py	/^from brewkit.app.exceptions import InvalidHardwareError, RelayNotFoundError$/;"	kind:namespace	line:7
+LF	../env/bin/miniterm.py	/^class LF(Transform):$/;"	kind:class	line:209
+LocalBuildDoc	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^class LocalBuildDoc(setup_command.BuildDoc):$/;"	kind:class	line:80
+LocalBuildDoc	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    LocalBuildDoc = None$/;"	kind:variable	line:628
+LocalBuildDoc	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    LocalBuildDoc = builddoc.LocalBuildDoc$/;"	kind:variable	line:625
+LocalDebVersion	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^class LocalDebVersion(setuptools.Command):$/;"	kind:class	line:251
+LocalDevelop	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^class LocalDevelop(develop.develop):$/;"	kind:class	line:413
+LocalEggInfo	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^class LocalEggInfo(egg_info.egg_info):$/;"	kind:class	line:525
+LocalInstall	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^class LocalInstall(install.install):$/;"	kind:class	line:201
+LocalInstallScripts	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^class LocalInstallScripts(install_scripts.install_scripts):$/;"	kind:class	line:425
+LocalManifestMaker	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^class LocalManifestMaker(egg_info.manifest_maker):$/;"	kind:class	line:483
+LocalRPMVersion	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^class LocalRPMVersion(setuptools.Command):$/;"	kind:class	line:232
+LocalSDist	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^class LocalSDist(sdist.sdist):$/;"	kind:class	line:564
+MAP_FIELDS	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^MAP_FIELDS = ("project_urls",)$/;"	kind:variable	line:155
+MAXLINES	../env/lib/python3.4/site.py	/^    MAXLINES = 23$/;"	kind:variable	line:412
+MULTI_FIELDS	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^MULTI_FIELDS = ("classifiers",$/;"	kind:variable	line:138
+MetadataConfig	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/metadata.py	/^class MetadataConfig(base.BaseConfig):$/;"	kind:class	line:20
+Miniterm	../env/bin/miniterm.py	/^class Miniterm(object):$/;"	kind:class	line:334
+ModuleType	../env/lib/python3.4/site.py	/^    ModuleType = type(os)$/;"	kind:variable	line:90
+NoControls	../env/bin/miniterm.py	/^class NoControls(NoTerminal):$/;"	kind:class	line:229
+NoTerminal	../env/bin/miniterm.py	/^class NoTerminal(Transform):$/;"	kind:class	line:213
+NoseTest	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    class NoseTest(commands.nosetests):$/;"	kind:class	line:277
+Omega	../brewkit/__init__.py	/^from brewkit.api.controllers import STR116, Omega$/;"	kind:namespace	line:1
+Omega	../brewkit/api/configuration.py	/^from ..app.omega import Omega$/;"	kind:namespace	line:4
+Omega	../brewkit/api/controllers.py	/^from ..app.omega import Omega$/;"	kind:namespace	line:2
+Omega	../brewkit/api/devices.py	/^from .controllers import Omega$/;"	kind:namespace	line:2
+Omega	../brewkit/app/omega.py	/^class Omega():$/;"	kind:class	line:17
+Omega	../brewkit/app/tests/test_omega.py	/^from brewkit.app.omega import Omega$/;"	kind:namespace	line:3
+OmegaCN7500	../brewkit/app/omega.py	/^from omegacn7500 import OmegaCN7500$/;"	kind:namespace	line:10
+Out	../env/bin/miniterm.py	/^    class Out(object):$/;"	kind:class	line:90
+PBRVERSION	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^PBRVERSION = os.environ.get('PBRVERSION', 'pbr')$/;"	kind:variable	line:27
+PBR_ROOT	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^PBR_ROOT = os.path.abspath(os.path.join(__file__, '..', '..', '..'))$/;"	kind:variable	line:32
+PBR_ROOT	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^PBR_ROOT = os.path.abspath(os.path.join(__file__, '..', '..', '..'))$/;"	kind:variable	line:66
+PIPFLAGS	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^PIPFLAGS = shlex.split(os.environ.get('PIPFLAGS', ''))$/;"	kind:variable	line:25
+PIPVERSION	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^PIPVERSION = os.environ.get('PIPVERSION', 'pip')$/;"	kind:variable	line:26
+PIP_CMD	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^PIP_CMD = ['-m', 'pip'] + PIPFLAGS + ['install', '-f', WHEELHOUSE]$/;"	kind:variable	line:30
+PREFIXES	../env/lib/python3.4/site.py	/^PREFIXES = [sys.prefix, sys.exec_prefix]$/;"	kind:variable	line:78
+PROJECTS	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^PROJECTS = shlex.split(os.environ.get('PROJECTS', ''))$/;"	kind:variable	line:31
+PY_REQUIREMENTS_FILES	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^PY_REQUIREMENTS_FILES = [x % sys.version_info[0] for x in ($/;"	kind:variable	line:49
+ParseDependencyLinksTest	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^class ParseDependencyLinksTest(base.BaseTestCase):$/;"	kind:class	line:619
+ParseRequirementsTest	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^class ParseRequirementsTest(base.BaseTestCase):$/;"	kind:class	line:491
+ParseRequirementsTestScenarios	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^class ParseRequirementsTestScenarios(base.BaseTestCase):$/;"	kind:class	line:575
+Printable	../env/bin/miniterm.py	/^class Printable(Transform):$/;"	kind:class	line:241
+Quitter	../env/lib/python3.4/site.py	/^    class Quitter(object):$/;"	kind:class	line:391
+REPLACEMENT_MAP	../env/bin/miniterm.py	/^    REPLACEMENT_MAP = dict((x, 0x2400 + x) for x in range(32) if unichr(x) not in '\\r\\n\\b\\t')$/;"	kind:variable	line:216
+REPLACEMENT_MAP	../env/bin/miniterm.py	/^    REPLACEMENT_MAP = dict((x, 0x2400 + x) for x in range(32))$/;"	kind:variable	line:232
+REPODIR	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^REPODIR = os.environ.get('REPODIR', '')$/;"	kind:variable	line:28
+REQUIREMENTS_FILES	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^REQUIREMENTS_FILES = ('requirements.txt', 'tools\/pip-requires')$/;"	kind:variable	line:48
+Relay	../brewkit/__init__.py	/^from brewkit.api.devices import Relay, Thermostat$/;"	kind:namespace	line:2
+Relay	../brewkit/api/devices.py	/^class Relay(object):$/;"	kind:class	line:16
+RelayNotFoundError	../brewkit/app/exceptions.py	/^class RelayNotFoundError(RuntimeError):$/;"	kind:class	line:4
+RelayNotFoundError	../brewkit/app/str116.py	/^from .exceptions import InvalidHardwareError, RelayNotFoundError$/;"	kind:namespace	line:6
+RelayNotFoundError	../brewkit/app/tests/test_str116.py	/^from brewkit.app.exceptions import InvalidHardwareError, RelayNotFoundError$/;"	kind:namespace	line:7
+STR116	../brewkit/__init__.py	/^from brewkit.api.controllers import STR116, Omega$/;"	kind:namespace	line:1
+STR116	../brewkit/api/configuration.py	/^from ..app.str116 import STR116$/;"	kind:namespace	line:3
+STR116	../brewkit/api/controllers.py	/^from ..app.str116 import STR116$/;"	kind:namespace	line:1
+STR116	../brewkit/api/devices.py	/^from .controllers import STR116$/;"	kind:namespace	line:1
+STR116	../brewkit/app/str116.py	/^class STR116(object):$/;"	kind:class	line:8
+STR116	../brewkit/app/tests/test_str116.py	/^from brewkit.app.str116 import STR116$/;"	kind:namespace	line:5
+SemanticVersion	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^class SemanticVersion(object):$/;"	kind:class	line:34
+SkipFileWrites	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^class SkipFileWrites(base.BaseTestCase):$/;"	kind:class	line:36
+TEST_REQUIREMENTS_FILES	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^TEST_REQUIREMENTS_FILES = ('test-requirements.txt', 'tools\/test-requires')$/;"	kind:variable	line:51
+TRANSFORMATIONS	../env/bin/miniterm.py	/^TRANSFORMATIONS = {$/;"	kind:variable	line:298
+TRUE_VALUES	../.eggs/pbr-4.2.0-py2.7.egg/pbr/options.py	/^TRUE_VALUES = ('true', '1', 'yes')$/;"	kind:variable	line:47
+TestCommands	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_commands.py	/^class TestCommands(base.BaseTestCase):$/;"	kind:class	line:46
+TestConfiguration	../brewkit/api/tests/test_configuration.py	/^class TestConfiguration(unittest.TestCase):$/;"	kind:class	line:10
+TestCore	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_core.py	/^class TestCore(base.BaseTestCase):$/;"	kind:class	line:50
+TestDevices	../brewkit/api/tests/test_devices.py	/^class TestDevices(unittest.TestCase):$/;"	kind:class	line:6
+TestExtrafileInstallation	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^class TestExtrafileInstallation(base.BaseTestCase):$/;"	kind:class	line:332
+TestExtrasRequireParsingScenarios	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_util.py	/^class TestExtrasRequireParsingScenarios(base.BaseTestCase):$/;"	kind:class	line:26
+TestGitSDist	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_core.py	/^class TestGitSDist(base.BaseTestCase):$/;"	kind:class	line:129
+TestHooks	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_hooks.py	/^class TestHooks(base.BaseTestCase):$/;"	kind:class	line:49
+TestInstallWithoutPbr	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^class TestInstallWithoutPbr(base.BaseTestCase):$/;"	kind:class	line:133
+TestIntegration	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^class TestIntegration(base.BaseTestCase):$/;"	kind:class	line:55
+TestInvalidMarkers	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_util.py	/^class TestInvalidMarkers(base.BaseTestCase):$/;"	kind:class	line:87
+TestJsonContent	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_pbr_json.py	/^class TestJsonContent(base.BaseTestCase):$/;"	kind:class	line:19
+TestLTSSupport	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^class TestLTSSupport(base.BaseTestCase):$/;"	kind:class	line:238
+TestMarkersPip	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^class TestMarkersPip(base.BaseTestCase):$/;"	kind:class	line:188
+TestOmega	../brewkit/app/tests/test_omega.py	/^class TestOmega(unittest.TestCase):$/;"	kind:class	line:6
+TestPackagingHelpers	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^class TestPackagingHelpers(testtools.TestCase):$/;"	kind:class	line:409
+TestPackagingInGitRepoWithCommit	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^class TestPackagingInGitRepoWithCommit(base.BaseTestCase):$/;"	kind:class	line:266
+TestPackagingInGitRepoWithoutCommit	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^class TestPackagingInGitRepoWithoutCommit(base.BaseTestCase):$/;"	kind:class	line:343
+TestPackagingInPlainDirectory	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^class TestPackagingInPlainDirectory(base.BaseTestCase):$/;"	kind:class	line:451
+TestPackagingWheels	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^class TestPackagingWheels(base.BaseTestCase):$/;"	kind:class	line:363
+TestPresenceOfGit	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^class TestPresenceOfGit(base.BaseTestCase):$/;"	kind:class	line:476
+TestRepo	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^class TestRepo(fixtures.Fixture):$/;"	kind:class	line:69
+TestRequirementParsing	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^class TestRequirementParsing(base.BaseTestCase):$/;"	kind:class	line:856
+TestSTR116	../brewkit/app/tests/test_str116.py	/^class TestSTR116(unittest.TestCase):$/;"	kind:class	line:9
+TestSemanticVersion	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^class TestSemanticVersion(base.BaseTestCase):$/;"	kind:class	line:27
+TestVersions	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^class TestVersions(base.BaseTestCase):$/;"	kind:class	line:641
+TestWsgiScripts	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_wsgi.py	/^class TestWsgiScripts(base.BaseTestCase):$/;"	kind:class	line:29
+Testr	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^    Testr = TestrFake$/;"	kind:variable	line:167
+Testr	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^    Testr = TestrReal$/;"	kind:variable	line:164
+TestrFake	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^class TestrFake(cmd.Command):$/;"	kind:class	line:147
+TestrReal	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^class TestrReal(cmd.Command):$/;"	kind:class	line:53
+TestrTest	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^class TestrTest(testr_command.Testr):$/;"	kind:class	line:216
+Thermostat	../brewkit/__init__.py	/^from brewkit.api.devices import Relay, Thermostat$/;"	kind:namespace	line:2
+Thermostat	../brewkit/api/devices.py	/^class Thermostat(object):$/;"	kind:class	line:5
+Transform	../env/bin/miniterm.py	/^class Transform(object):$/;"	kind:class	line:177
+USER_BASE	../env/lib/python3.4/site.py	/^USER_BASE = None$/;"	kind:variable	line:84
+USER_SITE	../env/lib/python3.4/site.py	/^USER_SITE = None$/;"	kind:variable	line:83
+Venv	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^class Venv(fixtures.Fixture):$/;"	kind:class	line:158
+VersionInfo	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^class VersionInfo(object):$/;"	kind:class	line:408
+WHEELHOUSE	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^WHEELHOUSE = os.environ.get('WHEELHOUSE', '')$/;"	kind:variable	line:29
+WSGI	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/wsgi.py	/^class WSGI(object):$/;"	kind:class	line:36
+_Helper	../env/lib/python3.4/site.py	/^class _Helper(object):$/;"	kind:class	line:494
+_Printer	../env/lib/python3.4/site.py	/^class _Printer(object):$/;"	kind:class	line:408
+_SphinxConfig	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^class _SphinxConfig(object):$/;"	kind:class	line:224
+_VERSION_SPEC_RE	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^_VERSION_SPEC_RE = re.compile(r'\\s*(.*?)\\s*\\((.*)\\)\\s*$')$/;"	kind:variable	line:90
+__call__	../env/lib/python3.4/site.py	/^        def __call__(self, code=None):$/;"	kind:member	line:396
+__call__	../env/lib/python3.4/site.py	/^    def __call__(self):$/;"	kind:member	line:449
+__call__	../env/lib/python3.4/site.py	/^    def __call__(self, *args, **kwds):$/;"	kind:member	line:503
+__del__	../env/bin/miniterm.py	/^        def __del__(self):$/;"	kind:member	line:115
+__enter__	../env/bin/miniterm.py	/^    def __enter__(self):$/;"	kind:member	line:78
+__eq__	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def __eq__(self, other):$/;"	kind:member	line:63
+__exit__	../env/bin/miniterm.py	/^    def __exit__(self, *args, **kwargs):$/;"	kind:member	line:82
+__ge__	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def __ge__(self, other):$/;"	kind:member	line:107
+__gt__	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def __gt__(self, other):$/;"	kind:member	line:110
+__hash__	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def __hash__(self):$/;"	kind:member	line:68
+__init__	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/base.py	/^    def __init__(self, config):$/;"	kind:member	line:21
+__init__	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/commands.py	/^    def __init__(self, config):$/;"	kind:member	line:29
+__init__	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/files.py	/^    def __init__(self, config, name):$/;"	kind:member	line:42
+__init__	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/base.py	/^    def __init__(self, label, *args, **kwargs):$/;"	kind:member	line:165
+__init__	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/base.py	/^    def __init__(self, path):$/;"	kind:member	line:61
+__init__	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def __init__(self, basedir):$/;"	kind:member	line:77
+__init__	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def __init__(self, packages):$/;"	kind:member	line:223
+__init__	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def __init__(self, reason, modules=(), pip_cmd=None):$/;"	kind:member	line:165
+__init__	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def __init__($/;"	kind:member	line:40
+__init__	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def __init__(self, package):$/;"	kind:member	line:410
+__init__	../brewkit/api/configuration.py	/^    def __init__(self, datastring):$/;"	kind:member	line:8
+__init__	../brewkit/api/devices.py	/^    def __init__(self, controller, relay_num, name=None):$/;"	kind:member	line:17
+__init__	../brewkit/app/omega.py	/^    def __init__(self, port, address, baudrate=19200, timeout=0.05):$/;"	kind:member	line:23
+__init__	../brewkit/app/str116.py	/^    def __init__(self, port, address, baud_rate=19200, timeout=0.05):$/;"	kind:member	line:9
+__init__	../env/bin/miniterm.py	/^        def __init__(self):$/;"	kind:member	line:103
+__init__	../env/bin/miniterm.py	/^        def __init__(self):$/;"	kind:member	line:141
+__init__	../env/bin/miniterm.py	/^        def __init__(self, fd):$/;"	kind:member	line:93
+__init__	../env/bin/miniterm.py	/^    def __init__(self):$/;"	kind:member	line:262
+__init__	../env/bin/miniterm.py	/^    def __init__(self):$/;"	kind:member	line:44
+__init__	../env/bin/miniterm.py	/^    def __init__(self, serial_instance, echo=False, eol='crlf', filters=()):$/;"	kind:member	line:340
+__init__	../env/lib/python3.4/site.py	/^        def __init__(self, name):$/;"	kind:member	line:392
+__init__	../env/lib/python3.4/site.py	/^    def __init__(self, name, data, files=(), dirs=()):$/;"	kind:member	line:414
+__init__.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/__init__.py	1;"	kind:file	line:1
+__init__.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/cmd/__init__.py	1;"	kind:file	line:1
+__init__.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/__init__.py	1;"	kind:file	line:1
+__init__.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/__init__.py	1;"	kind:file	line:1
+__init__.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/__init__.py	1;"	kind:file	line:1
+__init__.py	../brewkit/__init__.py	1;"	kind:file	line:1
+__init__.py	../brewkit/api/__init__.py	1;"	kind:file	line:1
+__init__.py	../brewkit/api/tests/__init__.py	1;"	kind:file	line:1
+__init__.py	../brewkit/app/__init__.py	1;"	kind:file	line:1
+__init__.py	../brewkit/app/tests/__init__.py	1;"	kind:file	line:1
+__init__.py	../brewkit/interface/__init__.py	1;"	kind:file	line:1
+__init__.py	../brewkit/interface/tests/__init__.py	1;"	kind:file	line:1
+__init__.py	../env/lib/python3.4/distutils/__init__.py	1;"	kind:file	line:1
+__le__	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def __le__(self, other):$/;"	kind:member	line:104
+__lt__	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def __lt__(self, other):$/;"	kind:member	line:94
+__ne__	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def __ne__(self, other):$/;"	kind:member	line:113
+__new__	../brewkit/api/devices.py	/^    def __new__(self, controller, name=None):$/;"	kind:member	line:9
+__repr__	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def __repr__(self):$/;"	kind:member	line:116
+__repr__	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def __repr__(self):$/;"	kind:member	line:425
+__repr__	../env/lib/python3.4/site.py	/^        def __repr__(self):$/;"	kind:member	line:394
+__repr__	../env/lib/python3.4/site.py	/^    def __repr__(self):$/;"	kind:member	line:442
+__repr__	../env/lib/python3.4/site.py	/^    def __repr__(self):$/;"	kind:member	line:500
+__revision__	../env/lib/python3.4/distutils/__init__.py	/^        __revision__ = real_distutils.__revision__$/;"	kind:variable	line:20
+__setup	../env/lib/python3.4/site.py	/^    def __setup(self):$/;"	kind:member	line:421
+__str__	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def __str__(self):$/;"	kind:member	line:421
+__str__	../brewkit/api/configuration.py	/^    def __str__(self):$/;"	kind:member	line:49
+__version__	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/__init__.py	/^__version__ = pbr.version.VersionInfo('pbr_testpackage').version_string()$/;"	kind:variable	line:3
+__version__	../env/lib/python3.4/distutils/__init__.py	/^    __version__ = real_distutils.__version__$/;"	kind:variable	line:23
+_add_pbr_defaults	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    def _add_pbr_defaults(self):$/;"	kind:member	line:486
+_any_existing	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^def _any_existing(file_list):$/;"	kind:function	line:76
+_builder_inited	../.eggs/pbr-4.2.0-py2.7.egg/pbr/sphinxext.py	/^def _builder_inited(app):$/;"	kind:function	line:79
+_check_combinations	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^        def _check_combinations(tag):$/;"	kind:function	line:772
+_check_wsgi_install_content	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_wsgi.py	/^    def _check_wsgi_install_content(self, install_stdout):$/;"	kind:member	line:124
+_clean_changelog_message	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^def _clean_changelog_message(msg):$/;"	kind:function	line:146
+_config_git	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/base.py	/^def _config_git():$/;"	kind:function	line:212
+_coverage_after	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^    def _coverage_after(self):$/;"	kind:member	line:140
+_coverage_before	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^    def _coverage_before(self):$/;"	kind:member	line:127
+_deprecated_envs	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^_deprecated_envs = ['AUTODOC_TREE_INDEX_MODULES', 'AUTODOC_INDEX_MODULES']$/;"	kind:variable	line:62
+_deprecated_options	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^_deprecated_options = ['autodoc_tree_index_modules', 'autodoc_index_modules',$/;"	kind:variable	line:60
+_discard_testpackage	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/base.py	/^    def _discard_testpackage(self):$/;"	kind:member	line:123
+_extra_files	../.eggs/pbr-4.2.0-py2.7.egg/pbr/extra_files.py	/^_extra_files = []$/;"	kind:variable	line:19
+_fake_run_shell_command	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^        def _fake_run_shell_command(cmd, **kwargs):$/;"	kind:function	line:204
+_find_git_files	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^def _find_git_files(dirname='', git_dir=None):$/;"	kind:function	line:98
+_find_modules	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^def _find_modules(arg, dirname, files):$/;"	kind:function	line:73
+_find_setup_cfg	../.eggs/pbr-4.2.0-py2.7.egg/pbr/sphinxext.py	/^def _find_setup_cfg(srcdir):$/;"	kind:function	line:27
+_from_git	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^def _from_git(distribution):$/;"	kind:function	line:555
+_from_pip_string_unsafe	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def _from_pip_string_unsafe(klass, version_string):$/;"	kind:member	line:150
+_get_git_directory	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^def _get_git_directory():$/;"	kind:function	line:68
+_get_highest_tag	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^def _get_highest_tag(tags):$/;"	kind:function	line:89
+_get_increment_kwargs	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^def _get_increment_kwargs(git_dir, tag):$/;"	kind:function	line:635
+_get_info	../.eggs/pbr-4.2.0-py2.7.egg/pbr/cmd/main.py	/^def _get_info(name):$/;"	kind:function	line:47
+_get_metadata	../.eggs/pbr-4.2.0-py2.7.egg/pbr/cmd/main.py	/^def _get_metadata(package_name):$/;"	kind:function	line:25
+_get_path	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_wsgi.py	/^    def _get_path(self):$/;"	kind:member	line:33
+_get_project_name	../.eggs/pbr-4.2.0-py2.7.egg/pbr/sphinxext.py	/^def _get_project_name(srcdir):$/;"	kind:function	line:45
+_get_raw_tag_info	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^def _get_raw_tag_info(git_dir):$/;"	kind:function	line:116
+_get_revno_and_last_tag	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^def _get_revno_and_last_tag(git_dir):$/;"	kind:function	line:676
+_get_source_dir	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^    def _get_source_dir(self):$/;"	kind:member	line:86
+_get_version_from_git	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^def _get_version_from_git(pre_version=None):$/;"	kind:function	line:737
+_get_version_from_git_target	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^def _get_version_from_git_target(git_dir, target_version):$/;"	kind:function	line:700
+_get_version_from_pkg_metadata	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^def _get_version_from_pkg_metadata(package_name):$/;"	kind:function	line:775
+_get_version_from_pkg_resources	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def _get_version_from_pkg_resources(self):$/;"	kind:member	line:430
+_git_is_installed	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^def _git_is_installed():$/;"	kind:function	line:78
+_handle_symbol	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    def _handle_symbol(symbol, symbols, impact):$/;"	kind:function	line:660
+_have_nose	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    _have_nose = False$/;"	kind:variable	line:295
+_have_sphinx	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    _have_sphinx = False$/;"	kind:variable	line:627
+_have_sphinx	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    _have_sphinx = True$/;"	kind:variable	line:622
+_init_pathinfo	../env/lib/python3.4/site.py	/^def _init_pathinfo():$/;"	kind:function	line:143
+_is_64bit	../env/lib/python3.4/site.py	/^_is_64bit = (getattr(sys, 'maxsize', None) or getattr(sys, 'maxint')) > 2**32$/;"	kind:variable	line:86
+_is_int	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^def _is_int(string):$/;"	kind:function	line:26
+_is_pypy	../env/lib/python3.4/site.py	/^_is_pypy = hasattr(sys, 'pypy_version_info')$/;"	kind:variable	line:87
+_is_valid_version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^def _is_valid_version(candidate):$/;"	kind:function	line:211
+_iter_changelog	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^def _iter_changelog(changelog):$/;"	kind:function	line:166
+_iter_log_inner	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^def _iter_log_inner(git_dir):$/;"	kind:function	line:219
+_iter_log_oneline	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^def _iter_log_oneline(git_dir=None):$/;"	kind:function	line:194
+_long_version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def _long_version(self, pre_separator, rc_marker=""):$/;"	kind:member	line:318
+_make_old_git_changelog_format	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^def _make_old_git_changelog_format(line):$/;"	kind:function	line:119
+_make_wsgi_scripts_only	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    def _make_wsgi_scripts_only(self, dist, executable, is_wininst):$/;"	kind:member	line:429
+_old_git_changelog_content	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^_old_git_changelog_content = '\\n'.join($/;"	kind:variable	line:128
+_parse_type	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^        def _parse_type(segment):$/;"	kind:function	line:181
+_project	../.eggs/pbr-4.2.0-py2.7.egg/pbr/sphinxext.py	/^_project = None$/;"	kind:variable	line:23
+_run_cmd	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/base.py	/^    def _run_cmd(self, cmd, args=[], allow_fail=True, cwd=None):$/;"	kind:member	line:137
+_run_cmd	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/base.py	/^def _run_cmd(args, cwd):$/;"	kind:function	line:196
+_run_git_command	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^def _run_git_command(cmd, git_dir, **kwargs):$/;"	kind:function	line:61
+_run_git_functions	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^def _run_git_functions():$/;"	kind:function	line:129
+_run_shell_command	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^def _run_shell_command(cmd, throw_on_error=False, buffer=True, env=None):$/;"	kind:function	line:34
+_run_testr	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^    def _run_testr(self, *args):$/;"	kind:member	line:72
+_script	../env/lib/python3.4/site.py	/^def _script():$/;"	kind:function	line:705
+_setUp	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def _setUp(self):$/;"	kind:member	line:185
+_setUp	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def _setUp(self):$/;"	kind:member	line:244
+_setup_hooks.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/_setup_hooks.py	1;"	kind:file	line:1
+_sort_key	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def _sort_key(self):$/;"	kind:member	line:71
+_sphinx_run	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^    def _sphinx_run(self):$/;"	kind:member	line:141
+_sphinx_tree	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^    def _sphinx_tree(self):$/;"	kind:member	line:134
+_start_reader	../env/bin/miniterm.py	/^    def _start_reader(self):$/;"	kind:member	line:358
+_stop_reader	../env/bin/miniterm.py	/^    def _stop_reader(self):$/;"	kind:member	line:366
+_test_wsgi	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_wsgi.py	/^    def _test_wsgi(self, cmd_name, output, extra_args=None):$/;"	kind:member	line:78
+_writeFile	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def _writeFile(self, directory, file_name, contents):$/;"	kind:member	line:233
+a	../env/lib/python3.4/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
+abs__file__	../env/lib/python3.4/site.py	/^def abs__file__():$/;"	kind:function	line:100
+activate_this.py	../env/bin/activate_this.py	1;"	kind:file	line:1
+add_command	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/commands.py	/^    def add_command(self, command):$/;"	kind:member	line:37
+add_defaults	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    def add_defaults(self):$/;"	kind:member	line:496
+add_man_page	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/files.py	/^    def add_man_page(self, man_page):$/;"	kind:member	line:73
+add_man_path	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/files.py	/^    def add_man_path(self, man_path):$/;"	kind:member	line:70
+addbuilddir	../env/lib/python3.4/site.py	/^def addbuilddir():$/;"	kind:function	line:133
+addpackage	../env/lib/python3.4/site.py	/^def addpackage(sitedir, name, known_paths):$/;"	kind:function	line:155
+addsitedir	../env/lib/python3.4/site.py	/^def addsitedir(sitedir, known_paths=None):$/;"	kind:function	line:186
+addsitepackages	../env/lib/python3.4/site.py	/^def addsitepackages(known_paths, sys_prefix=sys.prefix, exec_prefix=sys.exec_prefix):$/;"	kind:function	line:209
+addusersitepackages	../env/lib/python3.4/site.py	/^def addusersitepackages(known_paths):$/;"	kind:function	line:309
+aliasmbcs	../env/lib/python3.4/site.py	/^def aliasmbcs():$/;"	kind:function	line:510
+all_projects	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^def all_projects():$/;"	kind:function	line:35
+apidoc	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^        from sphinx import apidoc$/;"	kind:namespace	line:39
+apidoc	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^        from sphinx.ext import apidoc$/;"	kind:namespace	line:36
+apidoc_use_padding	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^        apidoc_use_padding = False$/;"	kind:variable	line:37
+apidoc_use_padding	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^        apidoc_use_padding = True$/;"	kind:variable	line:40
+app	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/wsgi.py	/^    def app(self):$/;"	kind:member	line:39
+append_text_list	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^def append_text_list(config, key, text_list):$/;"	kind:function	line:66
+application	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^    from sphinx import application$/;"	kind:namespace	line:41
+application	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^        import sphinx.application$/;"	kind:namespace	line:237
+application	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^        import sphinx.application$/;"	kind:namespace	line:385
+application	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/wsgi.py	/^def application(env, start_response, data):$/;"	kind:function	line:22
+argparse	../.eggs/pbr-4.2.0-py2.7.egg/pbr/cmd/main.py	/^import argparse$/;"	kind:namespace	line:16
+argparse	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/wsgi.py	/^import argparse$/;"	kind:namespace	line:17
+argparse	../env/bin/miniterm.py	/^    import argparse$/;"	kind:namespace	line:760
+ask_for_port	../env/bin/miniterm.py	/^def ask_for_port():$/;"	kind:function	line:309
+atexit	../env/bin/miniterm.py	/^    import atexit$/;"	kind:namespace	line:136
+backwards	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/__init__.py	/^from pbr.hooks import backwards$/;"	kind:namespace	line:16
+backwards.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/backwards.py	1;"	kind:file	line:1
+bar	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/cmd.py	/^    def bar(self):$/;"	kind:member	line:25
+base	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/backwards.py	/^from pbr.hooks import base$/;"	kind:namespace	line:16
+base	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/commands.py	/^from pbr.hooks import base$/;"	kind:namespace	line:20
+base	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/files.py	/^from pbr.hooks import base$/;"	kind:namespace	line:20
+base	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/metadata.py	/^from pbr.hooks import base$/;"	kind:namespace	line:16
+base	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_commands.py	/^from pbr.tests import base$/;"	kind:namespace	line:43
+base	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_core.py	/^from pbr.tests import base$/;"	kind:namespace	line:47
+base	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_files.py	/^from pbr.tests import base$/;"	kind:namespace	line:23
+base	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_hooks.py	/^from pbr.tests import base$/;"	kind:namespace	line:45
+base	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^from pbr.tests import base$/;"	kind:namespace	line:22
+base	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^from pbr.tests import base$/;"	kind:namespace	line:63
+base	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_pbr_json.py	/^from pbr.tests import base$/;"	kind:namespace	line:16
+base	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^from pbr.tests import base$/;"	kind:namespace	line:33
+base	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_util.py	/^from pbr.tests import base$/;"	kind:namespace	line:22
+base	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^from pbr.tests import base$/;"	kind:namespace	line:20
+base	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_wsgi.py	/^from pbr.tests import base$/;"	kind:namespace	line:26
+base	../env/bin/activate_this.py	/^base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	kind:variable	line:18
+base.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/base.py	1;"	kind:file	line:1
+base.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/base.py	1;"	kind:file	line:1
+basestring	../env/lib/python3.4/distutils/__init__.py	/^    basestring = str$/;"	kind:variable	line:30
+binascii	../brewkit/app/str116.py	/^import binascii$/;"	kind:namespace	line:3
+boolean_options	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^    boolean_options = ['coverage', 'slowest', 'no_parallel']$/;"	kind:variable	line:70
+brief_string	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def brief_string(self):$/;"	kind:member	line:235
+build_ext	../env/lib/python3.4/distutils/__init__.py	/^    class build_ext(old_build_ext):$/;"	kind:class	line:37
+build_ext_module	../env/lib/python3.4/distutils/__init__.py	/^    from distutils.command import build_ext as build_ext_module $/;"	kind:namespace	line:47
+build_py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/_setup_hooks.py	/^from distutils.command import build_py$/;"	kind:namespace	line:41
+builddoc	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    from pbr import builddoc$/;"	kind:namespace	line:621
+builddoc.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	1;"	kind:file	line:1
+builders	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^    builders = ['html']$/;"	kind:variable	line:82
+builtins	../env/lib/python3.4/site.py	/^    import __builtin__ as builtins$/;"	kind:namespace	line:69
+builtins	../env/lib/python3.4/site.py	/^    import builtins$/;"	kind:namespace	line:71
+cStringIO	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^    import cStringIO$/;"	kind:namespace	line:23
+cStringIO	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^    import io as cStringIO$/;"	kind:namespace	line:25
+cached_version_string	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def cached_version_string(self, prefix=""):$/;"	kind:member	line:473
+can	../env/lib/python3.4/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
+cancel	../env/bin/miniterm.py	/^        def cancel(self):$/;"	kind:member	line:129
+cancel	../env/bin/miniterm.py	/^        def cancel(self):$/;"	kind:member	line:164
+cancel	../env/bin/miniterm.py	/^    def cancel(self):$/;"	kind:member	line:71
+canonical_version_string	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    canonical_version_string = version_string$/;"	kind:variable	line:470
+ccompiler	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^import distutils.ccompiler$/;"	kind:namespace	line:71
+cfg_to_args	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^def cfg_to_args(path='setup.cfg', script_args=()):$/;"	kind:function	line:196
+change_baudrate	../env/bin/miniterm.py	/^    def change_baudrate(self):$/;"	kind:member	line:638
+change_encoding	../env/bin/miniterm.py	/^    def change_encoding(self):$/;"	kind:member	line:622
+change_filter	../env/bin/miniterm.py	/^    def change_filter(self):$/;"	kind:member	line:603
+change_port	../env/bin/miniterm.py	/^    def change_port(self):$/;"	kind:member	line:652
+check_enableusersite	../env/lib/python3.4/site.py	/^def check_enableusersite():$/;"	kind:function	line:285
+check_script_install	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_core.py	/^    def check_script_install(self, install_stdout):$/;"	kind:member	line:54
+checking_reno	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    def checking_reno(self):$/;"	kind:member	line:569
+cleanup	../env/bin/miniterm.py	/^        def cleanup(self):$/;"	kind:member	line:167
+cleanup	../env/bin/miniterm.py	/^    def cleanup(self):$/;"	kind:member	line:54
+close	../env/bin/miniterm.py	/^    def close(self):$/;"	kind:member	line:395
+cmd	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^from distutils import cmd$/;"	kind:namespace	line:43
+cmd.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/cmd.py	1;"	kind:file	line:1
+cmd_names	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_core.py	/^    cmd_names = ('pbr_test_cmd', 'pbr_test_cmd_with_class')$/;"	kind:variable	line:52
+cmd_names	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_wsgi.py	/^    cmd_names = ('pbr_test_wsgi', 'pbr_test_wsgi_with_class')$/;"	kind:variable	line:31
+codecs	../env/bin/miniterm.py	/^import codecs$/;"	kind:namespace	line:10
+codecs	../env/lib/python3.4/site.py	/^        import locale, codecs$/;"	kind:namespace	line:515
+command	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^        import distutils.command.install_scripts$/;"	kind:namespace	line:438
+command_name	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^    command_name = 'build_sphinx'$/;"	kind:variable	line:83
+command_name	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^        command_name = 'test'$/;"	kind:variable	line:280
+command_name	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    command_name = "deb_version"$/;"	kind:variable	line:256
+command_name	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    command_name = "rpm_version"$/;"	kind:variable	line:237
+command_name	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    command_name = 'develop'$/;"	kind:variable	line:415
+command_name	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    command_name = 'egg_info'$/;"	kind:variable	line:528
+command_name	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    command_name = 'install'$/;"	kind:variable	line:194
+command_name	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    command_name = 'install'$/;"	kind:variable	line:209
+command_name	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    command_name = 'install_scripts'$/;"	kind:variable	line:427
+command_name	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    command_name = 'sdist'$/;"	kind:variable	line:567
+command_name	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    command_name = 'test'$/;"	kind:variable	line:219
+command_name	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/_setup_hooks.py	/^    command_name = 'build_py'$/;"	kind:variable	line:53
+commands	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/__init__.py	/^from pbr.hooks import commands$/;"	kind:namespace	line:17
+commands	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    from nose import commands$/;"	kind:namespace	line:275
+commands	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^    from testrepository import commands$/;"	kind:namespace	line:162
+commands.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/commands.py	1;"	kind:file	line:1
+commit	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def commit(self, message_content='test commit'):$/;"	kind:member	line:87
+comports	../env/bin/miniterm.py	/^from serial.tools.list_ports import comports$/;"	kind:namespace	line:16
+config_from_ini	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_util.py	/^    def config_from_ini(self, ini):$/;"	kind:member	line:67
+configparser	../.eggs/pbr-4.2.0-py2.7.egg/pbr/sphinxext.py	/^from six.moves import configparser$/;"	kind:namespace	line:18
+configparser	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_util.py	/^from six.moves import configparser$/;"	kind:namespace	line:19
+configparser	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/util.py	/^    import ConfigParser as configparser$/;"	kind:namespace	line:48
+configparser	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/util.py	/^    import configparser$/;"	kind:namespace	line:50
+configparser	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^    import ConfigParser as configparser$/;"	kind:namespace	line:81
+configparser	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^    import configparser$/;"	kind:namespace	line:83
+configuration.py	../brewkit/api/configuration.py	1;"	kind:file	line:1
+construct_bytestring	../brewkit/app/str116.py	/^    def construct_bytestring(self, command, datastring):$/;"	kind:member	line:29
+content	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/base.py	/^from testtools import content$/;"	kind:namespace	line:50
+content	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_commands.py	/^from testtools import content$/;"	kind:namespace	line:41
+contextlib	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/util.py	/^import contextlib$/;"	kind:namespace	line:41
+controllers	../brewkit/api/tests/test_devices.py	/^from .. import controllers$/;"	kind:namespace	line:3
+controllers.py	../brewkit/api/controllers.py	1;"	kind:file	line:1
+core	../.eggs/pbr-4.2.0-py2.7.egg/pbr/core.py	/^from distutils import core$/;"	kind:namespace	line:46
+core.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/core.py	1;"	kind:file	line:1
+ctypes	../env/bin/miniterm.py	/^    import ctypes$/;"	kind:namespace	line:88
+debian_string	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def debian_string(self):$/;"	kind:member	line:239
+decrement	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def decrement(self):$/;"	kind:member	line:247
+defaultdict	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^from collections import defaultdict$/;"	kind:namespace	line:69
+defaults	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    defaults = {$/;"	kind:variable	line:208
+description	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^        description = 'DEPRECATED: Run unit tests using nose'$/;"	kind:variable	line:281
+description	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    description = 'DEPRECATED: Run unit tests using testr'$/;"	kind:variable	line:220
+description	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    description = __doc__$/;"	kind:variable	line:234
+description	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    description = __doc__$/;"	kind:variable	line:253
+description	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^    description = "DEPRECATED: Run unit tests using testr"$/;"	kind:variable	line:55
+description	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^    description = "Run unit tests using testr"$/;"	kind:variable	line:148
+develop	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^from setuptools.command import develop$/;"	kind:namespace	line:34
+devices	../brewkit/api/tests/test_devices.py	/^from .. import devices$/;"	kind:namespace	line:4
+devices.py	../brewkit/api/devices.py	1;"	kind:file	line:1
+dirname	../env/lib/python3.4/distutils/__init__.py	/^dirname = os.path.dirname$/;"	kind:variable	line:9
+dist	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^        from distutils import dist$/;"	kind:namespace	line:251
+dist	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^        from distutils import dist$/;"	kind:namespace	line:399
+dist	../env/lib/python3.4/distutils/__init__.py	/^from distutils import dist, sysconfig$/;"	kind:namespace	line:25
+distutils	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^import distutils.errors$/;"	kind:namespace	line:19
+distutils	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^        import distutils.command.install_scripts$/;"	kind:namespace	line:438
+distutils	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^import distutils.errors$/;"	kind:namespace	line:44
+distutils	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^import distutils.ccompiler$/;"	kind:namespace	line:71
+distutils_path	../env/lib/python3.4/distutils/__init__.py	/^distutils_path = os.path.join(os.path.dirname(opcode.__file__), 'distutils')$/;"	kind:variable	line:11
+du_install	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^from distutils.command import install as du_install$/;"	kind:namespace	line:23
+dump_port_settings	../env/bin/miniterm.py	/^    def dump_port_settings(self):$/;"	kind:member	line:415
+easy_install	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/commands.py	/^from setuptools.command import easy_install$/;"	kind:namespace	line:18
+easy_install	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^from setuptools.command import easy_install$/;"	kind:namespace	line:35
+echo	../env/bin/miniterm.py	/^    def echo(self, text):$/;"	kind:member	line:187
+echo	../env/bin/miniterm.py	/^    def echo(self, text):$/;"	kind:member	line:270
+echo	../env/bin/miniterm.py	/^    echo = rx$/;"	kind:variable	line:226
+echo	../env/bin/miniterm.py	/^    echo = rx$/;"	kind:variable	line:256
+egg_fragment	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    def egg_fragment(match):$/;"	kind:function	line:104
+egg_info	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^from setuptools.command import egg_info$/;"	kind:namespace	line:36
+email	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^import email$/;"	kind:namespace	line:25
+email	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^import email.errors$/;"	kind:namespace	line:26
+email	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^import email$/;"	kind:namespace	line:41
+email	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^import email.errors$/;"	kind:namespace	line:42
+encodings	../env/lib/python3.4/site.py	/^                import encodings$/;"	kind:namespace	line:521
+errno	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^import errno$/;"	kind:namespace	line:21
+errors	../.eggs/pbr-4.2.0-py2.7.egg/pbr/core.py	/^from distutils import errors$/;"	kind:namespace	line:47
+errors	../.eggs/pbr-4.2.0-py2.7.egg/pbr/extra_files.py	/^from distutils import errors$/;"	kind:namespace	line:16
+errors	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^import distutils.errors$/;"	kind:namespace	line:19
+errors	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^import email.errors$/;"	kind:namespace	line:26
+errors	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^import distutils.errors$/;"	kind:namespace	line:44
+errors	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^import email.errors$/;"	kind:namespace	line:42
+errors	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^from distutils import errors$/;"	kind:namespace	line:75
+example	../brewkit/api/example_configuration.py	/^example = {$/;"	kind:variable	line:3
+example	../brewkit/api/tests/test_configuration.py	/^example = json.dumps(example)$/;"	kind:variable	line:7
+example	../brewkit/api/tests/test_configuration.py	/^from ..example_configuration import example$/;"	kind:namespace	line:4
+example_configuration.py	../brewkit/api/example_configuration.py	1;"	kind:file	line:1
+exceptions.py	../brewkit/app/exceptions.py	1;"	kind:file	line:1
+excludes	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^              excludes="fake_package.fake_private_module\\n"$/;"	kind:variable	line:281
+execsitecustomize	../env/lib/python3.4/site.py	/^def execsitecustomize():$/;"	kind:function	line:545
+execusercustomize	../env/lib/python3.4/site.py	/^def execusercustomize():$/;"	kind:function	line:660
+exists	../env/lib/python3.4/site.py	/^        def exists(path):$/;"	kind:function	line:726
+exit_with_usage	../env/bin/python-config	/^def exit_with_usage(code=1):$/;"	kind:function	line:17
+expand_globs	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/files.py	/^    def expand_globs(self):$/;"	kind:member	line:51
+extension	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^from setuptools import extension$/;"	kind:namespace	line:78
+extra.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/extra.py	1;"	kind:file	line:1
+extra_files	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^from pbr import extra_files$/;"	kind:namespace	line:41
+extra_files	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^from pbr import extra_files$/;"	kind:namespace	line:85
+extra_files.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/extra_files.py	1;"	kind:file	line:1
+fcntl	../env/bin/miniterm.py	/^    import fcntl$/;"	kind:namespace	line:138
+files	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/__init__.py	/^from pbr.hooks import files$/;"	kind:namespace	line:18
+files	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_files.py	/^from pbr.hooks import files$/;"	kind:namespace	line:22
+files.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/files.py	1;"	kind:file	line:1
+finalize_options	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^    def finalize_options(self):$/;"	kind:member	line:264
+finalize_options	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    def finalize_options(self):$/;"	kind:member	line:247
+finalize_options	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    def finalize_options(self):$/;"	kind:member	line:266
+finalize_options	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^    def finalize_options(self):$/;"	kind:member	line:154
+finalize_options	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^    def finalize_options(self):$/;"	kind:member	line:86
+finalize_options	../env/lib/python3.4/distutils/__init__.py	/^        def finalize_options (self):$/;"	kind:member	line:38
+find	../env/lib/python3.4/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
+find_config_files	../env/lib/python3.4/distutils/__init__.py	/^def find_config_files(self):$/;"	kind:function	line:53
+find_package	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/files.py	/^from pbr import find_package$/;"	kind:namespace	line:19
+find_package.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/find_package.py	1;"	kind:file	line:1
+find_sources	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    def find_sources(self):$/;"	kind:member	line:530
+fixclasspath	../env/lib/python3.4/site.py	/^def fixclasspath():$/;"	kind:function	line:646
+fixtures	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/base.py	/^import fixtures$/;"	kind:namespace	line:47
+fixtures	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_core.py	/^import fixtures$/;"	kind:namespace	line:45
+fixtures	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_files.py	/^import fixtures$/;"	kind:namespace	line:20
+fixtures	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^import fixtures$/;"	kind:namespace	line:18
+fixtures	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^import fixtures$/;"	kind:namespace	line:51
+fixtures	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^import fixtures$/;"	kind:namespace	line:28
+flake8	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^    import multiprocessing  # flake8: noqa$/;"	kind:namespace	line:59
+flake8	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^import logging  # flake8: noqa$/;"	kind:namespace	line:62
+flush	../env/bin/miniterm.py	/^        def flush(self):$/;"	kind:member	line:96
+fnmatch	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^import fnmatch$/;"	kind:namespace	line:18
+force_global_eggs_after_local_site_packages	../env/lib/python3.4/site.py	/^def force_global_eggs_after_local_site_packages():$/;"	kind:function	line:627
+freeze	../.eggs/pbr-4.2.0-py2.7.egg/pbr/cmd/main.py	/^def freeze(args):$/;"	kind:function	line:70
+from_pip_string	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^from_pip_string = version.SemanticVersion.from_pip_string$/;"	kind:variable	line:24
+from_pip_string	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def from_pip_string(klass, version_string):$/;"	kind:member	line:120
+functools	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/wsgi.py	/^import functools$/;"	kind:namespace	line:18
+generate_authors	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^def generate_authors(git_dir=None, dest_dir='.', option_dict=dict()):$/;"	kind:function	line:289
+generate_autoindex	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^    def generate_autoindex(self, excluded_modules=None):$/;"	kind:member	line:99
+generate_script	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^def generate_script(group, entry_point, header, template):$/;"	kind:function	line:378
+get	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^    def get(self, key, default=None):$/;"	kind:member	line:607
+get	../brewkit/api/devices.py	/^    def get(self):$/;"	kind:member	line:33
+get_boolean_option	../.eggs/pbr-4.2.0-py2.7.egg/pbr/options.py	/^def get_boolean_option(option_dict, option_name, env_name):$/;"	kind:function	line:50
+get_checksum	../brewkit/app/str116.py	/^    def get_checksum(self, data):$/;"	kind:member	line:114
+get_entry_points	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^def get_entry_points(config):$/;"	kind:function	line:562
+get_extension_modules	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^def get_extension_modules(config):$/;"	kind:function	line:509
+get_extra_files	../.eggs/pbr-4.2.0-py2.7.egg/pbr/extra_files.py	/^def get_extra_files():$/;"	kind:function	line:22
+get_git_short_sha	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^def get_git_short_sha(git_dir=None):$/;"	kind:function	line:136
+get_help_text	../env/bin/miniterm.py	/^    def get_help_text(self):$/;"	kind:member	line:713
+get_info	../.eggs/pbr-4.2.0-py2.7.egg/pbr/cmd/main.py	/^def get_info(args):$/;"	kind:function	line:42
+get_is_release	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^def get_is_release(git_dir):$/;"	kind:function	line:125
+get_man_section	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/files.py	/^def get_man_section(section):$/;"	kind:function	line:34
+get_man_sections	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/files.py	/^    def get_man_sections(self):$/;"	kind:member	line:76
+get_manpath	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/files.py	/^def get_manpath():$/;"	kind:function	line:23
+get_name	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/metadata.py	/^    def get_name(self):$/;"	kind:member	line:31
+get_platform	../env/lib/python3.4/site.py	/^    from distutils.util import get_platform$/;"	kind:namespace	line:136
+get_relay	../brewkit/app/str116.py	/^    def get_relay(self, relay_num):$/;"	kind:member	line:72
+get_reqs_from_files	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^def get_reqs_from_files(requirements_files):$/;"	kind:function	line:81
+get_requirements_files	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^def get_requirements_files():$/;"	kind:function	line:54
+get_sha	../.eggs/pbr-4.2.0-py2.7.egg/pbr/cmd/main.py	/^def get_sha(args):$/;"	kind:function	line:36
+get_soabi	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^def get_soabi():$/;"	kind:function	line:922
+get_version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^def get_version(package_name, pre_version=None):$/;"	kind:function	line:799
+getenv	../brewkit/app/omega.py	/^from os import getenv$/;"	kind:namespace	line:7
+getkey	../env/bin/miniterm.py	/^        def getkey(self):$/;"	kind:member	line:119
+getkey	../env/bin/miniterm.py	/^        def getkey(self):$/;"	kind:member	line:158
+getkey	../env/bin/miniterm.py	/^    def getkey(self):$/;"	kind:member	line:57
+getopt	../env/bin/python-config	/^import getopt$/;"	kind:namespace	line:4
+getvar	../env/bin/python-config	/^getvar = sysconfig.get_config_var$/;"	kind:variable	line:31
+git	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^from pbr import git$/;"	kind:namespace	line:55
+git	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^from pbr import git$/;"	kind:namespace	line:42
+git	../.eggs/pbr-4.2.0-py2.7.egg/pbr/pbr_json.py	/^from pbr import git$/;"	kind:namespace	line:19
+git	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^from pbr import git$/;"	kind:namespace	line:61
+git	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^from pbr import git$/;"	kind:namespace	line:30
+git.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	1;"	kind:file	line:1
+glob	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_core.py	/^import glob$/;"	kind:namespace	line:41
+handle_menu_key	../env/bin/miniterm.py	/^    def handle_menu_key(self, c):$/;"	kind:member	line:497
+has_get_option	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^def has_get_option(config, section, option):$/;"	kind:function	line:576
+have_nose	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^def have_nose():$/;"	kind:function	line:298
+have_sphinx	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^def have_sphinx():$/;"	kind:function	line:631
+have_testr	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^def have_testr():$/;"	kind:function	line:270
+have_testr	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^    have_testr = False$/;"	kind:variable	line:166
+have_testr	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^    have_testr = True$/;"	kind:variable	line:163
+hexlify_codec	../env/bin/miniterm.py	/^from serial.tools import hexlify_codec$/;"	kind:namespace	line:17
+hook	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/backwards.py	/^    def hook(self):$/;"	kind:member	line:24
+hook	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/base.py	/^    def hook(self):$/;"	kind:member	line:30
+hook	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/commands.py	/^    def hook(self):$/;"	kind:member	line:40
+hook	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/files.py	/^    def hook(self):$/;"	kind:member	line:86
+hook	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/metadata.py	/^    def hook(self):$/;"	kind:member	line:24
+hooks	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^import pbr.hooks$/;"	kind:namespace	line:86
+imp	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^import imp$/;"	kind:namespace	line:43
+imp	../env/lib/python3.4/distutils/__init__.py	/^import imp$/;"	kind:namespace	line:4
+include	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^        def include(module):$/;"	kind:function	line:109
+increment	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def increment(self, minor=False, major=False):$/;"	kind:member	line:276
+initialize_options	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^    def initialize_options(self):$/;"	kind:member	line:256
+initialize_options	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    def initialize_options(self):$/;"	kind:member	line:244
+initialize_options	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    def initialize_options(self):$/;"	kind:member	line:263
+initialize_options	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^    def initialize_options(self):$/;"	kind:member	line:151
+initialize_options	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^    def initialize_options(self):$/;"	kind:member	line:77
+install	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^from setuptools.command import install$/;"	kind:namespace	line:37
+install	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^import wheel.install$/;"	kind:namespace	line:59
+install_scripts	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^        import distutils.command.install_scripts$/;"	kind:namespace	line:438
+install_scripts	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^from setuptools.command import install_scripts$/;"	kind:namespace	line:38
+install_wrapper_scripts	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    def install_wrapper_scripts(self, dist):$/;"	kind:member	line:417
+integer_types	../.eggs/pbr-4.2.0-py2.7.egg/pbr/core.py	/^    integer_types = (int, long)  # flake8: noqa$/;"	kind:variable	line:61
+integer_types	../.eggs/pbr-4.2.0-py2.7.egg/pbr/core.py	/^    integer_types = (int,)$/;"	kind:variable	line:58
+io	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^import io$/;"	kind:namespace	line:22
+io	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^    import cStringIO as io$/;"	kind:namespace	line:22
+io	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^    import io$/;"	kind:namespace	line:25
+io	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_util.py	/^import io$/;"	kind:namespace	line:15
+is	../env/lib/python3.4/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
+is_running	../brewkit/app/omega.py	/^    def is_running(self):$/;"	kind:member	line:72
+it	../env/lib/python3.4/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
+itertools	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^import itertools$/;"	kind:namespace	line:16
+itertools	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^import itertools$/;"	kind:namespace	line:21
+join	../env/bin/miniterm.py	/^    def join(self, transmit_only=False):$/;"	kind:member	line:387
+joinuser	../env/lib/python3.4/site.py	/^    def joinuser(*args):$/;"	kind:function	line:324
+json	../.eggs/pbr-4.2.0-py2.7.egg/pbr/cmd/main.py	/^import json$/;"	kind:namespace	line:17
+json	../.eggs/pbr-4.2.0-py2.7.egg/pbr/pbr_json.py	/^import json$/;"	kind:namespace	line:17
+json	../brewkit/api/configuration.py	/^import json$/;"	kind:namespace	line:1
+json	../brewkit/api/tests/test_configuration.py	/^import json$/;"	kind:namespace	line:2
+key_description	../env/bin/miniterm.py	/^def key_description(character):$/;"	kind:function	line:31
+load_tests	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/__init__.py	/^def load_tests(loader, standard_tests, pattern):$/;"	kind:function	line:19
+locale	../env/lib/python3.4/site.py	/^        import locale$/;"	kind:namespace	line:532
+locale	../env/lib/python3.4/site.py	/^        import locale, codecs$/;"	kind:namespace	line:515
+log	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^from distutils import log$/;"	kind:namespace	line:17
+log	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^from distutils import log$/;"	kind:namespace	line:20
+log	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^from distutils import log$/;"	kind:namespace	line:24
+log	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^from distutils import log$/;"	kind:namespace	line:74
+log	../brewkit/__init__.py	/^from brewkit.app.log import log$/;"	kind:namespace	line:3
+log	../brewkit/api/configuration.py	/^from ..app.log import log$/;"	kind:namespace	line:5
+log	../brewkit/api/devices.py	/^from ..app.log import log$/;"	kind:namespace	line:3
+log	../brewkit/app/log.py	/^log = logger$/;"	kind:variable	line:10
+log	../brewkit/app/omega.py	/^from .log import log$/;"	kind:namespace	line:14
+log	../brewkit/app/str116.py	/^from .log import log$/;"	kind:namespace	line:5
+log	../brewkit/app/tests/test_str116.py	/^from brewkit.app.log import log$/;"	kind:namespace	line:6
+log.py	../brewkit/app/log.py	1;"	kind:file	line:1
+logfile	../brewkit/app/log.py	/^logfile = 'brewkit.log'$/;"	kind:variable	line:7
+logger	../.eggs/pbr-4.2.0-py2.7.egg/pbr/sphinxext.py	/^logger = logging.getLogger(__name__)$/;"	kind:variable	line:24
+logger	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^logger = logging.getLogger(__name__)$/;"	kind:variable	line:50
+logger	../brewkit/app/log.py	/^from logzero import logger$/;"	kind:namespace	line:4
+logging	../.eggs/pbr-4.2.0-py2.7.egg/pbr/core.py	/^import logging$/;"	kind:namespace	line:48
+logging	../.eggs/pbr-4.2.0-py2.7.egg/pbr/sphinxext.py	/^from sphinx.util import logging$/;"	kind:namespace	line:19
+logging	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^import logging$/;"	kind:namespace	line:45
+logging	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^import logging  # flake8: noqa$/;"	kind:namespace	line:62
+logzero	../brewkit/app/log.py	/^import logzero$/;"	kind:namespace	line:3
+main	../.eggs/pbr-4.2.0-py2.7.egg/pbr/cmd/main.py	/^def main():$/;"	kind:function	line:81
+main	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/cmd.py	/^def main():$/;"	kind:function	line:18
+main	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/wsgi.py	/^def main():$/;"	kind:function	line:28
+main	../env/bin/miniterm.py	/^def main(default_port=None, default_baudrate=9600, default_rts=None, default_dtr=None):$/;"	kind:function	line:757
+main	../env/lib/python3.4/site.py	/^def main():$/;"	kind:function	line:668
+main.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/cmd/main.py	1;"	kind:file	line:1
+make_distribution	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    def make_distribution(self):$/;"	kind:member	line:611
+makepath	../env/lib/python3.4/site.py	/^def makepath(*paths):$/;"	kind:function	line:92
+man_pages	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^    man_pages = ['foo']$/;"	kind:variable	line:225
+manifest_maker	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^from setuptools.command.egg_info import manifest_maker$/;"	kind:namespace	line:76
+matchers	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_hooks.py	/^from testtools import matchers$/;"	kind:namespace	line:43
+matchers	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^from testtools import matchers$/;"	kind:namespace	line:57
+matchers	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^from testtools import matchers$/;"	kind:namespace	line:18
+metadata	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/__init__.py	/^from pbr.hooks import metadata$/;"	kind:namespace	line:19
+metadata.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/metadata.py	1;"	kind:file	line:1
+minimalmodbus	../brewkit/app/omega.py	/^import minimalmodbus$/;"	kind:namespace	line:11
+miniterm.py	../env/bin/miniterm.py	1;"	kind:file	line:1
+mock	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^import mock$/;"	kind:namespace	line:52
+mock	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_pbr_json.py	/^import mock$/;"	kind:namespace	line:13
+module	../env/lib/python3.4/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
+msvcrt	../env/bin/miniterm.py	/^    import msvcrt$/;"	kind:namespace	line:87
+multiprocessing	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^    import multiprocessing  # flake8: noqa$/;"	kind:namespace	line:59
+new_sys_path	../env/bin/activate_this.py	/^new_sys_path = []$/;"	kind:variable	line:29
+noqa	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^            from reno import setup_command  # noqa$/;"	kind:namespace	line:581
+noqa	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^    import multiprocessing  # flake8: noqa$/;"	kind:namespace	line:59
+noqa	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^import logging  # flake8: noqa$/;"	kind:namespace	line:62
+not	../env/lib/python3.4/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
+num_in_hex	../brewkit/app/str116.py	/^    def num_in_hex(self, relay_num):$/;"	kind:member	line:69
+old_build_ext	../env/lib/python3.4/distutils/__init__.py	/^    from distutils.command.build_ext import build_ext as old_build_ext$/;"	kind:namespace	line:36
+old_find_config_files	../env/lib/python3.4/distutils/__init__.py	/^old_find_config_files = dist.Distribution.find_config_files$/;"	kind:variable	line:52
+old_get_config_vars	../env/lib/python3.4/distutils/__init__.py	/^old_get_config_vars = sysconfig.get_config_vars$/;"	kind:variable	line:90
+old_get_python_inc	../env/lib/python3.4/distutils/__init__.py	/^old_get_python_inc = sysconfig.get_python_inc$/;"	kind:variable	line:74
+old_get_python_lib	../env/lib/python3.4/distutils/__init__.py	/^old_get_python_lib = sysconfig.get_python_lib$/;"	kind:variable	line:82
+old_os_path	../env/bin/activate_this.py	/^old_os_path = os.environ.get('PATH', '')$/;"	kind:variable	line:16
+omega.py	../brewkit/app/omega.py	1;"	kind:file	line:1
+onerror	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/util.py	/^    def onerror(func, path, exc_info):$/;"	kind:function	line:71
+opcode	../env/lib/python3.4/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
+open_config	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/util.py	/^def open_config(filename):$/;"	kind:function	line:54
+operator	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^import operator$/;"	kind:namespace	line:22
+opt_flags	../env/bin/python-config	/^opt_flags = [flag for (flag, val) in opts]$/;"	kind:variable	line:33
+options	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^from pbr import options$/;"	kind:namespace	line:56
+options	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^from pbr import options$/;"	kind:namespace	line:30
+options	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/commands.py	/^from pbr import options$/;"	kind:namespace	line:21
+options	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^from pbr import options$/;"	kind:namespace	line:43
+options	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/base.py	/^from pbr import options$/;"	kind:namespace	line:52
+options	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^from pbr import options$/;"	kind:namespace	line:31
+options.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/options.py	1;"	kind:file	line:1
+os	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^import os$/;"	kind:namespace	line:19
+os	../.eggs/pbr-4.2.0-py2.7.egg/pbr/core.py	/^import os$/;"	kind:namespace	line:49
+os	../.eggs/pbr-4.2.0-py2.7.egg/pbr/extra_files.py	/^import os$/;"	kind:namespace	line:17
+os	../.eggs/pbr-4.2.0-py2.7.egg/pbr/find_package.py	/^import os$/;"	kind:namespace	line:16
+os	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^import os$/;"	kind:namespace	line:23
+os	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/commands.py	/^import os$/;"	kind:namespace	line:16
+os	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/files.py	/^import os$/;"	kind:namespace	line:16
+os	../.eggs/pbr-4.2.0-py2.7.egg/pbr/options.py	/^import os$/;"	kind:namespace	line:44
+os	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^import os$/;"	kind:namespace	line:27
+os	../.eggs/pbr-4.2.0-py2.7.egg/pbr/sphinxext.py	/^import os.path$/;"	kind:namespace	line:16
+os	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^import os$/;"	kind:namespace	line:46
+os	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/__init__.py	/^import os$/;"	kind:namespace	line:14
+os	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/base.py	/^import os$/;"	kind:namespace	line:42
+os	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_core.py	/^import os$/;"	kind:namespace	line:42
+os	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_files.py	/^import os$/;"	kind:namespace	line:18
+os	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_hooks.py	/^import os$/;"	kind:namespace	line:41
+os	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^import os.path$/;"	kind:namespace	line:14
+os	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^import os$/;"	kind:namespace	line:44
+os	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^import os$/;"	kind:namespace	line:19
+os	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_wsgi.py	/^import os$/;"	kind:namespace	line:15
+os	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/util.py	/^import os$/;"	kind:namespace	line:42
+os	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^import os$/;"	kind:namespace	line:64
+os	../brewkit/app/log.py	/^import os$/;"	kind:namespace	line:1
+os	../env/bin/activate_this.py	/^import os$/;"	kind:namespace	line:14
+os	../env/bin/miniterm.py	/^import os$/;"	kind:namespace	line:11
+os	../env/lib/python3.4/distutils/__init__.py	/^import os$/;"	kind:namespace	line:1
+os	../env/lib/python3.4/site.py	/^import os$/;"	kind:namespace	line:67
+override_get_script_args	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^def override_get_script_args($/;"	kind:function	line:404
+packaging	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/backwards.py	/^from pbr import packaging$/;"	kind:namespace	line:17
+packaging	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/commands.py	/^from pbr import packaging$/;"	kind:namespace	line:22
+packaging	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/metadata.py	/^from pbr import packaging$/;"	kind:namespace	line:17
+packaging	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^from pbr import packaging$/;"	kind:namespace	line:62
+packaging	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^from pbr import packaging$/;"	kind:namespace	line:32
+packaging	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^            from pbr import packaging$/;"	kind:namespace	line:422
+packaging	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^            from pbr import packaging$/;"	kind:namespace	line:448
+packaging.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	1;"	kind:file	line:1
+parse_dependency_links	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^def parse_dependency_links(requirements_files=None):$/;"	kind:function	line:168
+parse_requirements	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^def parse_requirements(requirements_files=None, strip_markers=False):$/;"	kind:function	line:99
+path	../.eggs/pbr-4.2.0-py2.7.egg/pbr/sphinxext.py	/^import os.path$/;"	kind:namespace	line:16
+path	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^import os.path$/;"	kind:namespace	line:14
+pbr	../.eggs/pbr-4.2.0-py2.7.egg/pbr/cmd/main.py	/^import pbr.version$/;"	kind:namespace	line:22
+pbr	../.eggs/pbr-4.2.0-py2.7.egg/pbr/core.py	/^def pbr(dist, attr, value):$/;"	kind:function	line:64
+pbr	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^import pbr.pbr_json$/;"	kind:namespace	line:44
+pbr	../.eggs/pbr-4.2.0-py2.7.egg/pbr/sphinxext.py	/^import pbr.version$/;"	kind:namespace	line:21
+pbr	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/__init__.py	/^import pbr.version$/;"	kind:namespace	line:1
+pbr	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/setup.py	/^    pbr=True,$/;"	kind:variable	line:20
+pbr	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^import pbr.hooks$/;"	kind:namespace	line:86
+pbr	../setup.py	/^    pbr = True$/;"	kind:variable	line:5
+pbr_json	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^import pbr.pbr_json$/;"	kind:namespace	line:44
+pbr_json	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_pbr_json.py	/^from pbr import pbr_json$/;"	kind:namespace	line:15
+pbr_json.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/pbr_json.py	1;"	kind:file	line:1
+pkg_resources	../.eggs/pbr-4.2.0-py2.7.egg/pbr/cmd/main.py	/^import pkg_resources$/;"	kind:namespace	line:20
+pkg_resources	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^import pkg_resources$/;"	kind:namespace	line:28
+pkg_resources	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^import pkg_resources$/;"	kind:namespace	line:32
+pkg_resources	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^import pkg_resources$/;"	kind:namespace	line:53
+pkg_resources	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^import pkg_resources$/;"	kind:namespace	line:72
+pkg_resources	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^        import pkg_resources$/;"	kind:namespace	line:439
+populate	../brewkit/api/configuration.py	/^    def populate(self, datastring):$/;"	kind:member	line:21
+populate_controllers	../brewkit/api/configuration.py	/^    def populate_controllers(self, controller_data):$/;"	kind:member	line:27
+populate_devices	../brewkit/api/configuration.py	/^    def populate_devices(self, devices):$/;"	kind:member	line:40
+prev_sys_path	../env/bin/activate_this.py	/^prev_sys_path = list(sys.path)$/;"	kind:variable	line:23
+print_function	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_files.py	/^from __future__ import print_function$/;"	kind:namespace	line:16
+print_function	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^from __future__ import print_function$/;"	kind:namespace	line:17
+print_function	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/cmd.py	/^from __future__ import print_function$/;"	kind:namespace	line:15
+print_function	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/wsgi.py	/^from __future__ import print_function$/;"	kind:namespace	line:15
+pv	../brewkit/app/omega.py	/^    def pv(self):$/;"	kind:member	line:45
+pydoc	../env/lib/python3.4/site.py	/^        import pydoc$/;"	kind:namespace	line:504
+python-config	../env/bin/python-config	1;"	kind:file	line:1
+pyver	../env/bin/python-config	/^pyver = sysconfig.get_config_var('VERSION')$/;"	kind:variable	line:30
+raw_input	../env/bin/miniterm.py	/^    raw_input = input   # in python3 it's "raw"$/;"	kind:variable	line:27
+re	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^import re$/;"	kind:namespace	line:24
+re	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^import re$/;"	kind:namespace	line:28
+re	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^import re$/;"	kind:namespace	line:45
+re	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_wsgi.py	/^import re$/;"	kind:namespace	line:16
+re	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^import re$/;"	kind:namespace	line:65
+reader	../env/bin/miniterm.py	/^    def reader(self):$/;"	kind:member	line:440
+real_distutils	../env/lib/python3.4/distutils/__init__.py	/^    real_distutils = imp.load_module("_virtualenv_distutils", None, distutils_path, ('', '', imp.PKG_DIRECTORY))$/;"	kind:variable	line:17
+register_custom_compilers	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^def register_custom_compilers(config):$/;"	kind:function	line:475
+relay	../brewkit/app/str116.py	/^    def relay(self, relay_num, state=None):$/;"	kind:member	line:23
+release_string	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def release_string(self):$/;"	kind:member	line:345
+release_string	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def release_string(self):$/;"	kind:member	line:452
+removeduppaths	../env/lib/python3.4/site.py	/^def removeduppaths():$/;"	kind:function	line:113
+resolve_name	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^def resolve_name(name):$/;"	kind:function	line:164
+rmtree	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/util.py	/^def rmtree(path):$/;"	kind:function	line:65
+rpm_string	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def rpm_string(self):$/;"	kind:member	line:352
+run	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^    def run(self):$/;"	kind:member	line:185
+run	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/base.py	/^    def run(self):$/;"	kind:member	line:26
+run	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^        def run(self):$/;"	kind:member	line:283
+run	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    def run(self):$/;"	kind:member	line:196
+run	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    def run(self):$/;"	kind:member	line:211
+run	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    def run(self):$/;"	kind:member	line:222
+run	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    def run(self):$/;"	kind:member	line:239
+run	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    def run(self):$/;"	kind:member	line:258
+run	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    def run(self):$/;"	kind:member	line:437
+run	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    def run(self):$/;"	kind:member	line:606
+run	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^    def run(self):$/;"	kind:member	line:101
+run	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^    def run(self):$/;"	kind:member	line:157
+run	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/_setup_hooks.py	/^    def run(self):$/;"	kind:member	line:55
+run	../brewkit/app/omega.py	/^    def run(self):$/;"	kind:member	line:82
+run_pbr	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/base.py	/^    def run_pbr(self, *args, **kwargs):$/;"	kind:member	line:131
+run_setup	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/base.py	/^    def run_setup(self, *args, **kwargs):$/;"	kind:member	line:134
+rx	../env/bin/miniterm.py	/^    def rx(self, text):$/;"	kind:member	line:179
+rx	../env/bin/miniterm.py	/^    def rx(self, text):$/;"	kind:member	line:202
+rx	../env/bin/miniterm.py	/^    def rx(self, text):$/;"	kind:member	line:223
+rx	../env/bin/miniterm.py	/^    def rx(self, text):$/;"	kind:member	line:244
+rx	../env/bin/miniterm.py	/^    def rx(self, text):$/;"	kind:member	line:267
+rx	../env/bin/miniterm.py	/^    def rx(self, text):$/;"	kind:member	line:277
+save	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/base.py	/^    def save(self):$/;"	kind:member	line:33
+save	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/commands.py	/^    def save(self):$/;"	kind:member	line:33
+save	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/files.py	/^    def save(self):$/;"	kind:member	line:47
+scenarios	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^    scenarios = [$/;"	kind:variable	line:190
+scenarios	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^    scenarios = [$/;"	kind:variable	line:242
+scenarios	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^    scenarios = list(all_projects())$/;"	kind:variable	line:57
+scenarios	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    scenarios = [$/;"	kind:variable	line:268
+scenarios	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    scenarios = [$/;"	kind:variable	line:582
+scenarios	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    scenarios = [$/;"	kind:variable	line:643
+scenarios	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    scenarios = scenarios + testscenarios.multiply_scenarios($/;"	kind:variable	line:596
+scenarios	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    scenarios = scenarios + testscenarios.multiply_scenarios([$/;"	kind:variable	line:590
+scenarios	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^    scenarios = [$/;"	kind:variable	line:135
+scenarios	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^    scenarios = [$/;"	kind:variable	line:276
+scenarios	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^    scenarios = [$/;"	kind:variable	line:38
+scenarios	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_util.py	/^    scenarios = [$/;"	kind:variable	line:28
+sdist	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^from setuptools.command import sdist$/;"	kind:namespace	line:39
+section	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/backwards.py	/^    section = 'backwards_compat'$/;"	kind:variable	line:22
+section	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/base.py	/^    section = None$/;"	kind:variable	line:19
+section	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/commands.py	/^    section = 'global'$/;"	kind:variable	line:27
+section	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/files.py	/^    section = 'files'$/;"	kind:variable	line:40
+section	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/metadata.py	/^    section = 'metadata'$/;"	kind:variable	line:22
+semantic_version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def semantic_version(self):$/;"	kind:member	line:459
+serial	../brewkit/app/omega.py	/^import serial$/;"	kind:namespace	line:12
+serial	../brewkit/app/str116.py	/^import serial$/;"	kind:namespace	line:1
+serial	../brewkit/app/tests/test_str116.py	/^import serial$/;"	kind:namespace	line:2
+serial	../env/bin/miniterm.py	/^import serial$/;"	kind:namespace	line:15
+set	../brewkit/api/devices.py	/^    def set(self, state):$/;"	kind:member	line:28
+set	../env/lib/python3.4/site.py	/^    from sets import Set as set$/;"	kind:namespace	line:75
+setBEGINLIBPATH	../env/lib/python3.4/site.py	/^def setBEGINLIBPATH():$/;"	kind:function	line:362
+setUp	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/base.py	/^    def setUp(self):$/;"	kind:member	line:180
+setUp	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/base.py	/^    def setUp(self):$/;"	kind:member	line:64
+setUp	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/base.py	/^    def setUp(self):$/;"	kind:member	line:72
+setUp	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_core.py	/^    def setUp(self):$/;"	kind:member	line:131
+setUp	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_files.py	/^    def setUp(self):$/;"	kind:member	line:28
+setUp	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_hooks.py	/^    def setUp(self):$/;"	kind:member	line:50
+setUp	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^    def setUp(self):$/;"	kind:member	line:59
+setUp	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def setUp(self):$/;"	kind:member	line:109
+setUp	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def setUp(self):$/;"	kind:member	line:273
+setUp	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def setUp(self):$/;"	kind:member	line:345
+setUp	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def setUp(self):$/;"	kind:member	line:365
+setUp	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def setUp(self):$/;"	kind:member	line:453
+setUp	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def setUp(self):$/;"	kind:member	line:621
+setUp	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def setUp(self):$/;"	kind:member	line:648
+setUp	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def setUp(self):$/;"	kind:member	line:81
+setUp	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^    def setUp(self):$/;"	kind:member	line:140
+setUp	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^    def setUp(self):$/;"	kind:member	line:230
+setUp	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^    def setUp(self):$/;"	kind:member	line:378
+setUp	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^    def setUp(self):$/;"	kind:member	line:73
+setUp	../brewkit/api/tests/test_configuration.py	/^    def setUp(self):$/;"	kind:member	line:11
+setUp	../brewkit/app/tests/test_omega.py	/^    def setUp(self):$/;"	kind:member	line:7
+setUp	../brewkit/app/tests/test_str116.py	/^    def setUp(self):$/;"	kind:member	line:10
+set_extra_files	../.eggs/pbr-4.2.0-py2.7.egg/pbr/extra_files.py	/^def set_extra_files(extra_files):$/;"	kind:function	line:27
+set_relay	../brewkit/app/str116.py	/^    def set_relay(self, relay_num, state):$/;"	kind:member	line:84
+set_rx_encoding	../env/bin/miniterm.py	/^    def set_rx_encoding(self, encoding, errors='replace'):$/;"	kind:member	line:405
+set_tx_encoding	../env/bin/miniterm.py	/^    def set_tx_encoding(self, encoding, errors='replace'):$/;"	kind:member	line:410
+setcopyright	../env/lib/python3.4/site.py	/^def setcopyright():$/;"	kind:function	line:472
+setencoding	../env/lib/python3.4/site.py	/^def setencoding():$/;"	kind:function	line:525
+sethelper	../env/lib/python3.4/site.py	/^def sethelper():$/;"	kind:function	line:507
+setquit	../env/lib/python3.4/site.py	/^def setquit():$/;"	kind:function	line:379
+setup	../.eggs/pbr-4.2.0-py2.7.egg/pbr/sphinxext.py	/^def setup(app):$/;"	kind:function	line:94
+setup	../env/bin/miniterm.py	/^        def setup(self):$/;"	kind:member	line:151
+setup	../env/bin/miniterm.py	/^    def setup(self):$/;"	kind:member	line:51
+setup.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/setup.py	1;"	kind:file	line:1
+setup.py	../setup.py	1;"	kind:file	line:1
+setup_cfg_to_setup_kwargs	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^def setup_cfg_to_setup_kwargs(config, script_args=()):$/;"	kind:function	line:290
+setup_command	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^    from sphinx import setup_command$/;"	kind:namespace	line:42
+setup_command	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^            from reno import setup_command  # noqa$/;"	kind:namespace	line:581
+setup_hook	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/__init__.py	/^def setup_hook(config):$/;"	kind:function	line:22
+setup_requires	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/setup.py	/^    setup_requires=['pbr'],$/;"	kind:variable	line:19
+setup_requires	../setup.py	/^    setup_requires = ['pbr'],$/;"	kind:variable	line:4
+setuptools	../.eggs/pbr-4.2.0-py2.7.egg/pbr/find_package.py	/^import setuptools$/;"	kind:namespace	line:18
+setuptools	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^import setuptools$/;"	kind:namespace	line:33
+setuptools	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/setup.py	/^import setuptools$/;"	kind:namespace	line:16
+setuptools	../setup.py	/^import setuptools$/;"	kind:namespace	line:1
+shlex	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^import shlex$/;"	kind:namespace	line:15
+shutil	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/base.py	/^import shutil$/;"	kind:namespace	line:43
+shutil	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/util.py	/^import shutil$/;"	kind:namespace	line:43
+site	../env/bin/activate_this.py	/^import site$/;"	kind:namespace	line:24
+site.py	../env/lib/python3.4/site.py	1;"	kind:file	line:1
+site_packages	../env/bin/activate_this.py	/^    site_packages = os.path.join(base, 'Lib', 'site-packages')$/;"	kind:variable	line:20
+site_packages	../env/bin/activate_this.py	/^    site_packages = os.path.join(base, 'lib', 'python%s' % sys.version[:3], 'site-packages')$/;"	kind:variable	line:22
+sitecustomize	../env/lib/python3.4/site.py	/^        import sitecustomize$/;"	kind:namespace	line:548
+six	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^import six$/;"	kind:namespace	line:54
+six	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_util.py	/^import six$/;"	kind:namespace	line:18
+sleep	../brewkit/app/tests/test_str116.py	/^from time import sleep$/;"	kind:namespace	line:3
+smart_find_packages	../.eggs/pbr-4.2.0-py2.7.egg/pbr/find_package.py	/^def smart_find_packages(package_list):$/;"	kind:function	line:21
+so	../env/lib/python3.4/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
+sphinx	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^    import sphinx$/;"	kind:namespace	line:28
+sphinx	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^        import sphinx.application$/;"	kind:namespace	line:237
+sphinx	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^        import sphinx.application$/;"	kind:namespace	line:385
+sphinx_initialized	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^    sphinx_initialized = False$/;"	kind:variable	line:84
+sphinxext.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/sphinxext.py	1;"	kind:file	line:1
+split_csv	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^def split_csv(value):$/;"	kind:function	line:592
+split_multiline	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^def split_multiline(value):$/;"	kind:function	line:583
+st_dist	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^from setuptools import dist as st_dist$/;"	kind:namespace	line:77
+start	../env/bin/miniterm.py	/^    def start(self):$/;"	kind:member	line:373
+stat	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/util.py	/^import stat$/;"	kind:namespace	line:44
+stdlib	../env/lib/python3.4/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
+stop	../brewkit/app/omega.py	/^    def stop(self):$/;"	kind:member	line:93
+stop	../env/bin/miniterm.py	/^    def stop(self):$/;"	kind:member	line:383
+str116.py	../brewkit/app/str116.py	1;"	kind:file	line:1
+string_type	../.eggs/pbr-4.2.0-py2.7.egg/pbr/core.py	/^    string_type = basestring  # flake8: noqa$/;"	kind:variable	line:60
+string_type	../.eggs/pbr-4.2.0-py2.7.egg/pbr/core.py	/^    string_type = str$/;"	kind:variable	line:57
+sub_commands	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    sub_commands = [('build_reno', checking_reno)] + sdist.sdist.sub_commands$/;"	kind:variable	line:604
+subprocess	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^import subprocess$/;"	kind:namespace	line:25
+subprocess	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/base.py	/^import subprocess$/;"	kind:namespace	line:44
+subprocess	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_wsgi.py	/^import subprocess$/;"	kind:namespace	line:17
+suspend_port	../env/bin/miniterm.py	/^    def suspend_port(self):$/;"	kind:member	line:682
+sv	../brewkit/app/omega.py	/^    def sv(self, temp=None):$/;"	kind:member	line:55
+sys	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^import sys$/;"	kind:namespace	line:20
+sys	../.eggs/pbr-4.2.0-py2.7.egg/pbr/cmd/main.py	/^import sys$/;"	kind:namespace	line:18
+sys	../.eggs/pbr-4.2.0-py2.7.egg/pbr/core.py	/^import sys$/;"	kind:namespace	line:50
+sys	../.eggs/pbr-4.2.0-py2.7.egg/pbr/hooks/files.py	/^import sys$/;"	kind:namespace	line:17
+sys	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^import sys$/;"	kind:namespace	line:29
+sys	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^import sys$/;"	kind:namespace	line:47
+sys	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/base.py	/^import sys$/;"	kind:namespace	line:45
+sys	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^import sys$/;"	kind:namespace	line:16
+sys	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^import sys$/;"	kind:namespace	line:46
+sys	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_util.py	/^import sys$/;"	kind:namespace	line:20
+sys	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_wsgi.py	/^import sys$/;"	kind:namespace	line:18
+sys	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/wsgi.py	/^import sys$/;"	kind:namespace	line:19
+sys	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/util.py	/^import sys$/;"	kind:namespace	line:45
+sys	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^import sys$/;"	kind:namespace	line:66
+sys	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^import sys$/;"	kind:namespace	line:23
+sys	../env/bin/activate_this.py	/^import sys$/;"	kind:namespace	line:13
+sys	../env/bin/miniterm.py	/^import sys$/;"	kind:namespace	line:12
+sys	../env/bin/python-config	/^import sys$/;"	kind:namespace	line:3
+sys	../env/lib/python3.4/distutils/__init__.py	/^import sys$/;"	kind:namespace	line:2
+sys	../env/lib/python3.4/site.py	/^import sys$/;"	kind:namespace	line:66
+sysconfig	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^import sysconfig$/;"	kind:namespace	line:47
+sysconfig	../env/bin/python-config	/^import sysconfig$/;"	kind:namespace	line:5
+sysconfig	../env/lib/python3.4/distutils/__init__.py	/^from distutils import dist, sysconfig$/;"	kind:namespace	line:25
+sysconfig_get_config_vars	../env/lib/python3.4/distutils/__init__.py	/^def sysconfig_get_config_vars(*args):$/;"	kind:function	line:91
+sysconfig_get_python_inc	../env/lib/python3.4/distutils/__init__.py	/^def sysconfig_get_python_inc(plat_specific=0, prefix=None):$/;"	kind:function	line:75
+sysconfig_get_python_lib	../env/lib/python3.4/distutils/__init__.py	/^def sysconfig_get_python_lib(plat_specific=0, standard_lib=0, prefix=None):$/;"	kind:function	line:83
+tag	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def tag(self, version):$/;"	kind:member	line:97
+tarfile	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_core.py	/^import tarfile$/;"	kind:namespace	line:43
+tearDown	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def tearDown(self):$/;"	kind:member	line:851
+tempfile	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^import tempfile$/;"	kind:namespace	line:48
+termios	../env/bin/miniterm.py	/^    import termios$/;"	kind:namespace	line:137
+testGitIsInstalled	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def testGitIsInstalled(self):$/;"	kind:member	line:478
+testGitIsNotInstalled	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def testGitIsNotInstalled(self):$/;"	kind:member	line:484
+test_alpha_default_version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_alpha_default_version(self):$/;"	kind:member	line:216
+test_alpha_dev_version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_alpha_dev_version(self):$/;"	kind:member	line:180
+test_alpha_major_zero_version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_alpha_major_zero_version(self):$/;"	kind:member	line:207
+test_alpha_version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_alpha_version(self):$/;"	kind:member	line:189
+test_alpha_zero_version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_alpha_zero_version(self):$/;"	kind:member	line:198
+test_authors	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_authors(self):$/;"	kind:member	line:278
+test_authors	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_authors(self):$/;"	kind:member	line:350
+test_authors	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_authors(self):$/;"	kind:member	line:456
+test_auto_package	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_files.py	/^    def test_auto_package(self):$/;"	kind:member	line:60
+test_beta_dev_version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_beta_dev_version(self):$/;"	kind:member	line:225
+test_beta_version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_beta_version(self):$/;"	kind:member	line:234
+test_build_doc	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^    def test_build_doc(self):$/;"	kind:member	line:292
+test_builders_config	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^    def test_builders_config(self):$/;"	kind:member	line:312
+test_capitalized_headers	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_capitalized_headers(self):$/;"	kind:member	line:667
+test_capitalized_headers_partial	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_capitalized_headers_partial(self):$/;"	kind:member	line:674
+test_changelog	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_changelog(self):$/;"	kind:member	line:285
+test_changelog	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_changelog(self):$/;"	kind:member	line:356
+test_changelog	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_changelog(self):$/;"	kind:member	line:462
+test_changelog_handles_astrisk	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_changelog_handles_astrisk(self):$/;"	kind:member	line:292
+test_changelog_handles_backticks	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_changelog_handles_backticks(self):$/;"	kind:member	line:308
+test_changelog_handles_dead_links_in_commit	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_changelog_handles_dead_links_in_commit(self):$/;"	kind:member	line:299
+test_cmd_builder_override	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^    def test_cmd_builder_override(self):$/;"	kind:member	line:340
+test_cmd_builder_override_multiple_builders	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^    def test_cmd_builder_override_multiple_builders(self):$/;"	kind:member	line:360
+test_command	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/_setup_hooks.py	/^class test_command(build_py.build_py):$/;"	kind:class	line:52
+test_commands.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_commands.py	1;"	kind:file	line:1
+test_configuration.py	../brewkit/api/tests/test_configuration.py	1;"	kind:file	line:1
+test_connection	../brewkit/app/omega.py	/^    def test_connection(port, address):$/;"	kind:member	line:32
+test_console_script_develop	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_core.py	/^    def test_console_script_develop(self):$/;"	kind:member	line:113
+test_console_script_install	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_core.py	/^    def test_console_script_install(self):$/;"	kind:member	line:99
+test_construct_bytestring	../brewkit/app/tests/test_str116.py	/^    def test_construct_bytestring(self):$/;"	kind:member	line:52
+test_content	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_pbr_json.py	/^    def test_content(self, mock_get_is, mock_get_git, mock_run):$/;"	kind:member	line:23
+test_core.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_core.py	1;"	kind:file	line:1
+test_custom_build_py_command	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_commands.py	/^    def test_custom_build_py_command(self):$/;"	kind:member	line:47
+test_custom_commands_known	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_hooks.py	/^    def test_custom_commands_known(self):$/;"	kind:member	line:69
+test_custom_deb_version_py_command	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_commands.py	/^    def test_custom_deb_version_py_command(self):$/;"	kind:member	line:60
+test_custom_rpm_version_py_command	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_commands.py	/^    def test_custom_rpm_version_py_command(self):$/;"	kind:member	line:68
+test_data_directory_has_wsgi_scripts	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_data_directory_has_wsgi_scripts(self):$/;"	kind:member	line:383
+test_data_files_globbing	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_files.py	/^    def test_data_files_globbing(self):$/;"	kind:member	line:69
+test_decrement_nonrelease	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_decrement_nonrelease(self):$/;"	kind:member	line:243
+test_decrement_nonrelease_zero	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_decrement_nonrelease_zero(self):$/;"	kind:member	line:249
+test_decrement_release	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_decrement_release(self):$/;"	kind:member	line:256
+test_default_api_build_dir	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^    def test_default_api_build_dir(self):$/;"	kind:member	line:414
+test_default_requirements	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_default_requirements(self):$/;"	kind:member	line:497
+test_dev_no_git_version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_dev_no_git_version(self):$/;"	kind:member	line:162
+test_dev_version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_dev_version(self):$/;"	kind:member	line:153
+test_dev_zero_version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_dev_zero_version(self):$/;"	kind:member	line:171
+test_devices.py	../brewkit/api/tests/test_devices.py	1;"	kind:file	line:1
+test_different_api_build_dir	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^    def test_different_api_build_dir(self):$/;"	kind:member	line:430
+test_email_parsing_errors_are_handled	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_email_parsing_errors_are_handled(self):$/;"	kind:member	line:654
+test_empty_requirements	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_empty_requirements(self):$/;"	kind:member	line:493
+test_extras_parsing	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_util.py	/^    def test_extras_parsing(self):$/;"	kind:member	line:79
+test_files.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_files.py	1;"	kind:file	line:1
+test_final_version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_final_version(self):$/;"	kind:member	line:138
+test_freeze_command	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_commands.py	/^    def test_freeze_command(self):$/;"	kind:member	line:76
+test_from_pip_string_legacy_alpha	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_from_pip_string_legacy_alpha(self):$/;"	kind:member	line:65
+test_from_pip_string_legacy_no_0_prerelease	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_from_pip_string_legacy_no_0_prerelease(self):$/;"	kind:member	line:113
+test_from_pip_string_legacy_no_0_prerelease_2	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_from_pip_string_legacy_no_0_prerelease_2(self):$/;"	kind:member	line:119
+test_from_pip_string_legacy_non_440_beta	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_from_pip_string_legacy_non_440_beta(self):$/;"	kind:member	line:125
+test_from_pip_string_legacy_nonzero_lead_in	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_from_pip_string_legacy_nonzero_lead_in(self):$/;"	kind:member	line:100
+test_from_pip_string_legacy_postN	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_from_pip_string_legacy_postN(self):$/;"	kind:member	line:71
+test_from_pip_string_legacy_short_nonzero_lead_in	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_from_pip_string_legacy_short_nonzero_lead_in(self):$/;"	kind:member	line:107
+test_from_pip_string_non_digit_start	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_from_pip_string_non_digit_start(self):$/;"	kind:member	line:134
+test_from_pip_string_pure_git_hash	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_from_pip_string_pure_git_hash(self):$/;"	kind:member	line:131
+test_from_pip_string_v_version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_from_pip_string_v_version(self):$/;"	kind:member	line:87
+test_generate_authors	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^    def test_generate_authors(self):$/;"	kind:member	line:181
+test_generate_script	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_generate_script(self):$/;"	kind:member	line:411
+test_generate_script_validates_expectations	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_generate_script_validates_expectations(self):$/;"	kind:member	line:430
+test_generates_c_extensions	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_generates_c_extensions(self):$/;"	kind:member	line:395
+test_get_and_set_relay_state	../brewkit/app/tests/test_str116.py	/^    def test_get_and_set_relay_state(self):$/;"	kind:member	line:26
+test_get_kwargs_corner_cases	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_get_kwargs_corner_cases(self):$/;"	kind:member	line:767
+test_global_setup_hooks	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_hooks.py	/^    def test_global_setup_hooks(self):$/;"	kind:member	line:58
+test_hook_1	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/_setup_hooks.py	/^def test_hook_1(config):$/;"	kind:function	line:44
+test_hook_2	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/_setup_hooks.py	/^def test_hook_2(config):$/;"	kind:function	line:48
+test_hooks.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_hooks.py	1;"	kind:file	line:1
+test_implicit_auto_package	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_files.py	/^    def test_implicit_auto_package(self):$/;"	kind:member	line:52
+test_increment_nonrelease	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_increment_nonrelease(self):$/;"	kind:member	line:263
+test_increment_release	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_increment_release(self):$/;"	kind:member	line:276
+test_index_present	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_index_present(self):$/;"	kind:member	line:531
+test_install_glob	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_install_glob(self):$/;"	kind:member	line:333
+test_install_no_ChangeLog	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_install_no_ChangeLog(self):$/;"	kind:member	line:468
+test_install_without_pbr	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^    def test_install_without_pbr(self):$/;"	kind:member	line:138
+test_install_writes_changelog	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_install_writes_changelog(self):$/;"	kind:member	line:325
+test_integration	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^    def test_integration(self):$/;"	kind:member	line:71
+test_integration.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	1;"	kind:file	line:1
+test_invalid_hardware	../brewkit/app/tests/test_omega.py	/^    def test_invalid_hardware(self):$/;"	kind:member	line:37
+test_invalid_hardware	../brewkit/app/tests/test_str116.py	/^    def test_invalid_hardware(self):$/;"	kind:member	line:22
+test_invalid_marker_raises_error	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_util.py	/^    def test_invalid_marker_raises_error(self):$/;"	kind:member	line:89
+test_invalid_tag_ignored	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_invalid_tag_ignored(self):$/;"	kind:member	line:791
+test_is_running	../brewkit/app/tests/test_omega.py	/^    def test_is_running(self):$/;"	kind:member	line:26
+test_lts_venv_default_versions	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^    def test_lts_venv_default_versions(self):$/;"	kind:member	line:258
+test_manifest_exclude_honoured	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_manifest_exclude_honoured(self):$/;"	kind:member	line:315
+test_nested_requirements	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_nested_requirements(self):$/;"	kind:member	line:541
+test_non_canonical_tagged_version_bump	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_non_canonical_tagged_version_bump(self):$/;"	kind:member	line:687
+test_omega.py	../brewkit/app/tests/test_omega.py	1;"	kind:file	line:1
+test_ordering	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_ordering(self):$/;"	kind:member	line:29
+test_override_with_env	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_override_with_env(self):$/;"	kind:member	line:511
+test_override_with_env_multiple_files	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_override_with_env_multiple_files(self):$/;"	kind:member	line:521
+test_packaging	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^from pbr.tests import test_packaging$/;"	kind:namespace	line:23
+test_packaging.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	1;"	kind:file	line:1
+test_parse_dependency_normal	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_parse_dependency_normal(self):$/;"	kind:member	line:626
+test_parse_dependency_with_git_egg_url	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_parse_dependency_with_git_egg_url(self):$/;"	kind:member	line:633
+test_parse_requirements	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_parse_requirements(self):$/;"	kind:member	line:606
+test_parsing_short_forms	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_parsing_short_forms(self):$/;"	kind:member	line:147
+test_pbr_json.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_pbr_json.py	1;"	kind:file	line:1
+test_pip_versions	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^    def test_pip_versions(self):$/;"	kind:member	line:202
+test_populate_controllers	../brewkit/api/tests/test_configuration.py	/^    def test_populate_controllers(self):$/;"	kind:member	line:15
+test_post_hook	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/_setup_hooks.py	/^def test_post_hook(cmdobj):$/;"	kind:function	line:64
+test_pre_hook	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/_setup_hooks.py	/^def test_pre_hook(cmdobj):$/;"	kind:function	line:60
+test_preversion_too_low_semver_headers	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_preversion_too_low_semver_headers(self):$/;"	kind:member	line:755
+test_preversion_too_low_simple	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_preversion_too_low_simple(self):$/;"	kind:member	line:743
+test_pv	../brewkit/app/tests/test_omega.py	/^    def test_pv(self):$/;"	kind:member	line:12
+test_python_version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_python_version(self, mock_warn):$/;"	kind:member	line:553
+test_python_version_multiple_options	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_python_version_multiple_options(self, mock_warn):$/;"	kind:member	line:562
+test_rc_dev_version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_rc_dev_version(self):$/;"	kind:member	line:287
+test_rc_version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_rc_version(self):$/;"	kind:member	line:296
+test_relay	../brewkit/api/tests/test_devices.py	/^    def test_relay(self):$/;"	kind:member	line:20
+test_relay_not_found	../brewkit/app/tests/test_str116.py	/^    def test_relay_not_found(self):$/;"	kind:member	line:48
+test_repeated_switches	../brewkit/app/tests/test_str116.py	/^    def test_repeated_switches(self):$/;"	kind:member	line:39
+test_requirement_parsing	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_requirement_parsing(self):$/;"	kind:member	line:858
+test_sdist_extra_files	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_core.py	/^    def test_sdist_extra_files(self):$/;"	kind:member	line:83
+test_sdist_git_extra_files	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_core.py	/^    def test_sdist_git_extra_files(self):$/;"	kind:member	line:144
+test_serial	../brewkit/app/tests/test_str116.py	/^    def test_serial(self):$/;"	kind:member	line:18
+test_setup.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	1;"	kind:file	line:1
+test_setup_py_build_sphinx	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_core.py	/^    def test_setup_py_build_sphinx(self):$/;"	kind:member	line:79
+test_setup_py_keywords	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_core.py	/^    def test_setup_py_keywords(self):$/;"	kind:member	line:68
+test_skip	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^    def test_skip(self):$/;"	kind:member	line:90
+test_skip_write_git_changelog	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_skip_write_git_changelog(self):$/;"	kind:member	line:843
+test_str116.py	../brewkit/app/tests/test_str116.py	1;"	kind:file	line:1
+test_sv	../brewkit/app/tests/test_omega.py	/^    def test_sv(self):$/;"	kind:member	line:16
+test_tagged_version_has_tag_version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_tagged_version_has_tag_version(self):$/;"	kind:member	line:681
+test_test_connection	../brewkit/app/tests/test_omega.py	/^    def test_test_connection(self):$/;"	kind:member	line:34
+test_thermostat	../brewkit/api/tests/test_devices.py	/^    def test_thermostat(self):$/;"	kind:member	line:8
+test_to_dev	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^    def test_to_dev(self):$/;"	kind:member	line:305
+test_to_json	../brewkit/api/tests/test_configuration.py	/^    def test_to_json(self):$/;"	kind:member	line:27
+test_type	../brewkit/app/tests/test_str116.py	/^    def test_type(self):$/;"	kind:member	line:15
+test_untagged_pre_release_has_pre_dev_version_postversion	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_untagged_pre_release_has_pre_dev_version_postversion(self):$/;"	kind:member	line:701
+test_untagged_version_after_pre_has_dev_version_preversion	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_untagged_version_after_pre_has_dev_version_preversion(self):$/;"	kind:member	line:729
+test_untagged_version_after_rc_has_dev_version_preversion	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_untagged_version_after_rc_has_dev_version_preversion(self):$/;"	kind:member	line:736
+test_untagged_version_has_dev_version_postversion	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_untagged_version_has_dev_version_postversion(self):$/;"	kind:member	line:694
+test_untagged_version_has_dev_version_preversion	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_untagged_version_has_dev_version_preversion(self):$/;"	kind:member	line:722
+test_untagged_version_major_bump	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_untagged_version_major_bump(self):$/;"	kind:member	line:715
+test_untagged_version_minor_bump	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_untagged_version_minor_bump(self):$/;"	kind:member	line:708
+test_util.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_util.py	1;"	kind:file	line:1
+test_valid_tag_honoured	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def test_valid_tag_honoured(self):$/;"	kind:member	line:834
+test_version.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	1;"	kind:file	line:1
+test_with_argument	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_wsgi.py	/^    def test_with_argument(self):$/;"	kind:member	line:156
+test_write_git_changelog	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_setup.py	/^    def test_write_git_changelog(self):$/;"	kind:member	line:150
+test_wrong_type_of_data	../brewkit/api/tests/test_configuration.py	/^    def test_wrong_type_of_data(self):$/;"	kind:member	line:23
+test_wsgi.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_wsgi.py	1;"	kind:file	line:1
+test_wsgi_script_install	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_wsgi.py	/^    def test_wsgi_script_install(self):$/;"	kind:member	line:47
+test_wsgi_script_run	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_wsgi.py	/^    def test_wsgi_script_run(self):$/;"	kind:member	line:57
+testr_command	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^from pbr import testr_command$/;"	kind:namespace	line:45
+testr_command.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	1;"	kind:file	line:1
+testresources	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/base.py	/^import testresources$/;"	kind:namespace	line:48
+testscenarios	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/__init__.py	/^import testscenarios$/;"	kind:namespace	line:16
+testscenarios	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^import testscenarios$/;"	kind:namespace	line:55
+testtools	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/base.py	/^import testtools$/;"	kind:namespace	line:49
+testtools	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^import testtools$/;"	kind:namespace	line:19
+testtools	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^import testtools$/;"	kind:namespace	line:56
+textwrap	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_integration.py	/^import textwrap$/;"	kind:namespace	line:20
+textwrap	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^import textwrap$/;"	kind:namespace	line:49
+textwrap	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_util.py	/^import textwrap$/;"	kind:namespace	line:16
+textwrap	../env/lib/python3.4/site.py	/^        import textwrap$/;"	kind:namespace	line:753
+the	../env/lib/python3.4/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
+threading	../env/bin/miniterm.py	/^import threading$/;"	kind:namespace	line:13
+time	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^import time$/;"	kind:namespace	line:26
+time	../brewkit/app/str116.py	/^import time$/;"	kind:namespace	line:2
+to	../env/lib/python3.4/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
+to_dev	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def to_dev(self, dev_count):$/;"	kind:member	line:362
+to_json	../brewkit/api/configuration.py	/^    def to_json(self):$/;"	kind:member	line:45
+traceback	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	/^import traceback$/;"	kind:namespace	line:67
+tx	../env/bin/miniterm.py	/^    def tx(self, text):$/;"	kind:member	line:183
+tx	../env/bin/miniterm.py	/^    def tx(self, text):$/;"	kind:member	line:195
+tx	../env/bin/miniterm.py	/^    def tx(self, text):$/;"	kind:member	line:205
+tx	../env/bin/miniterm.py	/^    def tx(self, text):$/;"	kind:member	line:282
+uncommit	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    def uncommit(self):$/;"	kind:member	line:94
+unichr	../env/bin/miniterm.py	/^    unichr = chr$/;"	kind:variable	line:28
+unicode_literals	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^from __future__ import unicode_literals$/;"	kind:namespace	line:17
+unicode_literals	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^from __future__ import unicode_literals$/;"	kind:namespace	line:21
+unittest	../brewkit/api/tests/test_configuration.py	/^import unittest$/;"	kind:namespace	line:1
+unittest	../brewkit/api/tests/test_devices.py	/^import unittest$/;"	kind:namespace	line:1
+unittest	../brewkit/app/tests/test_omega.py	/^import unittest$/;"	kind:namespace	line:1
+unittest	../brewkit/app/tests/test_str116.py	/^import unittest$/;"	kind:namespace	line:1
+update_transformations	../env/bin/miniterm.py	/^    def update_transformations(self):$/;"	kind:member	line:398
+upload_file	../env/bin/miniterm.py	/^    def upload_file(self):$/;"	kind:member	line:581
+urlopen	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_wsgi.py	/^    from urllib.request import urlopen$/;"	kind:namespace	line:24
+urlopen	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_wsgi.py	/^    from urllib2 import urlopen$/;"	kind:namespace	line:21
+use	../env/lib/python3.4/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
+user_options	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    user_options = []$/;"	kind:variable	line:236
+user_options	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^    user_options = []$/;"	kind:variable	line:255
+user_options	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^    user_options = [$/;"	kind:variable	line:57
+user_options	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^    user_options = []$/;"	kind:variable	line:149
+usercustomize	../env/lib/python3.4/site.py	/^        import usercustomize$/;"	kind:namespace	line:663
+util	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^        from pbr import util$/;"	kind:namespace	line:265
+util	../.eggs/pbr-4.2.0-py2.7.egg/pbr/core.py	/^from pbr import util$/;"	kind:namespace	line:53
+util	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_hooks.py	/^from pbr.tests import util$/;"	kind:namespace	line:46
+util	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_util.py	/^from pbr import util$/;"	kind:namespace	line:23
+util.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/util.py	1;"	kind:file	line:1
+util.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/util.py	1;"	kind:file	line:1
+utils	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^            from docutils import utils$/;"	kind:namespace	line:171
+valid_opts	../env/bin/python-config	/^valid_opts = ['prefix', 'exec-prefix', 'includes', 'libs', 'cflags',$/;"	kind:variable	line:7
+version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/builddoc.py	/^from pbr import version$/;"	kind:namespace	line:57
+version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/cmd/main.py	/^import pbr.version$/;"	kind:namespace	line:22
+version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^from pbr import version$/;"	kind:namespace	line:31
+version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^from pbr import version$/;"	kind:namespace	line:46
+version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/sphinxext.py	/^import pbr.version$/;"	kind:namespace	line:21
+version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_version.py	/^from pbr import version$/;"	kind:namespace	line:21
+version	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/__init__.py	/^import pbr.version$/;"	kind:namespace	line:1
+version.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	1;"	kind:file	line:1
+version_string	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def version_string(self):$/;"	kind:member	line:465
+version_string_with_vcs	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    version_string_with_vcs = release_string$/;"	kind:variable	line:471
+version_tuple	../.eggs/pbr-4.2.0-py2.7.egg/pbr/version.py	/^    def version_tuple(self):$/;"	kind:member	line:371
+versioned_scenarios	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^    versioned_scenarios = [$/;"	kind:variable	line:577
+virtual_addsitepackages	../env/lib/python3.4/site.py	/^def virtual_addsitepackages(known_paths):$/;"	kind:function	line:642
+virtual_install_main_packages	../env/lib/python3.4/site.py	/^def virtual_install_main_packages():$/;"	kind:function	line:552
+virtualenv	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^import virtualenv$/;"	kind:namespace	line:58
+virtualenv	../env/lib/python3.4/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
+warnings	../.eggs/pbr-4.2.0-py2.7.egg/pbr/core.py	/^import warnings$/;"	kind:namespace	line:51
+warnings	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^import warnings$/;"	kind:namespace	line:30
+warnings	../.eggs/pbr-4.2.0-py2.7.egg/pbr/testr_command.py	/^import warnings$/;"	kind:namespace	line:48
+warnings	../brewkit/app/omega.py	/^import warnings$/;"	kind:namespace	line:8
+warnings	../env/lib/python3.4/distutils/__init__.py	/^import warnings $/;"	kind:namespace	line:3
+we	../env/lib/python3.4/distutils/__init__.py	/^import opcode # opcode is not a virtualenv module, so we can use it to find the stdlib$/;"	kind:namespace	line:5
+wheel	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/test_packaging.py	/^import wheel.install$/;"	kind:namespace	line:59
+write	../brewkit/app/str116.py	/^    def write(self, data):$/;"	kind:member	line:96
+write	../env/bin/miniterm.py	/^        def write(self, s):$/;"	kind:member	line:99
+write	../env/bin/miniterm.py	/^    def write(self, text):$/;"	kind:member	line:66
+write_bytes	../env/bin/miniterm.py	/^    def write_bytes(self, byte_string):$/;"	kind:member	line:61
+write_git_changelog	../.eggs/pbr-4.2.0-py2.7.egg/pbr/git.py	/^def write_git_changelog(git_dir=None, dest_dir=os.path.curdir,$/;"	kind:function	line:258
+write_pbr_json	../.eggs/pbr-4.2.0-py2.7.egg/pbr/packaging.py	/^write_pbr_json = pbr.pbr_json.write_pbr_json$/;"	kind:variable	line:846
+write_pbr_json	../.eggs/pbr-4.2.0-py2.7.egg/pbr/pbr_json.py	/^def write_pbr_json(cmd, basename, filename):$/;"	kind:function	line:22
+writer	../env/bin/miniterm.py	/^    def writer(self):$/;"	kind:member	line:459
+wsgi.py	../.eggs/pbr-4.2.0-py2.7.egg/pbr/tests/testpackage/pbr_testpackage/wsgi.py	1;"	kind:file	line:1

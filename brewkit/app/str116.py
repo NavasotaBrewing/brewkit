@@ -91,7 +91,7 @@ class STR116(object):
 
         self.write(bytestring)
         if self.get_relay(relay_num) == state:
-            log.info('Setting relay %s to %s: success' % (relay_num, state))
+            log.debug('Setting relay %s to %s: success' % (relay_num, state))
 
     def write(self, data):
         # Write data to board and return a response if there is one
@@ -105,7 +105,7 @@ class STR116(object):
                     data = self.device.read(size)
                     return binascii.hexlify(data)
                 else:
-                    log.info('no data returned')
+                    log.debug('no data returned')
             else:
                 log.error('device not open')
         except IOError as e:
