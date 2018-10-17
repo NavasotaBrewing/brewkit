@@ -1,52 +1,47 @@
 import json
 
-from ..app.str116 import STR116
-from ..app.omega import Omega
+from .controllers import STR116, Omega
 from ..app.log import log
 
-class Configuration():
-    def __init__(self, datastring):
-        """
-        Takes in a datastring in json format
-        """
-        if not type(datastring) is str:
-            raise ValueError(
-                'Datastring must be a str, %s given' % (str(type(datastring)))
-            )
+def update(config):
+    config = json.loads(config)
+    log.info('starting config')
+    log.info(config)
+    for device_type, devices in config['devices'].items():
+        for device in devices:
+            if device_type == 'thermostat':
+                # Find Controller
+                con = Omega('/dev/ttyAMA0', int(device['controller_address']))
+                # Get SV and PV
+                device['sv'] = con.sv()
+                device['pv'] = con.pv()
+                # Get State
+                device['state'] = int(con.is_running())
+            else:
+                # Find controller
+                con = STR116('/dev/ttyAMA0', int(device['controller_address']))
+                # Get state
+                device['state'] = con.relay(int(device['address']))
+    log.info('ending config')
+    log.info(config)
+    return config
 
-        # Don't modify
-        self.original = datastring
-        self.populate(datastring)
-
-    def populate(self, datastring):
-        data = json.loads(datastring)
-
-        self.populate_controllers(data['controllers'])
-        self.populate_devices(data['devices'])
-
-    def populate_controllers(self, controller_data):
-        self.controllers = []
-        for controller_type, controllers in controller_data.items():
-                for controller in controllers:
-                    if controller_type == 'STR116':
-                            new_controller = STR116(controller['port'], controller['address'])
-                            new_controller.name = controller['name']
-                            self.controllers.append(new_controller)
-                    if controller_type == 'OmegaCN7500':
-                        new_controller = Omega(controller['port'], controller['address'])
-                        new_controller.name = controller['name']
-                        self.controllers.append(new_controller)
-
-    def populate_devices(self, devices):
-        for device_type, device_list in devices.items():
-            for device in device_list:
-                log.info(device)
-
-    def to_json(self):
-        # Returns configuration as a json string
-        return json.dumps(self.original)
-
-    def __str__(self):
-        # Alias for to_json()
-        return self.to_json()
-
+def enact(config):
+    config = json.loads(config)
+    for device_type, devices in config['devices'].items():
+        for device in devices:
+            if device_type == 'thermostat':
+                # Find Controller
+                con = Omega('/dev/ttyAMA0', device['controller_address'])
+                # Set SV
+                con.sv(device['sv'])
+                # Set State
+                if device['state']:
+                    con.run()
+                else:
+                    con.stop()
+            else:
+                # Find controller
+                con = STR116('/dev/ttyAMA0', device['controller_address'])
+                # Set state
+                con.relay(device['address'], device['state'])

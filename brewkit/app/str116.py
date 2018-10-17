@@ -67,7 +67,7 @@ class STR116(object):
         return bytestring
 
     def num_in_hex(self, relay_num):
-        return str(hex(relay_num).replace('0x', '').zfill(2))
+        return str(hex(int(relay_num)).replace('0x', '').zfill(2))
 
     def get_relay(self, relay_num):
         # Convert to hex
@@ -83,7 +83,7 @@ class STR116(object):
 
     def set_relay(self, relay_num, state):
 
-        relay_num_hex = str(hex(relay_num).replace('0x', '').zfill(2))
+        relay_num_hex = str(hex(int(relay_num)).replace('0x', '').zfill(2))
 
 
         datastring = relay_num_hex + '01' + str(state).zfill(2)

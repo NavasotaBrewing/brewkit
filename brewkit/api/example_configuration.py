@@ -30,7 +30,7 @@ example = {
                 'address': '4',
                 'state': 0,
                 'proc_desc': 'A regular valve. Open or closed.',
-                'controller_address': 0,
+                'controller_address': 2,
                 'type': 'onOff',
                 'name': 'HLT Valve',
                 'states': {
@@ -42,7 +42,7 @@ example = {
                 'address': '56',
                 'state': 0,
                 'proc_desc': 'A regular valve. Open or closed.',
-                'controller_address': 0,
+                'controller_address': 2,
                 'type': 'onOff',
                 'name': 'Another On/Off Valve',
                 'states': {
@@ -56,7 +56,7 @@ example = {
                 'address': 1,
                 'state': 1,
                 'proc_desc': 'A pump. On or off.',
-                'controller_address': 0,
+                'controller_address': 2,
                 'type': 'pump',
                 'name': 'RIMS Pump',
                 'states': {
@@ -68,7 +68,7 @@ example = {
                 'address': '8',
                 'state': 0,
                 'proc_desc': 'A pump. On or off.',
-                'controller_address': 0,
+                'controller_address': 2,
                 'type': 'pump',
                 'name': 'One More Pump',
                 'states': {
@@ -82,7 +82,7 @@ example = {
                 'address': '4',
                 'state': 0,
                 'proc_desc': 'A divert valve. Select a location',
-                'controller_address': 0,
+                'controller_address': 2,
                 'type': 'divert',
                 'name': 'Some Divert',
                 'states': {
@@ -99,18 +99,8 @@ example = {
                 'controller_address': 1,
                 'type': 'thermostat',
                 'name': 'RIMS Thermostat',
-                'states': {
-                    '0': 'Off',
-                    '1': 'On'
-                }
-            },
-            {
-                'address': '9',
-                'state': 1,
-                'proc_desc': 'A thermostat. Set a temperature, or 0 to turn it off',
-                'controller_address': 0,
-                'type': 'thermostat',
-                'name': 'Another Thermostat',
+                'pv': 51.3,
+                'sv': 173,
                 'states': {
                     '0': 'Off',
                     '1': 'On'
@@ -122,7 +112,7 @@ example = {
                 'address': 2,
                 'state': 0,
                 'proc_desc': 'A variable stepper valve. Enter a decimal between 0 and 1.',
-                'controller_address': 0,
+                'controller_address': 2,
                 'type': 'variable',
                 'name': 'Propane Valve',
                 'states': {

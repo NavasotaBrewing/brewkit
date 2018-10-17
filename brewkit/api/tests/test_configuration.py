@@ -1,30 +1,45 @@
 import unittest
 import json
 
-from ..example_configuration import example
-from ..configuration import Configuration
-
-example = json.dumps(example)
+from ..controllers import STR116
+from ..configuration import enact, update
 
 
 class TestConfiguration(unittest.TestCase):
+
     def setUp(self):
-        self.example = example
-        self.con = Configuration(self.example)
+        self.stripped_config = json.dumps({
+            "controllers": {
+                "STR116": [
+                    {"name": "Main STR116", "port": "/dev/ttyAMA0",
+                        "address": 2, "type": "STR116"}
+                ]
+            },
+            "devices": {
+                "onOff": [
+                    {
+                        "states": {"1": "Open", "0": "Closed"},
+                        "controller_address": 2,
+                        "type": "onOff",
+                        "name": "HLT Valve",
+                        "address": "4",
+                        "state": 0,
+                        "proc_desc": "A regular valve. Open or closed."
+                    },
+                ]
+            }
+        })
+        self.board = STR116('/dev/ttyAMA0', 2)
 
-    def test_populate_controllers(self):
-        con = Configuration(example)
-        assert len(con.controllers) > 1
+    def test_enact(self):
+        self.board.relay(4, 1)
+        assert self.board.relay(4)
 
-    # def test_populate_devices(self):
-    #     con = Configuration(example)
-    #     assert len(con.devices) > 2
+        enact(self.stripped_config)
 
-    def test_wrong_type_of_data(self):
-        with self.assertRaises(ValueError):
-            Configuration({'with': 'a', 'dict': 'not', 'a': 'str'})
+        assert not self.board.relay(4)
 
-    def test_to_json(self):
-        # Assert that is loads properly
-        assert self.con.original == example
-        assert json.loads(self.con.to_json()) == example
+    def test_update(self):
+        self.board.relay(4, 0)
+        new_config = update(self.stripped_config)
+        assert new_config != self.stripped_config
