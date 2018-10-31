@@ -4,8 +4,11 @@ from .controllers import STR116, Omega
 from ..app.log import log
 
 def update(config):
+    """
+    Supply a config and this will update the "state" fields with actual values of hardware
+    """
     config = json.loads(config)
-    log.info('starting config')
+    log.info('starting update')
     log.info(config)
     for device_type, devices in config['devices'].items():
         for device in devices:
@@ -22,7 +25,7 @@ def update(config):
                 con = STR116('/dev/ttyAMA0', int(device['controller_address']))
                 # Get state
                 device['state'] = con.relay(int(device['address']))
-    log.info('ending config')
+    log.info('ending update')
     log.info(config)
     return config
 
