@@ -6,10 +6,6 @@ from brewkit.api.configuration import enact, update
 app = Flask(__name__)
 socketio = SocketIO(app)
 
-@app.route('/')
-def index():
-    return 'hey there'
-
 @socketio.on('update')
 def handle_update(json):
     print(str(json))
