@@ -7,15 +7,14 @@ app = Flask(__name__)
 socketio = SocketIO(app)
 
 @socketio.on('update')
-def handle_update(json):
-    print(str(json))
-    socketio.emit('new_config', update(str(json)))
+def handle_update(config):
+    socketio.emit('new_config', update(str(config)))
 
 @socketio.on('enact')
-def handle_enact(json):
-    data = str(json).replace('\'', '"')
-    enact(data)
-    handle_update()
+def handle_enact(config):
+    config = str(config).replace('\'', '"')
+    enact(config)
+    handle_update(config)
 
 if __name__ == '__main__':
     app.debug = True

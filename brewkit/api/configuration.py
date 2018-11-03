@@ -9,7 +9,6 @@ def update(config):
     """
     config = json.loads(config)
     log.info('starting update')
-    log.info(config)
     for device_type, devices in config['devices'].items():
         for device in devices:
             if device_type == 'thermostat':
@@ -26,7 +25,6 @@ def update(config):
                 # Get state
                 device['state'] = con.relay(int(device['address']))
     log.info('ending update')
-    log.info(config)
     return config
 
 def enact(config):
