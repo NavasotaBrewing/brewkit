@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <title>Configure</title>
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+
+  <!-- JS -->
+  <script src="%% url_for('static', filename='js/libs/material.min.js') %%"></script>
+  <script src="%% url_for('static', filename='js/libs/vue.js') %%"></script>
+  <script src="%% url_for('static', filename='js/libs/cookie.js') %%"></script>
+  <script src="%% url_for('static', filename='js/libs/socket.io.min.js') %%"></script>
+  <script src="%% url_for('static', filename='js/socket.js') %%"></script>
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-indigo.min.css" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="%% url_for('static', filename='css/styles.css') %%">
+
+</head>
+
+<body>
+  <div id="configure">
+    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+      <!-- Header -->
+      <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">Configure</span>
+        </div>
+      </header>
+      <!-- Drawer -->
+      <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+          <a class="mdl-navigation__link" href="/dashboard">
+            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Dashboard</a>
+          <a class="mdl-navigation__link" href="/configure">
+            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">build</i>Configure</a>
+          <a class="mdl-navigation__link" href="/procedures">
+            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">sort</i>Procedures</a>
+        </nav>
+      </div>
+
+      <!-- Main Content -->
+      <main class="mdl-layout__content mdl-color--grey-100">
+        <div class="mdl-grid">
+          <!-- Create Configuration Area -->
+          <div id="createConfigurationArea" class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone mdl-cell--12-col-tablet">
+            <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col">
+              <h4>Select a configuration</h4>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <select v-model="configurationSelect" class="mdl-textfield__input" id="selectConfiguration" name="selectConfiguration">
+                  <option value="create">Create a new one</option>
+                  <option v-for="config in configurations" :value="config.name">{{ config.name }}</option>
+                </select>
+                <label class="mdl-textfield__label" for="selectConfiguration">Configuration</label>
+              </div>
+              <br>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input v-model="configuration.name" :disabled="configurationSelect != 'create'" class="mdl-textfield__input"
+                  type="text" id="newConfigurationName ">
+                <label class="mdl-textfield__label" for="newConfigurationName">New Configuration Name</label>
+              </div>
+              <button @click="saveConfiguration" class="mdl-button small-button mdl-js-button mdl-button--colored mdl-js-ripple-effect">
+                Save
+              </button>
+            </div>
+          </div>
+          <!-- Slack Area -->
+          <div id="slackCard" class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--6-col mdl-cell--12-col-phone mdl-cell--12-col-tablet">
+            <!-- Slack Section -->
+            <h4>Configure Slack</h4>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input v-model="configuration.slackWebhook" class="mdl-textfield__input" type="text" id="slack_webhook">
+              <label class="mdl-textfield__label" for="slack_webhook">Slack Webhook</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input v-model="configuration.slackChannel" class="mdl-textfield__input" type="text" id="slackChannel">
+              <label class="mdl-textfield__label" for="slackChannel">Slack Channel</label>
+            </div>
+            <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--right" for="slackChannel">
+              <i>This is for display purposes only</i>
+            </div>
+            <br>
+            <button @click="testSlack" class="mdl-button small-button mdl-js-button mdl-button--colored mdl-js-ripple-effect">
+              <i class="material-icons">
+                send
+              </i>
+              Test
+            </button>
+          </div>
+
+          <!-- Controller Area -->
+          <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col">
+            <section id="configureControllers">
+              <h3>Controllers</h3>
+              <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--5-col mdl-cell--12-col-phone mdl-cell--12-col-tablet">
+                  <!-- Add Controller Card -->
+                  <div id="addControllerCard" class="colored-card--green full-width mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-card--expand">
+                      <h2 class="mdl-card__title-text">Add a Controller</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <select v-model="newController.type" class="mdl-textfield__input" id="newControllerType" name="newControllerType">
+                          <option value="STR116">STR116</option>
+                          <option value="STR008">STR008</option>
+                          <option value="OmegaCN7500">Omega CN7500</option>
+                        </select>
+                        <label class="mdl-textfield__label" for="newControllerType">Type</label>
+                      </div>
+                      <br>
+                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input v-model="newController.address" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?"
+                          id="newControllerAddress">
+                        <label class="mdl-textfield__label" for="newControllerAddress">Controller Address</label>
+                        <span class="mdl-textfield__error">Needs to be a number</span>
+                      </div>
+                      <br>
+                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input v-model="newController.name" class="mdl-textfield__input" type="text" id="newControllerName">
+                        <label class="mdl-textfield__label" for="newControllerName">Controller Name</label>
+                      </div>
+                      <br>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                      <a @click="addController" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        Add
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="mdl-cell mdl-cell--7-col mdl-cell--12-col-phone mdl-cell--12-col-tablet">
+                  <div id="displayControllerCard" class="colored-card--green full-width mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-card--expand">
+                      <h2 class="mdl-card__title-text">Controllers</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                      <!-- Only for tablet and desktop -->
+                      <table class="mdl-data-table mdl-cell--hide-phone full-width mdl-js-data-table mdl-shadow--2dp">
+                        <thead>
+                          <tr>
+                            <th class="mdl-data-table__cell--non-numeric">Controller Name</th>
+                            <th class="mdl-data-table__cell--non-numeric">Type</th>
+                            <th>Address</th>
+                            <!-- Delete button -->
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="controller in allControllers">
+                            <!-- Name -->
+                            <td class="mdl-data-table__cell--non-numeric">{{ controller.name }}</td>
+                            <!-- Type -->
+                            <td class="mdl-data-table__cell--non-numeric">{{ controller.type }}</td>
+                            <!-- Address -->
+                            <td>{{ controller.address }}</td>
+                            <td>
+                              <i @click="removeController(controller)" class="material-icons close-button">close</i>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <h5 v-show="!allControllers">No controllers yet</h5>
+                      <!-- Only for phone -->
+                      <ul class="mdl-list mdl-cell--hide-desktop mdl-cell--hide-tablet">
+                        <li class="mdl-list__item">
+                          <span class="mdl-list__item-primary-content">
+                            STR116 Relay Board
+                          </span>
+                        </li>
+                        <li class="mdl-list__item">
+                          <span class="mdl-list__item-primary-content">
+                            Boil Omega
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <!-- Devices Area -->
+          <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col">
+            <section id="configureDevices">
+              <h3>Devices</h3>
+              <div class="mdl-grid">
+                <!-- Left Column (form) -->
+                <div class="mdl-cell mdl-cell--5-col mdl-cell--12-col-phone mdl-cell--12-col-tablet">
+                  <!-- Add Device Card -->
+                  <div id="addDeviceCard" class="colored-card--green full-width mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-card--expand">
+                      <h2 class="mdl-card__title-text">Add a Device</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                      <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                        <!-- Tabs -->
+                        <div class="mdl-tabs__tab-bar">
+                          <a href="#valve-panel" class="mdl-tabs__tab is-active">Valve</a>
+                          <a href="#divert-panel" class="mdl-tabs__tab">Divert</a>
+                          <a href="#variable-panel" class="mdl-tabs__tab">Variable</a>
+                        </div>
+                        <div class="mdl-tabs__tab-bar">
+                          <a href="#pump-panel" class="mdl-tabs__tab">Pump</a>
+                          <a href="#thermostat-panel" class="mdl-tabs__tab">Thermostat</a>
+                        </div>
+                        <!-- Valve Tab -->
+                        <div class="mdl-tabs__panel is-active" id="valve-panel">
+                          <br>
+                          <!-- Controller Number input -->
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <select v-model="newOnOff.controller_address" class="mdl-textfield__input" id="newValveController"
+                              name="newValveController">
+                              <option v-for="controller in allControllers" :value="controller.address">{{
+                                controller.name }}</option>
+                            </select>
+                            <label class="mdl-textfield__label" for="newValveController">Controller</label>
+                          </div>
+                          <!-- Relay Number input -->
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input v-model="newOnOff.address" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?"
+                              id="newValveAddress">
+                            <label class="mdl-textfield__label" for="newValveAddress">Relay Address</label>
+                            <span class="mdl-textfield__error">Needs to be a number</span>
+                          </div>
+                          <!-- Valve Name Input -->
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input v-model="newOnOff.name" class="mdl-textfield__input" type="text" id="newValveName">
+                            <label class="mdl-textfield__label" for="newValveName">Valve Name</label>
+                          </div>
+                          <a @click="addDevice('onOff')" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            Add
+                          </a>
+                        </div>
+                        <!-- Divert Panel -->
+                        <div class="mdl-tabs__panel" id="divert-panel">
+                          <br>
+                          <!-- Controller Number input -->
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <select v-model="newDivert.controller_address" class="mdl-textfield__input" id="newValveController"
+                              name="newValveController">
+                              <option v-for="controller in allControllers" :value="controller.address">{{
+                                controller.name }}</option>
+                            </select>
+                            <label class="mdl-textfield__label" for="newValveController">Controller</label>
+                          </div>
+                          <!-- Relay Number input -->
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input v-model="newDivert.address" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?"
+                              id="newValveAddress">
+                            <label class="mdl-textfield__label" for="newValveAddress">Relay Address</label>
+                            <span class="mdl-textfield__error">Needs to be a number</span>
+                          </div>
+                          <!-- Valve Name Input -->
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input v-model="newDivert.name" class="mdl-textfield__input" type="text" id="newValveName">
+                            <label class="mdl-textfield__label" for="newValveName">Valve Name</label>
+                          </div>
+                          <div class="mdl-grid">
+                            <div class="mdl-cell mdl-cell--5-col mdl-cell--12-col-phone mdl-cell--12-col-tablet">
+                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input v-model="newDivert.locations[0]" class="mdl-textfield__input" type="text" id="divertLocation1">
+                                <label class="mdl-textfield__label" for="divertLocation1">Location 1</label>
+                              </div>
+                            </div>
+                            <div class="mdl-cell mdl-cell--1-col mdl-cell--middle mdl-cell--12-col-phone mdl-cell--12-col-tablet">
+                              <strong>
+                                or
+                              </strong>
+                            </div>
+                            <div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone mdl-cell--12-col-tablet">
+                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input v-model="newDivert.locations[1]" class="mdl-textfield__input" type="text" id="divertLocation2">
+                                <label class="mdl-textfield__label" for="divertLocation2">Location 2</label>
+                              </div>
+                            </div>
+                          </div>
+                          <a @click="addDevice('divert')" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            Add
+                          </a>
+                        </div>
+                        <!-- Variable Tab -->
+                        <div class="mdl-tabs__panel" id="variable-panel">
+                          <br>
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <select v-model="newVariable.controller_address" class="mdl-textfield__input" id="newVariableController"
+                              name="newVariableController">
+                              <option v-for="controller in allControllers" :value="controller.address">{{
+                                controller.name }}</option>
+                            </select>
+                            <label class="mdl-textfield__label" for="newVariableController">Controller</label>
+                          </div>
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input v-model="newVariable.address" class="mdl-textfield__input" pattern="-?[0-9]*(\.[0-9]+)?"
+                              type="text" id="newVariableAddress">
+                            <label class="mdl-textfield__label" for="newVariableAddress">Relay Address</label>
+                            <span class="mdl-textfield__error">Needs to be a number</span>
+                          </div>
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input v-model="newVariable.name" class="mdl-textfield__input" type="text" id="newVariableName">
+                            <label class="mdl-textfield__label" for="newVariableName">Variable Valve Name</label>
+                          </div>
+                          <a @click="addDevice('variable')" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            Add
+                          </a>
+                        </div>
+                        <!-- Pump Tab -->
+                        <div class="mdl-tabs__panel" id="pump-panel">
+                          <br>
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <select v-model="newPump.controller_address" class="mdl-textfield__input" id="newPumpController"
+                              name="newPumpController">
+                              <option v-for="controller in allControllers" :value="controller.address">{{
+                                controller.name }}</option>
+                            </select>
+                            <label class="mdl-textfield__label" for="newPumpController">Controller</label>
+                          </div>
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input v-model="newPump.address" class="mdl-textfield__input" pattern="-?[0-9]*(\.[0-9]+)?"
+                              type="text" id="newPumpAddress">
+                            <label class="mdl-textfield__label" for="newPumpAddress">Relay Address</label>
+                            <span class="mdl-textfield__error">Needs to be a number</span>
+                          </div>
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input v-model="newPump.name" class="mdl-textfield__input" type="text" id="newPumpName">
+                            <label class="mdl-textfield__label" for="newPumpName">Pump Name</label>
+                          </div>
+                          <a @click="addDevice('pump')" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            Add
+                          </a>
+                        </div>
+                        <!-- Thermostat Tab -->
+                        <div class="mdl-tabs__panel" id="thermostat-panel">
+                          <br>
+                          <!-- Controller Select -->
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <select v-model="newThermo.controller_address" class="mdl-textfield__input" id="newThermoController"
+                              name="newThermoController">
+                              <option v-for="controller in allControllers" :value="controller.address">{{
+                                controller.name }}</option>
+                            </select>
+                            <label class="mdl-textfield__label" for="newThermoController">Controller</label>
+                          </div>
+                          <!-- Address Text Field -->
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input v-model="newThermo.address" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?"
+                              id="newThermoAddress">
+                            <label class="mdl-textfield__label" for="newThermoAddress">Address</label>
+                            <span class="mdl-textfield__error">Needs to be a number</span>
+                          </div>
+                          <!-- Name Text Field -->
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input v-model="newThermo.name" class="mdl-textfield__input" type="text" id="newThermoName">
+                            <label class="mdl-textfield__label" for="newThermoName">Thermostat Name</label>
+                          </div>
+                          <a @click="addDevice('thermostat')" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            Add
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Right Column (table) -->
+                <div class="mdl-cell mdl-cell--7-col mdl-cell--12-col-phone mdl-cell--12-col-tablet">
+                  <div id="displayDeviceCard" class="colored-card--green full-width mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-card--expand">
+                      <h2 class="mdl-card__title-text">Devices</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                      <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                        <!-- Display Tabs -->
+                        <div class="mdl-tabs__tab-bar">
+                          <a href="#onOff-display-panel" class="mdl-tabs__tab is-active">Valves</a>
+                          <a href="#divert-display-panel" class="mdl-tabs__tab">Diverts</a>
+                          <a href="#variable-display-panel" class="mdl-tabs__tab">Variables</a>
+                        </div>
+                        <div class="mdl-tabs__tab-bar">
+                          <a href="#pump-display-panel" class="mdl-tabs__tab">Pumps</a>
+                          <a href="#thermostat-display-panel" class="mdl-tabs__tab">Thermostats</a>
+                        </div>
+                        <br>
+                        <!-- onOff Valve Display Tab -->
+                        <div class="mdl-tabs__panel is-active" id="onOff-display-panel">
+                          <table class="mdl-data-table full-width mdl-js-data-table mdl-shadow--2dp">
+                            <thead>
+                              <tr>
+                                <th class="mdl-data-table__cell--non-numeric">Name</th>
+                                <th class="mdl-data-table__cell--non-numeric">Controller</th>
+                                <th>Relay Address</th>
+                                <th>State</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr v-for="valve in deviceType('onOff')">
+                                <!-- Name -->
+                                <td class="mdl-data-table__cell--non-numeric">{{ valve.name }}</td>
+                                <td class="mdl-data-table__cell--non-numeric">{{
+                                  controllerNameByAddress(valve.controller_address) }}</td>
+                                <!-- Number -->
+                                <td>{{ valve.address }}</td>
+                                <td>Open or Closed</td>
+                                <td>
+                                  <i @click="removeDevice(valve class="material-icons close-button">close</i>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- Divert Display -->
+                        <div class="mdl-tabs__panel" id="divert-display-panel">
+                          <table class="mdl-data-table full-width mdl-js-data-table mdl-shadow--2dp">
+                            <thead>
+                              <tr>
+                                <th class="mdl-data-table__cell--non-numeric">Name</th>
+                                <th class="mdl-data-table__cell--non-numeric">Controller</th>
+                                <th>Relay Address</th>
+                                <th>State</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr v-for="valve in deviceType('divert')">
+                                <!-- Name -->
+                                <td class="mdl-data-table__cell--non-numeric">{{ valve.name }}</td>
+                                <td class="mdl-data-table__cell--non-numeric">{{
+                                  controllerNameByAddress(valve.controller_address) }}</td>
+                                <!-- Number -->
+                                <td>{{ valve.address }}</td>
+                                <!-- State -->
+                                <td>To
+                                  <code>
+                                    {{ valve.states["0"] }}
+                                  </code>
+                                  or
+                                  <code>
+                                    {{ valve.states["1"] }}
+                                  </code>
+                                </td>
+                                <td>
+                                  <i @click="removeDevice(valve)" class="material-icons close-button">close</i>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- Variable Display Tab -->
+                        <div class="mdl-tabs__panel" id="variable-display-panel">
+                          <table class="mdl-data-table full-width mdl-js-data-table mdl-shadow--2dp">
+                            <thead>
+                              <tr>
+                                <th class="mdl-data-table__cell--non-numeric">Name</th>
+                                <th class="mdl-data-table__cell--non-numeric">Controller</th>
+                                <th>Relay Address</th>
+                                <th>State</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr v-for="valve in deviceType('variable')">
+                                <!-- Name -->
+                                <td class="mdl-data-table__cell--non-numeric">{{ valve.name }}</td>
+                                <td class="mdl-data-table__cell--non-numeric">{{
+                                  controllerNameByAddress(valve.controller_address) }}</td>
+                                <!-- Number -->
+                                <td>{{ valve.address }}</td>
+                                <!-- State -->
+                                <td>Scale %</td>
+                                <td>
+                                  <i @click="removeDevice(valve)" class="material-icons close-button">close</i>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- Pump Display Tab -->
+                        <div class="mdl-tabs__panel" id="pump-display-panel">
+                          <table class="mdl-data-table full-width mdl-js-data-table mdl-shadow--2dp">
+                            <thead>
+                              <tr>
+                                <th class="mdl-data-table__cell--non-numeric">Name</th>
+                                <th class="mdl-data-table__cell--non-numeric">Controller</th>
+                                <th>Relay Address</th>
+                                <th>State</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr v-for="pump in deviceType('pump')">
+                                <!-- Name -->
+                                <td class="mdl-data-table__cell--non-numeric">{{ pump.name }}</td>
+                                <td class="mdl-data-table__cell--non-numeric">{{
+                                  controllerNameByAddress(pump.controller_address) }}</td>
+                                <!-- Number -->
+                                <td>{{ pump.address }}</td>
+                                <!-- State -->
+                                <td>On or Off</td>
+                                <td>
+                                  <i @click="removeDevice(pump)" class="material-icons close-button">close</i>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- Thermostat Display Tab -->
+                        <div class="mdl-tabs__panel" id="thermostat-display-panel">
+                          <table class="mdl-data-table full-width mdl-js-data-table mdl-shadow--2dp">
+                            <thead>
+                              <tr>
+                                <th class="mdl-data-table__cell--non-numeric">Name</th>
+                                <th class="mdl-data-table__cell--non-numeric">Controller</th>
+                                <th>Address</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr v-for="thermo in deviceType('thermostat')">
+                                <!-- Name -->
+                                <td class="mdl-data-table__cell--non-numeric">{{ thermo.name }}</td>
+                                <td class="mdl-data-table__cell--non-numeric">{{
+                                  controllerNameByAddress(thermo.controller_address) }}</td>
+                                <!-- Number -->
+                                <td>{{ thermo.address }}</td>
+                                <td>
+                                  <i @click="removeDevice(thermo)" class="material-icons close-button">close</i>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Custom JS -->
+  <script src="%% url_for('static', filename='js/configure.js') %%"></script>
+</body>
+
+</html>

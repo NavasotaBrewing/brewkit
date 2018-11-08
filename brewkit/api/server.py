@@ -6,6 +6,10 @@ from brewkit.api.configuration import enact, update
 app = Flask(__name__)
 socketio = SocketIO(app)
 
+@app.route('/')
+def home():
+    return "Brewkit API endpoint. If you see this, something went wrong."
+
 @socketio.on('update')
 def handle_update(config):
     socketio.emit('new_config', update(str(config)))

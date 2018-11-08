@@ -1,0 +1,120 @@
+[
+  {
+    "controllers": {
+      "OmegaCN7500": [
+        {
+          "address": 1,
+          "name": "RIMS Omega",
+          "type": "OmegaCN7500"
+        }
+      ],
+      "STR116": [
+        {
+          "address": 0,
+          "name": "Main STR116",
+          "type": "STR116"
+        }
+      ]
+    },
+    "devices": {
+      "divert": [
+        {
+          "address": "4",
+          "controller_address": 0,
+          "states": {
+            "0": "mash",
+            "1": "boil"
+          },
+          "name": "Some Divert",
+          "type": "divert",
+          "state": 0,
+          "proc_desc": "A divert valve. Select a location"
+        }
+      ],
+      "onOff": [
+        {
+          "address": "4",
+          "controller_address": 0,
+          "name": "HLT Valve",
+          "states": {
+            "0": "Closed",
+            "1": "Open"
+          },
+          "state": 0,
+          "type": "onOff",
+          "proc_desc": "A regular valve. Open or closed."
+        },
+        {
+          "name": "Another On/Off Valve",
+          "type": "onOff",
+          "address": "56",
+          "states": {
+            "0": "Closed",
+            "1": "Open"
+          },
+          "controller_address": 0,
+          "state": 0,
+          "proc_desc": "A regular valve. Open or closed."
+        }
+      ],
+      "pump": [
+        {
+          "address": "8",
+          "controller_address": 0,
+          "name": "One More Pump",
+          "type": "pump",
+          "states": {
+            "0": "Off",
+            "1": "On"
+          },
+          "state": 0,
+          "proc_desc": "A pump. On or off."
+        }
+      ],
+      "thermostat": [
+        {
+          "address": 0,
+          "controller_address": 1,
+          "name": "RIMS Thermostat",
+          "states": {
+            "0": "Off",
+            "1": "On"
+          },
+          "state": 1,
+          "type": "thermostat",
+          "proc_desc": "A thermostat. Set a temperature, or 0 to turn it off"
+        },
+        {
+          "address": "9",
+          "controller_address": 0,
+          "name": "Another Thermostat",
+          "states": {
+            "0": "Off",
+            "1": "On"
+          },
+          "state": 1,
+          "type": "thermostat",
+          "proc_desc": "A thermostat. Set a temperature, or 0 to turn it off"
+        }
+      ],
+      "variable": [
+        {
+          "address": 2,
+          "controller_address": 0,
+          "name": "Propane Valve",
+          "states": {
+            "0": "Closed",
+            "1": "Open"
+          },
+          "state": 0,
+          "type": "variable",
+          "proc_desc": "A variable stepper valve. Enter a decimal between 0 and 1."
+        }
+      ]
+    },
+    "name": "Testing",
+    "id": "8675309",
+    "slackChannel": "@luke",
+    "slackWebhook": "https://hooks.slack.com/services/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"
+  }
+]
