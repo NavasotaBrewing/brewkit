@@ -145,52 +145,44 @@
                   </div>
                 </div>
                 <div class="mdl-cell mdl-cell--7-col mdl-cell--12-col-phone mdl-cell--12-col-tablet">
-                  <div id="displayControllerCard" class="colored-card--green full-width mdl-card mdl-shadow--2dp">
-                    <div class="mdl-card__title mdl-card--expand">
-                      <h2 class="mdl-card__title-text">Controllers</h2>
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                      <!-- Only for tablet and desktop -->
-                      <table class="mdl-data-table mdl-cell--hide-phone full-width mdl-js-data-table mdl-shadow--2dp">
-                        <thead>
-                          <tr>
-                            <th class="mdl-data-table__cell--non-numeric">Controller Name</th>
-                            <th class="mdl-data-table__cell--non-numeric">Type</th>
-                            <th>Address</th>
-                            <!-- Delete button -->
-                            <th></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr v-for="controller in allControllers">
-                            <!-- Name -->
-                            <td class="mdl-data-table__cell--non-numeric">{{ controller.name }}</td>
-                            <!-- Type -->
-                            <td class="mdl-data-table__cell--non-numeric">{{ controller.type }}</td>
-                            <!-- Address -->
-                            <td>{{ controller.address }}</td>
-                            <td>
-                              <i @click="removeController(controller)" class="material-icons close-button">close</i>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <h5 v-show="!allControllers">No controllers yet</h5>
-                      <!-- Only for phone -->
-                      <ul class="mdl-list mdl-cell--hide-desktop mdl-cell--hide-tablet">
-                        <li class="mdl-list__item">
-                          <span class="mdl-list__item-primary-content">
-                            STR116 Relay Board
-                          </span>
-                        </li>
-                        <li class="mdl-list__item">
-                          <span class="mdl-list__item-primary-content">
-                            Boil Omega
-                          </span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
+                  <!-- Only for tablet and desktop -->
+                  <table v-if="allControllers.length > 0" class="mdl-data-table mdl-cell--hide-phone full-width mdl-js-data-table mdl-shadow--2dp">
+                    <thead>
+                      <tr>
+                        <th class="mdl-data-table__cell--non-numeric">Controller Name</th>
+                        <th class="mdl-data-table__cell--non-numeric">Type</th>
+                        <th>Address</th>
+                        <!-- Delete button -->
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="controller in allControllers">
+                        <!-- Name -->
+                        <td class="mdl-data-table__cell--non-numeric">{{ controller.name }}</td>
+                        <!-- Type -->
+                        <td class="mdl-data-table__cell--non-numeric">{{ controller.type }}</td>
+                        <!-- Address -->
+                        <td>{{ controller.address }}</td>
+                        <td>
+                          <i @click="removeController(controller)" class="material-icons close-button">close</i>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- Only for phone -->
+                  <ul class="mdl-list mdl-cell--hide-desktop mdl-cell--hide-tablet">
+                    <li class="mdl-list__item">
+                      <span class="mdl-list__item-primary-content">
+                        STR116 Relay Board
+                      </span>
+                    </li>
+                    <li class="mdl-list__item">
+                      <span class="mdl-list__item-primary-content">
+                        Boil Omega
+                      </span>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </section>
@@ -378,173 +370,166 @@
                 </div>
                 <!-- Right Column (table) -->
                 <div class="mdl-cell mdl-cell--7-col mdl-cell--12-col-phone mdl-cell--12-col-tablet">
-                  <div id="displayDeviceCard" class="colored-card--green full-width mdl-card mdl-shadow--2dp">
-                    <div class="mdl-card__title mdl-card--expand">
-                      <h2 class="mdl-card__title-text">Devices</h2>
+                  <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                    <!-- Display Tabs -->
+                    <div class="mdl-tabs__tab-bar">
+                      <a href="#onOff-display-panel" class="mdl-tabs__tab is-active">Valves</a>
+                      <a href="#divert-display-panel" class="mdl-tabs__tab">Diverts</a>
+                      <a href="#variable-display-panel" class="mdl-tabs__tab">Variables</a>
                     </div>
-                    <div class="mdl-card__supporting-text">
-                      <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-                        <!-- Display Tabs -->
-                        <div class="mdl-tabs__tab-bar">
-                          <a href="#onOff-display-panel" class="mdl-tabs__tab is-active">Valves</a>
-                          <a href="#divert-display-panel" class="mdl-tabs__tab">Diverts</a>
-                          <a href="#variable-display-panel" class="mdl-tabs__tab">Variables</a>
-                        </div>
-                        <div class="mdl-tabs__tab-bar">
-                          <a href="#pump-display-panel" class="mdl-tabs__tab">Pumps</a>
-                          <a href="#thermostat-display-panel" class="mdl-tabs__tab">Thermostats</a>
-                        </div>
-                        <br>
-                        <!-- onOff Valve Display Tab -->
-                        <div class="mdl-tabs__panel is-active" id="onOff-display-panel">
-                          <table class="mdl-data-table full-width mdl-js-data-table mdl-shadow--2dp">
-                            <thead>
-                              <tr>
-                                <th class="mdl-data-table__cell--non-numeric">Name</th>
-                                <th class="mdl-data-table__cell--non-numeric">Controller</th>
-                                <th>Relay Address</th>
-                                <th>State</th>
-                                <th></th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr v-for="valve in deviceType('onOff')">
-                                <!-- Name -->
-                                <td class="mdl-data-table__cell--non-numeric">{{ valve.name }}</td>
-                                <td class="mdl-data-table__cell--non-numeric">{{
-                                  controllerNameByAddress(valve.controller_address) }}</td>
-                                <!-- Number -->
-                                <td>{{ valve.address }}</td>
-                                <td>Open or Closed</td>
-                                <td>
-                                  <i @click="removeDevice(valve class="material-icons close-button">close</i>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                        <!-- Divert Display -->
-                        <div class="mdl-tabs__panel" id="divert-display-panel">
-                          <table class="mdl-data-table full-width mdl-js-data-table mdl-shadow--2dp">
-                            <thead>
-                              <tr>
-                                <th class="mdl-data-table__cell--non-numeric">Name</th>
-                                <th class="mdl-data-table__cell--non-numeric">Controller</th>
-                                <th>Relay Address</th>
-                                <th>State</th>
-                                <th></th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr v-for="valve in deviceType('divert')">
-                                <!-- Name -->
-                                <td class="mdl-data-table__cell--non-numeric">{{ valve.name }}</td>
-                                <td class="mdl-data-table__cell--non-numeric">{{
-                                  controllerNameByAddress(valve.controller_address) }}</td>
-                                <!-- Number -->
-                                <td>{{ valve.address }}</td>
-                                <!-- State -->
-                                <td>To
-                                  <code>
-                                    {{ valve.states["0"] }}
-                                  </code>
-                                  or
-                                  <code>
-                                    {{ valve.states["1"] }}
-                                  </code>
-                                </td>
-                                <td>
-                                  <i @click="removeDevice(valve)" class="material-icons close-button">close</i>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                        <!-- Variable Display Tab -->
-                        <div class="mdl-tabs__panel" id="variable-display-panel">
-                          <table class="mdl-data-table full-width mdl-js-data-table mdl-shadow--2dp">
-                            <thead>
-                              <tr>
-                                <th class="mdl-data-table__cell--non-numeric">Name</th>
-                                <th class="mdl-data-table__cell--non-numeric">Controller</th>
-                                <th>Relay Address</th>
-                                <th>State</th>
-                                <th></th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr v-for="valve in deviceType('variable')">
-                                <!-- Name -->
-                                <td class="mdl-data-table__cell--non-numeric">{{ valve.name }}</td>
-                                <td class="mdl-data-table__cell--non-numeric">{{
-                                  controllerNameByAddress(valve.controller_address) }}</td>
-                                <!-- Number -->
-                                <td>{{ valve.address }}</td>
-                                <!-- State -->
-                                <td>Scale %</td>
-                                <td>
-                                  <i @click="removeDevice(valve)" class="material-icons close-button">close</i>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                        <!-- Pump Display Tab -->
-                        <div class="mdl-tabs__panel" id="pump-display-panel">
-                          <table class="mdl-data-table full-width mdl-js-data-table mdl-shadow--2dp">
-                            <thead>
-                              <tr>
-                                <th class="mdl-data-table__cell--non-numeric">Name</th>
-                                <th class="mdl-data-table__cell--non-numeric">Controller</th>
-                                <th>Relay Address</th>
-                                <th>State</th>
-                                <th></th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr v-for="pump in deviceType('pump')">
-                                <!-- Name -->
-                                <td class="mdl-data-table__cell--non-numeric">{{ pump.name }}</td>
-                                <td class="mdl-data-table__cell--non-numeric">{{
-                                  controllerNameByAddress(pump.controller_address) }}</td>
-                                <!-- Number -->
-                                <td>{{ pump.address }}</td>
-                                <!-- State -->
-                                <td>On or Off</td>
-                                <td>
-                                  <i @click="removeDevice(pump)" class="material-icons close-button">close</i>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                        <!-- Thermostat Display Tab -->
-                        <div class="mdl-tabs__panel" id="thermostat-display-panel">
-                          <table class="mdl-data-table full-width mdl-js-data-table mdl-shadow--2dp">
-                            <thead>
-                              <tr>
-                                <th class="mdl-data-table__cell--non-numeric">Name</th>
-                                <th class="mdl-data-table__cell--non-numeric">Controller</th>
-                                <th>Address</th>
-                                <th></th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr v-for="thermo in deviceType('thermostat')">
-                                <!-- Name -->
-                                <td class="mdl-data-table__cell--non-numeric">{{ thermo.name }}</td>
-                                <td class="mdl-data-table__cell--non-numeric">{{
-                                  controllerNameByAddress(thermo.controller_address) }}</td>
-                                <!-- Number -->
-                                <td>{{ thermo.address }}</td>
-                                <td>
-                                  <i @click="removeDevice(thermo)" class="material-icons close-button">close</i>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
+                    <div class="mdl-tabs__tab-bar">
+                      <a href="#pump-display-panel" class="mdl-tabs__tab">Pumps</a>
+                      <a href="#thermostat-display-panel" class="mdl-tabs__tab">Thermostats</a>
+                    </div>
+                    <br>
+                    <!-- onOff Valve Display Tab -->
+                    <div class="mdl-tabs__panel is-active" id="onOff-display-panel">
+                      <table class="mdl-data-table full-width mdl-js-data-table mdl-shadow--2dp">
+                        <thead>
+                          <tr>
+                            <th class="mdl-data-table__cell--non-numeric">Name</th>
+                            <th class="mdl-data-table__cell--non-numeric">Controller</th>
+                            <th>Relay Address</th>
+                            <th>State</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="valve in deviceType('onOff')">
+                            <!-- Name -->
+                            <td class="mdl-data-table__cell--non-numeric">{{ valve.name }}</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{
+                              controllerNameByAddress(valve.controller_address) }}</td>
+                            <!-- Number -->
+                            <td>{{ valve.address }}</td>
+                            <td>Open or Closed</td>
+                            <td>
+                              <i @click="removeDevice(valve)" class=" material-icons close-button">close</i>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- Divert Display -->
+                    <div class="mdl-tabs__panel" id="divert-display-panel">
+                      <table class="mdl-data-table full-width mdl-js-data-table mdl-shadow--2dp">
+                        <thead>
+                          <tr>
+                            <th class="mdl-data-table__cell--non-numeric">Name</th>
+                            <th class="mdl-data-table__cell--non-numeric">Controller</th>
+                            <th>Relay Address</th>
+                            <th>State</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="valve in deviceType('divert')">
+                            <!-- Name -->
+                            <td class="mdl-data-table__cell--non-numeric">{{ valve.name }}</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{
+                              controllerNameByAddress(valve.controller_address) }}</td>
+                            <!-- Number -->
+                            <td>{{ valve.address }}</td>
+                            <!-- State -->
+                            <td>To
+                              <code>
+                                                      {{ valve.states["0"] }}
+                                                    </code>
+                              or
+                              <code>
+                                                      {{ valve.states["1"] }}
+                                                    </code>
+                            </td>
+                            <td>
+                              <i @click="removeDevice(valve)" class="material-icons close-button">close</i>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- Variable Display Tab -->
+                    <div class="mdl-tabs__panel" id="variable-display-panel">
+                      <table class="mdl-data-table full-width mdl-js-data-table mdl-shadow--2dp">
+                        <thead>
+                          <tr>
+                            <th class="mdl-data-table__cell--non-numeric">Name</th>
+                            <th class="mdl-data-table__cell--non-numeric">Controller</th>
+                            <th>Relay Address</th>
+                            <th>State</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="valve in deviceType('variable')">
+                            <!-- Name -->
+                            <td class="mdl-data-table__cell--non-numeric">{{ valve.name }}</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{
+                              controllerNameByAddress(valve.controller_address) }}</td>
+                            <!-- Number -->
+                            <td>{{ valve.address }}</td>
+                            <!-- State -->
+                            <td>Scale %</td>
+                            <td>
+                              <i @click="removeDevice(valve)" class="material-icons close-button">close</i>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- Pump Display Tab -->
+                    <div class="mdl-tabs__panel" id="pump-display-panel">
+                      <table class="mdl-data-table full-width mdl-js-data-table mdl-shadow--2dp">
+                        <thead>
+                          <tr>
+                            <th class="mdl-data-table__cell--non-numeric">Name</th>
+                            <th class="mdl-data-table__cell--non-numeric">Controller</th>
+                            <th>Relay Address</th>
+                            <th>State</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="pump in deviceType('pump')">
+                            <!-- Name -->
+                            <td class="mdl-data-table__cell--non-numeric">{{ pump.name }}</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{
+                              controllerNameByAddress(pump.controller_address) }}</td>
+                            <!-- Number -->
+                            <td>{{ pump.address }}</td>
+                            <!-- State -->
+                            <td>On or Off</td>
+                            <td>
+                              <i @click="removeDevice(pump)" class="material-icons close-button">close</i>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- Thermostat Display Tab -->
+                    <div class="mdl-tabs__panel" id="thermostat-display-panel">
+                      <table class="mdl-data-table full-width mdl-js-data-table mdl-shadow--2dp">
+                        <thead>
+                          <tr>
+                            <th class="mdl-data-table__cell--non-numeric">Name</th>
+                            <th class="mdl-data-table__cell--non-numeric">Controller</th>
+                            <th>Address</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="thermo in deviceType('thermostat')">
+                            <!-- Name -->
+                            <td class="mdl-data-table__cell--non-numeric">{{ thermo.name }}</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{
+                              controllerNameByAddress(thermo.controller_address) }}</td>
+                            <!-- Number -->
+                            <td>{{ thermo.address }}</td>
+                            <td>
+                              <i @click="removeDevice(thermo)" class="material-icons close-button">close</i>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
