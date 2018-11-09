@@ -20,6 +20,25 @@ def handle_enact(config):
     enact(config)
     handle_update(config)
 
+@socket.on('save_configuration')
+def save_configuration(new_config):
+    with open('brewkit/interface/data/configurations.json') as fi:
+        configs = json.load(fi)
+    try:
+        configs[:] = [d for d in configs if d.get(
+            'id') != new_config['id']]
+        configs.append(new_config)
+        with open('brewkit/interface/data/configurations.json', 'w') as fi:
+            json.dump(configs, fi, indent=2)
+        return 'Configuration saved'
+    except KeyError:
+        return "Configuration needs an 'id' element"
+
+@socket.on('get_configurations')
+def serve_configurations():
+    with open('brewkit/interface/data/configurations.json') as fi:
+        return json.dumps(json.load(fi))
+
 if __name__ == '__main__':
     app.debug = True
     socketio.run(app, '0.0.0.0')
