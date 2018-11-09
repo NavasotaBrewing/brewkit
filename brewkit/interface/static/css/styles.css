@@ -8,6 +8,10 @@ html, body {
   height: 100%;
 }
 
+#addControllerCards {
+  z-index: 1000;
+}
+
 #close-button {
   cursor: pointer;
 }

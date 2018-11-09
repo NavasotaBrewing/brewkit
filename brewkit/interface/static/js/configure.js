@@ -21,8 +21,18 @@ var x = new Vue({
       name: '',
       slackWebhook: '',
       slackChannel: '',
-      controllers: {},
-      devices: {},
+      controllers: {
+        'STR116': [],
+        'STR008': [],
+        'OmegaCN7500': []
+      },
+      devices: {
+        'onOff': [],
+        'divert': [],
+        'variable': [],
+        'pump': [],
+        'thermostat': []
+      },
     },
     newController: {
       name: '',
@@ -40,7 +50,7 @@ var x = new Vue({
       "type": "divert",
       "address": '',
       "controller_address": '',
-      "locations": {
+      "states": {
         "0": "",
         "1": ""
       },
@@ -89,7 +99,10 @@ var x = new Vue({
       if (!this.validate(this.newController)) {
         return false;
       }
+
+      console.log(this.configuration.controllers)
       this.configuration.controllers[this.newController.type].push(this.newController);
+
       this.newController = {
         name: '',
         address: ''
@@ -141,7 +154,7 @@ var x = new Vue({
           "type": "divert",
           "address": '',
           "controller_address": '',
-          "locations": {
+          "states": {
             "0": "",
             "1": ""
           },

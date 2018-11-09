@@ -14,7 +14,8 @@
           "name": "Main STR116",
           "type": "STR116"
         }
-      ]
+      ],
+      "STR008": []
     },
     "devices": {
       "divert": [
