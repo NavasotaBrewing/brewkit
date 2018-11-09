@@ -255,8 +255,9 @@ input:focus, textarea:focus {
 }
 
 .colored-card--green > .mdl-card__title {
-  color: #fff;
-  background-color: #46B6AC;
+  color: #000;
+  /* background-color: #46B6AC; */
+  border-bottom: 2px solid #46B6AC;
 }
 
 .colored-card--blue > .mdl-card__title {
