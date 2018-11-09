@@ -109,6 +109,7 @@ var x = new Vue({
         name: '',
         address: ''
       }
+      this.message = 'Controller added';
     },
 
     removeController(con) {
@@ -207,6 +208,8 @@ var x = new Vue({
           "state": 0
         }
       }
+
+      this.message = 'Device added';
     },
 
     controllerNameByAddress(adr) {
@@ -220,8 +223,12 @@ var x = new Vue({
     },
 
     saveConfiguration() {
-      socket.emit('save_configuration', this.configuration, function(message) {
-        console.log(message);
+      if (this.configuration.name == '') {
+        this.message = 'Configuration needs a name';
+      }
+
+      socket.emit('save_configuration', this.configuration, function(response) {
+        x.message = response;
       });
     },
 
@@ -276,8 +283,6 @@ var x = new Vue({
         elem.MaterialTextfield.checkDirty();
       });
     }, 500);
-
-    this.snackbar = document.querySelector('.mdl-js-snackbar');
   },
 
   watch: {
