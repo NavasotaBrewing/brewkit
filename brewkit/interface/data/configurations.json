@@ -117,5 +117,83 @@
     "id": "ibikegewhr82bwrwtntki1",
     "slackChannel": "@luke",
     "slackWebhook": "https://hooks.slack.com/services/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"
+  },
+  {
+    "name": "Testing Configuration",
+    "id": "i28kintbgretwrbiewk1hw",
+    "slackWebhook": "https://hooks.slack.com/services/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",
+    "slackChannel": "@luke",
+    "controllers": {
+      "STR116": [
+        {
+          "name": "Main Board",
+          "address": "2",
+          "type": "STR116",
+          "id": "etrebkngrwwh28iitkwbi1"
+        }
+      ],
+      "STR008": [],
+      "OmegaCN7500": [
+        {
+          "name": "Omega",
+          "address": "1",
+          "type": "OmegaCN7500",
+          "id": "itwigrkhwn12eb8rtiwekb"
+        }
+      ]
+    },
+    "devices": {
+      "onOff": [
+        {
+          "name": "HLT Valve",
+          "type": "onOff",
+          "address": "0",
+          "controller_address": "2",
+          "id": "twbgir2teenh18kkwiriwb"
+        }
+      ],
+      "divert": [
+        {
+          "name": "HLT Divert",
+          "type": "divert",
+          "address": "1",
+          "controller_address": "2",
+          "states": {
+            "0": "mash",
+            "1": "boil"
+          },
+          "id": "wne18eiwrrbiikhgwt2kbt"
+        }
+      ],
+      "variable": [
+        {
+          "name": "Gas Stepper",
+          "type": "variable",
+          "address": "2",
+          "controller_address": "2",
+          "id": "eg1ttwribewbirkh2wn8ki"
+        }
+      ],
+      "pump": [
+        {
+          "name": "Main Pump",
+          "type": "pump",
+          "address": "3",
+          "controller_address": "2",
+          "id": "g2ritrkwee8biwntiwkh1b"
+        }
+      ],
+      "thermostat": [
+        {
+          "name": "Mash Thermostat",
+          "type": "thermostat",
+          "address": "1",
+          "controller_address": "1",
+          "pv": 0,
+          "sv": 0,
+          "id": "ew2krhwkitwi8bgrtnbi1e"
+        }
+      ]
+    }
   }
 ]

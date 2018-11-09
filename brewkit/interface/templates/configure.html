@@ -188,7 +188,7 @@
                         Address: {{ controller.address }}
                       </li>
                       <li class="mdl-list__item">
-                        ID: {{ controller.id }}
+                        ID: <samp id="idDisplay">{{ controller.id }}</samp>
                       </li>
                     </ul>
                   </div>
@@ -404,6 +404,10 @@
                       </li>
                       <li v-if="device.states" class="mdl-list__item">
                         States: {{ device.states[0] }} or {{ device.states[1] }}
+                      </li>
+                      <li class="mdl-list__item">
+
+                        ID: <samp id="idDisplay">{{ device.id }}</samp>
                       </li>
                     </ul>
                   </div>
