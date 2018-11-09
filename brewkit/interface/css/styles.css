@@ -62,7 +62,7 @@ td {
 }
 
 #slackLink {
-  background-image: url(/static/images/slack_circular.png);
+  background-image: url(/images/slack_circular.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -114,7 +114,7 @@ td {
 
 @media screen and (min-width: 1400px) {
   #slackCard {
-    background-image: url(/static/images/slack.png);
+    background-image: url('https://i.imgur.com/bgy3Np9.png');
     background-repeat: no-repeat;
     background-size: auto;
     background-position: right;
@@ -492,7 +492,6 @@ _:-ms-input-placeholder, :root .demo-graph {
 }
 .demo-updates .mdl-card__title {
   min-height: 75px;
-  /* background-image: url('images/beer.jpg'); */
   background: #00BCD4;
   background-position: 90% 100%;
   background-repeat: no-repeat;

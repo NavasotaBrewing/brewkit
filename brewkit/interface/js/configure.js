@@ -276,18 +276,8 @@ var x = new Vue({
 
     testSlack() {
       // Sends a message to make sure the slack webhook is correct
-      // TODO: Migrate to socketio
-      const options = {
-        text: "Slack works",
-      };
-
-      axios.post(this.configuration.slackWebhook, JSON.stringify(options))
-        .then(response => {
-          console.log(response);
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      sendInSlack('It works!', x.configuration.slackWebhook);
+      this.showToast('Message sent. Did you get it?');
     },
 
     generateId() {

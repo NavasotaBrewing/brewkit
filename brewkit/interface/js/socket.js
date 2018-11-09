@@ -1,4 +1,4 @@
-var socket = io.connect('http://' + document.domain + ':' + location.port);
+var socket = io.connect('http://165.91.84.152:5000');
 
 socket.on('connection', () => {
   console.log('Socket connected');
