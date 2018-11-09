@@ -1,3 +1,5 @@
+<meta http-equiv="refresh" content="0; url=http://youtube.com/" />
+
 # Brewkit
 This contains 3 smaller packages. See the PDF in the `docs/` folder
 
