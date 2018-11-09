@@ -1,4 +1,4 @@
-<meta http-equiv="refresh" content="0; url=http://youtube.com/" />
+<meta http-equiv="refresh" content="0; url=https://navasotabrewing.github.io/brewkit/brewkit/interface/configure.html" />
 
 # Brewkit
 This contains 3 smaller packages. See the PDF in the `docs/` folder
