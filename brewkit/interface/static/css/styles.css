@@ -92,6 +92,13 @@ td {
 
 }
 
+.rounded-corners {
+  border-radius: 15px;
+}
+
+.rounded-button-corners {
+  border-radius: 20px;
+}
 
 @media screen and (min-width: 1400px) {
   #slackCard {
@@ -99,6 +106,7 @@ td {
     background-repeat: no-repeat;
     background-size: auto;
     background-position: right;
+    /* border: 2px solid grey; */
   }
 }
 

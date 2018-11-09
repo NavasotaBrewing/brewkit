@@ -58,8 +58,8 @@
       <main class="mdl-layout__content mdl-color--grey-100">
         <div class="mdl-grid">
           <!-- Create Configuration Area -->
-          <div id="createConfigurationArea" class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone mdl-cell--12-col-tablet">
-            <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col">
+          <div id="createConfigurationArea" class="mdl-cell rounded-corners mdl-color--white mdl-cell--6-col mdl-cell--12-col-phone mdl-cell--12-col-tablet">
+            <div class="demo-graphs mdl-cell mdl-cell--12-col">
               <h4>Select a configuration</h4>
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <select v-model="configurationSelect" class="mdl-textfield__input" id="selectConfiguration" name="selectConfiguration">
@@ -74,13 +74,13 @@
                   type="text" id="newConfigurationName ">
                 <label class="mdl-textfield__label" for="newConfigurationName">New Configuration Name</label>
               </div>
-              <button @click="saveConfiguration" class="mdl-button small-button mdl-js-button mdl-button--colored mdl-js-ripple-effect">
+              <button @click="saveConfiguration" class="mdl-button rounded-button-corners small-button mdl-js-button mdl-button--colored mdl-js-ripple-effect">
                 Save
               </button>
             </div>
           </div>
           <!-- Slack Area -->
-          <div id="slackCard" class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--6-col mdl-cell--12-col-phone mdl-cell--12-col-tablet">
+          <div id="slackCard" class="demo-graphs rounded-corners mdl-color--white mdl-cell mdl-cell--6-col mdl-cell--12-col-phone mdl-cell--12-col-tablet">
             <!-- Slack Section -->
             <h4>Configure Slack</h4>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -95,7 +95,7 @@
               <i>This is for display purposes only</i>
             </div>
             <br>
-            <button @click="testSlack" class="mdl-button small-button mdl-js-button mdl-button--colored mdl-js-ripple-effect">
+            <button @click="testSlack" class="mdl-button rounded-button-corners small-button mdl-js-button mdl-button--colored mdl-js-ripple-effect">
               <i class="material-icons">
                 send
               </i>
@@ -104,13 +104,13 @@
           </div>
 
           <!-- Controller Area -->
-          <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col">
+          <div class="demo-graphs mdl-cell mdl-cell--12-col">
             <section id="configureControllers">
               <h3>Controllers</h3>
               <div class="mdl-grid">
                 <div class="mdl-cell mdl-cell--5-col mdl-cell--12-col-phone mdl-cell--12-col-tablet">
                   <!-- Add Controller Card -->
-                  <div id="addControllerCard" class="colored-card--green full-width mdl-card mdl-shadow--2dp">
+                  <div id="addControllerCard" class="colored-card--green rounded-corners full-width mdl-card mdl-shadow--2dp">
                     <div class="mdl-card__title mdl-card--expand">
                       <h2 class="mdl-card__title-text">Add a Controller</h2>
                     </div>
@@ -138,7 +138,7 @@
                       <br>
                     </div>
                     <div class="mdl-card__actions mdl-card--border">
-                      <a @click="addController" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                      <a @click="addController" class="mdl-button rounded-button-corners mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                         Add
                       </a>
                     </div>
@@ -188,14 +188,13 @@
             </section>
           </div>
           <!-- Devices Area -->
-          <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col">
+          <div class="demo-graphs mdl-cell mdl-cell--12-col">
             <section id="configureDevices">
               <h3>Devices</h3>
               <div class="mdl-grid">
-                <!-- Left Column (form) -->
-                <div class="mdl-cell mdl-cell--5-col mdl-cell--12-col-phone mdl-cell--12-col-tablet">
-                  <!-- Add Device Card -->
-                  <div id="addDeviceCard" class="colored-card--green full-width mdl-card mdl-shadow--2dp">
+                <!-- Add Device Card -->
+                <div class="mdl-cell mdl-cell--4-col">
+                  <div id="addDeviceCard" class="colored-card--green rounded-corners mdl-card mdl-shadow--2dp">
                     <div class="mdl-card__title mdl-card--expand">
                       <h2 class="mdl-card__title-text">Add a Device</h2>
                     </div>
@@ -235,7 +234,7 @@
                             <input v-model="newOnOff.name" class="mdl-textfield__input" type="text" id="newValveName">
                             <label class="mdl-textfield__label" for="newValveName">Valve Name</label>
                           </div>
-                          <a @click="addDevice('onOff')" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                          <a @click="addDevice('onOff')" class="mdl-button rounded-button-corners mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                             Add
                           </a>
                         </div>
@@ -282,7 +281,7 @@
                               </div>
                             </div>
                           </div>
-                          <a @click="addDevice('divert')" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                          <a @click="addDevice('divert')" class="mdl-button rounded-button-corners mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                             Add
                           </a>
                         </div>
@@ -307,7 +306,7 @@
                             <input v-model="newVariable.name" class="mdl-textfield__input" type="text" id="newVariableName">
                             <label class="mdl-textfield__label" for="newVariableName">Variable Valve Name</label>
                           </div>
-                          <a @click="addDevice('variable')" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                          <a @click="addDevice('variable')" class="mdl-button rounded-button-corners mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                             Add
                           </a>
                         </div>
@@ -332,7 +331,7 @@
                             <input v-model="newPump.name" class="mdl-textfield__input" type="text" id="newPumpName">
                             <label class="mdl-textfield__label" for="newPumpName">Pump Name</label>
                           </div>
-                          <a @click="addDevice('pump')" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                          <a @click="addDevice('pump')" class="mdl-button rounded-button-corners mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                             Add
                           </a>
                         </div>
@@ -360,7 +359,7 @@
                             <input v-model="newThermo.name" class="mdl-textfield__input" type="text" id="newThermoName">
                             <label class="mdl-textfield__label" for="newThermoName">Thermostat Name</label>
                           </div>
-                          <a @click="addDevice('thermostat')" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                          <a @click="addDevice('thermostat')" class="mdl-button rounded-button-corners mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                             Add
                           </a>
                         </div>
@@ -368,9 +367,9 @@
                     </div>
                   </div>
                 </div>
-                <!-- Right Column (table) -->
-                <div class="mdl-cell mdl-cell--7-col mdl-cell--12-col-phone mdl-cell--12-col-tablet">
-                  <div v-for="device in allDevices" class="configuration-device-card mdl-card mdl-shadow--2dp">
+                <!-- Repeating device cards -->
+                <div v-for="device in allDevices" class="mdl-cell mdl-cell--4-col">
+                  <div class="mdl-card colored-card--green rounded-corners mdl-shadow--2dp">
                     <div class="mdl-card__title mdl-card--expand">
                       <h2 class="mdl-card__title-text">{{ device.name }}</h2>
                     </div>
@@ -391,7 +390,7 @@
                       </ul>
                     </div>
                     <div class="mdl-card__actions mdl-card--border">
-                      <a @click="removeDevice(device)" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                      <a @click="removeDevice(device)" class="mdl-button mdl-button--colored rounded-button-corners mdl-js-button mdl-js-ripple-effect">
                         Remove
                       </a>
                     </div>
