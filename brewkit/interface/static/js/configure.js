@@ -14,11 +14,13 @@ var x = new Vue({
   el: '#configure',
   data: {
     // These are the old ones
+    message: '',
     configurations: [],
     configurationSelect: 'create',
     // This is the current one
     configuration: {
       name: '',
+      id: '',
       slackWebhook: '',
       slackChannel: '',
       controllers: {
@@ -265,13 +267,17 @@ var x = new Vue({
     // This checks 'dirty' mdl-textfields and fixes if necessary every 500 ms. Just a patch.
     this.getSavedConfigurations();
 
+    this.configuration.id = 'brewingwithbrewkit2k18'.split('').sort(function () { return 0.5 - Math.random() }).join('')
+
     window.setInterval(function() {
       var nodeList = document.querySelectorAll('.mdl-textfield');
 
       Array.prototype.forEach.call(nodeList, function (elem) {
         elem.MaterialTextfield.checkDirty();
       });
-    }, 500)
+    }, 500);
+
+    this.snackbar = document.querySelector('.mdl-js-snackbar');
   },
 
   watch: {
@@ -287,6 +293,18 @@ var x = new Vue({
           devices: []
         }
       }
+    },
+    message: function () {
+      if (this.message == '') {
+        // Deactivate
+        $('#snackbar').removeClass('mdl-snackbar--active')
+      } else {
+        // Activate
+        $('#snackbar').addClass('mdl-snackbar--active')
+        setTimeout(function() {
+          $('#snackbar').removeClass('mdl-snackbar--active')
+        }, 4000)
+      }
     }
   },
   updated: function () {
@@ -295,3 +313,32 @@ var x = new Vue({
     });
   }
 })
+
+
+
+$.fn.extend({
+  animateCss: function (animationName, callback) {
+    var animationEnd = (function (el) {
+      var animations = {
+        animation: 'animationend',
+        OAnimation: 'oAnimationEnd',
+        MozAnimation: 'mozAnimationEnd',
+        WebkitAnimation: 'webkitAnimationEnd',
+      };
+
+      for (var t in animations) {
+        if (el.style[t] !== undefined) {
+          return animations[t];
+        }
+      }
+    })(document.createElement('div'));
+
+    this.addClass('animated ' + animationName).one(animationEnd, function () {
+      $(this).removeClass('animated ' + animationName);
+
+      if (typeof callback === 'function') callback();
+    });
+
+    return this;
+  },
+});

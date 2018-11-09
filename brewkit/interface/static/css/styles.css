@@ -12,6 +12,14 @@ html, body {
   z-index: 1000;
 }
 
+#idDisplay {
+  border-radius: 3px;
+  padding: 2px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: rgb(236, 236, 236);
+}
+
 #close-button {
   cursor: pointer;
 }

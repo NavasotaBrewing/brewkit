@@ -19,9 +19,6 @@ class CustomFlask(Flask):
 app = CustomFlask(__name__)
 socket = SocketIO(app)
 
-with open('brewkit/interface/data/configurations.json') as fi:
-    app.configs = json.load(fi)
-
 @app.route('/')
 def index():
     return redirect('/dashboard')
@@ -36,19 +33,22 @@ def configure():
 
 @socket.on('save_configuration')
 def save_configuration(new_config):
+    with open('brewkit/interface/data/configurations.json') as fi:
+        configs = json.load(fi)
     try:
-        app.configs[:] = [d for d in app.configs if d.get(
+        configs[:] = [d for d in configs if d.get(
             'id') != new_config['id']]
-        app.configs.append(new_config)
+        configs.append(new_config)
         with open('brewkit/interface/data/configurations.json', 'w') as fi:
-            json.dump(app.configs, fi, indent=2)
+            json.dump(configs, fi, indent=2)
         return 'Configuration saved'
     except KeyError:
         return "Configuration needs an 'id' element"
 
 @socket.on('get_configurations')
 def serve_configurations():
-    return json.dumps(app.configs)
+    with open('brewkit/interface/data/configurations.json') as fi:
+        return json.dumps(json.load(fi))
 
 
 if __name__ == '__main__':

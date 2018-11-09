@@ -22,6 +22,7 @@
   <script src="%% url_for('static', filename='js/libs/cookie.js') %%"></script>
   <script src="%% url_for('static', filename='js/libs/socket.io.min.js') %%"></script>
   <script src="%% url_for('static', filename='js/socket.js') %%"></script>
+  <script src="%% url_for('static', filename='js/libs/jquery.min.js') %%"></script>
 
 
   <!-- CSS -->
@@ -36,6 +37,12 @@
 
 <body>
   <div id="configure">
+
+    <div id="snackbar" class="animated mdl-js-snackbar mdl-snackbar mdl-snackbar--active">
+      <div class="mdl-snackbar__text">{{ message }}</div>
+      <button class="mdl-snackbar__action" type="button"></button>
+    </div>
+
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <!-- Header -->
       <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
@@ -80,6 +87,8 @@
                         type="text" id="newConfigurationName ">
                       <label class="mdl-textfield__label" for="newConfigurationName">New Configuration Name</label>
                     </div>
+                    <br>
+                    ID: <samp id="idDisplay">{{ configuration.id }}</samp>
                   </div>
                   <div class="mdl-card__actions mdl-card--border">
                     <button @click="saveConfiguration" class="mdl-button rounded-button-corners small-button mdl-js-button mdl-button--colored mdl-js-ripple-effect">
