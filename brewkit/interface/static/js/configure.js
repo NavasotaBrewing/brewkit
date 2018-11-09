@@ -15,6 +15,7 @@ var x = new Vue({
   data: {
     // These are the old ones
     message: '',
+    toastCallback: function() {},
     configurations: [],
     configurationSelect: 'create',
     // This is the current one
@@ -103,13 +104,19 @@ var x = new Vue({
       }
 
       console.log(this.configuration.controllers)
+      id = this.generateId();
+      this.newController.id = id;
+
       this.configuration.controllers[this.newController.type].push(this.newController);
+
+      this.showToast('Controller added', function() {
+        el = $('#' + id + 'ControllerCard').animateCss('bounce');
+      });
 
       this.newController = {
         name: '',
         address: ''
       }
-      this.message = 'Controller added';
     },
 
     removeController(con) {
@@ -133,10 +140,12 @@ var x = new Vue({
     },
 
     addDevice(type) {
+      id = this.generateId();
       if (type == 'onOff') {
         if (!this.validate(this.newOnOff)) {
           return false;
         }
+        this.newOnOff.id = id;
         this.configuration.devices[type].push(this.newOnOff);
         this.newOnOff = {
           "name": "",
@@ -151,6 +160,7 @@ var x = new Vue({
         if (!this.validate(this.newDivert)) {
           return false
         }
+        this.newDivert.id = id;
         this.configuration.devices[type].push(this.newDivert);
         this.newDivert = {
           "name": "",
@@ -169,6 +179,7 @@ var x = new Vue({
         if (!this.validate(this.newVariable)) {
           return false
         }
+        this.newVariable.id = id;
         this.configuration.devices[type].push(this.newVariable);
         this.newVariable = {
           "name": "",
@@ -183,6 +194,7 @@ var x = new Vue({
         if (!this.validate(this.newPump)) {
           return false
         }
+        this.newPump.id = id;
         this.configuration.devices[type].push(this.newPump);
         this.newPump = {
           "name": "",
@@ -197,6 +209,7 @@ var x = new Vue({
         if (!this.validate(this.newThermo)) {
           return false
         }
+        this.newThermo.id = id;
         this.configuration.devices[type].push(this.newThermo);
         this.newThermo = {
           "name": "",
@@ -209,7 +222,9 @@ var x = new Vue({
         }
       }
 
-      this.message = 'Device added';
+      this.showToast('Device added', function() {
+        $('#' + id + 'DeviceCard').animateCss('bounce');
+      });
     },
 
     controllerNameByAddress(adr) {
@@ -222,14 +237,35 @@ var x = new Vue({
       return '';
     },
 
+    showToast(message, callback) {
+      this.message = message;
+      if (callback) {
+        this.toastCallback = callback;
+      }
+      if (this.message == '') {
+        // Deactivate
+        $('#snackbar').removeClass('mdl-snackbar--active')
+      } else {
+        // Activate
+        $('#snackbar').addClass('mdl-snackbar--active')
+        setTimeout(function () {
+          this.message = ''
+          $('#snackbar').removeClass('mdl-snackbar--active')
+        }, 4000);
+      }
+    },
+
     saveConfiguration() {
       if (this.configuration.name == '') {
-        this.message = 'Configuration needs a name';
+        this.showToast('Configuration needs a name', function() {
+          $('#newConfigurationNameLabel').animateCss('bounce');
+        });
+      } else {
+        socket.emit('save_configuration', this.configuration, function(response) {
+          x.showToast(response);
+        });
       }
 
-      socket.emit('save_configuration', this.configuration, function(response) {
-        x.message = response;
-      });
     },
 
     getSavedConfigurations() {
@@ -252,6 +288,10 @@ var x = new Vue({
         .catch(error => {
           console.log(error);
         });
+    },
+
+    generateId() {
+      return 'brewingwithbrewkit2k18'.split('').sort(function () { return 0.5 - Math.random() }).join('');
     }
   },
 
@@ -274,7 +314,7 @@ var x = new Vue({
     // This checks 'dirty' mdl-textfields and fixes if necessary every 500 ms. Just a patch.
     this.getSavedConfigurations();
 
-    this.configuration.id = 'brewingwithbrewkit2k18'.split('').sort(function () { return 0.5 - Math.random() }).join('')
+    this.configuration.id = this.generateId();
 
     window.setInterval(function() {
       var nodeList = document.querySelectorAll('.mdl-textfield');
@@ -297,18 +337,6 @@ var x = new Vue({
           controllers: [],
           devices: []
         }
-      }
-    },
-    message: function () {
-      if (this.message == '') {
-        // Deactivate
-        $('#snackbar').removeClass('mdl-snackbar--active')
-      } else {
-        // Activate
-        $('#snackbar').addClass('mdl-snackbar--active')
-        setTimeout(function() {
-          $('#snackbar').removeClass('mdl-snackbar--active')
-        }, 4000)
       }
     }
   },
