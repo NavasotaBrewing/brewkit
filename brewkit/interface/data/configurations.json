@@ -41,7 +41,7 @@
             "0": "Closed",
             "1": "Open"
           },
-          "state": 0,
+          "state": 1,
           "type": "onOff",
           "proc_desc": "A regular valve. Open or closed."
         },
@@ -148,6 +148,10 @@
           "name": "HLT Valve",
           "type": "onOff",
           "address": "0",
+          "states": {
+            "0": "Off",
+            "1": "On"
+          },
           "controller_address": "2",
           "id": "twbgir2teenh18kkwiriwb"
         }
@@ -170,6 +174,10 @@
           "name": "Gas Stepper",
           "type": "variable",
           "address": "2",
+          "states": {
+            "0": "Off",
+            "1": "On"
+          },
           "controller_address": "2",
           "id": "eg1ttwribewbirkh2wn8ki"
         }
@@ -179,6 +187,10 @@
           "name": "Main Pump",
           "type": "pump",
           "address": "3",
+          "states": {
+            "0": "Off",
+            "1": "On"
+          },
           "controller_address": "2",
           "id": "g2ritrkwee8biwntiwkh1b"
         }
@@ -189,6 +201,10 @@
           "type": "thermostat",
           "address": "1",
           "controller_address": "1",
+          "states": {
+            "0": "Off",
+            "1": "On"
+          },
           "pv": 0,
           "sv": 0,
           "id": "ew2krhwkitwi8bgrtnbi1e"

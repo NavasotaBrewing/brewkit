@@ -26,8 +26,9 @@ let x = new Vue({
     'slack': SlackCard
   },
   methods: {
-    setState() {
-
+    setState(event) {
+      console.log('somethings updated');
+      console.log(event)
     }
   },
 

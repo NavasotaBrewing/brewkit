@@ -332,7 +332,7 @@ TimerComponent = Vue.component('timer', {
   },
 
   template: `
-    <div class="full-width mdl-card mdl-shadow--2dp" @mouseover="shaking = false" :class="{ 'shake shake-constant': shaking, }">
+    <div class="full-width mdl-card colored-card--green rounded-corners mdl-shadow--2dp" @mouseover="shaking = false" :class="{ 'shake shake-constant': shaking, }">
       <div class="mdl-card__title">
         <h2 class="mdl-card__title-text ">
           {{ timeRemaining }}
@@ -368,13 +368,13 @@ TimerComponent = Vue.component('timer', {
         </div>
       </div>
         <div class="mdl-card__actions mdl-card--border">
-          <a @click="startTimer" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          <a @click="startTimer" class="mdl-button rounded-button-corners mdl-button--colored mdl-js-button mdl-js-ripple-effect">
             <i class="material-icons">play_arrow</i>
           </a>
-          <a @click="pauseTimer" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          <a @click="pauseTimer" class="mdl-button rounded-button-corners mdl-button--colored mdl-js-button mdl-js-ripple-effect">
             <i class="material-icons">pause</i>
           </a>
-          <a @click="resetTimer" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          <a @click="resetTimer" class="mdl-button rounded-button-corners mdl-button--colored mdl-js-button mdl-js-ripple-effect">
             Clear
           </a>
         </div>
@@ -404,17 +404,13 @@ SlackCard = Vue.component('slack', {
         return false;
       }
 
-      const options = {
-        text: this.slackMessage,
-      };
-
-      axios.post(this.webhook, JSON.stringify(options))
-        .then(response => {
-          console.log(response);
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      $.ajax({
+        data: 'payload=' + JSON.stringify({ 'text': this.slackMessage }),
+        dataType: 'json',
+        processData: false,
+        type: 'POST',
+        url: this.webhook
+      });
 
       this.slackMessage = '';
     },
@@ -423,7 +419,7 @@ SlackCard = Vue.component('slack', {
     },
   },
   template: `
-    <div class="full-width mdl-card mdl-shadow--2dp">
+    <div class="full-width colored-card--green rounded-corners mdl-card mdl-shadow--2dp">
       <div id="slackCardTitle" class="mdl-card__title">
         <h2 class="mdl-card__title-text">Slack</h2>
       </div>
@@ -438,13 +434,13 @@ SlackCard = Vue.component('slack', {
         </div>
       </div>
       <div class="mdl-card__actions mdl-card--border">
-        <a @click="sendSlackMessage" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+        <a @click="sendSlackMessage" class="mdl-button rounded-button-corners mdl-button--colored mdl-js-button mdl-js-ripple-effect">
           <i class="material-icons">send</i>
           Send
         </a>
       </div>
       <div class="mdl-card__menu">
-        <button id="slackLink" @click="openSlack" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"></button>
+        <img src="https://i.imgur.com/pIXZfCv.png" id="slackLink" @click="openSlack" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"></img>
         <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" for="slackLink">
           navasotabrewing.slack.com
         </div>
@@ -520,7 +516,7 @@ OnOffState = Vue.component('on-off-state', {
   },
   template: `
     <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" :for="id">
-      <input v-model="device.newState" :disabled="!modifiable" type="checkbox" :id="id" class="mdl-switch__input" checked>
+      <input v-model="device.state" :disabled="!modifiable" type="checkbox" :id="id" class="mdl-switch__input" checked>
     </label>
   `
 })
@@ -539,7 +535,7 @@ DivertState = Vue.component('divert-state', {
   },
   template: `
     <div style="width: 75px;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <select v-model="device.newState" :disabled="!modifiable" class="mdl-textfield__input" :id="id">
+      <select v-model="device.state" :disabled="!modifiable" class="mdl-textfield__input" :id="id">
         <option value="0">{{ device.states[0] }}</option>
         <option value="1">{{ device.states[1] }}</option>
       </select>
@@ -562,7 +558,7 @@ VariableState = Vue.component('variable-state', {
   },
   template: `
     <div class="mdl-textfield variable-valve-state mdl-js-textfield mdl-textfield--floating-label">
-      <input v-model="device.newState" :disabled="!modifiable" class="mdl-textfield__input" pattern="-?[0-9]*(\.[0-9]+)?" type="tel" :id="id">
+      <input v-model="device.state" :disabled="!modifiable" class="mdl-textfield__input" pattern="-?[0-9]*(\.[0-9]+)?" type="tel" :id="id">
       <label class="mdl-textfield__label" :for="id">State (%)</label>
       <span class="mdl-textfield__error">Needs to be a number</span>
     </div>
@@ -574,9 +570,9 @@ DeviceState = Vue.component('device-state', {
   template: `
     <div>
       <on-off-state   @update="$emit('update', $event)" v-if="device.type == 'onOff'"      :id="id" :modifiable="modifiable" :device="device"></on-off-state>
+      <on-off-state   @update="$emit('update', $event)" v-if="device.type == 'pump'"       :id="id" :modifiable="modifiable" :device="device"></on-off-state>
       <divert-state   @update="$emit('update', $event)" v-if="device.type == 'divert'"     :id="id" :modifiable="modifiable" :device="device"></divert-state>
       <variable-state @update="$emit('update', $event)" v-if="device.type == 'variable'"   :id="id" :modifiable="modifiable" :device="device"></variable-state>
-      <on-off-state   @update="$emit('update', $event)" v-if="device.type == 'pump'"       :id="id" :modifiable="modifiable" :device="device"></on-off-state>
     </div>
   `
 })
@@ -599,15 +595,11 @@ DeviceControlTable = Vue.component('device-control-table', {
         <tr>
           <th class="mdl-data-table__cell--non-numeric">Name</th>
           <th v-if="modifiable" class="mdl-data-table__cell--non-numeric">State</th>
-          <th v-if="modifiable" class="mdl-data-table__cell--non-numeric">New State</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="device in devices" @click="clicked(device)">
           <td class="mdl-data-table__cell--non-numeric device-table-label">{{ device.name }}</td>
-          <td v-if="modifiable" class="mdl-data-table__cell--non-numeric device-table-label">
-            {{ device.states[device.state] }}
-          </td>
           <td v-if="modifiable" class="mdl-data-table__cell--non-numeric">
             <device-state @update="$emit('update', $event)" :id="id(device)" :modifiable="modifiable" :device="device"></device-state>
           </td>
