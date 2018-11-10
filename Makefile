@@ -1,6 +1,9 @@
 build:
 	python setup.py sdist
 
+server:
+	python brewkit/api/server.py
+
 install: build
 	pip install dist/*
 
