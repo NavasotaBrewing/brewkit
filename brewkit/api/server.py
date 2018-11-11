@@ -42,6 +42,17 @@ def serve_configurations():
     with open('brewkit/interface/data/configurations.json') as fi:
         return json.dumps(json.load(fi))
 
+@socket.on('delete_configuration')
+def delete_configuration(config):
+    print(config)
+    with open('brewkit/interface/data/configurations.json') as fi:
+        configs = json.load(fi)
+    configs = [con for con in
+    configs if con['name'] != config['name']]
+    with open('brewkit/interface/data/configurations.json', 'w') as fi:
+        json.dump(configs, fi, indent=2)
+    return 'Configuration deleted'
+
 if __name__ == '__main__':
     app.debug = True
     socket.run(app, '0.0.0.0', 5000)
