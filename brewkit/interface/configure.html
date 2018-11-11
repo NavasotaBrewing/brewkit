@@ -97,6 +97,10 @@
                       <i class="material-icons">save</i>
                       Save
                     </button>
+                    <button v-if="configurationSelected()" @click="deleteConfiguration" class="mdl-button rounded-button-corners small-button mdl-js-button mdl-button--colored mdl-js-ripple-effect">
+                      <!-- <i class="material-icons">close</i> -->
+                      Delete
+                    </button>
                   </div>
                 </div>
               </div>

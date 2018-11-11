@@ -252,6 +252,7 @@ var x = new Vue({
         setTimeout(function () {
           this.message = ''
           $('#snackbar').removeClass('mdl-snackbar--active')
+          this.toastCallback = function () {};
         }, 4000);
       }
     },
@@ -283,6 +284,19 @@ var x = new Vue({
 
     generateId() {
       return 'brewingwithbrewkit2k18'.split('').sort(function () { return 0.5 - Math.random() }).join('');
+    },
+
+    configurationSelected() {
+      if (this.configuration.name == '') return false;
+      return true;
+    },
+
+    deleteConfiguration() {
+      if (confirm("Are you sure? This can't be undone.")) {
+        socket.emit('delete_configuration', x.config, function(response) {
+          x.showToast(response);
+        });
+      }
     }
   },
 
