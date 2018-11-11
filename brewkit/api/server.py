@@ -19,6 +19,8 @@ def handle_update(config):
 
 @socket.on('enact')
 def handle_enact(config):
+    config = json.dumps(config)
+    enact(config)
     return str(config)
 
 @socket.on('save_configuration')
@@ -42,4 +44,4 @@ def serve_configurations():
 
 if __name__ == '__main__':
     app.debug = True
-    socket.run(app, '0.0.0.0')
+    socket.run(app, '0.0.0.0', 5000)

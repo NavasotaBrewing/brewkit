@@ -1,6 +1,30 @@
 CHANGES
 =======
 
+* Some front end work
+* More front end work and makes slack work
+* Makes configuration select actually work
+* Fixes a few small issues
+* Fixes redirect to actually work
+* adds redirect
+* Adds index.html
+* removes flask from interface
+* Fixes socket name
+* Adds config socket listeners to api/server
+* Improves id displays
+* Improves toast
+* Makes messages work better
+* Makes message toast work
+* Makes configuration look not so shite
+* Makes things into pretty google cards and that stuff
+* Makes device cards look not as shitty
+* Adds a little bit of front end work
+* removes card around controller and device tables
+* A lot of interface work
+* A few small updates on the interface side of things
+* Moves interface/app to api/server
+* Adds a basic flask and websocket module
+
 0.0.5
 -----
 
