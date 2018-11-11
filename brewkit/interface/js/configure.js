@@ -87,6 +87,28 @@ var x = new Vue({
   },
 
   methods: {
+    reset() {
+      this.configuration = {
+        name: '',
+        id: this.generateId(),
+        slackWebhook: '',
+        slackChannel: '',
+        controllers: {
+          'STR116': [],
+          'STR008': [],
+          'OmegaCN7500': []
+        },
+        devices: {
+          'onOff': [],
+          'divert': [],
+          'variable': [],
+          'pump': [],
+          'thermostat': []
+        },
+      }
+      this.configurationSelect = 'create'
+    },
+
     deviceType(type) {
       // Returns an array of devices of a certain type
       // This looks stupid but it's for backwards compatibility
@@ -293,8 +315,9 @@ var x = new Vue({
 
     deleteConfiguration() {
       if (confirm("Are you sure? This can't be undone.")) {
-        socket.emit('delete_configuration', x.config, function(response) {
+        socket.emit('delete_configuration', this.configuration, function(response) {
           x.showToast(response);
+          x.reset();
         });
       }
     }
