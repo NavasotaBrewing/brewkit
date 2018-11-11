@@ -11,3 +11,4 @@ env
 brewkit.log
 brewkitenv
 env
+brewkit/interface/data/configurations.json
