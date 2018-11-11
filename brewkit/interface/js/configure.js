@@ -17,6 +17,7 @@ var x = new Vue({
     message: '',
     toastCallback: function() {},
     configurations: [],
+    id: '',
     configurationSelect: 'create',
     // This is the current one
     configuration: {
@@ -46,7 +47,7 @@ var x = new Vue({
       "type": "onOff",
       "address": "",
       "controller_address": '',
-      "state": ''
+      "state": false
     },
     newDivert: {
       "name": "",
@@ -57,30 +58,30 @@ var x = new Vue({
         "0": "",
         "1": ""
       },
-      "state": ''
+      "state": false
     },
     newVariable: {
       "name": "",
       "type": "variable",
       "address": '',
       "controller_address": '',
-      "state": ''
+      "state": false
     },
     newPump: {
       "name": "",
       "type": "pump",
       "address": '',
       "controller_address": '',
-      "state": ''
+      "state": false
     },
     newThermo: {
       "name": "",
       "type": "thermostat",
       "address": '',
       "controller_address": '',
-      "pv": 0,
-      "sv": 0,
-      "state": 0
+      "pv": '0',
+      "sv": '0',
+      "state": false
     }
 
   },
@@ -152,7 +153,7 @@ var x = new Vue({
           "type": "onOff",
           "address": "",
           "controller_address": '',
-          "state": ''
+          "state": false
         }
       }
 
@@ -171,7 +172,7 @@ var x = new Vue({
             "0": "",
             "1": ""
           },
-          "state": ''
+          "state": false
         }
       }
 
@@ -186,7 +187,7 @@ var x = new Vue({
           "type": "variable",
           "address": '',
           "controller_address": '',
-          "state": ''
+          "state": false
         }
       }
 
@@ -201,7 +202,7 @@ var x = new Vue({
           "type": "pump",
           "address": '',
           "controller_address": '',
-          "state": ''
+          "state": false
         }
       }
 
@@ -216,9 +217,9 @@ var x = new Vue({
           "type": "thermostat",
           "address": '',
           "controller_address": '',
-          "pv": 0,
-          "sv": 0,
-          "state": 0
+          "pv": '0',
+          "sv": '0',
+          "state": false
         }
       }
 
@@ -251,6 +252,7 @@ var x = new Vue({
         setTimeout(function () {
           this.message = ''
           $('#snackbar').removeClass('mdl-snackbar--active')
+          this.toastCallback = function () {};
         }, 4000);
       }
     },
@@ -282,6 +284,19 @@ var x = new Vue({
 
     generateId() {
       return 'brewingwithbrewkit2k18'.split('').sort(function () { return 0.5 - Math.random() }).join('');
+    },
+
+    configurationSelected() {
+      if (this.configuration.name == '') return false;
+      return true;
+    },
+
+    deleteConfiguration() {
+      if (confirm("Are you sure? This can't be undone.")) {
+        socket.emit('delete_configuration', x.config, function(response) {
+          x.showToast(response);
+        });
+      }
     }
   },
 
@@ -325,7 +340,8 @@ var x = new Vue({
           name: '',
           slackWebhook: '',
           controllers: [],
-          devices: []
+          devices: [],
+          id: this.generateId()
         }
       }
     }
