@@ -50,7 +50,14 @@ let x = new Vue({
       return flat;
     },
   },
-
+  watch: {
+    config: {
+      handler: function () {
+        this.enact();
+      },
+      deep: true
+    }
+  },
   mounted() {
   },
   updated: function() {

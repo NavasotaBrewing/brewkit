@@ -62,7 +62,7 @@ td {
 }
 
 #slackLink {
-  background-image: url(/images/slack_circular.png);
+  background-image: url('https://i.imgur.com/W07WZxT.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
