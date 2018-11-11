@@ -5,7 +5,7 @@ from ..app.log import log
 
 def update(config):
     """
-    Supply a config and this will update the "state" fields with actual values of hardware
+    Supply a json string config and this will update the "state" fields with actual values of hardware
     """
     config = json.loads(config)
     log.info('starting update')
@@ -25,7 +25,7 @@ def update(config):
                 # Get state
                 device['state'] = con.relay(int(device['address']))
     log.info('ending update')
-    return config
+    return json.dumps(config)
 
 def enact(config):
     config = json.loads(config)

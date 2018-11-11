@@ -26,10 +26,29 @@ let x = new Vue({
     'slack': SlackCard
   },
   methods: {
+    update() {
+      socket.emit('update', this.config, function (response) {
+        x.config = JSON.parse(response.replace(/\'/g, '"'));
+      });
+    },
+
+    enact() {
+      socket.emit('enact', this.config, function (response) {
+        console.log(response);
+      });
+    },
+
+
     setState(event) {
       console.log('somethings updated');
       console.log(event)
-    }
+    },
+    allDevices: function () {
+      // Returns a flat array of every controller
+      devices = Object.values(this.config.devices);
+      var flat = [].concat.apply([], devices);
+      return flat;
+    },
   },
 
   mounted() {

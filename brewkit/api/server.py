@@ -1,6 +1,6 @@
 import json
 
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 from flask_socketio import SocketIO
 
 from brewkit.api.configuration import enact, update
@@ -14,13 +14,12 @@ def home():
 
 @socket.on('update')
 def handle_update(config):
-    socket.emit('new_config', update(str(config)))
+    config = json.dumps(config)
+    return str(update(config))
 
 @socket.on('enact')
 def handle_enact(config):
-    config = str(config).replace('\'', '"')
-    enact(config)
-    handle_update(config)
+    return str(config)
 
 @socket.on('save_configuration')
 def save_configuration(new_config):
