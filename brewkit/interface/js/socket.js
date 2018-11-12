@@ -1,5 +1,5 @@
 // Development
-var socket = io.connect('http://165.91.84.152:5000');
+var socket = io.connect('https://165.91.84.152:5000');
 // var socket = io.connect('http://0.0.0.0:5000');
 
 socket.on('connection', () => {
