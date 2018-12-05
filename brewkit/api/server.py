@@ -1,4 +1,5 @@
 import json
+import hashlib
 
 from flask import Flask, render_template, jsonify
 from flask_socketio import SocketIO
@@ -11,6 +12,15 @@ socket = SocketIO(app)
 @app.route('/')
 def home():
     return "Brewkit API endpoint. If you see this, something went wrong."
+
+@socket.on('password')
+def password(password):
+    pw = hashlib.new('ripemd160')
+    pw.update(password.encode())
+    final = pw.hexdigest()
+    if final == "2c08e8f5884750a7b99f6f2f342fc638db25ff31":
+        return True
+    return False
 
 @socket.on('update')
 def handle_update(config):

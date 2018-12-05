@@ -16,6 +16,8 @@ let x = new Vue({
       }
     },
     stateUpdator: null,
+    toastCallback: function() {},
+    message: ''
   },
   components: {
     'temp-chart': TempChartComponent,
@@ -36,6 +38,25 @@ let x = new Vue({
       socket.emit('enact', this.config, function (response) {
         console.log(response);
       });
+    },
+
+    showToast(message, callback) {
+      this.message = message;
+      if (callback) {
+        this.toastCallback = callback;
+      }
+      if (this.message == '') {
+        // Deactivate
+        $('#snackbar').removeClass('mdl-snackbar--active')
+      } else {
+        // Activate
+        $('#snackbar').addClass('mdl-snackbar--active')
+        setTimeout(function () {
+          this.message = ''
+          $('#snackbar').removeClass('mdl-snackbar--active')
+          this.toastCallback = function () { };
+        }, 4000);
+      }
     },
 
 
@@ -67,3 +88,4 @@ let x = new Vue({
     });
   }
 })
+
