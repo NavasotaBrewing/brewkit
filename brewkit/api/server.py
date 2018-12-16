@@ -55,4 +55,4 @@ def delete_configuration(config):
 
 if __name__ == '__main__':
     app.debug = True
-    socket.run(app, '0.0.0.0', 5000)
+    socket.run(app, '0.0.0.0', 5000, ssl_context='adhoc')

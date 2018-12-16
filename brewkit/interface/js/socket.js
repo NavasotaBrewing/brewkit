@@ -1,6 +1,6 @@
 // Development
-// brewkit_address = 'http://165.91.84.152:5000'
-brewkit_address = 'http://0.0.0.0:5000'
+brewkit_address = 'http://165.91.84.152:5000'
+// brewkit_address = 'http://0.0.0.0:5000'
 
 var socket = io.connect(brewkit_address);
 
