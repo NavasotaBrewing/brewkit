@@ -1,9 +1,3 @@
-user = Cookies.get('user')
-if (user != 'admin') {
-  console.log("authentication failed")
-  location = 'login.html'
-}
-
 let x = new Vue({
   el: '#dashboard',
   data: {
