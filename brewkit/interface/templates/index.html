@@ -1,100 +1,209 @@
-<!doctype html>
-<html lang="en">
-
+<!DOCTYPE html>
+<html>
 
 <head>
+  {% include 'header.html' %}
   <title>Dashboard</title>
-  {% include "sources.html" %}
+  {% include 'sources.html' %}
 </head>
-
 
 <body>
   <div id="dashboard">
-    {% include "snackbar.html" %}
-    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-      <main-header title="Dashboard" @select-config="config = $event"></main-header>
-      <drawer></drawer>
-      <!-- Main Content -->
-      <main class="mdl-layout__content mdl-color--grey-100">
-        <div class="mdl-grid">
-          <!-- Left Column | Procedures -->
-          <div id="runProcedure" class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone mdl-cell--12-col-tablet">
-            <div class="full-width colored-card--green rounded-corners mdl-card mdl-shadow--2dp">
-              <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text mdl-cell--hide-phone">
-                  Current Procedure
-                </h2>
-                <div class="mdl-layout-spacer"></div>
-                <a class="mdl-button rounded-button-corners mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                  <i class="material-icons">play_arrow</i>
-                </a>
-                <a class="mdl-button rounded-button-corners mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                  <i class="material-icons">pause</i>
-                </a>
-                <a class="mdl-button rounded-button-corners mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                  Stop
-                </a>
+    {% include 'navbar.html' %}
+    <!-- Tools -->
+    <div class="uk-section">
+      <div class="uk-container">
+        <!-- Tool Grid -->
+        <div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
+          <!-- Timer -->
+          <div>
+            <div id="timerCountdown" class="uk-grid-small uk-child-width-auto" uk-countdown="date: 2018-12-20T09:41:29+0000"
+              uk-grid>
+              <!-- Hours -->
+              <div>
+                <div class="uk-countdown-number uk-countdown-hours"></div>
+                <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Hours</div>
               </div>
-              <div class="mdl-card__supporting-text">
-                <!-- Hidden for development, check styles.css #procedureActiveBar -->
-                <div id="procedureActiveBar" class="mdl-progress full-width mdl-js-progress mdl-progress__indeterminate"></div>
-                <table class="mdl-data-table mdl-js-data-table full-width mdl-shadow--2dp">
-                  <thead>
-                    <tr>
-                      <th class="mdl-data-table__cell--non-numeric">Step</th>
-                      <th>Details</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="mdl-data-table__cell--non-numeric">HLT</td>
-                      <td>Open</td>
-                    </tr>
-                    <tr>
-                      <td class="mdl-data-table__cell--non-numeric">Wait</td>
-                      <td>5 Minutes</td>
-                    </tr>
-                    <tr>
-                      <td class="mdl-data-table__cell--non-numeric">Slack Message</td>
-                      <td>Timer Done!</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div class="uk-countdown-separator">:</div>
+              <!-- Minutes -->
+              <div>
+                <div class="uk-countdown-number uk-countdown-minutes"></div>
+                <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Minutes</div>
+              </div>
+              <div class="uk-countdown-separator">:</div>
+              <!-- Seconds -->
+              <div>
+                <div class="uk-countdown-number uk-countdown-seconds"></div>
+                <div class="uk-countdown-label uk-margin-small uk-text-center uk-visible@s">Seconds</div>
+              </div>
+            </div>
+            <div class="uk-margin uk-align-left">
+              <div class="uk-margin">
+                <input class="uk-input" type="text" placeholder="Duration">
+              </div>
+              <button class="uk-button uk-button-primary">Start</button>
+              <button class="uk-button uk-button-default">Clear</button>
+              <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                <label><input class="uk-checkbox" type="checkbox" checked> Send slack message when done</label>
               </div>
             </div>
           </div>
-          <!-- Right Column | Tools -->
-          <div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-phone mdl-cell--12-col-tablet">
-            <!-- Timer Card -->
-            <timer></timer>
-            <!-- Slack Card -->
-            <slack :webhook="config.slackWebhook" :channel="config.slackChannel"></slack>
-            <!-- Devices Card -->
-            <div v-if="allDevices().length > 0" class="full-width colored-card--green rounded-corners mdl-card mdl-shadow--2dp">
-              <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text mdl-cell--hide-phone">
-                  Valves
-                </h2>
-                <div class="mdl-layout-spacer"></div>
-                <button @click="enact()" style="font-size: 16px" class="mdl-button mdl-js-button mdl-button--colored rounded-button-corners mdl-js-ripple-effect">
-                  Set
-                </button>
-              </div>
-              <div class="mdl-card__supporting-text">
-                <devices @update="setState" :devices="config.devices" :modifiable="true"></devices>
-              </div>
+          <!-- Slack -->
+          <div>
+            <h2 class="uk-heading-secondary">
+              Slack
+              <a href="https://navasotabrewing.slack.com" target="new">
+                <img src="https://i.imgur.com/W07WZxT.png" alt="The Navasota Brewing Slack Channel" width="40px" class="uk-align-right">
+              </a>
+            </h2>
+            <p class="uk-text-meta">Posting to @luke</p>
+            <div class="uk-margin">
+              <textarea class="uk-textarea" rows="3" placeholder="Slack Message"></textarea>
             </div>
-            <!-- Thermostat Card Component -->
-            <temp-chart v-for="thermo in config.devices.thermostat" ref="tempChart" :key="thermo.address" :thermo="thermo"></temp-chart>
+            <button class="uk-button uk-button-default">
+              Send
+              <span uk-icon="icon: arrow-right"></span>
+            </button>
           </div>
         </div>
-      </main>
+      </div>
     </div>
-  </div>
+    <!-- Valves -->
+    <div class="uk-section uk-section-muted">
+      <div class="uk-container">
+        <div uk-filter="target: #valveFilter">
 
-  <!-- Custom JS -->
-  {% include "components.html" %}
-  <script src="%% url_for('static', filename='js/index.js') %%"></script>
+          <ul class="uk-subnav uk-subnav-pill">
+            <li uk-filter-control=".valve" class="uk-active"><a href="#">All</a></li>
+            <li uk-filter-control=".tag-onOff"><a href="#">On/Off</a></li>
+            <li uk-filter-control=".tag-divert"><a href="#">Diverts</a></li>
+            <li uk-filter-control=".tag-pump"><a href="#">Pumps</a></li>
+          </ul>
+
+          <ul id="valveFilter" class="uk-child-width-1-2 uk-child-width-1-3@m" uk-grid>
+            <li class="valve tag-onOff">
+              <div class="uk-card uk-card-default uk-card-body">
+                <div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
+                  <div>
+                    <dl>
+                      <dt>HLT Valve</dt>
+                      <dd>Main STR116</dd>
+                      <span class="uk-label uk-label-danger">Closed</span>
+                    </dl>
+                  </div>
+                  <div>
+                    <div class="uk-container uk-margin-top">
+                      <button class="uk-button uk-button-primary">Toggle</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="valve tag-divert">
+              <div class="uk-card uk-card-default uk-card-body">
+                <div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
+                  <div>
+                    <dl>
+                      <dt>HLT Divert</dt>
+                      <dd>Main STR116</dd>
+                      <span class="uk-label uk-label-danger">Mash</span>
+                    </dl>
+                  </div>
+                  <div>
+                    <div class="uk-container uk-margin-top">
+                      <button class="uk-button uk-button-primary">Toggle</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="valve tag-pump">
+              <div class="uk-card uk-card-default uk-card-body">
+                <div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
+                  <div>
+                    <dl>
+                      <dt>RIMS Pump</dt>
+                      <dd>Main STR116</dd>
+                      <span class="uk-label uk-label-success">On</span>
+                    </dl>
+                  </div>
+                  <div>
+                    <div class="uk-container uk-margin-top">
+                      <button class="uk-button uk-button-primary">Toggle</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="valve tag-divert">
+              <div class="uk-card uk-card-default uk-card-body">
+                <div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
+                  <div>
+                    <dl>
+                      <dt>RIMS Divert</dt>
+                      <dd>Main STR116</dd>
+                      <span class="uk-label uk-label-success">Boil</span>
+                    </dl>
+                  </div>
+                  <div>
+                    <div class="uk-container uk-margin-top">
+                      <button class="uk-button uk-button-primary">Toggle</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    <!-- Thermostats -->
+    <div class="uk-section">
+      <div class="uk-container">
+        <div class="uk-child-width-1-1@s" uk-grid>
+          <div>
+            <div uk-grid>
+              <!-- Tabs -->
+              <div class="uk-width-auto@m">
+                <ul class="uk-tab-left" uk-tab="connect: #component-tab-left; animation: uk-animation-fade">
+                  <li><a href="#">RIMS Thermostat</a></li>
+                  <li><a href="#">Secondary Thermostat</a></li>
+                </ul>
+              </div>
+              <!-- Tab Content -->
+              <div class="uk-width-expand@m">
+                <ul id="component-tab-left" class="uk-switcher">
+                  <li>
+                    <!-- First Chart -->
+                    <div id="thermoChart"></div>
+                    <!-- New SV -->
+                    <div class="uk-margin">
+                      <button class="uk-button uk-button-primary"><i class="fa fa-power-off" aria-hidden="true"></i>&nbsp;Power</button>
+                      <div class="uk-inline">
+                        <a class="uk-form-icon uk-form-icon-flip" uk-icon="icon: check"></a>
+                        <input class="uk-input" type="text" placeholder="New SV">
+                      </div>
+                    </div>
+
+                  </li>
+                  <li>
+                    <div id="thermoChart2"></div>
+                    <!-- Second Chart -->
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
 </body>
+
+<script src="%% url_for('static', filename='js/chart.js') %%"></script>
 
 </html>
