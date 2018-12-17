@@ -15,17 +15,9 @@ let x = new Vue({
         'thermostat': [],
       }
     },
-    stateUpdator: null,
-    toastCallback: function() {},
-    message: ''
-  },
-  components: {
-    'temp-chart': TempChartComponent,
-    'main-header': MainHeaderComponent,
-    'drawer': DrawerComponent,
-    'timer': TimerComponent,
-    'devices': AllDevicesTabs,
-    'slack': SlackCard
+    configurationSelect: null,
+    slackMessage: '',
+    configs: []
   },
   methods: {
     update() {
@@ -41,49 +33,30 @@ let x = new Vue({
       });
     },
 
-    showToast(message, callback) {
-      this.message = message;
-      if (callback) {
-        this.toastCallback = callback;
-      }
-      if (this.message == '') {
-        // Deactivate
-        $('#snackbar').removeClass('mdl-snackbar--active')
-      } else {
-        // Activate
-        $('#snackbar').addClass('mdl-snackbar--active')
-        setTimeout(function () {
-          this.message = ''
-          $('#snackbar').removeClass('mdl-snackbar--active')
-          this.toastCallback = function () { };
-        }, 4000);
-      }
+    showToast(message) {
+      UIkit.notification({ message: message, status: 'success', pos: 'bottom-left', timeout: 50000000})
     },
 
-
-    setState(event) {
-      console.log('somethings updated');
-      console.log(event)
-    },
-    allDevices: function () {
-      // Returns a flat array of every controller
-      devices = Object.values(this.config.devices);
-      var flat = [].concat.apply([], devices);
-      return flat;
-    },
+    sendSlackMessage() {
+      sendInSlack(this.slackMessage, this.config.slackWebhook);
+      x.slackMessage = ''
+    }
   },
   watch: {
+    configurationSelect: function () {
+      if (this.configurationSelect != 'Select a Configuration') {
+        this.config = this.configs.filter(x => x.name == this.configurationSelect)[0];
+      } else {
+        this.config = []
+      }
+    }
   },
   mounted() {
-    this.stateUpdator = setInterval(() => {
-      // this.update();
-    }, 2000);
+    socket.emit('get_configurations', function (configs) {
+      x.configs = JSON.parse(configs);
+    });
   },
   updated: function() {
-    // This is a fix for MDL
-    this.$nextTick(function () {
-      componentHandler.upgradeDom();
-    });
   }
 })
 

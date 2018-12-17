@@ -56,11 +56,11 @@
                 <img src="https://i.imgur.com/W07WZxT.png" alt="The Navasota Brewing Slack Channel" width="40px" class="uk-align-right">
               </a>
             </h2>
-            <p class="uk-text-meta">Posting to @luke</p>
+            <p class="uk-text-meta">Posting to {{ config.slackChannel }}</p>
             <div class="uk-margin">
-              <textarea class="uk-textarea" rows="3" placeholder="Slack Message"></textarea>
+              <textarea :disabled="!config.slackWebhook" v-model="slackMessage" class="uk-textarea" rows="3" placeholder="Slack Message"></textarea>
             </div>
-            <button class="uk-button uk-button-default">
+            <button :disabled="!config.slackWebhook" @click="sendSlackMessage" class="uk-button uk-button-default">
               Send
               <span uk-icon="icon: arrow-right"></span>
             </button>
@@ -205,5 +205,6 @@
 </body>
 
 <script src="%% url_for('static', filename='js/chart.js') %%"></script>
+<script src="%% url_for('static', filename='js/index.js') %%"></script>
 
 </html>

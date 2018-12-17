@@ -1,4 +1,3 @@
-<!-- Navbar -->
 <nav class="uk-navbar-container" uk-navbar>
   <!-- Nav Items -->
   <div class="uk-navbar-left uk-margin-left">
@@ -17,8 +16,9 @@
   <!-- Configuration select -->
   <div class="uk-navbar-right">
     <div class="container uk-margin-right">
-      <select id="configurationSelect" class="uk-select">
-        <option>Select a Configuration</option>
+      <select v-model="configurationSelect" id="configurationSelect" class="uk-select">
+        <option selected="selected">Select a Configuration</option>
+        <option v-for="config in configs" :value="config.name">{{ config.name }}</option>
       </select>
     </div>
   </div>
