@@ -69,4 +69,4 @@ def delete_configuration(config):
 if __name__ == '__main__':
     app.debug = True
     # send_ip('aws url')
-    socket.run(app, '0.0.0.0', 5000, ssl_context='adhoc')
+    socket.run(app, '0.0.0.0', 5000)

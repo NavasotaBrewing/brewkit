@@ -30,14 +30,14 @@ let x = new Vue({
   methods: {
     update() {
       socket.emit('update', this.config, function (response) {
-        console.log(JSON.parse(response.replace(/\'/g, '"')))
+        console.log('updated')
         x.config = JSON.parse(response.replace(/\'/g, '"'));
       });
     },
 
     enact() {
       socket.emit('enact', this.config, function (response) {
-        console.log(response);
+        console.log('enacted');
       });
     },
 
@@ -73,14 +73,11 @@ let x = new Vue({
     },
   },
   watch: {
-    config: {
-      handler: function () {
-        this.enact();
-      },
-      deep: true
-    }
   },
   mounted() {
+    this.stateUpdator = setInterval(() => {
+      // this.update();
+    }, 2000);
   },
   updated: function() {
     // This is a fix for MDL

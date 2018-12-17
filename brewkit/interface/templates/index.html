@@ -75,6 +75,10 @@
                 <h2 class="mdl-card__title-text mdl-cell--hide-phone">
                   Valves
                 </h2>
+                <div class="mdl-layout-spacer"></div>
+                <button @click="enact()" style="font-size: 16px" class="mdl-button mdl-js-button mdl-button--colored rounded-button-corners mdl-js-ripple-effect">
+                  Set
+                </button>
               </div>
               <div class="mdl-card__supporting-text">
                 <devices @update="setState" :devices="config.devices" :modifiable="true"></devices>

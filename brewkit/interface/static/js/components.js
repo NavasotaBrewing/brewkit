@@ -419,8 +419,8 @@ SlackCard = Vue.component('slack', {
     },
   },
   template: `
-    <div class="full-width colored-card--green rounded-corners mdl-card mdl-shadow--2dp">
-      <div id="slackCardTitle" class="mdl-card__title">
+    <div id="slackCard" class="full-width colored-card--green rounded-corners mdl-card mdl-shadow--2dp">
+      <div id="slackCardTitle" class="mdl-card__title" style="background-color: #fff">
         <h2 class="mdl-card__title-text">Slack</h2>
       </div>
       <div class="mdl-card__supporting-text">
@@ -433,7 +433,7 @@ SlackCard = Vue.component('slack', {
           <label v-else class="mdl-textfield__label" for="slackMessage">Select a configuration first</label>
         </div>
       </div>
-      <div class="mdl-card__actions mdl-card--border">
+      <div class="mdl-card__actions mdl-card--border" style="background-color: #fff">
         <a @click="sendSlackMessage" class="mdl-button rounded-button-corners mdl-button--colored mdl-js-button mdl-js-ripple-effect">
           <i class="material-icons">send</i>
           Send
