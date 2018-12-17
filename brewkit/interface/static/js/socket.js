@@ -1,17 +1,4 @@
-// Development
-brewkit_address = 'http://165.91.84.152:5000'
-// brewkit_address = 'http://0.0.0.0:5000'
-
-var socket = io.connect(brewkit_address);
-
-socket.on('connection', () => {
-  console.log('Socket connected');
+var socket = null
+$.get('/hardware_address', function(address) {
+  socket = io.connect(address);
 })
-
-socket.on('log', function(message) {
-  console.log(message);
-});
-
-socket.on('error', function(err_message) {
-  console.error(err_message);
-});

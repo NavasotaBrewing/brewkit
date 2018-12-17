@@ -57,4 +57,5 @@ def delete_configuration(config):
 
 if __name__ == '__main__':
     app.debug = True
+    # Send ip
     socket.run(app, '0.0.0.0', 5000, ssl_context='adhoc')
