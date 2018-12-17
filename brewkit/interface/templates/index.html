@@ -17,8 +17,7 @@
         <div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
           <!-- Timer -->
           <div>
-            <div id="timerCountdown" class="uk-grid-small uk-child-width-auto" uk-countdown="date: 2018-12-20T09:41:29+0000"
-              uk-grid>
+            <div id="timerCountdown" class="uk-grid-small uk-child-width-auto" uk-grid>
               <!-- Hours -->
               <div>
                 <div class="uk-countdown-number uk-countdown-hours"></div>
@@ -39,10 +38,10 @@
             </div>
             <div class="uk-margin uk-align-left">
               <div class="uk-margin">
-                <input class="uk-input" type="text" placeholder="Duration">
+                <input v-model="timerInput" class="uk-input" type="text" placeholder="Duration">
               </div>
-              <button class="uk-button uk-button-primary">Start</button>
-              <button class="uk-button uk-button-default">Clear</button>
+              <button @click="startTimer" class="uk-button uk-button-primary">Start</button>
+              <button @click="stopTimer" class="uk-button uk-button-default">Clear</button>
               <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
                 <label><input class="uk-checkbox" type="checkbox" checked> Send slack message when done</label>
               </div>

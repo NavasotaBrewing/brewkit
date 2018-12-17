@@ -17,7 +17,8 @@ let x = new Vue({
     },
     configurationSelect: null,
     slackMessage: '',
-    configs: []
+    configs: [],
+    timerInput: ''
   },
   methods: {
     update() {
@@ -31,6 +32,34 @@ let x = new Vue({
       socket.emit('enact', this.config, function (response) {
         console.log('enacted');
       });
+    },
+
+    stopTimer() {
+      UIkit.countdown($('#timerCountdown')).stop();
+
+    },
+
+    startTimer() {
+      date = this.inputToISO(this.timerInput);
+      this.timer = UIkit.countdown($('#timerCountdown'), {date: date});
+      this.timer.start();
+      this.timerInput = ''
+    },
+
+    inputToISO(str) {
+      times = str.split(':')
+      hours = parseInt(times[0])
+      minutes = parseInt(times[1])
+      seconds = parseInt(times[2])
+
+      now = moment().unix()
+      now += hours * 3600
+      now += minutes * 60
+      now += seconds
+
+      iso = moment(now * 1000).format()
+      console.log(iso)
+      return iso
     },
 
     showToast(message) {
