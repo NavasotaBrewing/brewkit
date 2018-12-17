@@ -30,6 +30,7 @@ let x = new Vue({
   methods: {
     update() {
       socket.emit('update', this.config, function (response) {
+        console.log(JSON.parse(response.replace(/\'/g, '"')))
         x.config = JSON.parse(response.replace(/\'/g, '"'));
       });
     },
