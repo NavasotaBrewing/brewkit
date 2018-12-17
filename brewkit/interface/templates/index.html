@@ -1,54 +1,16 @@
 <!doctype html>
 <html lang="en">
 
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <title>Dashboard</title>
-
-  <!-- Add to homescreen for Chrome on Android -->
-  <meta name="mobile-web-app-capable" content="yes">
-
-  <!-- Add to homescreen for Safari on iOS -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Brewer Dashboard">
-
-  <!-- JS -->
-  <script src="js/libs/socket.io.min.js"></script>
-  <script src="js/socket.js"></script>
-  <script src="js/libs/vue.js"></script>
-  <script src="js/libs/Chart.bundle.js"></script>
-  <script src="js/libs/material.min.js"></script>
-  <script src="js/libs/Tock.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-  <script src="js/chart_colors.js"></script>
-  <script src="js/password.js"></script>
-  <script src="js/libs/cookie.js"></script>
-  <script src="js/libs/jquery.min.js"></script>
-  <!-- More custom JS at end of <body> tag -->
-  <script src="js/components.js"></script>
-
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/csshake/1.5.3/csshake.min.css">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-blue.min.css" />
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/styles.css">
+  {% include "sources.html" %}
 </head>
+
 
 <body>
   <div id="dashboard">
-    <div id="snackbar" @click="toastCallback()" class="mdl-js-snackbar mdl-snackbar">
-      <div class="mdl-snackbar__text">
-        {{ message }}
-      </div>
-    </div>
+    {% include "snackbar.html" %}
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <main-header title="Dashboard" @select-config="config = $event"></main-header>
       <drawer></drawer>
@@ -127,8 +89,8 @@
   </div>
 
   <!-- Custom JS -->
-  <script src="js/components.js"></script>
-  <script src="js/index.js"></script>
+  {% include "components.html" %}
+  <script src="%% url_for('static', filename='js/index.js') %%"></script>
 </body>
 
 </html>

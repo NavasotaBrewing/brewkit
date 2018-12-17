@@ -4,6 +4,9 @@ build:
 server:
 	python brewkit/api/server.py
 
+interface:
+	python brewkit/interface/interface.py
+
 install: build
 	pip install dist/*
 
@@ -21,3 +24,6 @@ test:
 
 install_deps:
 	pip install -r requirements.txt
+
+ec2:
+	ssh -i "brewkit.pem" ubuntu@ec2-34-218-78-196.us-west-2.compute.amazonaws.com

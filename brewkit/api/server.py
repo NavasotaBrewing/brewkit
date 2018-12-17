@@ -8,6 +8,8 @@ from brewkit.api.configuration import enact, update
 app = Flask(__name__)
 socket = SocketIO(app)
 
+app.storage_file = 'brewkit/api/data/configurations.json'
+
 @app.route('/')
 def home():
     return "Brewkit API endpoint. If you see this, something went wrong."
@@ -25,13 +27,13 @@ def handle_enact(config):
 
 @socket.on('save_configuration')
 def save_configuration(new_config):
-    with open('brewkit/interface/data/configurations.json') as fi:
+    with open(app.storage_file) as fi:
         configs = json.load(fi)
     try:
         configs[:] = [d for d in configs if d.get(
             'id') != new_config['id']]
         configs.append(new_config)
-        with open('brewkit/interface/data/configurations.json', 'w') as fi:
+        with open(app.storage_file, 'w') as fi:
             json.dump(configs, fi, indent=2)
         return 'Configuration saved'
     except KeyError:
@@ -39,17 +41,17 @@ def save_configuration(new_config):
 
 @socket.on('get_configurations')
 def serve_configurations():
-    with open('brewkit/interface/data/configurations.json') as fi:
+    with open(app.storage_file) as fi:
         return json.dumps(json.load(fi))
 
 @socket.on('delete_configuration')
 def delete_configuration(config):
     print(config)
-    with open('brewkit/interface/data/configurations.json') as fi:
+    with open(app.storage_file) as fi:
         configs = json.load(fi)
     configs = [con for con in
     configs if con['name'] != config['name']]
-    with open('brewkit/interface/data/configurations.json', 'w') as fi:
+    with open(app.storage_file, 'w') as fi:
         json.dump(configs, fi, indent=2)
     return 'Configuration deleted'
 
