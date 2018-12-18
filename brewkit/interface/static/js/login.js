@@ -2,33 +2,29 @@ let x = new Vue({
   el: '#login',
   data: {
     registerCard: false,
-    newUser: {
+    user: {
       name: '',
       username: '',
       password: '',
       passwordConfirm: '',
       email: ''
     },
-    user: {
-      username: '',
-      password: ''
-    }
   },
   methods: {
 
     validate() {
       passed = true
-      if (this.newUser.password.length < 6) {
+      if (this.user.password.length < 6) {
         this.toast('Password needs to be at least 6 characters', 'danger')
         passed = false;
       }
 
-      if (this.newUser.password != this.newUser.passwordConfirm) {
+      if (this.user.password != this.user.passwordConfirm) {
         this.toast("Password and confirmation don't match", 'danger')
         passed = false
       }
 
-      if (this.newUser.username == '') {
+      if (this.user.username == '') {
         this.toast('Please provide a username', 'danger')
         passed = false
       }
@@ -41,7 +37,7 @@ let x = new Vue({
         return false;
       }
       $.ajax('/register', {
-        data: JSON.stringify(this.newUser),
+        data: JSON.stringify(this.user),
         contentType: 'application/json',
         type: 'POST',
         success: function (response) {
@@ -50,8 +46,6 @@ let x = new Vue({
           } else if (response == 'success') {
             // Happy path, user registered, go to login
             x.toast('User saved')
-            x.user.username = x.newUser.usename;
-            x.user.password = x.newUser.password;
             x.registerCard = false;
           }
         }
@@ -74,6 +68,9 @@ let x = new Vue({
         success: function(response) {
           if (response == 'success') {
             x.toast('Logged in')
+            Cookies.set('username', x.user.username);
+            Cookies.set('password', x.user.password);
+            document.location = '/'
           } else if (response == 'error') {
             x.toast('Username and password did not match', 'danger')
           } else if (response == 'not_found') {

@@ -13,7 +13,7 @@
       <div uk-grid>
         <div class="uk-container">
           <!-- Login Card -->
-          <div id="loginCard" v-show="!registerCard" class="uk-card uk-card-secondary uk-card-body">
+          <div id="loginCard" v-if="!registerCard" class="uk-card uk-card-secondary uk-card-body">
             <h3 class="uk-card-title">Login</h3>
             <div class="uk-margin">
               <input v-model="user.username" class="uk-input" type="text" placeholder="Username">
@@ -27,37 +27,33 @@
             </div>
           </div>
           <!-- Register Card -->
-          <div id="registerCard" v-show="registerCard" class="uk-card uk-card-secondary uk-card-body">
+          <div id="registerCard" v-if="registerCard" class="uk-card uk-card-secondary uk-card-body">
             <h3 class="uk-card-title">Register</h3>
             <!-- Name -->
             <div class="uk-margin">
-              <input v-model="newUser.name" class="uk-input" type="text" placeholder="Name (optional)">
+              <input v-model="user.name" class="uk-input" type="text" placeholder="Name (optional)">
             </div>
             <!-- Username -->
             <div class="uk-margin">
-              <input v-model="newUser.username" class="uk-input" type="text" placeholder="Username">
+              <input v-model="user.username" class="uk-input" type="text" placeholder="Username">
             </div>
             <!-- Password -->
             <div class="uk-margin">
-              <input v-model="newUser.password" class="uk-input" type="password" placeholder="Password">
+              <input v-model="user.password" class="uk-input" type="password" placeholder="Password">
             </div>
             <!-- Password Confirm -->
             <div class="uk-margin">
-              <input v-model="newUser.passwordConfirm" class="uk-input" type="password" placeholder="Confirm Password">
+              <input v-model="user.passwordConfirm" class="uk-input" type="password" placeholder="Confirm Password">
             </div>
             <!-- Email -->
             <div class="uk-margin">
-              <input v-model="newUser.email" class="uk-input" type="text" placeholder="Email (optional)">
+              <input v-model="user.email" class="uk-input" type="text" placeholder="Email (optional)">
               <p class="uk-text-meta">(Email is only used for resetting your password)</p>
             </div>
             <!-- Buttons -->
             <div class="uk-margin">
               <button @click="registerCard = false" class="uk-button uk-button-default">Back</button>
               <button @click="register()" class="uk-button uk-button-default">Register</button>
-            </div>
-            <!-- Message -->
-            <div class="uk-margin">
-
             </div>
           </div>
         </div>

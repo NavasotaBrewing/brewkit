@@ -11,6 +11,7 @@ class UserManager(object):
     def add_user(self, new_user):
         new_user['password'] = generate_password_hash(new_user['password'])
         del new_user['passwordConfirm']
+        new_user['role'] = 'viewer'
         if new_user['username'] in [u['username'] for u in self.users]:
             return 'exists'
 
@@ -23,6 +24,8 @@ class UserManager(object):
             json.dump(self.users, fi, indent=2)
 
     def login(self, attempt_user):
+        if attempt_user == {}:
+            return 'error'
         try:
             user = [u for u in self.users if u['username'] == attempt_user['username']][0]
         except IndexError:

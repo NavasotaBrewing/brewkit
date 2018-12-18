@@ -5,11 +5,5 @@
     "password": "pbkdf2:sha256:50000$vEcY2FMm$59c4578897ff347539f85ca14aa5b46be21608ffb28ebd3bdad4a54be346e3c9",
     "email": "llamicron@gmail.com",
     "role": "brewer"
-  },
-  {
-    "name": "",
-    "username": "secondary",
-    "password": "pbkdf2:sha256:50000$9eQa4hnU$36acd865038c6a959bb7ad111bc78ea6c3fca01b29c6d3bbef47a060b483b4a9",
-    "email": ""
   }
 ]
