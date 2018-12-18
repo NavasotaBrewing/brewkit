@@ -18,7 +18,8 @@ let x = new Vue({
     configurationSelect: null,
     slackMessage: '',
     configs: [],
-    timerInput: ''
+    timerInput: '',
+    timer: null
   },
   methods: {
     update() {
@@ -35,18 +36,38 @@ let x = new Vue({
     },
 
     stopTimer() {
-      UIkit.countdown($('#timerCountdown')).stop();
+      this.timer.stop();
+      this.timer.date = moment().unix() * 1000;
+    },
 
+    prepInput() {
+      if (this.timerInput == '') {
+        return '00:00:00';
+      }
+
+      if (this.timerInput.length <= 2) {
+        return "00:" + this.timerInput + ":00"
+      }
+
+      if (this.timerInput.length <= 5) {
+       return "00:" + this.timerInput;
+      }
+
+
+      return this.timerInput;
     },
 
     startTimer() {
-      date = this.inputToISO(this.timerInput);
+      input = this.prepInput();
+      date = this.inputToISO(input);
       this.timer = UIkit.countdown($('#timerCountdown'), {date: date});
       this.timer.start();
       this.timerInput = ''
     },
 
     inputToISO(str) {
+      // Takes an input like 02:34:31 and converts it to an ISO 8601 date with that time added to the current time
+      console.log(str)
       times = str.split(':')
       hours = parseInt(times[0])
       minutes = parseInt(times[1])
@@ -58,7 +79,6 @@ let x = new Vue({
       now += seconds
 
       iso = moment(now * 1000).format()
-      console.log(iso)
       return iso
     },
 
@@ -78,6 +98,15 @@ let x = new Vue({
       } else {
         this.config = []
       }
+    }
+  },
+  computed: {
+    done: function () {
+      if (!this.timer) return true;
+      if (this.timer.date <= moment().unix() * 1000) {
+        return true;
+      }
+      return false;
     }
   },
   mounted() {
