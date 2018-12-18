@@ -4,7 +4,9 @@
     {% include 'header.html' %}
     <title>Dashboard</title>
     {% include 'sources.html' %}
-    {% include 'brewers_only.html' %}
+    <script>
+      Middleware.restrictTo('brewer')
+    </script>
   </head>
 
 <body>

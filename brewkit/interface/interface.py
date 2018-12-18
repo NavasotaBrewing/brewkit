@@ -48,7 +48,7 @@ def update_users():
 def all_users():
     return json.dumps(app.user_manager.users)
 
-@app.route('/viewer')
+@app.route('/view')
 def view_panel():
     return render_template('view.html')
 

@@ -72,7 +72,7 @@ let x = new Vue({
             user.password = x.user.password;
             console.log(user)
             Cookies.set('user', JSON.stringify(user))
-            document.location = '/'
+            Middleware.redirect('/')
           } else {
             x.toast('Password does not match', 'danger')
           }

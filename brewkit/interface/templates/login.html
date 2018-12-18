@@ -5,6 +5,11 @@
   {% include 'header.html' %}
   <title>Login</title>
   {% include 'sources.html' %}
+  <script>
+    if (Middleware.loggedIn()) {
+      Middleware.redirect('/')
+    }
+  </script>
 </head>
 
 <body>

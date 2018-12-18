@@ -4,6 +4,9 @@
   {% include 'header.html' %}
   <title>Viewing Panel</title>
   {% include 'sources.html' %}
+  <script>
+    Middleware.restrictTo('viewer')
+  </script>
 </head>
 <body>
   {% include 'navbar.html' %}
