@@ -1,6 +1,7 @@
 import json
 
 from flask import Flask, render_template, redirect, request
+from werkzeug.security import check_password_hash, generate_password_hash
 
 class CustomFlask(Flask):
     jinja_options = Flask.jinja_options.copy()
@@ -15,6 +16,10 @@ class CustomFlask(Flask):
 
 app = CustomFlask(__name__)
 address_file = 'brewkit/interface/data/address.json'
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
 @app.route('/dashboard')
 @app.route('/')
