@@ -16,10 +16,10 @@
           <div id="loginCard" v-if="!registerCard" class="uk-card uk-card-secondary uk-card-body">
             <h3 class="uk-card-title">Login</h3>
             <div class="uk-margin">
-              <input v-model="user.username" class="uk-input" type="text" placeholder="Username">
+              <input @keydown.enter="login()" v-model="user.username" class="uk-input" type="text" placeholder="Username">
             </div>
             <div class="uk-margin">
-              <input v-model="user.password" class="uk-input" type="password" placeholder="Password">
+              <input @keydown.enter="login()" v-model="user.password" class="uk-input" type="password" placeholder="Password">
             </div>
             <div class="uk-margin">
               <button @click="login()" class="uk-button uk-button-default">Login</button>
