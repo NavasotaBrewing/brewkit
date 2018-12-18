@@ -4,11 +4,12 @@
     {% include 'header.html' %}
     <title>Dashboard</title>
     {% include 'sources.html' %}
+    {% include 'brewers_only.html' %}
   </head>
 
 <body>
+  {% include 'navbar.html' %}
   <div id="dashboard">
-    {% include 'navbar.html' %}
     <!-- Tools -->
     <div class="uk-section">
       <div class="uk-container">
@@ -198,9 +199,10 @@
       </div>
     </div>
 
-
-
   </div>
+
+  {% include 'promote.html' %}
+
 </body>
 
 <script src="%% url_for('static', filename='js/chart.js') %%"></script>

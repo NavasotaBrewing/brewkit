@@ -20,7 +20,11 @@ $.get('/tokens', function (response) {
   // If there is a user but no token
   if (tokens.indexOf(user.token) != -1) {
     if (onLoginPage()) {
-      document.location = '/'
+      if (user.role == 'brewer') {
+        document.location = '/'
+      } else {
+        document.location = '/viewer'
+      }
     }
   } else {
     if (!onLoginPage()) {

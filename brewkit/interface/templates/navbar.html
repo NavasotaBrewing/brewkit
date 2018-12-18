@@ -1,4 +1,4 @@
-<nav class="uk-navbar-container" uk-navbar>
+<nav id="navbar" class="uk-navbar-container" uk-navbar>
   <!-- Nav Items -->
   <div class="uk-navbar-left uk-margin-left">
     <ul class="uk-navbar-nav">
@@ -34,6 +34,15 @@
                   <span uk-icon="user"></span>
                   {{ user.username }}
                 </li>
+                <li v-if="user.role == 'brewer'">
+                  Brewer
+                </li>
+                <li v-if="user.role == 'brewer'">
+                  <a href="#promote-modal" uk-toggle>
+                    Promote a User
+                  </a>
+                </li>
+                <hr>
                 <li>
                   <a @click="logout()" href="#">
                     <span uk-icon="sign-out"></span>
@@ -49,3 +58,36 @@
     </div>
   </div>
 </nav>
+
+<script>
+  var navbar = new Vue({
+    el: '#navbar',
+    data: {
+      user: {},
+      configurationSelect: '',
+      configs: []
+    },
+    methods: {
+      logout() {
+        Cookies.remove('user')
+        document.location = '/login'
+      }
+    },
+    watch: {
+      configurationSelect: function () {
+        if (this.configurationSelect != 'Select a Configuration') {
+          this.config = this.configs.filter(x => x.name == this.configurationSelect)[0];
+        } else {
+          this.config = []
+        }
+        x.config = this.config
+      }
+    },
+    mounted() {
+      this.user = JSON.parse(Cookies.get('user'))
+      socket.emit('get_configurations', function (configs) {
+        navbar.configs = JSON.parse(configs);
+      });
+    }
+  })
+</script>

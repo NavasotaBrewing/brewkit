@@ -91,20 +91,6 @@ let x = new Vue({
       sendInSlack(this.slackMessage, this.config.slackWebhook);
       this.showToast('Message Sent');
       x.slackMessage = ''
-    },
-
-    logout() {
-      Cookies.remove('user')
-      document.location = '/login'
-    }
-  },
-  watch: {
-    configurationSelect: function () {
-      if (this.configurationSelect != 'Select a Configuration') {
-        this.config = this.configs.filter(x => x.name == this.configurationSelect)[0];
-      } else {
-        this.config = []
-      }
     }
   },
   computed: {
@@ -117,13 +103,8 @@ let x = new Vue({
     }
   },
   mounted() {
-    socket.emit('get_configurations', function (configs) {
-      x.configs = JSON.parse(configs);
-    });
-
+    // this.config = navbar.config
     this.user = JSON.parse(Cookies.get('user'))
-  },
-  updated: function() {
   }
 })
 

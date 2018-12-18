@@ -1,0 +1,6 @@
+<script>
+  user = JSON.parse(Cookies.get('user'))
+  if (user.role != 'brewer') {
+    document.location = '/viewer'
+  }
+</script>

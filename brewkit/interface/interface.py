@@ -38,6 +38,20 @@ def attempt_login():
 def serve_tokens():
     return json.dumps(app.user_manager.tokens)
 
+@app.route('/update_users', methods=['POST'])
+def update_users():
+    users = request.get_json()
+    app.user_manager.users = users
+    return json.dumps(app.user_manager.write_users())
+
+@app.route('/users')
+def all_users():
+    return json.dumps(app.user_manager.users)
+
+@app.route('/viewer')
+def view_panel():
+    return render_template('view.html')
+
 @app.route('/register', methods=['POST'])
 def register_new_user():
     new_user = request.get_json()
