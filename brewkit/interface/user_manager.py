@@ -2,7 +2,7 @@ import json
 
 class UserManager(object):
     def __init__(self):
-        self.store = "brewkit/interface/data/user.json"
+        self.store = "brewkit/interface/data/users.json"
         with open(self.store, 'r') as fi:
             self.users = json.load(fi)
 

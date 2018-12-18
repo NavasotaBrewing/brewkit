@@ -9,8 +9,7 @@
 
 <body>
   <div id="login">
-    <div class="uk-height-viewport uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="%% url_for('static', filename='images/big_ole_ton.jpg') %%"
-      uk-img>
+    <div class="uk-height-viewport uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="%% url_for('static', filename='images/big_ole_ton.jpg') %%" uk-img>
       <div uk-grid>
         <div class="uk-container">
           <!-- Login Card -->
@@ -30,25 +29,35 @@
           <!-- Register Card -->
           <div id="registerCard" v-show="registerCard" class="uk-card uk-card-secondary uk-card-body">
             <h3 class="uk-card-title">Register</h3>
+            <!-- Name -->
             <div class="uk-margin">
               <input v-model="newUser.name" class="uk-input" type="text" placeholder="Name (optional)">
             </div>
+            <!-- Username -->
             <div class="uk-margin">
               <input v-model="newUser.username" class="uk-input" type="text" placeholder="Username">
             </div>
+            <!-- Password -->
             <div class="uk-margin">
               <input v-model="newUser.password" class="uk-input" type="password" placeholder="Password">
             </div>
+            <!-- Password Confirm -->
             <div class="uk-margin">
               <input v-model="newUser.passwordConfirm" class="uk-input" type="password" placeholder="Confirm Password">
             </div>
+            <!-- Email -->
             <div class="uk-margin">
               <input v-model="newUser.email" class="uk-input" type="text" placeholder="Email (optional)">
               <p class="uk-text-meta">(Email is only used for resetting your password)</p>
             </div>
+            <!-- Buttons -->
             <div class="uk-margin">
               <button @click="registerCard = false" class="uk-button uk-button-default">Back</button>
               <button @click="register()" class="uk-button uk-button-default">Register</button>
+            </div>
+            <!-- Message -->
+            <div class="uk-margin">
+
             </div>
           </div>
         </div>

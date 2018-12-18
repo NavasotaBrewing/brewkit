@@ -16,11 +16,14 @@ class CustomFlask(Flask):
         comment_end_string='#>',
     ))
 
-users = UserManager()
 
 app = CustomFlask(__name__)
 address_file = 'brewkit/interface/data/address.json'
 
+app.user_manager = UserManager()
+
+
+# User routes
 @app.route('/login')
 def login():
     return render_template('login.html')
@@ -29,8 +32,15 @@ def login():
 def register_new_user():
     new_user = request.get_json()
 
-    return 'true'
+    new_user['password'] = generate_password_hash(new_user['password'])
+    del new_user['passwordConfirm']
+    if new_user['username'] in [u['username'] for u in app.user_manager.users]:
+        return 'exists'
+    app.user_manager.add_user(new_user)
+    return 'success'
 
+
+# Main routes
 @app.route('/dashboard')
 @app.route('/')
 def index():
