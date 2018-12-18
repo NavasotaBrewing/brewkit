@@ -100,6 +100,13 @@ let x = new Vue({
         return true;
       }
       return false;
+    },
+    valves: function () {
+      valves = this.config.devices.onOff
+      valves.push(this.config.devices.divert)
+      valves.push(this.config.devices.pump)
+      return valves.flat()
+      // return this.config.devices.filter(x => x.type != 'thermostat')
     }
   },
   mounted() {
