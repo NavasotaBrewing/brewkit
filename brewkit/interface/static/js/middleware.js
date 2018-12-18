@@ -33,9 +33,9 @@ Middleware = {
     }
   },
   loggedIn: function () {
-    if (this.user.username) {
-      return true
+    if (this.user.username)  {
+      return true;
     }
-    return false
+    return false;
   }
 }
