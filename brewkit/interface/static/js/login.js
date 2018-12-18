@@ -1,7 +1,7 @@
 let x = new Vue({
   el: '#login',
   data: {
-    registerCard: true,
+    registerCard: false,
     newUser: {
       name: '',
       username: '',
@@ -60,6 +60,27 @@ let x = new Vue({
 
     toast(message, status = "success") {
       UIkit.notification(message, { status: status, pos: 'bottom-left' });
+    },
+
+    login() {
+      if (this.user.username == '' || this.user.password == '') {
+        this.toast('Please enter your username and password', 'danger');
+      }
+
+      $.ajax('/login', {
+        data: JSON.stringify(this.user),
+        contentType: 'application/json',
+        type: 'POST',
+        success: function(response) {
+          if (response == 'success') {
+            x.toast('Logged in')
+          } else if (response == 'error') {
+            x.toast('Username and password did not match', 'danger')
+          } else if (response == 'not_found') {
+            x.toast('User not found', 'danger')
+          }
+        }
+      })
     }
   }
 })

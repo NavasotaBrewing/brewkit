@@ -28,16 +28,17 @@ app.user_manager = UserManager()
 def login():
     return render_template('login.html')
 
+@app.route('/login', methods=['POST'])
+def attempt_login():
+    attempt_user = request.get_json()
+
+    return app.user_manager.login(attempt_user)
+
 @app.route('/register', methods=['POST'])
 def register_new_user():
     new_user = request.get_json()
 
-    new_user['password'] = generate_password_hash(new_user['password'])
-    del new_user['passwordConfirm']
-    if new_user['username'] in [u['username'] for u in app.user_manager.users]:
-        return 'exists'
-    app.user_manager.add_user(new_user)
-    return 'success'
+    return app.user_manager.add_user(new_user)
 
 
 # Main routes
