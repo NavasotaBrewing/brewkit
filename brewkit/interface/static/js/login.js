@@ -3,7 +3,6 @@ let x = new Vue({
   data: {
     registerCard: false,
     user: {
-      name: '',
       username: '',
       password: '',
       passwordConfirm: '',
@@ -68,8 +67,8 @@ let x = new Vue({
         success: function(response) {
           if (response == 'success') {
             x.toast('Logged in')
-            Cookies.set('username', x.user.username);
-            Cookies.set('password', x.user.password);
+            Cookies.set('username', x.user.username, { expires: 1 });
+            Cookies.set('password', x.user.password, { expires: 1 });
             document.location = '/'
           } else if (response == 'error') {
             x.toast('Username and password did not match', 'danger')

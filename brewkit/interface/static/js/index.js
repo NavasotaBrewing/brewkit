@@ -1,6 +1,7 @@
 let x = new Vue({
   el: '#dashboard',
   data: {
+    user: {},
     config: {
       controllers: {
         'STR116': [],
@@ -90,7 +91,12 @@ let x = new Vue({
       sendInSlack(this.slackMessage, this.config.slackWebhook);
       this.showToast('Message Sent');
       x.slackMessage = ''
+    },
 
+    logout() {
+      Cookies.remove('username');
+      Cookies.remove('password');
+      document.location = '/login'
     }
   },
   watch: {
@@ -115,6 +121,8 @@ let x = new Vue({
     socket.emit('get_configurations', function (configs) {
       x.configs = JSON.parse(configs);
     });
+
+    this.user.username = Cookies.get('username')
   },
   updated: function() {
   }

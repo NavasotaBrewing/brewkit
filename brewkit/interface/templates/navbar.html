@@ -16,10 +16,36 @@
   <!-- Configuration select -->
   <div class="uk-navbar-right">
     <div class="container uk-margin-right">
-      <select v-model="configurationSelect" id="configurationSelect" class="uk-select">
-        <option selected="selected">Select a Configuration</option>
-        <option v-for="config in configs" :value="config.name">{{ config.name }}</option>
-      </select>
+      <div uk-grid>
+        <div>
+          <select v-model="configurationSelect" id="configurationSelect" class="uk-select">
+            <option selected="selected">Select a Configuration</option>
+            <option v-for="config in configs" :value="config.name">{{ config.name }}</option>
+          </select>
+        </div>
+        <div>
+          <div class="uk-margin-small-top">
+            <ul class="uk-iconnav">
+              <li><a href="#" uk-icon="icon: more-vertical"></a></li>
+            </ul>
+            <div uk-dropdown="mode: click">
+              <ul class="uk-nav uk-dropdown-nav">
+                <li class="uk-nav-header">
+                  <span uk-icon="user"></span>
+                  {{ user.username }}
+                </li>
+                <li>
+                  <a @click="logout()" href="#">
+                    <span uk-icon="sign-out"></span>
+                    Logout
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </nav>
