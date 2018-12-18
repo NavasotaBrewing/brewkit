@@ -6,38 +6,25 @@ function onLoginPage() {
 }
 
 
-user = {
-  username: Cookies.get('username'),
-  password: Cookies.get('password'),
-}
-
-
-
-if (onLoginPage()) {
-  $.ajax('/login', {
-    data: JSON.stringify(user),
-    contentType: 'application/json',
-    type: 'POST',
-    success: function (response) {
-      if (response == 'success') {
-        document.location = '/'
-      }
+$.get('/tokens', function (response) {
+  tokens = JSON.parse(response);
+  userstring = Cookies.get('user')
+  if (userstring != null) {
+    user = JSON.parse(Cookies.get('user'));
+  } else {
+    if (!onLoginPage()) {
+      document.location = '/login'
     }
-  });
-}
-
-// if you're not on the login page
-if (!onLoginPage()) {
-  if (!user.username || !user.password) {
-    document.location = '/login'
   }
 
-  $.ajax('/login', {
-    data: JSON.stringify(user),
-    contentType: 'application/json',
-    type: 'POST',
-    success: function (response) {
-      console.log(response)
+  // If there is a user but no token
+  if (tokens.indexOf(user.token) != -1) {
+    if (onLoginPage()) {
+      document.location = '/'
     }
-  });
-}
+  } else {
+    if (!onLoginPage()) {
+      document.location = '/login'
+    }
+  }
+})

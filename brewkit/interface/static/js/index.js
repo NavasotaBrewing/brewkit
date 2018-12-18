@@ -94,8 +94,7 @@ let x = new Vue({
     },
 
     logout() {
-      Cookies.remove('username');
-      Cookies.remove('password');
+      Cookies.remove('user')
       document.location = '/login'
     }
   },
@@ -122,7 +121,7 @@ let x = new Vue({
       x.configs = JSON.parse(configs);
     });
 
-    this.user.username = Cookies.get('username')
+    this.user = JSON.parse(Cookies.get('user'))
   },
   updated: function() {
   }

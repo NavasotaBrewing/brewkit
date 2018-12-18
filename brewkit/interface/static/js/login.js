@@ -65,16 +65,18 @@ let x = new Vue({
         contentType: 'application/json',
         type: 'POST',
         success: function(response) {
-          if (response == 'success') {
+          user = JSON.parse(response)
+
+          if (user.username == x.user.username) {
             x.toast('Logged in')
-            Cookies.set('username', x.user.username, { expires: 1 });
-            Cookies.set('password', x.user.password, { expires: 1 });
+            user.password = x.user.password;
+            console.log(user)
+            Cookies.set('user', JSON.stringify(user))
             document.location = '/'
-          } else if (response == 'error') {
-            x.toast('Username and password did not match', 'danger')
-          } else if (response == 'not_found') {
-            x.toast('User not found', 'danger')
+          } else {
+            x.toast('Password does not match', 'danger')
           }
+
         }
       })
     }

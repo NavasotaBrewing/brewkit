@@ -31,15 +31,18 @@ def login():
 @app.route('/login', methods=['POST'])
 def attempt_login():
     attempt_user = request.get_json()
+    result = app.user_manager.login(attempt_user)
+    return json.dumps(result)
 
-    return app.user_manager.login(attempt_user)
+@app.route('/tokens', methods=['GET'])
+def serve_tokens():
+    return json.dumps(app.user_manager.tokens)
 
 @app.route('/register', methods=['POST'])
 def register_new_user():
     new_user = request.get_json()
 
     return app.user_manager.add_user(new_user)
-
 
 # Main routes
 @app.route('/dashboard')
