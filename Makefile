@@ -1,7 +1,7 @@
 build:
 	python setup.py sdist
 
-server:
+api:
 	python brewkit/api/server.py
 
 interface:
