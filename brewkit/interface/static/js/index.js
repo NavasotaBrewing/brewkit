@@ -88,7 +88,9 @@ let x = new Vue({
 
     sendSlackMessage() {
       sendInSlack(this.slackMessage, this.config.slackWebhook);
+      this.showToast('Message Sent');
       x.slackMessage = ''
+
     }
   },
   watch: {

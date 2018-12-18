@@ -80,21 +80,3 @@ var chart = new Taucharts.Chart({
   color: 'type',
 });
 chart.renderTo('#thermoChart')
-
-var chart2 = new Taucharts.Chart({
-  guide: {
-    interpolate: 'linear',
-    x: { nice: true },
-    y: { min: 50, max: 230, nice: true },
-    color: {
-      brewer: { 'pv': '#1D87F0', 'sv': '#222222' }
-    }
-  },
-  data: data,
-  type: 'line',
-  x: 'x',
-  y: 'y',
-  color: 'type',
-});
-
-chart2.renderTo('#thermoChart2')
