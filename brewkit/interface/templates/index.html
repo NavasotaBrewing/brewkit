@@ -44,9 +44,9 @@
                 <input @keydown.enter="startTimer" v-model="timerInput" class="uk-input" type="text" placeholder="Duration">
               </div>
               <button @click="startTimer" class="uk-button uk-button-primary">Start</button>
-              <button @click="stopTimer" class="uk-button uk-button-secondary">Clear</button>
+              <!-- <button @click="stopTimer" class="uk-button uk-button-secondary">Clear</button> -->
               <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                <label><input class="uk-checkbox" type="checkbox" checked> Send slack message when done</label>
+                <label><input v-model="sendWhenDone" class="uk-checkbox" type="checkbox" checked> Send slack message when done</label>
               </div>
             </div>
           </div>

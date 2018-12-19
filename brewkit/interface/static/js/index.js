@@ -12,11 +12,11 @@ let x = new Vue({
     configs: [],
     timerInput: '',
     timer: null,
+    sendWhenDone: false
   },
   methods: {
     update() {
       socket.emit('update', this.config, function (response) {
-        console.log('updated')
         x.config = JSON.parse(response.replace(/\'/g, '"'));
       });
       this.refreshCharts();
@@ -24,14 +24,8 @@ let x = new Vue({
 
     enact() {
       socket.emit('enact', this.config, function (response) {
-        console.log('enacted');
         x.update();
       });
-    },
-
-    stopTimer() {
-      this.timer.stop();
-      this.timer.date = moment().unix() * 1000;
     },
 
     prepInput() {
@@ -51,17 +45,29 @@ let x = new Vue({
       return this.timerInput;
     },
 
+    onTimerFinish() {
+    },
+
     startTimer() {
       input = this.prepInput();
       date = this.inputToISO(input);
       this.timer = UIkit.countdown($('#timerCountdown'), {date: date});
       this.timer.start();
       this.timerInput = ''
+      this.timerWatcher = setInterval(() => {
+        if (moment().unix() * 1000 >= this.timer.date) {
+          if (this.sendWhenDone) {
+            if (this.slackMessage) {
+              this.sendSlackMessage();
+            }
+          }
+          clearInterval(this.timerWatcher)
+        }
+      }, 5000);
     },
 
     inputToISO(str) {
       // Takes an input like 02:34:31 and converts it to an ISO 8601 date with that time added to the current time
-      console.log(str)
       times = str.split(':')
       hours = parseInt(times[0])
       minutes = parseInt(times[1])
