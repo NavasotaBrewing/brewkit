@@ -2,125 +2,6 @@
   {
     "slackChannel": "@luke",
     "slackWebhook": "https://hooks.slack.com/services/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",
-    "id": "ibikegewhr82bwrwtntki1",
-    "name": "Testing",
-    "controllers": {
-      "STR116": [
-        {
-          "address": 0,
-          "type": "STR116",
-          "name": "Main STR116"
-        }
-      ],
-      "STR008": [],
-      "OmegaCN7500": [
-        {
-          "address": 1,
-          "type": "OmegaCN7500",
-          "name": "RIMS Omega"
-        }
-      ]
-    },
-    "devices": {
-      "divert": [
-        {
-          "address": "4",
-          "type": "divert",
-          "states": {
-            "0": "mash",
-            "1": "boil"
-          },
-          "name": "Some Divert",
-          "controller_address": 0,
-          "proc_desc": "A divert valve. Select a location",
-          "state": 0
-        }
-      ],
-      "variable": [
-        {
-          "address": 2,
-          "type": "variable",
-          "states": {
-            "0": "Closed",
-            "1": "Open"
-          },
-          "name": "Propane Valve",
-          "controller_address": 0,
-          "proc_desc": "A variable stepper valve. Enter a decimal between 0 and 1.",
-          "state": 0
-        }
-      ],
-      "onOff": [
-        {
-          "address": "4",
-          "type": "onOff",
-          "states": {
-            "0": "Closed",
-            "1": "Open"
-          },
-          "name": "HLT Valve",
-          "controller_address": 0,
-          "proc_desc": "A regular valve. Open or closed.",
-          "state": 1
-        },
-        {
-          "address": "56",
-          "type": "onOff",
-          "states": {
-            "0": "Closed",
-            "1": "Open"
-          },
-          "name": "Another On/Off Valve",
-          "controller_address": 0,
-          "proc_desc": "A regular valve. Open or closed.",
-          "state": 0
-        }
-      ],
-      "pump": [
-        {
-          "address": "8",
-          "type": "pump",
-          "states": {
-            "0": "Off",
-            "1": "On"
-          },
-          "name": "One More Pump",
-          "controller_address": 0,
-          "proc_desc": "A pump. On or off.",
-          "state": 0
-        }
-      ],
-      "thermostat": [
-        {
-          "address": 0,
-          "type": "thermostat",
-          "states": {
-            "0": "Off",
-            "1": "On"
-          },
-          "name": "RIMS Thermostat",
-          "controller_address": 1,
-          "proc_desc": "A thermostat. Set a temperature, or 0 to turn it off",
-          "state": 1
-        },
-        {
-          "address": "9",
-          "type": "thermostat",
-          "states": {
-            "0": "Off",
-            "1": "On"
-          },
-          "name": "Another Thermostat",
-          "controller_address": 0,
-          "proc_desc": "A thermostat. Set a temperature, or 0 to turn it off",
-          "state": 1
-        }
-      ]
-    }
-  },
-  {
-    "slackChannel": "@luke",
-    "slackWebhook": "https://hooks.slack.com/services/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",
     "id": "i28kintbgretwrbiewk1hw",
     "name": "Testing Configuration",
     "controllers": {
@@ -142,79 +23,69 @@
         }
       ]
     },
-    "devices": {
-      "divert": [
-        {
-          "address": "1",
-          "id": "wne18eiwrrbiikhgwt2kbt",
-          "type": "divert",
-          "states": {
-            "0": "mash",
-            "1": "boil"
-          },
-          "name": "HLT Divert",
-          "controller_address": "2",
-          "state": 0
-        }
-      ],
-      "variable": [
-        {
-          "address": "2",
-          "id": "eg1ttwribewbirkh2wn8ki",
-          "type": "variable",
-          "states": {
-            "0": "Off",
-            "1": "On"
-          },
-          "name": "Gas Stepper",
-          "controller_address": "2",
-          "state": 0
-        }
-      ],
-      "onOff": [
-        {
-          "address": "0",
-          "id": "twbgir2teenh18kkwiriwb",
-          "type": "onOff",
-          "states": {
-            "0": "Off",
-            "1": "On"
-          },
-          "name": "HLT Valve",
-          "controller_address": "2",
-          "state": 0
-        }
-      ],
-      "pump": [
-        {
-          "address": "3",
-          "id": "g2ritrkwee8biwntiwkh1b",
-          "type": "pump",
-          "states": {
-            "0": "Off",
-            "1": "On"
-          },
-          "name": "Main Pump",
-          "controller_address": "2",
-          "state": 0
-        }
-      ],
-      "thermostat": [
-        {
-          "address": "1",
-          "pv": 0,
-          "id": "ew2krhwkitwi8bgrtnbi1e",
-          "type": "thermostat",
-          "name": "Mash Thermostat",
-          "sv": 0,
-          "states": {
-            "0": "Off",
-            "1": "On"
-          },
-          "controller_address": "1",
-          "state": 0
-        }
-      ]
-    }
+    "devices": [
+      {
+        "address": "1",
+        "id": "wne18eiwrrbiikhgwt2kbt",
+        "type": "divert",
+        "states": {
+          "0": "mash",
+          "1": "boil"
+        },
+        "name": "HLT Divert",
+        "controller_address": "2",
+        "state": 0
+      },
+      {
+        "address": "2",
+        "id": "eg1ttwribewbirkh2wn8ki",
+        "type": "variable",
+        "states": {
+          "0": "Off",
+          "1": "On"
+        },
+        "name": "Gas Stepper",
+        "controller_address": "2",
+        "state": 0
+      },
+      {
+        "address": "0",
+        "id": "twbgir2teenh18kkwiriwb",
+        "type": "onOff",
+        "states": {
+          "0": "Off",
+          "1": "On"
+        },
+        "name": "HLT Valve",
+        "controller_address": "2",
+        "state": 0
+      },
+      {
+        "address": "3",
+        "id": "g2ritrkwee8biwntiwkh1b",
+        "type": "pump",
+        "states": {
+          "0": "Off",
+          "1": "On"
+        },
+        "name": "Main Pump",
+        "controller_address": "2",
+        "state": 0
+      },
+      {
+        "address": "1",
+        "pv": 0,
+        "id": "ew2krhwkitwi8bgrtnbi1e",
+        "type": "thermostat",
+        "name": "Mash Thermostat",
+        "sv": 0,
+        "states": {
+          "0": "Off",
+          "1": "On"
+        },
+        "controller_address": "1",
+        "state": 0
+      }
+    ]
   }
 ]

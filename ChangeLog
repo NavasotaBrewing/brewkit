@@ -1,16 +1,45 @@
 CHANGES
 =======
 
+* Moves some resources around
+* Makes middleware that actually makes sense
+* Commit before middleware
+* More role stuff ughh
+* Refactors gatekeep js
+* Adds key detection on username and password entry
+* Adds logout function
+* Sets up redirect to login page when not logged in
+* Makes login function actually work
+* Makes register function actually work
+* more work on the login system
+* Adds front end login page
+* Moves libraries to files instead of cdn
+* Makes timer work mo betta
+* changes "server" to "api" target in Makefile
+* Makes timer sort of work
+* Starts to wire everything up
+* Moves most to UIkit
+* Commit before moving to UIkit
+* Moves some data files around
+* More work on the dynamic hardware address features/large bug/accident
+* Adds dynamic hardware address capabilities
+* A lot of work on the interface
+* Fixes merge error
+* Removes stupid password stuff
+* More password work
+* A login page thats really crappy
+* Makes flask use https
+* Adds some js for deleting configurations
+* adds delete\_configuration listener for socket
+* Adds delete button for configurations, doesnt work yet
+* Sets default state for all devices
+
 0.0.7
 -----
 
 * resolve merge
 * Some work on the front end
 * Some work on the api
-
-0.0.6
------
-
 * Some front end work
 * More front end work and makes slack work
 * Makes configuration select actually work

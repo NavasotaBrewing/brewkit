@@ -30,21 +30,20 @@ def update(config):
 def enact(config):
     config = json.loads(config)
     log.info('starting enact')
-    for device_type, devices in config['devices'].items():
-        for device in devices:
-            if device_type == 'thermostat':
-                # Find Controller
-                con = Omega('/dev/ttyAMA0', int(device['controller_address']))
-                # Set SV
-                con.sv(float(device['sv']))
-                # Set State
-                if int(device['state']):
-                    con.run()
-                else:
-                    con.stop()
+    for device in config['devices']:
+        if device['type'] == 'thermostat':
+            # Find Controller
+            con = Omega('/dev/ttyAMA0', int(device['controller_address']))
+            # Set SV
+            con.sv(float(device['sv']))
+            # Set State
+            if int(device['state']):
+                con.run()
             else:
-                # Find controller
-                con = STR116('/dev/ttyAMA0', int(device['controller_address']))
-                # Set state
-                print(device)
-                con.relay(int(device['address']), int(device['state']))
+                con.stop()
+        else:
+            # Find controller
+            con = STR116('/dev/ttyAMA0', int(device['controller_address']))
+            # Set state
+            print(device)
+            con.relay(int(device['address']), int(device['state']))
