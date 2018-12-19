@@ -50,6 +50,7 @@ let x = new Vue({
         return;
       }
       copy = Object.assign(this.newDevice);
+      copy.id = this.generateId();
       this.config.devices.push(copy);
       this.newDevice = {
         type: '',
@@ -62,6 +63,10 @@ let x = new Vue({
         },
         state: 0
       }
+    },
+
+    removeDevice(device) {
+      this.config.devices = this.config.devices.filter(d => d.id != device.id)
     }
   },
   mounted() {

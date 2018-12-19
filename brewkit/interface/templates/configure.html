@@ -94,14 +94,17 @@
           <div class="uk-width-2-3">
             <div class="uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid="masonry: true">
               <div v-for="device in config.devices">
-                <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle uk-card-body">
-                  <dl>
-                    <dt>{{ device.name }}</dt>
-                    <dd>Type: {{ device.type }}</dd>
-                    <dd v-show="device.type != 'thermostat'">Address: {{ device.address }}</dd>
-                    <dd>Controller Address: {{ device.controller_address }}</dd>
-                    <dd>States: {{ device.states[0] }} or {{ device.states[1] }}</dd>
-                  </dl>
+                <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle">
+                  <div class="uk-card-body">
+                    <dl>
+                      <dt>{{ device.name }}</dt>
+                      <dd>Type: {{ device.type }}</dd>
+                      <dd v-show="device.type != 'thermostat'">Address: {{ device.address }}</dd>
+                      <dd>Controller Address: {{ device.controller_address }}</dd>
+                      <dd>States: {{ device.states[0] }} or {{ device.states[1] }}</dd>
+                    </dl>
+                    <a @click="removeDevice(device)">Remove</a>
+                  </div>
                 </div>
               </div>
             </div>
