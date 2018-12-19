@@ -2,19 +2,9 @@ let x = new Vue({
   el: '#dashboard',
   data: {
     user: {},
+    enactors: [],
     config: {
-      controllers: {
-        'STR116': [],
-        'STR008': [],
-        'OmegaCN7500': []
-      },
-      devices: {
-        'onOff': [],
-        'divert': [],
-        'variable': [],
-        'pump': [],
-        'thermostat': [],
-      }
+      devices: []
     },
     configurationSelect: null,
     slackMessage: '',
@@ -91,7 +81,21 @@ let x = new Vue({
       sendInSlack(this.slackMessage, this.config.slackWebhook);
       this.showToast('Message Sent');
       x.slackMessage = ''
+    },
+
+    registerEnactors() {
+      $('.enactor').on('click', function() {
+        console.log('yee');
+      })
     }
+  },
+  watch: {
+    config: {
+      handler: function () {
+        // this.registerEnactors();
+      },
+      deep: true
+    },
   },
   computed: {
     done: function () {
@@ -102,16 +106,11 @@ let x = new Vue({
       return false;
     },
     valves: function () {
-      valves = this.config.devices.onOff
-      valves.push(this.config.devices.divert)
-      valves.push(this.config.devices.pump)
-      return valves.flat()
-      // return this.config.devices.filter(x => x.type != 'thermostat')
+      valves = this.config.devices.filter(d => d.type != 'thermostat')
+      return valves
     }
   },
   mounted() {
-    // this.config = navbar.config
     this.user = JSON.parse(Cookies.get('user'))
   }
 })
-

@@ -81,6 +81,12 @@
           this.config = []
         }
         x.config = this.config
+        Vue.nextTick()
+          .then(function () {
+            $('.enactor').on('click', function () {
+              x.enact();
+            })
+          })
       }
     },
     mounted() {
