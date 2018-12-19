@@ -115,25 +115,31 @@
               <!-- Tabs -->
               <div class="uk-width-auto@m">
                 <ul class="uk-tab-left" uk-tab="connect: #component-tab-left; animation: uk-animation-fade">
-                  <li><a href="#">RIMS Thermostat</a></li>
-                  <li><a href="#">Secondary Thermostat</a></li>
+                  <li v-for="thermo in thermos"><a href="#">{{ thermo.name }}</a></li>
                 </ul>
               </div>
               <!-- Tab Content -->
               <div class="uk-width-expand@m">
                 <ul id="component-tab-left" class="uk-switcher">
-                  <li>
+                  <li v-for="thermo in thermos">
                     <!-- First Chart -->
-                    <div id="thermoChart"></div>
-                    <!-- New SV -->
+                    <div v-if="thermo.state == 1" class="uk-label uk-label-success">Heater is on</div>
+                    <div v-if="thermo.state == 0" class="uk-label uk-label-danger">Heater is off</div>
+                    <div class="uk-label">
+                      Current: {{ thermo.pv }}
+                    </div>
+                    <div class="uk-label uk-background-secondary">Target: {{ thermo.sv }}</div>
+
+                    <div :id="thermo.id + 'Chart'" style="height: 450px"></div>
+
+                    <!-- New SV Form -->
                     <div class="uk-margin">
-                      <button class="uk-button enactor uk-button-primary"><i class="fa fa-power-off" aria-hidden="true"></i>&nbsp;Power</button>
+                      <button @click="thermo.state = !thermo.state" class="uk-button enactor uk-button-primary"><i class="fa fa-power-off" aria-hidden="true"></i>&nbsp;Power</button>
                       <div class="uk-inline">
-                        <a class="uk-form-icon enactor uk-form-icon-flip" uk-icon="icon: check"></a>
-                        <input class="uk-input" type="text" placeholder="New SV">
+                        <a @click="setSv(thermo)" class="uk-form-icon uk-form-icon-flip" id="setSv" uk-icon="icon: check"></a>
+                        <input :id="'newSv' + thermo.id" @keydown.enter="setSv(thermo)" class="uk-input" type="text" placeholder="New SV">
                       </div>
                     </div>
-
                   </li>
                   <li>
                     <div id="thermoChart2"></div>

@@ -2,7 +2,8 @@ let x = new Vue({
   el: '#dashboard',
   data: {
     user: {},
-    enactors: [],
+    configSelected: false,
+    charts: [],
     config: {
       devices: []
     },
@@ -10,7 +11,7 @@ let x = new Vue({
     slackMessage: '',
     configs: [],
     timerInput: '',
-    timer: null
+    timer: null,
   },
   methods: {
     update() {
@@ -18,11 +19,13 @@ let x = new Vue({
         console.log('updated')
         x.config = JSON.parse(response.replace(/\'/g, '"'));
       });
+      this.refreshCharts();
     },
 
     enact() {
       socket.emit('enact', this.config, function (response) {
         console.log('enacted');
+        x.update();
       });
     },
 
@@ -77,6 +80,16 @@ let x = new Vue({
       UIkit.notification({ message: message, status: 'success', pos: 'bottom-left', timeout: 50000000})
     },
 
+    setSv(thermo) {
+      newSv = parseFloat($('#newSv' + thermo.id).val());
+      if (newSv < 999 && newSv > 1) {
+        thermo.sv = newSv;
+        this.enact();
+      }
+
+      return false;
+    },
+
     sendSlackMessage() {
       sendInSlack(this.slackMessage, this.config.slackWebhook);
       this.showToast('Message Sent');
@@ -84,18 +97,52 @@ let x = new Vue({
     },
 
     registerEnactors() {
-      $('.enactor').on('click', function() {
-        console.log('yee');
+      $('.enactor').on('click', function () {
+        x.enact();
       })
+    },
+
+    refreshCharts() {
+      this.charts.forEach(chart => {
+        thermo = this.thermos.filter(t => t.id == chart.thermoId)[0];
+        data = chart.getData();
+        if (data.length >= 40) {
+          data.shift()
+          data.shift()
+        }
+        data.push({ type: 'sv', time: moment().format('hh:mm:ss'), temp: thermo.sv})
+        data.push({ type: 'pv', time: moment().format('hh:mm:ss'), temp: thermo.pv})
+        // Random numbers as a demo
+        // data.push({ type: 'sv', time: moment().format('hh:mm:ss'), temp: Math.random() * 200})
+        // data.push({ type: 'pv', time: moment().format('hh:mm:ss'), temp: Math.random() * 200})
+        chart.setData(data)
+      });
+    },
+
+    registerThermoCharts() {
+      this.config.devices.filter(d => d.type == 'thermostat').forEach(thermo => {
+        chart = generateChart(thermo)
+
+        this.charts.push(chart)
+
+        chart.thermoId = thermo.id
+        chart.renderTo('#' + thermo.id + 'Chart');
+      });
+    },
+
+    onConfigSelect() {
+      this.registerEnactors();
+      this.registerThermoCharts();
+      this.update();
+      this.configUpdater = setInterval(() => {
+        this.update();
+      }, 3000);
     }
   },
   watch: {
-    config: {
-      handler: function () {
-        // this.registerEnactors();
-      },
-      deep: true
-    },
+    configSelected: function() {
+      this.onConfigSelect();
+    }
   },
   computed: {
     done: function () {
@@ -108,6 +155,9 @@ let x = new Vue({
     valves: function () {
       valves = this.config.devices.filter(d => d.type != 'thermostat')
       return valves
+    },
+    thermos: function () {
+      return this.config.devices.filter(d => d.type == 'thermostat')
     }
   },
   mounted() {

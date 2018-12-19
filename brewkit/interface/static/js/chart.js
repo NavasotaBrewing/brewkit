@@ -1,82 +1,44 @@
-var data = [{
-  x: 0,
-  y: 40,
-  type: 'pv'
-}, {
-  x: 10,
-  y: 10,
-  type: 'pv'
-}, {
-  x: 12,
-  y: 20,
-  type: 'pv'
-}, {
-  x: 20,
-  y: 20,
-  type: 'pv'
-}, {
-  x: 30,
-  y: 0,
-  type: 'pv'
-}, {
-  x: 40,
-  y: 10,
-  type: 'pv'
-}, {
-  x: 42,
-  y: 0,
-  type: 'pv'
-}, {
-  x: 50,
-  y: 20,
-  type: 'pv'
-}, {
-  x: 0,
-  y: 173,
-  type: 'sv'
-}, {
-  x: 10,
-  y: 173,
-  type: 'sv'
-}, {
-  x: 12,
-  y: 173,
-  type: 'sv'
-}, {
-  x: 20,
-  y: 173,
-  type: 'sv'
-}, {
-  x: 30,
-  y: 173,
-  type: 'sv'
-}, {
-  x: 40,
-  y: 140,
-  type: 'sv'
-}, {
-  x: 42,
-  y: 140,
-  type: 'sv'
-}, {
-  x: 50,
-  y: 140,
-  type: 'sv'
-}];
+function generateChart(thermo) {
+  data = [{ type: 'sv', time: moment().format('hh:mm:ss'), temp: thermo.sv }, { type: 'pv', time: moment().format('hh:mm:ss'), temp: thermo.pv }]
+  config = {
+    guide: {
+      interpolate: 'smooth-keep-extremum',
+      showGridLines: 'xy',
+      x: {
+        padding: 20,
+        label: 'Time'
+      },
+      y: { label: 'Temperature (F)', min: 50, max: 230 },
+      showGridlines: 'x',
+      color: {
+        brewer: { 'pv': '#1D87F0', 'sv': '#222222' }
+      }
+    },
+    plugins: [
+      Taucharts.api.plugins.get('tooltip')({
+        fields: ['time', 'temp'],
+        formatters: {
+          // weight will be displayed as                // Person Weight: 50
+          time: { label: "Time" },
+          temp: {
+            label: "Temperature",
+            format: function (temp) {
+              return (temp + " ˚F");                   // Person Height: 160 cm
+            }
+          }
+        }
+      })
+    ],
+    data: data,
+    type: 'line',
+    x: 'time',
+    y: 'temp',
+    color: 'type',
+  }
 
-var chart = new Taucharts.Chart({
-  guide: {
-    interpolate: 'linear',
-    x: { nice: true },
-    y: { min: 50, max: 230, nice: true },
-    color: {
-      brewer: { 'pv': '#1D87F0', 'sv': '#222222' }
-    }
-  },
-  data: data,
-  type: 'line',
-  x: 'x',
-  y: 'y',
-  color: 'type',
-});
-chart.renderTo('#thermoChart')
+  chart = new Taucharts.Chart(config)
+
+  chart.theroId = thermo.id
+  return chart
+}
+

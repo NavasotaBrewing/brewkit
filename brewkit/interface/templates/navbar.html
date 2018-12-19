@@ -82,11 +82,9 @@
         }
         x.config = this.config
         Vue.nextTick()
-          .then(function () {
-            $('.enactor').on('click', function () {
-              x.enact();
-            })
-          })
+        .then(function () {
+          x.configSelected = true
+        })
       }
     },
     mounted() {
