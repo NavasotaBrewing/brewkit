@@ -26,6 +26,10 @@ let x = new Vue({
       x.toast('Message sent, did you get it?')
     },
 
+    generateId() {
+      return 'brewingwithbrewkit2k18'.split('').sort(function () { return 0.5 - Math.random() }).join('');
+    },
+
     validateDevice() {
       // r/badcode
       if (this.newDevice.name == "" || this.newDevice.type == "") {
@@ -58,6 +62,19 @@ let x = new Vue({
         },
         state: 0
       }
+    }
+  },
+  mounted() {
+    this.config.id = this.generateId();
+  },
+  watch: {
+    config: {
+      handler() {
+        if (!this.config.id) {
+          this.config.id = this.generateId();
+        }
+      },
+      deep: true
     }
   }
 })
