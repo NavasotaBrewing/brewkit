@@ -78,7 +78,7 @@
         if (this.configurationSelect != 'Select a Configuration') {
           this.config = this.configs.filter(x => x.name == this.configurationSelect)[0];
         } else {
-          this.config = []
+          this.config = {devices: []}
         }
         x.config = this.config
         Vue.nextTick()

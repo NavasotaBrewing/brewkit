@@ -67,6 +67,16 @@ let x = new Vue({
 
     removeDevice(device) {
       this.config.devices = this.config.devices.filter(d => d.id != device.id)
+    },
+
+    saveConfiguration() {
+      if (this.config.name == '') {
+        x.toast('Configuration needs a name', 'danger')
+        return;
+      }
+      socket.emit('save_configuration', this.config, function (response) {
+        x.toast(response);
+      });
     }
   },
   mounted() {
