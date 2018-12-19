@@ -83,7 +83,7 @@ let x = new Vue({
     },
 
     showToast(message) {
-      UIkit.notification({ message: message, status: 'success', pos: 'bottom-left', timeout: 50000000})
+      UIkit.notification({ message: message, status: 'success', pos: 'bottom-left', timeout: 3000})
     },
 
     setSv(thermo) {
