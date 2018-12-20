@@ -83,6 +83,7 @@
         x.config = this.config
         Vue.nextTick()
         .then(function () {
+          // this is bad, i need to fix this
           x.configSelected = true
         })
       }
