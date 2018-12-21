@@ -21,7 +21,7 @@
             <h2 class="uk-heading-secondary">Create a Configuration</h2>
             <p>Enter a name to create a new one, or select one in the navbar to edit</p>
             <div class="uk-margin">
-              <input v-model="config.name" class="uk-input" type="text" placeholder="Configuration Name">
+              <input v-model="config.name" class="uk-input saverInput" type="text" placeholder="Configuration Name">
               <p v-if="config.id">Configuration ID: <code>{{ config.id }}</code></p>
             </div>
             <div class="uk-margin">
@@ -32,10 +32,10 @@
           <div>
             <h2 class="uk-heading-secondary">Slack</h2>
             <div class="uk-margin">
-              <input v-model="config.slackWebhook" class="uk-input" type="text" placeholder="Slack Webhook">
+              <input v-model="config.slackWebhook" class="uk-input saverInput" type="text" placeholder="Slack Webhook">
             </div>
             <div class="uk-margin">
-              <input v-model="config.slackChannel" class="uk-input" type="text" placeholder="Slack Channel">
+              <input v-model="config.slackChannel" class="uk-input saverInput" type="text" placeholder="Slack Channel">
             </div>
             <div class="uk-margin">
               <button @click="testSlack" class="uk-button uk-button-primary">Test</button>

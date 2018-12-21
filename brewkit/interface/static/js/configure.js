@@ -21,7 +21,7 @@ let x = new Vue({
   },
   methods: {
     toast(message, status='primary') {
-      UIkit.notification({ message: message, status: status, pos: 'bottom-left', timeout: 3000 })
+      UIkit.notification({ message: message, status: status, pos: 'bottom-left', timeout: 2000 })
     },
 
     testSlack() {
@@ -66,6 +66,7 @@ let x = new Vue({
         },
         state: 0
       }
+      this.saveConfiguration();
     },
 
     removeDevice(device) {
@@ -92,10 +93,19 @@ let x = new Vue({
         this.$refs.NavBar.configs = this.$refs.NavBar.configs.filter(c => c.id != this.config.id)
         this.config = {devices: []}
       }
+    },
+
+    registerSavers() {
+      // Some inputs will save the config when they lose focus
+      $('.saverInput').on('focusout', () => {
+        console.log('lost focus')
+        this.saveConfiguration();
+      });
     }
   },
   mounted() {
     this.config.id = this.generateId();
+    this.registerSavers();
   },
   watch: {
     config: {
