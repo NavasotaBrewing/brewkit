@@ -61,7 +61,7 @@ def delete_configuration(config):
     with open(app.storage_file) as fi:
         configs = json.load(fi)
     configs = [con for con in
-    configs if con['name'] != config['name']]
+    configs if con['id'] != config['id']]
     with open(app.storage_file, 'w') as fi:
         json.dump(configs, fi, indent=2)
     return 'Configuration deleted'
