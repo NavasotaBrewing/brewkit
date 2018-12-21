@@ -122,23 +122,7 @@
               <div class="uk-width-expand@m">
                 <ul id="component-tab-left" class="uk-switcher">
                   <li v-for="thermo in thermos">
-                    <div v-if="thermo.state == 1" class="uk-label uk-label-success">Heater is on</div>
-                    <div v-if="thermo.state == 0" class="uk-label uk-label-danger">Heater is off</div>
-                    <div class="uk-label">
-                      Current: {{ thermo.pv }}
-                    </div>
-                    <div class="uk-label uk-background-secondary">Target: {{ thermo.sv }}</div>
-
-                    <div :id="thermo.id + 'Chart'" style="height: 450px"></div>
-
-                    <!-- New SV Form -->
-                    <div class="uk-margin">
-                      <button @click="thermo.state = !thermo.state" class="uk-button enactor uk-button-primary"><i class="fa fa-power-off" aria-hidden="true"></i>&nbsp;Power</button>
-                      <div class="uk-inline">
-                        <a @click="setSv(thermo)" class="uk-form-icon uk-form-icon-flip" id="setSv" uk-icon="icon: check"></a>
-                        <input :id="'newSv' + thermo.id" @keydown.enter="setSv(thermo)" class="uk-input" type="text" placeholder="New SV">
-                      </div>
-                    </div>
+                    <thermo-chart :height="'uk-height-medium'" :update-interval="4000" :thermo="thermo"></thermo-chart>
                   </li>
                 </ul>
               </div>
