@@ -4,15 +4,15 @@
   {% include 'header.html' %}
   <title>Configure</title>
   {% include 'sources.html' %}
-
+  {% include 'navbar.html' %}
   <script>
     Middleware.restrictTo('brewer')
   </script>
 </head>
 
 <body>
-  {% include 'navbar.html' %}
   <div id="configure">
+    <main-navbar ref="NavBar" @select-config="config = $event"></main-navbar>
     <!-- Create Section -->
     <div class="uk-section">
       <div class="uk-container">
@@ -26,6 +26,7 @@
             </div>
             <div class="uk-margin">
               <button @click="saveConfiguration" class="uk-button uk-button-primary">Save</button>
+              <button @click="deleteConfiguration" class="uk-button uk-button-danger">Delete</button>
             </div>
           </div>
           <div>

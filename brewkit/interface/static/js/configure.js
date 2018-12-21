@@ -16,6 +16,9 @@ let x = new Vue({
       state: 0
     }
   },
+  components: {
+    'main-navbar': NavBarComponent
+  },
   methods: {
     toast(message, status='primary') {
       UIkit.notification({ message: message, status: status, pos: 'bottom-left', timeout: 3000 })
@@ -70,13 +73,25 @@ let x = new Vue({
     },
 
     saveConfiguration() {
-      if (this.config.name == '') {
-        x.toast('Configuration needs a name', 'danger')
+      if (!this.config.name || this.config.name == '') {
+        this.toast('Configuration needs a name', 'danger')
         return;
       }
-      socket.emit('save_configuration', this.config, function (response) {
-        x.toast(response);
+      this.$refs.NavBar.configs.push(this.config)
+      socket.emit('save_configuration', this.config, (response) => {
+        this.toast(response);
       });
+    },
+
+    deleteConfiguration() {
+      if (confirm("Are you sure? This can't be undone.")) {
+        socket.emit('delete_configuration', this.config, (response) => {
+          this.toast(response);
+        });
+        // Clear the deleted one out of the navbar
+        this.$refs.NavBar.configs = this.$refs.NavBar.configs.filter(c => c.id != this.config.id)
+        this.config = {devices: []}
+      }
     }
   },
   mounted() {

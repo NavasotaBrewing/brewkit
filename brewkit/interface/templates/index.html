@@ -123,7 +123,6 @@
               <div class="uk-width-expand@m">
                 <ul id="component-tab-left" class="uk-switcher">
                   <li v-for="thermo in thermos">
-                    <!-- First Chart -->
                     <div v-if="thermo.state == 1" class="uk-label uk-label-success">Heater is on</div>
                     <div v-if="thermo.state == 0" class="uk-label uk-label-danger">Heater is off</div>
                     <div class="uk-label">
@@ -141,10 +140,6 @@
                         <input :id="'newSv' + thermo.id" @keydown.enter="setSv(thermo)" class="uk-input" type="text" placeholder="New SV">
                       </div>
                     </div>
-                  </li>
-                  <li>
-                    <div id="thermoChart2"></div>
-                    <!-- Second Chart -->
                   </li>
                 </ul>
               </div>
