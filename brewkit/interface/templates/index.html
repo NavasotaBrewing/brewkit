@@ -4,14 +4,15 @@
     {% include 'header.html' %}
     <title>Dashboard</title>
     {% include 'sources.html' %}
+    {% include 'navbar.html' %}
     <script>
       Middleware.restrictTo('brewer')
     </script>
   </head>
 
 <body>
-  {% include 'navbar.html' %}
   <div id="dashboard">
+    <main-navbar @select-config="selectConfig($event)"></main-navbar>
     <!-- Tools -->
     <div class="uk-section">
       <div class="uk-container">

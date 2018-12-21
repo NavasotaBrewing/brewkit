@@ -37,5 +37,9 @@ Middleware = {
       return true;
     }
     return false;
+  },
+  logout: function() {
+    Cookies.remove('user'),
+    this.redirect('/login')
   }
 }

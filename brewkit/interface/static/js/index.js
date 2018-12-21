@@ -14,17 +14,20 @@ let x = new Vue({
     timer: null,
     sendWhenDone: false
   },
+  components: {
+    'main-navbar': NavBarComponent,
+  },
   methods: {
     update() {
-      socket.emit('update', this.config, function (response) {
-        x.config = JSON.parse(response.replace(/\'/g, '"'));
+      socket.emit('update', this.config, (response) => {
+        this.config = JSON.parse(response.replace(/\'/g, '"'));
       });
       this.refreshCharts();
     },
 
     enact() {
-      socket.emit('enact', this.config, function (response) {
-        x.update();
+      socket.emit('enact', this.config, (response) => {
+        this.update();
       });
     },
 
@@ -43,9 +46,6 @@ let x = new Vue({
 
 
       return this.timerInput;
-    },
-
-    onTimerFinish() {
     },
 
     startTimer() {
@@ -99,12 +99,13 @@ let x = new Vue({
     sendSlackMessage() {
       sendInSlack(this.slackMessage, this.config.slackWebhook);
       this.showToast('Message Sent');
-      x.slackMessage = ''
+      this.slackMessage = ''
     },
 
     registerEnactors() {
-      $('.enactor').on('click', function () {
-        x.enact();
+      this.enactors = $('.enactor')
+      this.enactors.on('click', () => {
+        this.enact();
       })
     },
 
@@ -136,9 +137,14 @@ let x = new Vue({
       });
     },
 
-    onConfigSelect() {
-      this.registerEnactors();
-      this.registerThermoCharts();
+    selectConfig(config) {
+      this.config = config;
+      Vue.nextTick()
+        .then(() => {
+          this.registerEnactors();
+          this.registerThermoCharts();
+        })
+
       this.update();
       this.configUpdater = setInterval(() => {
         this.update();
@@ -146,9 +152,7 @@ let x = new Vue({
     }
   },
   watch: {
-    configSelected: function() {
-      this.onConfigSelect();
-    }
+
   },
   computed: {
     done: function () {
