@@ -22,7 +22,9 @@ let x = new Vue({
       socket.emit('update', this.config, (response) => {
         this.config = JSON.parse(response.replace(/\'/g, '"'));
       });
-      this.refreshCharts();
+      if (this.charts.length > 0) {
+        this.refreshCharts();
+      }
     },
 
     enact() {
@@ -127,7 +129,9 @@ let x = new Vue({
     },
 
     registerThermoCharts() {
-      this.unregisterOldCharts();
+      if (this.config.devices.filter(d => d.type == 'thermostat').length < 1) {
+        return;
+      }
       this.config.devices.filter(d => d.type == 'thermostat').forEach(thermo => {
         chart = generateChart(thermo)
 
@@ -144,7 +148,13 @@ let x = new Vue({
       this.charts = [];
     },
 
+    destroyConfig() {
+      this.unregisterOldCharts();
+      clearInterval(this.configUpdater);
+    },
+
     selectConfig(config) {
+      this.destroyConfig();
       this.config = config;
       Vue.nextTick()
         .then(() => {
