@@ -18,14 +18,12 @@ let x = new Vue({
   },
   methods: {
     update() {
-      console.log('update')
       socket.emit('update', this.config, (response) => {
         this.config = JSON.parse(response.replace(/\'/g, '"'));
       });
     },
 
     enact() {
-      console.log('enact')
       socket.emit('enact', this.config, (response) => {
         this.update();
       });
