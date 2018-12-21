@@ -48,6 +48,11 @@ def update_users():
 def all_users():
     return json.dumps(app.user_manager.users)
 
+# Temporary
+@app.route('/sandbox')
+def sandbox():
+    return render_template('sandbox.html')
+
 @app.route('/view')
 def view_panel():
     return render_template('view.html')
