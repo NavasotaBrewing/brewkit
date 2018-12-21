@@ -13,7 +13,16 @@
         Middleware.logout();
       },
       selectConfig(config) {
+        Cookies.set('configuration', config.name)
         this.$emit('select-config', config);
+      },
+      reselectConfig() {
+        prevName = Cookies.get('configuration')
+        if(prevName) {
+          config = this.configs.filter(c => c.name == prevName)[0];
+          this.selectConfig(config)
+          this.configurationSelect = config.name
+        }
       }
     },
     watch: {
@@ -23,19 +32,15 @@
         } else {
           this.selectConfig({devices: []})
         }
-        // Vue.nextTick()
-        //   .then(function () {
-        //     // this is bad, i need to fix this
-        //     x.configSelected = true
-        //   })
       }
     },
     mounted() {
-      this.user = JSON.parse(Cookies.get('user'))
-      temp = this
-      socket.emit('get_configurations', function (configs) {
-        temp.configs = JSON.parse(configs);
+      socket.emit('get_configurations', (configs) => {
+        this.configs = JSON.parse(configs);
+        this.reselectConfig();
       });
+
+      this.user = JSON.parse(Cookies.get('user'))
     },
     template: `
       <nav id="navbar" class="uk-navbar-container" uk-navbar>

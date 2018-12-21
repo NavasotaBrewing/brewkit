@@ -1,5 +1,18 @@
 function generateChart(thermo) {
-  data = [{ type: 'sv', time: moment().format('hh:mm:ss'), temp: thermo.sv }, { type: 'pv', time: moment().format('hh:mm:ss'), temp: thermo.pv }]
+  // Starting values
+  data = [
+    {
+      type: 'sv',
+      time: moment().format('hh:mm:ss'),
+      temp: 50
+    },
+    {
+      type: 'pv',
+      time: moment().format('hh:mm:ss'),
+      temp: 50
+    }
+  ]
+
   config = {
     guide: {
       interpolate: 'smooth-keep-extremum',
@@ -18,12 +31,11 @@ function generateChart(thermo) {
       Taucharts.api.plugins.get('tooltip')({
         fields: ['time', 'temp'],
         formatters: {
-          // weight will be displayed as                // Person Weight: 50
           time: { label: "Time" },
           temp: {
             label: "Temperature",
             format: function (temp) {
-              return (temp + " ˚F");                   // Person Height: 160 cm
+              return (temp + " ˚F");
             }
           }
         }
@@ -38,7 +50,7 @@ function generateChart(thermo) {
 
   chart = new Taucharts.Chart(config)
 
-  chart.theroId = thermo.id
+  chart.thermoId = thermo.id
   return chart
 }
 

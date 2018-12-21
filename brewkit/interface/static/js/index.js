@@ -127,14 +127,21 @@ let x = new Vue({
     },
 
     registerThermoCharts() {
+      this.unregisterOldCharts();
       this.config.devices.filter(d => d.type == 'thermostat').forEach(thermo => {
         chart = generateChart(thermo)
 
         this.charts.push(chart)
 
-        chart.thermoId = thermo.id
         chart.renderTo('#' + thermo.id + 'Chart');
       });
+    },
+
+    unregisterOldCharts() {
+      this.charts.forEach(chart => {
+        chart.destroy();
+      });
+      this.charts = [];
     },
 
     selectConfig(config) {
