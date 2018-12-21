@@ -109,24 +109,25 @@
     <!-- Thermostats -->
     <div class="uk-section">
       <div class="uk-container">
-        <div class="uk-child-width-1-1@s" uk-grid>
-          <div>
-            <div uk-grid>
-              <!-- Tabs -->
-              <div class="uk-width-auto@m">
-                <ul class="uk-tab-left" uk-tab="connect: #component-tab-left; animation: uk-animation-fade">
-                  <li v-for="thermo in thermos"><a href="#">{{ thermo.name }}</a></li>
-                </ul>
-              </div>
-              <!-- Tab Content -->
-              <div class="uk-width-expand@m">
-                <ul id="component-tab-left" class="uk-switcher">
-                  <li v-for="thermo in thermos">
-                    <thermo-chart :height="'uk-height-medium'" :update-interval="4000" :thermo="thermo"></thermo-chart>
-                  </li>
-                </ul>
-              </div>
-            </div>
+        <div uk-grid>
+          <div class="uk-width-auto@m">
+            <!-- Tab list -->
+            <ul class="uk-tab-left" id="thermo-tabs" uk-tab="connect: #thermo-content; animation: uk-animation-fade; active: -1">
+              <li></li>
+              <li v-for="thermo in thermos">
+                <a href="#">
+                  {{ thermo.name }}
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="uk-width-expand@m">
+            <ul id="thermo-content" class="uk-switcher">
+              <li></li>
+              <li v-for="thermo in thermos">
+                <thermo-chart :thermo="thermo" @new-sv="enact" class="uk-height-medium"></thermo-chart>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -138,7 +139,6 @@
 
 </body>
 
-<script src="%% url_for('static', filename='js/chart.js') %%"></script>
 <script src="%% url_for('static', filename='js/index.js') %%"></script>
 
 </html>

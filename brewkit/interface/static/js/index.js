@@ -3,7 +3,6 @@ let x = new Vue({
   data: {
     user: {},
     configSelected: false,
-    charts: [],
     config: {
       devices: []
     },
@@ -19,15 +18,14 @@ let x = new Vue({
   },
   methods: {
     update() {
+      console.log('update')
       socket.emit('update', this.config, (response) => {
         this.config = JSON.parse(response.replace(/\'/g, '"'));
       });
-      if (this.charts.length > 0) {
-        this.refreshCharts();
-      }
     },
 
     enact() {
+      console.log('enact')
       socket.emit('enact', this.config, (response) => {
         this.update();
       });
@@ -111,46 +109,12 @@ let x = new Vue({
       })
     },
 
-    refreshCharts() {
-      this.charts.forEach(chart => {
-        thermo = this.thermos.filter(t => t.id == chart.thermoId)[0];
-        data = chart.getData();
-        if (data.length >= 40) {
-          data.shift()
-          data.shift()
-        }
-        data.push({ type: 'sv', time: moment().format('hh:mm:ss'), temp: thermo.sv})
-        data.push({ type: 'pv', time: moment().format('hh:mm:ss'), temp: thermo.pv})
-        // Random numbers as a demo
-        // data.push({ type: 'sv', time: moment().format('hh:mm:ss'), temp: Math.random() * 200})
-        // data.push({ type: 'pv', time: moment().format('hh:mm:ss'), temp: Math.random() * 200})
-        chart.setData(data)
-      });
-    },
-
-    registerThermoCharts() {
-      if (this.config.devices.filter(d => d.type == 'thermostat').length < 1) {
-        return;
-      }
-      this.config.devices.filter(d => d.type == 'thermostat').forEach(thermo => {
-        chart = generateChart(thermo)
-
-        this.charts.push(chart)
-
-        chart.renderTo('#' + thermo.id + 'Chart');
-      });
-    },
-
-    unregisterOldCharts() {
-      this.charts.forEach(chart => {
-        chart.destroy();
-      });
-      this.charts = [];
-    },
-
     destroyConfig() {
-      this.unregisterOldCharts();
       clearInterval(this.configUpdater);
+    },
+
+    registerThermoTabs() {
+      UIkit.tab('#thermo-tabs').show(1)
     },
 
     selectConfig(config) {
@@ -159,7 +123,7 @@ let x = new Vue({
       Vue.nextTick()
         .then(() => {
           this.registerEnactors();
-          this.registerThermoCharts();
+          this.registerThermoTabs()
         })
 
       this.update();

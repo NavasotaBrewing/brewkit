@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Sandbox</title>
   {% include 'sources.html' %}
 </head>
+
 <body>
   <div id="sandbox">
-    <thermo-chart ref="thermoChart" :height="'uk-height-medium'" :update-interval="4000" :thermo="thermo"></thermo-chart>
   </div>
 </body>
+
 </html>
 
 <script>
-  let sandbox = new Vue({
+  let x = new Vue({
     el: '#sandbox',
-    components: {
-      'thermo-chart': ThermoChartComponent,
-    },
     methods: {
-      newSv() {
-        console.log('new sv')
-      }
+
     },
     data: {
-      thermo: JSON.parse('{"states":{"0":"Off","1":"On"},"controller_address":"1","sv":173,"type":"thermostat","name":"RIMS Thermostat","pv":112.7,"state":0,"address":"","id":"kwn8ehikir1riwgwtteb2b"}')
+
     }
   })
 </script>
