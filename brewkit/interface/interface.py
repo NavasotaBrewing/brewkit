@@ -75,7 +75,7 @@ def configuration():
 
 @app.route('/procedures')
 def procedures():
-    return redirect('/')
+    return render_template('procedures.html')
 
 @app.route('/new_address', methods=['POST'])
 def set_new_address():

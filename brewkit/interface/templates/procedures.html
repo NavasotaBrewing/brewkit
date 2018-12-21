@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% include 'header.html' %}
+  <title>Procedures</title>
+  {% include 'sources.html' %}
+  <script>
+    Middleware.restrictTo('brewer')
+  </script>
+
+  <style>
+    .step-card.active {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="procedures">
+    <main-navbar @select-config="selectConfig($event)"></main-navbar>
+
+    <div class="uk-section">
+      <div class="uk-container">
+        <div class="uk-grid-divider" uk-grid>
+          <div class="uk-width-1-2@m">
+            <div class="uk-align-left">
+              <div class="uk-margin ">
+                <label for="procedureSelect">Select a Procedure</label>
+                <select v-model="procSelect" class="uk-select" id="procedureSelect">
+                  <option value="">Create a New One</option>
+                  <option v-for="proc in procs" :value="proc.id">{{ proc.name }}</option>
+                </select>
+              </div>
+              <div class="uk-margin">
+                  <input v-if="!procSelect" type="text" class="uk-input" placeholder="New Procedure Name">
+              </div>
+              <div class="uk-margin">
+                <button @click="saveProc" class="uk-button uk-button-primary">Save</button>
+              </div>
+            </div>
+          </div>
+          <div class="uk-width-1-2@m">
+            <p>Procedures are step-by-step instructions that automate some of the tasks in brewing. A procedure can be pre-programmed to save time later. Steps will run in order. Select the configuration you'll be using in the navbar above and start adding steps.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div v-if="proc.id" class="uk-section uk-section-muted">
+      <div class="uk-container">
+        <div uk-grid>
+          <div class="uk-width-1-4@m">
+            <p class="uk-text-lead">Steps</p>
+            <div uk-sortable="group: step-keys">
+              <div @click="selectStep(step)" v-for="step in proc.steps" class="uk-margin">
+                <div :id="step.id + 'Card'" class="uk-card step-card uk-card-default uk-card-body uk-card-small">
+                  <dl>
+                    <dt>{{ step.name }}</dt>
+                    <dd class="uk-text-truncate">{{ step.comments }}</dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="uk-width-expand@m">
+            <div uk-sticky class="uk-margin-top">
+              <p class="uk-text-lead">Details</p>
+              <hr>
+              <div v-if="step.id" class="uk-grid-divider" uk-grid>
+                <div class="uk-width-auto@m">
+                  <p class="uk-text-lead">{{ step.name }}</>
+                  <p>{{ step.comments }}</p>
+                </div>
+                <div class="uk-width-expand">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, laboriosam impedit consequatur nihil iusto blanditiis culpa unde exercitationem dolorum libero incidunt architecto facere ullam officia illo odit excepturi ipsa ea.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="%% url_for('static', filename='js/procedures.js') %%"></script>
+</body>
+</html>
