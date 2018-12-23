@@ -9,9 +9,8 @@
 <body>
   <div id="sandbox">
     <div class="uk-container">
-      <div class="uk-child-width-1-2@s" uk-grid>
-        <device-summary :devices="config.devices" :compact="false"></device-summary>
-      </div>
+      {{ value }}
+      <button @click="updateValue">Update</button>
     </div>
   </div>
 </body>
@@ -21,26 +20,13 @@
 <script>
   let x = new Vue({
     el: '#sandbox',
-    components: {
-      'thermo-chart': ThermoChartComponent,
-      'device-summary': DeviceSummaryComponent,
-    },
     data: {
-      config: JSON.parse('{"devices":[{"type":"onOff","id":"kebi2wrtr1tiw8ikbghwen","state":0,"states":{"0":"Closed","1":"Open"},"controller_address":"2","name":"HLT Valve","address":"0"},{"type":"divert","id":"iwieb81ktkbwrwi2nrehgt","state":0,"states":{"0":"Boil","1":"Mash"},"controller_address":"2","name":"HLT Divert","address":"1"},{"type":"divert","id":"gwbnkreerk8iwi12withbt","state":0,"states":{"0":"Boil","1":"RIMS"},"controller_address":"2","name":"RIMS Divert","address":"2"},{"type":"pump","id":"rwtiebb2iwwtikk1nreg8h","state":0,"states":{"0":"Off","1":"On"},"controller_address":"2","name":"RIMS Pump","address":"3"},{"type":"thermostat","id":"kwn8ehikir1riwgwtteb2b","state":0,"pv":"140","sv":"173","states":{"0":"Off","1":"On"},"controller_address":"1","name":"RIMS Thermostat","address":""}],"slackWebhook":"https://hooks.slack.com/services/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","id":"k2gweii8hwerwktt1birnb","slackChannel":"@luke","name":"Complete"}'),
-      editable: true,
-      compact: false,
-      includeThermos: true,
+      value: 0
     },
-    computed: {
-      valves: function () {
-        return this.config.devices.filter(d => d.type != 'thermostat')
-      },
-      thermos: function () {
-        return this.config.devices.filter(d => d.type == 'thermostat')
+    methods: {
+      updateValue() {
+        this.value = Math.random();
       }
-    },
-    mounted() {
-      this.devices = this.config.devices;
     }
   })
 </script>

@@ -24,13 +24,18 @@
   <div id="procedures">
     <main-navbar @select-config="selectConfig($event)"></main-navbar>
 
-    <div class="uk-section">
+    <!-- Create Section -->
+    <div class="uk-section uk-section-default">
       <div class="uk-container">
         <div class="uk-grid-divider" uk-grid>
           <div class="uk-width-1-2@m">
             <div class="uk-align-left">
               <div class="uk-margin ">
-                <label for="procedureSelect">Select a Procedure</label>
+                <label for="procedureSelect">
+                  <div class="uk-text-lead">
+                    Select a Procedure
+                  </div>
+                </label>
                 <select v-model="procSelect" class="uk-select" id="procedureSelect">
                   <option value="">Create a New One</option>
                   <option v-for="proc in procs" :value="proc.id">{{ proc.name }}</option>
@@ -53,18 +58,28 @@
       </div>
     </div>
 
+    <!-- Step Section -->
     <div v-if="proc.id" class="uk-section uk-section-muted">
       <div class="uk-container">
         <div class="uk-grid-divider" uk-grid>
-          <!-- Steps column -->
+          <!-- Steps card column -->
           <div class="uk-width-1-4@m">
-            <p class="uk-text-lead">Steps</p>
-            <div uk-sortable="group: step-keys">
+            <div uk-grid class="uk-margin">
+              <div class="uk-width-expand">
+                <p class="uk-heading-primary">
+                  Steps
+                </p>
+              </div>
+              <div class="uk-width-auto uk-margin-top">
+                <a @click="addStep" uk-icon="icon: plus-circle; ratio: 2;"></a>
+              </div>
+            </div>
+            <div uk-sortable="group: step-keys" id="stepCardColumn">
               <!-- Step Cards -->
-              <div v-for="step in proc.steps" @click="selectStep(step)" class="uk-margin">
+              <div v-for="step in proc.steps" @click="selectStep(step)" :id="step.id + 'CardContainer'" class="uk-margin">
                 <div :id="step.id + 'Card'" class="uk-card step-card cursor uk-card-default uk-card-body uk-card-small">
                   <dl>
-                    <dt>{{ step.name }}</dt>
+                    <dt>{{ step.index + 1 }}. {{ step.name }}</dt>
                     <dd class="uk-text-truncate">{{ step.comments }}</dd>
                   </dl>
                 </div>
@@ -72,35 +87,70 @@
             </div>
           </div>
           <!-- Selected Step Column -->
-          <div class="uk-width-expand@m">
-            <div v-if="step.id">
-              <!-- Name and Comments -->
-              <div class="uk-section">
-                <!-- Name Display -->
-                <p v-show="!showTitleInput" id="stepTitle" @click="showTitleInput = true" class="uk-text-lead cursor  uk-heading-bullet uk-heading-divider">{{ step.name }}</p>
-                <!-- Name Form -->
-                <div v-show="showTitleInput" class="uk-margin">
-                  <input id="stepTitleInput" v-model="step.name" @blur="showTitleInput = false" type="text" class="uk-input uk-form-large">
-                </div>
-                <!-- Comments display -->
-                <p @click="showCommentsInput = true" v-if="!showCommentsInput" class="cursor">{{ step.comments }}</p>
-                <!-- Comments Form -->
-                <div v-if="showCommentsInput" class="uk-margin">
-                  <textarea v-model="step.comments" @blur="showCommentsInput = false" class="uk-textarea">{{ step.comments }}</textarea>
-                </div>
+          <div v-if="activeStep.id" class="uk-width-expand@m">
+            <!-- Name and Comments -->
+            <div class="uk-section">
+              <!-- Name Display -->
+              <p v-show="!showTitleInput" id="stepTitle" @click="showTitleInput = true;" class="uk-heading-primary cursor uk-heading-bullet uk-heading-divider">{{
+                activeStep.name }}</p>
+              <!-- Name Form -->
+              <div v-show="showTitleInput" class="uk-margin">
+                <input id="stepTitleInput" v-model="activeStep.name" @blur="showTitleInput = false" type="text" class="uk-input uk-form-large">
               </div>
-              <!-- Tools -->
-              <div class="uk-section">
-                <p class="uk-text-lead uk-heading-bullet uk-heading-divider">Tools</p>
+              <!-- Comments display -->
+              <p @click="showCommentsInput = true" v-if="!showCommentsInput" class="cursor">{{ activeStep.comments }}</p>
+              <!-- Comments Form -->
+              <div v-if="showCommentsInput" class="uk-margin">
+                <textarea v-model="activeStep.comments" @blur="showCommentsInput = false" class="uk-textarea">{{ activeStep.comments }}</textarea>
               </div>
-              <!-- Configuration -->
-              <div class="uk-section">
-                <p class="uk-text-lead uk-heading-bullet">Configuration</p>
-                <device-summary :editable="true" :compact="true" :devices="step.config.devices"></device-summary>
-              </div>
+            </div>
+            <!-- Tools -->
+            <div class="uk-section">
+              <p class="uk-heading-primary uk-heading-bullet uk-heading-divider">Tools</p>
+              <!-- Tools accordion -->
+              <ul uk-accordion>
+                <li>
+                  <a class="uk-accordion-title" href="#">Delay</a>
+                  <div class="uk-accordion-content">
+                    <p class="uk-text-meta">Procedure will pause for this amount of time <i>before</i> executing
+                      configuration changes</p>
+                    <div class="uk-grid-small" uk-grid>
+                      <div class="uk-width-1-4@s">
+                        <label for="delayInputMinutes">Minutes</label>
+                        <input id="delayInputMinutes" v-model="activeStep.tools.delay.minutes" type="tel" class="uk-input"
+                          placeholder="Minutes">
+                      </div>
+                      <div class="uk-width-1-4@s">
+                        <label for="delayInputSeconds">Seconds</label>
+                        <input id="delayInputSeconds" v-model="activeStep.tools.delay.seconds" type="tel" class="uk-input"
+                          placeholder="Seconds">
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <a class="uk-accordion-title" href="#">Slack</a>
+                  <div class="uk-accordion-content">
+                    <p class="uk-text-meta">Message will be sent when this step is executed</p>
+                    <textarea name="slack-message" id="slackMessage" class="uk-textarea" cols="50" rows="5" placeholder="Slack Message"></textarea>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!-- Configuration -->
+            <div class="uk-section">
+              <p class="uk-heading-primary uk-heading-bullet">Configuration</p>
+              <device-summary :editable="true" :compact="true" :devices="activeStep.config.devices"></device-summary>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Placeholder -->
+    <div v-else class="uk-section uk-section-muted">
+      <div class="uk-container uk-text-center">
+        <h3>Select a Procedure or Create a New One</h3>
       </div>
     </div>
 
