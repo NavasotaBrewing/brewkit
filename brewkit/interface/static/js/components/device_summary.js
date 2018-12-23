@@ -14,11 +14,6 @@ var CompactDeviceSummaryComponent = Vue.component('compact-device-summary', {
   template: `
     <div id="compactDeviceSummary" class="uk-overflow-auto">
       <table class="uk-table uk-table-striped uk-table-small uk-table-middle">
-        <caption>
-          <h4>
-            Devices
-          </h4>
-        </caption>
         <thead>
           <tr>
             <th>Name</th>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   {% include 'header.html' %}
   <title>Procedures</title>
@@ -18,6 +19,7 @@
     }
   </style>
 </head>
+
 <body>
   <div id="procedures">
     <main-navbar @select-config="selectConfig($event)"></main-navbar>
@@ -35,7 +37,7 @@
                 </select>
               </div>
               <div class="uk-margin">
-                  <input v-if="!procSelect" type="text" class="uk-input" placeholder="New Procedure Name">
+                <input v-if="!procSelect" type="text" class="uk-input" placeholder="New Procedure Name">
               </div>
               <div class="uk-margin">
                 <button @click="saveProc" class="uk-button uk-button-primary">Save</button>
@@ -43,7 +45,9 @@
             </div>
           </div>
           <div class="uk-width-1-2@m">
-            <p>Procedures are step-by-step instructions that automate some of the tasks in brewing. A procedure can be pre-programmed to save time later. Steps will run in order. Select the configuration you'll be using in the navbar above and start adding steps.</p>
+            <p>Procedures are step-by-step instructions that automate some of the tasks in brewing. A procedure can be
+              pre-programmed to save time later. Steps will run in order. Select the configuration you'll be using in
+              the navbar above and start adding steps.</p>
           </div>
         </div>
       </div>
@@ -51,7 +55,7 @@
 
     <div v-if="proc.id" class="uk-section uk-section-muted">
       <div class="uk-container">
-        <div uk-grid>
+        <div class="uk-grid-divider" uk-grid>
           <!-- Steps column -->
           <div class="uk-width-1-4@m">
             <p class="uk-text-lead">Steps</p>
@@ -67,30 +71,32 @@
               </div>
             </div>
           </div>
-          <!-- Details Column -->
+          <!-- Selected Step Column -->
           <div class="uk-width-expand@m">
-            <div class="uk-margin">
-              <p class="uk-text-lead">Details</p>
-              <hr>
-              <!-- Current Step -->
-              <div v-if="step.id" class="uk-grid-divider" uk-grid>
-                <div class="uk-width-auto@m">
-                  <!-- Name Display -->
-                  <p v-show="!showTitleInput" id="stepTitle" @click="showTitleInput = true" class="uk-text-lead cursor">{{ step.name }}</p>
-                  <!-- Name Form -->
-                  <div v-show="showTitleInput" class="uk-margin">
-                    <input id="stepTitleInput" v-model="step.name" @blur="showTitleInput = false" type="text" class="uk-input uk-form-large">
-                  </div>
-                  <!-- Comments display -->
-                  <p @click="showCommentsInput = true" v-if="!showCommentsInput" class="cursor">{{ step.comments }}</p>
-                  <!-- Comments Form -->
-                  <div v-if="showCommentsInput" class="uk-margin">
-                    <textarea v-model="step.comments" @blur="showCommentsInput = false" class="uk-textarea">{{ step.comments }}</textarea>
-                  </div>
+            <div v-if="step.id">
+              <!-- Name and Comments -->
+              <div class="uk-section">
+                <!-- Name Display -->
+                <p v-show="!showTitleInput" id="stepTitle" @click="showTitleInput = true" class="uk-text-lead cursor  uk-heading-bullet uk-heading-divider">{{ step.name }}</p>
+                <!-- Name Form -->
+                <div v-show="showTitleInput" class="uk-margin">
+                  <input id="stepTitleInput" v-model="step.name" @blur="showTitleInput = false" type="text" class="uk-input uk-form-large">
                 </div>
-                <div class="uk-width-expand">
-                  <device-summary :editable="true" :devices="config.devices"></device-summary>
+                <!-- Comments display -->
+                <p @click="showCommentsInput = true" v-if="!showCommentsInput" class="cursor">{{ step.comments }}</p>
+                <!-- Comments Form -->
+                <div v-if="showCommentsInput" class="uk-margin">
+                  <textarea v-model="step.comments" @blur="showCommentsInput = false" class="uk-textarea">{{ step.comments }}</textarea>
                 </div>
+              </div>
+              <!-- Tools -->
+              <div class="uk-section">
+                <p class="uk-text-lead uk-heading-bullet uk-heading-divider">Tools</p>
+              </div>
+              <!-- Configuration -->
+              <div class="uk-section">
+                <p class="uk-text-lead uk-heading-bullet">Configuration</p>
+                <device-summary :editable="true" :compact="true" :devices="step.config.devices"></device-summary>
               </div>
             </div>
           </div>
@@ -102,4 +108,5 @@
 
   <script src="%% url_for('static', filename='js/procedures.js') %%"></script>
 </body>
+
 </html>
