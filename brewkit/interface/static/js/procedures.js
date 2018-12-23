@@ -113,6 +113,9 @@ let p = new Vue({
           },
           slack: {
             message: ''
+          },
+          watch: {
+            thermo: ''
           }
         },
         name: '',

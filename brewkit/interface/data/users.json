@@ -1,9 +1,8 @@
 [
   {
     "username": "llamicron",
-    "password": "pbkdf2:sha256:50000$GkOCn7yq$0a6ea62efbd902c5c5889a50a385cc542fcc00a35dd9fdf30393d5ec1d34e6bb",
+    "password": "pbkdf2:sha256:50000$eJm4lJ3R$53eb397adf70a45914effbd0e320373d7fbdbc522056e84a8e8b3dc8eba360e6",
     "email": "",
-    "role": "brewer",
-    "token": "476229cb9eee424a86bba2d3f6309542"
+    "role": "brewer"
   }
 ]

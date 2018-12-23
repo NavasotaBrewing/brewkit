@@ -32,10 +32,10 @@ Middleware = {
   },
 
   loggedIn: function () {
-    if (this.user)  {
-      return true;
+    if (!this.user || this.user == 'error') {
+      return false
     }
-    return false;
+    return true;
   },
 
   login: function(givenUser) {

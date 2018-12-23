@@ -80,6 +80,9 @@
           },
           "slack": {
             "message": ""
+          },
+          "watch": {
+            "thermo": ""
           }
         },
         "name": "Setup",
@@ -163,6 +166,9 @@
           },
           "slack": {
             "message": ""
+          },
+          "watch": {
+            "thermo": ""
           }
         },
         "name": "Fill the Mash Ton",
@@ -246,11 +252,14 @@
           },
           "slack": {
             "message": ""
+          },
+          "watch": {
+            "thermo": ""
           }
         },
-        "name": "Heat the Mash Ton",
-        "id": "d5634816-7f84-e708-c67d-52b52bc7aadd",
-        "comments": "Set the RIMS thermostat to 173 and turn the heater on",
+        "name": "Heat the mash ton",
+        "id": "3b0fe968-72c0-5332-2a49-629be509c0aa",
+        "comments": "Turn on the heater and pump",
         "config": {
           "slackChannel": "@luke",
           "slackWebhook": "https://hooks.slack.com/services/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",
@@ -265,7 +274,7 @@
               },
               "id": "kebi2wrtr1tiw8ikbghwen",
               "type": "onOff",
-              "state": 1,
+              "state": 0,
               "controller_address": "2",
               "name": "HLT Valve"
             },
@@ -301,7 +310,7 @@
               },
               "id": "rwtiebb2iwwtikk1nreg8h",
               "type": "pump",
-              "state": 0,
+              "state": 1,
               "controller_address": "2",
               "name": "RIMS Pump"
             },
@@ -325,16 +334,19 @@
         "index": 3,
         "tools": {
           "delay": {
-            "minutes": "30",
+            "minutes": "",
             "seconds": ""
           },
           "slack": {
-            "message": "All done!"
+            "message": "Mash ton is heated"
+          },
+          "watch": {
+            "thermo": "kwn8ehikir1riwgwtteb2b"
           }
         },
-        "name": "Finish Up",
-        "id": "3b0fe968-72c0-5332-2a49-629be509c0aa",
-        "comments": "After 30 minutes, turn the heater off, close the valve, then send a slack message",
+        "name": "Done",
+        "id": "4843e075-71c3-cec7-28d9-05a954b1d60e",
+        "comments": "Once the mash ton is heated, turn the heater off and send a slack message",
         "config": {
           "slackChannel": "@luke",
           "slackWebhook": "https://hooks.slack.com/services/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",
