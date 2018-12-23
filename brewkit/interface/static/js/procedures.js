@@ -26,10 +26,10 @@ let p = new Vue({
 
     selectStep(step) {
       this.activeStep = step;
-      setTimeout(() => {
+      this.$nextTick(() => {
         this.activateStepCard();
         $('#stepTitleInput').focus();
-      }, 100);
+      })
     },
 
     selectProc(id) {
@@ -38,6 +38,9 @@ let p = new Vue({
         return;
       }
       this.proc = this.procs.filter(p => p.id == id)[0]
+      this.$nextTick(() => {
+        this.proc.steps = this.proc.steps.sort(function(x, y) {return x.index - y.index})
+      })
     },
 
     saveProc() {
@@ -53,7 +56,7 @@ let p = new Vue({
         data: JSON.stringify(this.proc),
         contentType: 'application/json',
         success: function(response) {
-          console.log(response);
+          toast(response)
         }
       })
     },
@@ -92,13 +95,14 @@ let p = new Vue({
     reindex() {
       cards = this.sortable.children()
       cards.each((index, card) => {
-        stepId = card.id.slice(0, 36)
+        stepId = card.id.slice(0, 36);
         this.proc.steps.forEach(step => {
           if (step.id == stepId) {
             step.index = index;
           }
         });
-      })
+      });
+      this.proc.steps = this.proc.steps.sort(function(x, y) {return x.index > y.index})
 
     },
   },

@@ -95,7 +95,7 @@ def save_procs():
 
     with open(app.data_dir + 'procs.json', 'w') as fi:
         json.dump(procs, fi, indent=2)
-    return 'true'
+    return 'Configuration saved'
 
 @app.route('/new_address', methods=['POST'])
 def set_new_address():

@@ -20,10 +20,6 @@ let x = new Vue({
     'main-navbar': NavBarComponent
   },
   methods: {
-    toast(message, status='primary') {
-      UIkit.notification({ message: message, status: status, pos: 'bottom-left', timeout: 2000 })
-    },
-
     testSlack() {
       sendInSlack('It works!', this.config.slackWebhook)
       x.toast('Message sent, did you get it?')
@@ -49,7 +45,7 @@ let x = new Vue({
 
     addDevice() {
       if (!this.validateDevice()) {
-        this.toast('All fields need to be filled', 'danger');
+        toast('All fields need to be filled', 'danger');
         return;
       }
       copy = Object.assign(this.newDevice);
@@ -75,19 +71,19 @@ let x = new Vue({
 
     saveConfiguration() {
       if (!this.config.name || this.config.name == '') {
-        this.toast('Configuration needs a name', 'danger')
+        toast('Configuration needs a name', 'danger')
         return;
       }
       this.$refs.NavBar.configs.push(this.config)
       socket.emit('save_configuration', this.config, (response) => {
-        this.toast(response);
+        toast(response);
       });
     },
 
     deleteConfiguration() {
       if (confirm("Are you sure? This can't be undone.")) {
         socket.emit('delete_configuration', this.config, (response) => {
-          this.toast(response);
+          toast(response);
         });
         // Clear the deleted one out of the navbar
         this.$refs.NavBar.configs = this.$refs.NavBar.configs.filter(c => c.id != this.config.id)

@@ -79,7 +79,7 @@
               <div v-for="step in proc.steps" @click="selectStep(step)" :id="step.id + 'CardContainer'" class="uk-margin">
                 <div :id="step.id + 'Card'" class="uk-card step-card cursor uk-card-default uk-card-body uk-card-small">
                   <dl>
-                    <dt>{{ step.index + 1 }}. {{ step.name }}</dt>
+                    <dt>{{ step.index }}. {{ step.name }}</dt>
                     <dd class="uk-text-truncate">{{ step.comments }}</dd>
                   </dl>
                 </div>
@@ -93,6 +93,7 @@
               <!-- Name Display -->
               <p v-show="!showTitleInput" id="stepTitle" @click="showTitleInput = true;" class="uk-heading-primary cursor uk-heading-bullet uk-heading-divider">{{
                 activeStep.name }}</p>
+                {{ activeStep.index }}
               <!-- Name Form -->
               <div v-show="showTitleInput" class="uk-margin">
                 <input id="stepTitleInput" v-model="activeStep.name" @blur="showTitleInput = false" type="text" class="uk-input uk-form-large">
