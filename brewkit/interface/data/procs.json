@@ -1,19 +1,22 @@
 [
   {
-    "name": "Procedure 1",
-    "id": "6b77bafa-1c92-4c77-f8ba-fb4a736145cf",
+    "name": "Testing Procedure",
+    "id": "bb4b6a53-5548-e979-bd73-d7fecd853d73",
     "steps": [
       {
-        "index": 1,
+        "index": 0,
         "tools": {
           "delay": {
             "minutes": "",
             "seconds": ""
+          },
+          "slack": {
+            "message": ""
           }
         },
-        "name": "Step 1",
-        "id": "39ae1b9d-7a98-178d-ba4d-c8ec5370305a",
-        "comments": "Comments",
+        "name": "Setup",
+        "id": "f0f7897b-7482-ec1d-8785-a47380503b1f",
+        "comments": "Close all the valves, make sure the heater is off",
         "config": {
           "slackChannel": "@luke",
           "slackWebhook": "https://hooks.slack.com/services/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",
@@ -84,16 +87,19 @@
         }
       },
       {
-        "index": 0,
+        "index": 1,
         "tools": {
           "delay": {
             "minutes": "",
             "seconds": ""
+          },
+          "slack": {
+            "message": ""
           }
         },
-        "name": "Step 2",
-        "id": "122f10df-8f7e-9af6-6c86-6f37159e4252",
-        "comments": "Comments",
+        "name": "Fill the Mash Ton",
+        "id": "8bff4070-2f8a-cf9e-41e1-3cea1bbd30af",
+        "comments": "Fills the mash ton with water from the HLT ton",
         "config": {
           "slackChannel": "@luke",
           "slackWebhook": "https://hooks.slack.com/services/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",
@@ -108,7 +114,7 @@
               },
               "id": "kebi2wrtr1tiw8ikbghwen",
               "type": "onOff",
-              "state": 0,
+              "state": 1,
               "controller_address": "2",
               "name": "HLT Valve"
             },
@@ -120,7 +126,7 @@
               },
               "id": "iwieb81ktkbwrwi2nrehgt",
               "type": "divert",
-              "state": 0,
+              "state": 1,
               "controller_address": "2",
               "name": "HLT Divert"
             },
@@ -169,11 +175,98 @@
           "delay": {
             "minutes": "",
             "seconds": ""
+          },
+          "slack": {
+            "message": ""
           }
         },
-        "name": "Step 3",
-        "id": "b65ac553-1dae-cbff-5f59-999a1224e6af",
-        "comments": "Comments, comments, comments",
+        "name": "Heat the Mash Ton",
+        "id": "d5634816-7f84-e708-c67d-52b52bc7aadd",
+        "comments": "Set the RIMS thermostat to 173 and turn the heater on",
+        "config": {
+          "slackChannel": "@luke",
+          "slackWebhook": "https://hooks.slack.com/services/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",
+          "id": "k2gweii8hwerwktt1birnb",
+          "name": "Complete",
+          "devices": [
+            {
+              "address": "0",
+              "states": {
+                "0": "Closed",
+                "1": "Open"
+              },
+              "id": "kebi2wrtr1tiw8ikbghwen",
+              "type": "onOff",
+              "state": 1,
+              "controller_address": "2",
+              "name": "HLT Valve"
+            },
+            {
+              "address": "1",
+              "states": {
+                "0": "Boil",
+                "1": "Mash"
+              },
+              "id": "iwieb81ktkbwrwi2nrehgt",
+              "type": "divert",
+              "state": 1,
+              "controller_address": "2",
+              "name": "HLT Divert"
+            },
+            {
+              "address": "2",
+              "states": {
+                "0": "Boil",
+                "1": "RIMS"
+              },
+              "id": "gwbnkreerk8iwi12withbt",
+              "type": "divert",
+              "state": 0,
+              "controller_address": "2",
+              "name": "RIMS Divert"
+            },
+            {
+              "address": "3",
+              "states": {
+                "0": "Off",
+                "1": "On"
+              },
+              "id": "rwtiebb2iwwtikk1nreg8h",
+              "type": "pump",
+              "state": 0,
+              "controller_address": "2",
+              "name": "RIMS Pump"
+            },
+            {
+              "address": "",
+              "states": {
+                "0": "Off",
+                "1": "On"
+              },
+              "id": "kwn8ehikir1riwgwtteb2b",
+              "type": "thermostat",
+              "state": 1,
+              "controller_address": "1",
+              "name": "RIMS Thermostat",
+              "sv": "173"
+            }
+          ]
+        }
+      },
+      {
+        "index": 3,
+        "tools": {
+          "delay": {
+            "minutes": "30",
+            "seconds": ""
+          },
+          "slack": {
+            "message": "All done!"
+          }
+        },
+        "name": "Finish Up",
+        "id": "3b0fe968-72c0-5332-2a49-629be509c0aa",
+        "comments": "After 30 minutes, turn the heater off, close the valve, then send a slack message",
         "config": {
           "slackChannel": "@luke",
           "slackWebhook": "https://hooks.slack.com/services/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",
@@ -200,7 +293,7 @@
               },
               "id": "iwieb81ktkbwrwi2nrehgt",
               "type": "divert",
-              "state": 0,
+              "state": 1,
               "controller_address": "2",
               "name": "HLT Divert"
             },
@@ -238,7 +331,8 @@
               "type": "thermostat",
               "state": 0,
               "controller_address": "1",
-              "name": "RIMS Thermostat"
+              "name": "RIMS Thermostat",
+              "sv": "173"
             }
           ]
         }

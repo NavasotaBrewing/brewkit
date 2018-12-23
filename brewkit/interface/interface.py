@@ -97,6 +97,17 @@ def save_procs():
         json.dump(procs, fi, indent=2)
     return 'Configuration saved'
 
+@app.route('/delete_proc', methods=['POST'])
+def delete_proc():
+    proc_id = request.get_json()
+
+    procs = json.loads(get_procs())
+    procs = [p for p in procs if p['id'] != proc_id]
+
+    with open(app.data_dir + 'procs.json', 'w') as fi:
+        json.dump(procs, fi, indent=2)
+    return 'Configuration deleted'
+
 @app.route('/new_address', methods=['POST'])
 def set_new_address():
     address = json.loads(request.data)['address']

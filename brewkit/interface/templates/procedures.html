@@ -46,6 +46,7 @@
               </div>
               <div class="uk-margin">
                 <button @click="saveProc" class="uk-button uk-button-primary">Save</button>
+                <button @click="deleteProc" v-if="procedureSelected" class="uk-button uk-button-danger">Delete</button>
               </div>
             </div>
           </div>
@@ -59,7 +60,7 @@
     </div>
 
     <!-- Step Section -->
-    <div v-show="proc.id" class="uk-section uk-section-muted">
+    <div v-show="procedureSelected" class="uk-section uk-section-muted">
       <div class="uk-container">
         <div class="uk-grid-divider" uk-grid>
           <!-- Steps card column -->
@@ -91,9 +92,9 @@
             <!-- Name and Comments -->
             <div class="uk-section">
               <!-- Name Display -->
-              <p v-show="!showTitleInput" id="stepTitle" @click="showTitleInput = true;" class="uk-heading-primary cursor uk-heading-bullet uk-heading-divider">{{
-                activeStep.name }}</p>
-                {{ activeStep.index }}
+              <p v-show="!showTitleInput" id="stepTitle" @click="showTitleInput = true;" class="uk-heading-primary cursor uk-heading-bullet uk-heading-divider">
+                {{ activeStep.name }}
+              </p>
               <!-- Name Form -->
               <div v-show="showTitleInput" class="uk-margin">
                 <input id="stepTitleInput" v-model="activeStep.name" @blur="showTitleInput = false" type="text" class="uk-input uk-form-large">
@@ -133,7 +134,7 @@
                   <a class="uk-accordion-title" href="#">Slack</a>
                   <div class="uk-accordion-content">
                     <p class="uk-text-meta">Message will be sent when this step is executed</p>
-                    <textarea name="slack-message" id="slackMessage" class="uk-textarea" cols="50" rows="5" placeholder="Slack Message"></textarea>
+                    <textarea name="slack-message" v-model="activeStep.tools.slack.message" :id="activeStep.id + 'SlackMessage'" class="uk-textarea" cols="50" rows="5" placeholder="Slack Message"></textarea>
                   </div>
                 </li>
               </ul>
@@ -143,13 +144,16 @@
               <p class="uk-heading-primary uk-heading-bullet">Configuration</p>
               <device-summary :editable="true" :compact="true" :devices="activeStep.config.devices"></device-summary>
             </div>
+            <div class="uk-margin">
+              <a @click="removeStep(activeStep)">Remove Step</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Placeholder -->
-    <div v-if="!proc.id" class="uk-section uk-section-muted">
+    <div v-if="!procedureSelected" class="uk-section uk-section-muted">
       <div class="uk-container uk-text-center">
         <h3>Select a Procedure or Create a New One</h3>
       </div>

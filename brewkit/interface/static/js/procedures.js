@@ -77,6 +77,9 @@ let p = new Vue({
             minutes: '',
             seconds: ''
           },
+          slack: {
+            message: ''
+          }
         },
         name: '',
         id: guid(),
@@ -105,6 +108,32 @@ let p = new Vue({
       this.proc.steps = this.proc.steps.sort(function(x, y) {return x.index > y.index})
 
     },
+
+    removeStep(step) {
+      this.proc.steps = this.proc.steps.filter(s => s.id != step.id)
+      this.activeStep = {};
+    },
+
+    deleteProc() {
+      if (confirm("Are you sure? This can't be undone")) {
+        $.ajax('/delete_proc', {
+          type: 'POST',
+          data: JSON.stringify(this.proc.id),
+          contentType: 'application/json',
+          success: function(response) {
+            toast(response)
+          }
+        })
+        this.proc = {};
+        this.procSelect = ''
+      }
+    }
+  },
+  computed: {
+    procedureSelected: function() {
+      if (this.proc.id) return true;
+      return false;
+    }
   },
   watch: {
     procSelect: function() {
