@@ -38,7 +38,6 @@
   </div>
 </div>
 
-<!-- <script src="%% url_for('static', filename='js/promote.js') %%"></script> -->
 <script>
   let promoter = new Vue({
     el: '#promote',
@@ -60,9 +59,9 @@
       }
     },
     mounted() {
-      this.user = JSON.parse(Cookies.get('user'))
-      $.get('/users', function (response) {
-        promoter.users = JSON.parse(response);
+      this.user = Middlware.user;
+      $.get('/users', (response) => {
+        this.users = JSON.parse(response);
       })
     }
   })

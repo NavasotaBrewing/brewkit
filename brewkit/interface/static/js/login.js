@@ -59,26 +59,7 @@ let x = new Vue({
       if (this.user.username == '' || this.user.password == '') {
         this.toast('Please enter your username and password', 'danger');
       }
-
-      $.ajax('/login', {
-        data: JSON.stringify(this.user),
-        contentType: 'application/json',
-        type: 'POST',
-        success: function(response) {
-          user = JSON.parse(response)
-
-          if (user.username == x.user.username) {
-            x.toast('Logged in')
-            user.password = x.user.password;
-            console.log(user)
-            Cookies.set('user', JSON.stringify(user))
-            Middleware.redirect('/')
-          } else {
-            x.toast('Password does not match', 'danger')
-          }
-
-        }
-      })
+      Middleware.login(this.user)
     }
   }
 })

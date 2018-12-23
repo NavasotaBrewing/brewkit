@@ -12,6 +12,7 @@
 <body>
   <div id="dashboard">
     <main-navbar @select-config="selectConfig($event)"></main-navbar>
+    <promote></promote>
     <!-- Tools -->
     <div class="uk-section">
       <div class="uk-container">
@@ -73,7 +74,7 @@
     <!-- Valves -->
     <div class="uk-section uk-section-muted">
       <div class="uk-container">
-        <device-summary :devices="config.devices" @new-sv="setSv($event)"></device-summary>
+        <device-summary :devices="config.devices" :include-thermos="false" @new-sv="setSv($event)"></device-summary>
       </div>
     </div>
     <!-- Thermostats -->
@@ -104,8 +105,6 @@
     </div>
 
   </div>
-
-  {% include 'promote.html' %}
 
 </body>
 

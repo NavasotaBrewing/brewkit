@@ -1,17 +1,9 @@
 [
   {
-    "name": "Luke Sweeney",
     "username": "llamicron",
-    "password": "pbkdf2:sha256:50000$vEcY2FMm$59c4578897ff347539f85ca14aa5b46be21608ffb28ebd3bdad4a54be346e3c9",
-    "email": "llamicron@gmail.com",
-    "role": "brewer",
-    "token": "3959b287aeda48358168273bf136dd4c"
-  },
-  {
-    "username": "adaptiman",
-    "password": "pbkdf2:sha256:50000$7O64IMWA$9a0da5c6815752b62401ab69e1cfeb3d11d5bf4226b665291d6e7a42c3108e3b",
+    "password": "pbkdf2:sha256:50000$GkOCn7yq$0a6ea62efbd902c5c5889a50a385cc542fcc00a35dd9fdf30393d5ec1d34e6bb",
     "email": "",
     "role": "brewer",
-    "token": "4a2b9f5e0b7e40f5bc38145f885b453b"
+    "token": "b9a6a75997404286914234e967c79d6a"
   }
 ]

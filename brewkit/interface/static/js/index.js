@@ -15,6 +15,7 @@ let x = new Vue({
   },
   components: {
     'main-navbar': NavBarComponent,
+    'promote': PromoteComponent
   },
   methods: {
     update() {

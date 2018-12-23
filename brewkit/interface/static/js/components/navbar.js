@@ -75,9 +75,10 @@ let NavBarComponent = Vue.component('main-navbar', {
                 <div uk-dropdown="mode: click">
                   <ul class="uk-nav uk-dropdown-nav">
                     <li class="uk-nav-header">
-                      <span uk-icon="user"></span>
                       {{ user.username }}
+                      <span class="uk-align-right" uk-icon="user"></span>
                     </li>
+                    <hr>
                     <li v-if="user.role == 'brewer'">
                       Brewer
                     </li>

@@ -1,15 +1,13 @@
-if (!Cookies.get('user')) {
-  user = {}
-} else {
-  user = JSON.parse(Cookies.get('user'))
-}
-
+$.get('/users', (response) => {
+  Middleware.users = JSON.parse(response);
+})
 
 Middleware = {
-  user: user,
+  user: JSON.parse(window.sessionStorage.getItem('user')),
   redirect: function(route) {
     document.location = route
   },
+
   restrictTo: function(role) {
     if (!this.loggedIn()) {
       this.redirect('/login')
@@ -32,14 +30,38 @@ Middleware = {
         break;
     }
   },
+
   loggedIn: function () {
-    if (this.user.username)  {
+    if (this.user)  {
       return true;
     }
     return false;
   },
+
+  login: function(givenUser) {
+    $.ajax('/login', {
+      data: JSON.stringify(givenUser),
+      contentType: 'application/json',
+      type: 'POST',
+      success: (response) => {
+        if (response == 'error') {
+          toast('Login failed', 'danger')
+          return false;
+        } else {
+          foundUser = JSON.parse(response)
+          foundUser.password = givenUser.password;
+          toast('Logged in');
+          this.user = foundUser;
+          window.sessionStorage.setItem('user', JSON.stringify(this.user));
+          this.redirect('/')
+        }
+      }
+    })
+  },
+
   logout: function() {
-    Cookies.remove('user'),
+    window.sessionStorage.removeItem('user')
     this.redirect('/login')
   }
 }
+
