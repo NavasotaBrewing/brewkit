@@ -22,7 +22,7 @@
 
 <body>
   <div id="procedures">
-    <main-navbar @select-config="selectConfig($event)"></main-navbar>
+    <main-navbar :disable-config="true" @select-config="selectConfig($event)"></main-navbar>
 
     <!-- Create Section -->
     <div class="uk-section uk-section-default">
@@ -30,6 +30,7 @@
         <div class="uk-grid-divider" uk-grid>
           <div class="uk-width-1-2@m">
             <div class="uk-align-left">
+              <!-- Procedure Select -->
               <div class="uk-margin ">
                 <label for="procedureSelect">
                   <div class="uk-text-lead">
@@ -41,8 +42,17 @@
                   <option v-for="proc in procs" :value="proc.id">{{ proc.name }}</option>
                 </select>
               </div>
+              <!-- New Procedure Name -->
               <div class="uk-margin">
                 <input v-if="procSelect.length == 0" v-model="newProcName" type="text" class="uk-input" placeholder="New Procedure Name">
+              </div>
+              <!-- Base Config -->
+              <div class="uk-margin">
+                <!-- <label for="baseConfig">Base Config</label> -->
+                <select v-if="procSelect.length == 0" v-model="proc.baseConfig" id="baseConfig" class="uk-select">
+                  <option :value="{}">Base Config</option>
+                  <option v-for="config in configs" :value="config">{{ config.name }}</option>
+                </select>
               </div>
               <div class="uk-margin">
                 <button @click="saveProc" class="uk-button uk-button-primary">Save</button>
@@ -80,7 +90,7 @@
               <div v-for="step in proc.steps" @click="selectStep(step)" :id="step.id + 'CardContainer'" class="uk-margin">
                 <div :id="step.id + 'Card'" class="uk-card step-card cursor uk-card-default uk-card-body uk-card-small">
                   <dl>
-                    <dt>{{ step.index }}. {{ step.name }}</dt>
+                    <dt class="uk-text-truncate">{{ step.index + 1 }}. {{ step.name }}</dt>
                     <dd class="uk-text-truncate">{{ step.comments }}</dd>
                   </dl>
                 </div>
@@ -111,6 +121,7 @@
               <p class="uk-heading-primary uk-heading-bullet uk-heading-divider">Tools</p>
               <!-- Tools accordion -->
               <ul uk-accordion>
+                <!-- Delay -->
                 <li>
                   <a class="uk-accordion-title" href="#">Delay</a>
                   <div class="uk-accordion-content">
@@ -130,11 +141,24 @@
                     </div>
                   </div>
                 </li>
+                <!-- Slack -->
                 <li>
                   <a class="uk-accordion-title" href="#">Slack</a>
                   <div class="uk-accordion-content">
                     <p class="uk-text-meta">Message will be sent when this step is executed</p>
                     <textarea name="slack-message" v-model="activeStep.tools.slack.message" :id="activeStep.id + 'SlackMessage'" class="uk-textarea" cols="50" rows="5" placeholder="Slack Message"></textarea>
+                  </div>
+                </li>
+                <!-- Watch Temperature -->
+                <li>
+                  <a class="uk-accordion-title" href="#">Watch Temperature</a>
+                  <div class="uk-accordion-content">
+                    <p class="uk-text-meta">Procedure will pause until this thermostat's actual temperature reaches its target temperature</p>
+                    <select class="uk-select">
+                      <option value="">Select a Thermostat</option>
+                      <option v-for="thermo in activeStep.config.devices.filter(d => d.type == 'thermostat')" :value="thermo.id">{{ thermo.name }}</option>
+                    </select>
+                    <p class="uk-text-meta">(Remember to set the target temperature in the configuration below)</p>
                   </div>
                 </li>
               </ul>

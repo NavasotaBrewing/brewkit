@@ -1,5 +1,11 @@
 let NavBarComponent = Vue.component('main-navbar', {
-  props: [],
+  props: {
+    'disable-config': {
+      type: Boolean,
+      required: false,
+      default: false,
+    }
+  },
   data: function () {
     return {
       user: {},
@@ -13,7 +19,9 @@ let NavBarComponent = Vue.component('main-navbar', {
     },
     selectConfig(config) {
       Cookies.set('configuration', config.name)
-      this.$emit('select-config', config);
+      if (!this.disableConfig) {
+        this.$emit('select-config', config);
+      }
     },
     reselectConfig() {
       prevName = Cookies.get('configuration')
@@ -62,7 +70,7 @@ let NavBarComponent = Vue.component('main-navbar', {
         <div class="container uk-margin-right">
           <div uk-grid>
             <div>
-              <select v-model="configurationSelect" id="configurationSelect" class="uk-select">
+              <select :disabled="disableConfig" v-model="configurationSelect" id="configurationSelect" class="uk-select">
                 <option selected="selected">Select a Configuration</option>
                 <option v-for="config in configs" :value="config.name">{{ config.name }}</option>
               </select>

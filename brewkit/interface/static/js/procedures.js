@@ -4,20 +4,24 @@ let p = new Vue({
     'main-navbar': NavBarComponent,
   },
   data: {
+    // Id of the selected proc
     procSelect: '',
-    config: {},
+    // All the configs
+    configs: [],
+    // All the procs
     procs: [],
+    // Current active Proc
     proc: {},
+    // Active step, one of  this.proc.steps
     activeStep: {},
+    // Show title input
     showTitleInput: false,
+    // Show comment input
     showCommentsInput: false,
+    // New proc name
     newProcName: '',
   },
   methods: {
-    selectConfig(config) {
-      this.config = config
-    },
-
     activateStepCard() {
       activeClass = 'uk-background-primary uk-light'
       $('.step-card').removeClass(activeClass);
@@ -43,20 +47,50 @@ let p = new Vue({
       })
     },
 
-    saveProc() {
-      if (!this.proc.id) {
-        this.proc = {
-          name: this.newProcName,
-          id: guid(),
-          steps: []
-        }
+    validateNewProc() {
+      if (this.newProcName.length < 1) {
+        toast('Enter a procedure name', 'danger')
+        return false
       }
+
+      if (!this.proc.baseConfig || this.proc.baseConfig == {}) {
+        toast('Select a base configuration', 'danger')
+        return false;
+      }
+      return true;
+    },
+
+    emptyProc() {
+      if (!this.validateNewProc()) {
+        return false;
+      }
+      return {
+        name: this.newProcName,
+        baseConfig: this.proc.baseConfig,
+        id: guid(),
+        steps: []
+      }
+    },
+
+    saveProc() {
+      if (this.proc.id) {
+        // Update
+        proc = this.proc;
+      } else {
+        // Save new
+        proc = this.emptyProc();
+        console.log(proc)
+        if (!proc) return;
+        this.procs.push(proc)
+      }
+
       $.ajax('/save_proc', {
         type: 'POST',
-        data: JSON.stringify(this.proc),
+        data: JSON.stringify(proc),
         contentType: 'application/json',
-        success: function(response) {
+        success: (response) => {
           toast(response)
+          this.proc = proc;
         }
       })
     },
@@ -67,7 +101,7 @@ let p = new Vue({
       } else {
         prevStep = {
           index: -1,
-          config: this.config,
+          config: this.proc.baseConfig,
         }
       }
       step = {
@@ -124,6 +158,7 @@ let p = new Vue({
             toast(response)
           }
         })
+        this.procs = this.procs.filter(p => p.id != this.proc.id);
         this.proc = {};
         this.procSelect = ''
       }
@@ -144,6 +179,11 @@ let p = new Vue({
     this.sortable = $('#stepCardColumn').on('moved', () => {
       this.reindex();
     })
+
+    socket.emit('get_configurations', (configs) => {
+      this.configs = JSON.parse(configs);
+    });
+
 
     $.get('/get_procs', (procs) => {
       this.procs = JSON.parse(procs);

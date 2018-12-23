@@ -2,6 +2,74 @@
   {
     "name": "Testing Procedure",
     "id": "bb4b6a53-5548-e979-bd73-d7fecd853d73",
+    "baseConfig": {
+      "slackChannel": "@luke",
+      "slackWebhook": "https: //hooks.slack.com/services/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",
+      "devices": [
+        {
+          "name": "HLT Valve",
+          "states": {
+            "0": "Closed",
+            "1": "Open"
+          },
+          "address": "0",
+          "type": "onOff",
+          "state": 0,
+          "controller_address": "2",
+          "id": "kebi2wrtr1tiw8ikbghwen"
+        },
+        {
+          "name": "HLT Divert",
+          "states": {
+            "0": "Boil",
+            "1": "Mash"
+          },
+          "address": "1",
+          "type": "divert",
+          "state": 0,
+          "controller_address": "2",
+          "id": "iwieb81ktkbwrwi2nrehgt"
+        },
+        {
+          "name": "RIMS Divert",
+          "states": {
+            "0": "Boil",
+            "1": "RIMS"
+          },
+          "address": "2",
+          "type": "divert",
+          "state": 0,
+          "controller_address": "2",
+          "id": "gwbnkreerk8iwi12withbt"
+        },
+        {
+          "name": "RIMS Pump",
+          "states": {
+            "0": "Off",
+            "1": "On"
+          },
+          "address": "3",
+          "type": "pump",
+          "state": 0,
+          "controller_address": "2",
+          "id": "rwtiebb2iwwtikk1nreg8h"
+        },
+        {
+          "name": "RIMS Thermostat",
+          "states": {
+            "0": "Off",
+            "1": "On"
+          },
+          "address": "",
+          "type": "thermostat",
+          "state": 0,
+          "controller_address": "1",
+          "id": "kwn8ehikir1riwgwtteb2b"
+        }
+      ],
+      "name": "Complete",
+      "id": "k2gweii8hwerwktt1birnb"
+    },
     "steps": [
       {
         "index": 0,
