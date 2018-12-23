@@ -4,6 +4,7 @@
   {% include 'header.html' %}
   <title>Procedures</title>
   {% include 'sources.html' %}
+
   <script>
     Middleware.restrictTo('brewer')
   </script>
@@ -11,6 +12,9 @@
   <style>
     .step-card.active {
       background-color: red;
+    }
+    .cursor:hover {
+      cursor: pointer;
     }
   </style>
 </head>
@@ -48,11 +52,13 @@
     <div v-if="proc.id" class="uk-section uk-section-muted">
       <div class="uk-container">
         <div uk-grid>
+          <!-- Steps column -->
           <div class="uk-width-1-4@m">
             <p class="uk-text-lead">Steps</p>
             <div uk-sortable="group: step-keys">
-              <div @click="selectStep(step)" v-for="step in proc.steps" class="uk-margin">
-                <div :id="step.id + 'Card'" class="uk-card step-card uk-card-default uk-card-body uk-card-small">
+              <!-- Step Cards -->
+              <div v-for="step in proc.steps" @click="selectStep(step)" class="uk-margin">
+                <div :id="step.id + 'Card'" class="uk-card step-card cursor uk-card-default uk-card-body uk-card-small">
                   <dl>
                     <dt>{{ step.name }}</dt>
                     <dd class="uk-text-truncate">{{ step.comments }}</dd>
@@ -61,17 +67,29 @@
               </div>
             </div>
           </div>
+          <!-- Details Column -->
           <div class="uk-width-expand@m">
-            <div uk-sticky class="uk-margin-top">
+            <div class="uk-margin">
               <p class="uk-text-lead">Details</p>
               <hr>
+              <!-- Current Step -->
               <div v-if="step.id" class="uk-grid-divider" uk-grid>
                 <div class="uk-width-auto@m">
-                  <p class="uk-text-lead">{{ step.name }}</>
-                  <p>{{ step.comments }}</p>
+                  <!-- Name Display -->
+                  <p v-show="!showTitleInput" id="stepTitle" @click="showTitleInput = true" class="uk-text-lead cursor">{{ step.name }}</p>
+                  <!-- Name Form -->
+                  <div v-show="showTitleInput" class="uk-margin">
+                    <input id="stepTitleInput" v-model="step.name" @blur="showTitleInput = false" type="text" class="uk-input uk-form-large">
+                  </div>
+                  <!-- Comments display -->
+                  <p @click="showCommentsInput = true" v-if="!showCommentsInput" class="cursor">{{ step.comments }}</p>
+                  <!-- Comments Form -->
+                  <div v-if="showCommentsInput" class="uk-margin">
+                    <textarea v-model="step.comments" @blur="showCommentsInput = false" class="uk-textarea">{{ step.comments }}</textarea>
+                  </div>
                 </div>
                 <div class="uk-width-expand">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, laboriosam impedit consequatur nihil iusto blanditiis culpa unde exercitationem dolorum libero incidunt architecto facere ullam officia illo odit excepturi ipsa ea.
+                  <device-summary :editable="true" :devices="config.devices"></device-summary>
                 </div>
               </div>
             </div>
