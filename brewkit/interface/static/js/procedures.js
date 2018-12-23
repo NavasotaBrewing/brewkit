@@ -1,24 +1,3 @@
-test_proc = {
-  name: "first proc",
-  id: guid(),
-  steps: [
-    {
-      index: 0,
-      tools: {
-        delay: {
-          minutes: '',
-          seconds: ''
-        },
-      },
-      name: 'Start',
-      id: guid(),
-      comments: 'Just the first step.',
-      config: JSON.parse('{"id":"k2gweii8hwerwktt1birnb","name":"Complete","slackWebhook":"https://hooks.slack.com/services/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","slackChannel":"@luke","devices":[{"name":"HLT Valve","controller_address":"2","state":1,"address":"0","type":"onOff","id":"kebi2wrtr1tiw8ikbghwen","states":{"0":"Closed","1":"Open"}},{"name":"HLT Divert","controller_address":"2","state":0,"address":"1","type":"divert","id":"iwieb81ktkbwrwi2nrehgt","states":{"0":"Boil","1":"Mash"}},{"name":"RIMS Divert","controller_address":"2","state":1,"address":"2","type":"divert","id":"gwbnkreerk8iwi12withbt","states":{"0":"Boil","1":"RIMS"}},{"name":"RIMS Pump","controller_address":"2","state":1,"address":"3","type":"pump","id":"rwtiebb2iwwtikk1nreg8h","states":{"0":"Off","1":"On"}},{"name":"RIMS Thermostat","controller_address":"1","state":0,"address":"","type":"thermostat","id":"kwn8ehikir1riwgwtteb2b","states":{"0":"Off","1":"On"},"sv":150,"pv":112.8}]}')
-    }
-  ]
-}
-
-
 let p = new Vue({
   el: '#procedures',
   components: {
@@ -27,11 +6,12 @@ let p = new Vue({
   data: {
     procSelect: '',
     config: {},
-    procs: [test_proc],
-    proc: test_proc,
+    procs: [],
+    proc: {},
     activeStep: {},
     showTitleInput: false,
-    showCommentsInput: false
+    showCommentsInput: false,
+    newProcName: '',
   },
   methods: {
     selectConfig(config) {
@@ -53,18 +33,40 @@ let p = new Vue({
     },
 
     selectProc(id) {
-      if (id == '') {
+      if (id == "") {
         this.proc = {}
+        return;
       }
       this.proc = this.procs.filter(p => p.id == id)[0]
     },
 
     saveProc() {
-      console.log('saved')
+      if (!this.proc.id) {
+        this.proc = {
+          name: this.newProcName,
+          id: guid(),
+          steps: []
+        }
+      }
+      $.ajax('/save_proc', {
+        type: 'POST',
+        data: JSON.stringify(this.proc),
+        contentType: 'application/json',
+        success: function(response) {
+          console.log(response);
+        }
+      })
     },
 
     addStep() {
-      prevStep = JSON.parse(JSON.stringify(this.proc.steps[this.proc.steps.length - 1]));
+      if (this.proc.steps.length > 0) {
+        prevStep = JSON.parse(JSON.stringify(this.proc.steps[this.proc.steps.length - 1]));
+      } else {
+        prevStep = {
+          index: -1,
+          config: this.config,
+        }
+      }
       step = {
         index: prevStep.index + 1,
         tools: {
@@ -108,6 +110,10 @@ let p = new Vue({
   mounted() {
     this.sortable = $('#stepCardColumn').on('moved', () => {
       this.reindex();
+    })
+
+    $.get('/get_procs', (procs) => {
+      this.procs = JSON.parse(procs);
     })
   }
 })

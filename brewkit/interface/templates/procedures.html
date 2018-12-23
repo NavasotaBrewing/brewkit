@@ -42,7 +42,7 @@
                 </select>
               </div>
               <div class="uk-margin">
-                <input v-if="!procSelect" type="text" class="uk-input" placeholder="New Procedure Name">
+                <input v-if="procSelect.length == 0" v-model="newProcName" type="text" class="uk-input" placeholder="New Procedure Name">
               </div>
               <div class="uk-margin">
                 <button @click="saveProc" class="uk-button uk-button-primary">Save</button>
@@ -59,7 +59,7 @@
     </div>
 
     <!-- Step Section -->
-    <div v-if="proc.id" class="uk-section uk-section-muted">
+    <div v-show="proc.id" class="uk-section uk-section-muted">
       <div class="uk-container">
         <div class="uk-grid-divider" uk-grid>
           <!-- Steps card column -->
@@ -148,7 +148,7 @@
     </div>
 
     <!-- Placeholder -->
-    <div v-else class="uk-section uk-section-muted">
+    <div v-if="!proc.id" class="uk-section uk-section-muted">
       <div class="uk-container uk-text-center">
         <h3>Select a Procedure or Create a New One</h3>
       </div>

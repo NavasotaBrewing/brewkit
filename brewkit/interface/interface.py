@@ -18,7 +18,8 @@ class CustomFlask(Flask):
 
 
 app = CustomFlask(__name__)
-address_file = 'brewkit/interface/data/address.json'
+
+app.data_dir = 'brewkit/interface/data/'
 
 app.user_manager = UserManager()
 
@@ -77,16 +78,35 @@ def configuration():
 def procedures():
     return render_template('procedures.html')
 
+@app.route('/get_procs', methods=['GET'])
+def get_procs():
+    with open(app.data_dir + 'procs.json', 'r') as fi:
+        procs = json.load(fi)
+    return json.dumps(procs)
+
+
+@app.route('/save_proc', methods=['POST'])
+def save_procs():
+    proc = request.get_json()
+
+    procs = json.loads(get_procs())
+    procs = [p for p in procs if p['id'] != proc['id']]
+    procs.append(proc)
+
+    with open(app.data_dir + 'procs.json', 'w') as fi:
+        json.dump(procs, fi, indent=2)
+    return 'true'
+
 @app.route('/new_address', methods=['POST'])
 def set_new_address():
     address = json.loads(request.data)['address']
-    with open(address_file, 'w') as fi:
+    with open(app.data_dir + 'address.json', 'w') as fi:
         json.dump({'address': address}, fi)
     return "success"
 
 @app.route('/hardware_address')
 def find_address():
-    with open(address_file, 'r') as fi:
+    with open(app.data_dir + 'address.json', 'r') as fi:
         data = json.load(fi)
         return data['address']
 
