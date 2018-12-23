@@ -73,7 +73,7 @@
     <!-- Valves -->
     <div class="uk-section uk-section-muted">
       <div class="uk-container">
-        <device-summary :devices="config.devices"></device-summary>
+        <device-summary :devices="config.devices" @new-sv="setSv($event)"></device-summary>
       </div>
     </div>
     <!-- Thermostats -->

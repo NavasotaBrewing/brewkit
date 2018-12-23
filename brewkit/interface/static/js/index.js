@@ -85,7 +85,9 @@ let x = new Vue({
     },
 
     setSv(thermo) {
-      newSv = parseFloat($('#newSv' + thermo.id).val());
+      el = $('#newSv' + thermo.id)
+      newSv = parseFloat(el.val());
+      el.val('')
       if (newSv < 999 && newSv > 1) {
         thermo.sv = newSv;
         this.enact();
