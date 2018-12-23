@@ -162,6 +162,7 @@ let p = new Vue({
           }
         })
         this.procs = this.procs.filter(p => p.id != this.proc.id);
+        this.activeStep = {}
         this.proc = {};
         this.procSelect = ''
       }
