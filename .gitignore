@@ -12,3 +12,4 @@ brewkit.log
 brewkitenv
 brewkit/interface/data/configurations.json
 brewkit.pem
+**/*node_modules

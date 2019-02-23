@@ -1,0 +1,22 @@
+version: '3'
+services:
+  api:
+    # API to interact with hardware
+    build: ./brewkit/api
+    image: llamicron/brewkit_api
+    ports:
+      - 5000:5000
+
+  client:
+    # Front facing web interface that makes calls to the API
+    build: ./brewkit/client
+    image: llamicron/brewkit_client
+    ports:
+      - 8080:8080
+
+  db:
+    # A db, but we don't store much
+    build: ./brewkit/db
+    image: llamicron/brewkit_db
+    ports:
+      - 8081:8081
