@@ -4,9 +4,6 @@ build:
 api:
 	python brewkit/api/server.py
 
-interface:
-	python brewkit/interface/interface.py
-
 install: build
 	pip install dist/*
 

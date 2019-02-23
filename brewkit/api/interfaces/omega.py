@@ -11,8 +11,8 @@ from omegacn7500 import OmegaCN7500
 import minimalmodbus
 import serial
 
-from .log import log
-from .exceptions import InvalidHardwareError
+from log import log
+from exceptions import InvalidHardwareError
 
 class Omega():
     """

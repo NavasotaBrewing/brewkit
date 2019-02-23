@@ -1,2 +1,2 @@
-from ..app.str116 import STR116
-from ..app.omega import Omega
+from interfaces.str116 import STR116
+from interfaces.omega import Omega

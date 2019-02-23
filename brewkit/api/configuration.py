@@ -1,7 +1,7 @@
 import json
 
-from .controllers import STR116, Omega
-from ..app.log import log
+from controllers import STR116, Omega
+from log import log
 
 def update(config):
     """

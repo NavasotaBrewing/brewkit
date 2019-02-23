@@ -1,6 +1,6 @@
-from .controllers import STR116
-from .controllers import Omega
-from ..app.log import log
+from controllers import STR116
+from controllers import Omega
+from log import log
 
 class Thermostat(object):
     """

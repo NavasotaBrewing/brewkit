@@ -10,6 +10,5 @@ env
 .pytest_cache/
 brewkit.log
 brewkitenv
-env
 brewkit/interface/data/configurations.json
 brewkit.pem

@@ -2,8 +2,8 @@ import serial
 import time
 import binascii
 
-from .log import log
-from .exceptions import InvalidHardwareError, RelayNotFoundError
+from log import log
+from exceptions import InvalidHardwareError, RelayNotFoundError
 
 class STR116(object):
     def __init__(self, port, address, baud_rate=19200, timeout=0.05):
