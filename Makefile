@@ -1,8 +1,14 @@
-build:
-	python setup.py sdist
+client:
+	npm run --prefix brewkit/client dev
+
+db:
+	node brewkit/db/src/server.js
 
 api:
 	python brewkit/api/server.py
+
+build:
+	python setup.py sdist
 
 install: build
 	pip install dist/*

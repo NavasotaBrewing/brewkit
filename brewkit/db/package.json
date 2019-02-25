@@ -1,6 +1,10 @@
 {
   "name": "db",
   "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/llamicron/brewkit.git"
+  },
   "description": "Database for the front facing brewkit",
   "main": "index.js",
   "scripts": {

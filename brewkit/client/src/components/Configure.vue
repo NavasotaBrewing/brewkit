@@ -136,11 +136,12 @@ export default {
   },
   created() {
     this.newDevice = this.blankDevice()
+    window.configure = this;
   },
   methods: {
     async saveConfiguration() {
       if (this.config.id) {
-        // Update
+        // Updat
         api.updateConfiguration(this.config.id, this.config)
         this.$parent.notify('Configuration updated');
       } else {

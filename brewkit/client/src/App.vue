@@ -87,8 +87,6 @@ export default {
 
     goLive(config) {
       // Makes update and enact methods work
-      // Set the config
-      this.config = config
       // Connect the websocket to the hardware api
       this.socket = socket.connect(this.config.websocket);
       this.startUpdating();
@@ -108,6 +106,8 @@ export default {
       if (!config || config == {}) {
         this.die()
       } else {
+        // Set the config
+        this.config = config
         // Only start updating on the dashboard
         if (this.$router.currentRoute.path == '/') {
           this.goLive(config)
