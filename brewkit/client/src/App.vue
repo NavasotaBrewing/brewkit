@@ -21,6 +21,7 @@ import CustomFooter from '@/components/CustomFooter'
 import moment from 'moment'
 
 import socket from '@/socket'
+import UIkit from 'uikit'
 
 export default {
   name: 'app',

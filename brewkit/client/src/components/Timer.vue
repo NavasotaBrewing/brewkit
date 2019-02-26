@@ -54,6 +54,9 @@ export default {
       timer: null
     };
   },
+  created() {
+    window.timer = this
+  },
   computed: {
     done: function() {
       if (!this.timer || this.timer.date <= moment().unix() * 1000) {
@@ -82,13 +85,18 @@ export default {
         return "00:" + this.timerInput;
       }
 
+
       return this.timerInput;
     },
 
     startTimer() {
       let input = this.prepInput();
       let date = this.inputToISO(input);
-      console.log(date);
+      if (date == 'Invalid date') {
+        UIkit.notification('Time is not valid');
+        this.timerInput = ''
+        return;
+      }
       this.timer = UIkit.countdown(document.getElementById('timerCountdown'), { date: date });
       console.log(this.timer);
       this.timer.start();
