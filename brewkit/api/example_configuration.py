@@ -21,7 +21,7 @@ example = {
             }
         ]
     },
-    'slackWebhook': 'https://hooks.slack.com/services/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',
+    'slackWebhook': 'notforyouhaha',
     'id': '8675309',
     'slackChannel': '@luke',
     'devices': {
