@@ -1,23 +1,23 @@
-version: '3'
-services:
-  api:
-    build: ./brewkit/api
-    image: llamicron/brewkit_api
-    volumes:
-      - ./brewkit/api/:/usr/src/app
-    ports:
-      - 5000:5000
+# version: '3'
+# services:
+#   api:
+#     build: ./brewkit/api
+#     image: llamicron/brewkit_api
+#     volumes:
+#       - ./brewkit/api/:/usr/src/app
+#     ports:
+#       - 5000:5000
 
-  client:
-    build: ./brewkit/client
-    image: llamicron/brewkit_client
-    volumes:
-      - ./brewkit/client/src:/home/node/app/src
-    ports:
-      - 8080:8080
+#   client:
+#     build: ./brewkit/client
+#     image: llamicron/brewkit_client
+#     volumes:
+#       - ./brewkit/client/src:/home/node/app/src
+#     ports:
+#       - 8080:8080
 
-  db:
-    build: ./brewkit/db
-    image: llamicron/brewkit_db
-    ports:
-      - 8081:8081
+#   db:
+#     build: ./brewkit/db
+#     image: llamicron/brewkit_db
+#     ports:
+#       - 8081:8081

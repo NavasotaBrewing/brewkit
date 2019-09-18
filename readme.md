@@ -1,2 +1,2 @@
 # Brewkit
-This is a software project to control the hardware on our brewing rig. It is still in development, but several working prototypes have been produced. It is currently not stable, and it's going through a lot of redesign.
+This is the front end to [`brewdrivers`](https://github.com/NavasotaBrewing/brewdrivers). It provides an interface to control brewing hardware.

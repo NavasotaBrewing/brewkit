@@ -19,10 +19,18 @@ let database = new Sequelize({
 // id, createdAt, and updatedAt are added by sequelize automatically
 let Configuration = database.define('configuration', {
   name: Sequelize.STRING,
+  description: Sequelize.STRING,
+  id: {
+    type: Sequelize.STRING,
+    primaryKey: true,
+  },
+  mode: Sequelize.STRING,
   slackChannel: Sequelize.STRING,
   slackWebhook: Sequelize.STRING,
-  websocket: Sequelize.STRING,
-  devices: Sequelize.JSON
+  RTUs: Sequelize.JSON
+  // These are old
+  // websocket: Sequelize.STRING,
+  // devices: Sequelize.JSON
 })
 
 // Initialize epilogue
@@ -39,7 +47,7 @@ let userResource = epilogue.resource({
 
 // Resets the database if true and launches the express app on :8081
 database
-  .sync({ force: false })
+  .sync({ force: true })
   .then(() => {
     app.listen(8081, () => {
       console.log('listening to port localhost:8081')
