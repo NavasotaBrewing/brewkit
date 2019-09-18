@@ -1,0 +1,6 @@
+{
+  "brewkit/tests/test_configuration.py": true,
+  "brewkit/tests/test_devices.py": true,
+  "brewkit/tests/test_omega.py": true,
+  "brewkit/tests/test_str116.py": true
+}
