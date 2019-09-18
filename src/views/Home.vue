@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    Home
+    <!-- <input type="color" name="" id=""> -->
+
   </div>
 </template>
 

@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import Configure from './views/Configure.vue'
+
+const Configure = () => import('./views/Configure.vue')
 
 Vue.use(Router)
 

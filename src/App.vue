@@ -2,6 +2,7 @@
   <div id="app">
 
     <Navbar />
+    <ConfigSelect />
 
     <router-view/>
   </div>
@@ -9,11 +10,13 @@
 
 
 <script>
-import Navbar from "@/components/Navbar.vue"
+import Navbar from '@/components/Navbar.vue';
+import ConfigSelect from '@/components/ConfigSelect';
 
 export default {
   components: {
-    Navbar
+    Navbar,
+    ConfigSelect
   }
 }
 </script>
