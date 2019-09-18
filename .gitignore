@@ -13,4 +13,4 @@ brewkitenv
 brewkit/interface/data/configurations.json
 brewkit.pem
 node_modules
-brewkit/db/data
+db/data

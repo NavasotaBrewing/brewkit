@@ -39,8 +39,7 @@ export default {
   },
   async created() {
     this.refreshConfigurations();
-    window.nv = this
-
+    // window.nv = this
   },
   watch: {
     configSelect: function() {
