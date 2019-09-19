@@ -2,7 +2,7 @@
   <div>
     <div class="uk-section-muted" uk-grid>
       <!-- Config Select or Input -->
-      <div class="uk-width-1-2 uk-align-center">
+      <div class="uk-width-1-2@m uk-align-center">
         <!-- Lets you select an existing config or create a new one -->
         <NewConfigInput @selectedConfig="selectConfig($event)" />
       </div>
