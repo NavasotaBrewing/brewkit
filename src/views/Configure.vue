@@ -21,13 +21,17 @@ export default {
   },
   data() {
     return {
-      config: {}
+      config: {},
+      configs: [],
     }
+  },
+  mounted() {
+    Object.assign(this.config, this.emptyConfig);
   },
   methods: {
     selectConfig(config) {
       this.config = config;
-    }
+    },
   }
 }
 </script>

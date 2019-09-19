@@ -5,15 +5,19 @@
         <div class="uk-card-title">Create a Configuration</div>
         <div uk-grid>
           <div class="uk-width-1-2@s">
-            <input type="text" v-model="currentConfig.name" placeholder="New Configuration Name" class="uk-input" />
+            <input type="text" v-model="config.name" placeholder="New Configuration Name" class="uk-input" />
           </div>
           <div class="uk-width-1-2@s">
-            <select name="configSelect" id="configSelect" class="uk-select">
-              <option value selected disabled>-- Select to Edit --</option>
-              <option value="1">test</option>
-              <option value="2">test</option>
-              <option value="3">test</option>
+            <select v-model="selectedConfigId" name="configSelect" id="configSelect" class="uk-select">
+              <option value="-1" selected disabled>-- Select to Edit --</option>
+              <option v-for="c in configs" :key="c.id" :value="c.id">{{ c.name }}</option>
             </select>
+          </div>
+          <div class="uk-width-1-1@s">
+            <div uk-margin>
+              <button id="save-button" class="uk-button button-margin">Save</button>
+              <button id="reset-button" class="uk-button button-margin ">Reset</button>
+            </div>
           </div>
         </div>
       </div>
@@ -22,11 +26,17 @@
 </template>
 
 <script>
+import { log } from 'util';
+import api from '@/api';
+
 export default {
   name: "NewConfigInput",
+  props: [],
   data() {
     return {
-      currentConfig: {},
+      config: {},
+      configs: [],
+      selectedConfigId: -1,
       emptyConfig: {
         name: "",
         description: "",
@@ -65,9 +75,34 @@ export default {
       }
     };
   },
+  methods: {
+    selectConfig(config) {
+      this.config = config;
+      // this.$emit('selectedConfig', config);
+    },
+    async getAllConfigs() {
+      this.configs = await api.getConfigurations();
+    },
+
+    setEmptyConfig() {
+      Object.assign(this.config, this.emptyConfig);
+    }
+  },
+  watch: {
+    selectedConfigId: function() {
+      console.log("Selected id = " + this.selectedConfigId);
+      let cs = this.configs.filter(c => c.id == this.selectedConfigId);
+      if (cs.length > 0) {
+        this.selectConfig(cs[0]);
+        return;
+      }
+      this.setEmptyConfig();
+    }
+  },
   mounted() {
+    this.getAllConfigs();
+    this.setEmptyConfig();
     window.nci = this
-    Object.assign(this.currentConfig, this.emptyConfig);
   }
 };
 </script>
@@ -77,6 +112,10 @@ export default {
   padding: 1em;
 }
 
+.button-margin {
+  margin-right: 0.5em;
+}
+
 .uk-card-title {
   margin-bottom: 1em;
 }
@@ -84,5 +123,23 @@ export default {
 #newConfigCard {
   background-color: white;
   border-left: 0.6em solid #a85b60;
+}
+
+#reset-button {
+  background-color: #A22455;
+  color: white;
+}
+
+#reset-button:hover {
+  background-color: rgb(129, 31, 68);
+}
+
+#save-button {
+  background-color: #EDB271;
+  color: white;
+}
+
+#save-button:hover {
+  background-color: rgb(201, 150, 96)
 }
 </style>
