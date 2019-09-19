@@ -30,10 +30,6 @@
 
 <style lang="css">
 
-#navBarWrapper {
-  /* margin-bottom: 2em; */
-}
-
 #navItems {
   margin-left: 1em;
 }
