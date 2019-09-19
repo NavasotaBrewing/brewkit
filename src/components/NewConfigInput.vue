@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <Confirmation ref="confirmation" :message="'Are you really sure you want to do this? It can\'t be undone'" />
+    <Confirmation @confirm="setEmptyConfig" ref="confirmation" :message="'This can\'t be undone unless you\'ve already saved your configuration. Are you sure you want to continue?'" />
   </div>
 </template>
 
@@ -102,9 +102,12 @@ export default {
       console.log("Selected id = " + this.selectedConfigId);
       let cs = this.configs.filter(c => c.id == this.selectedConfigId);
       if (cs.length > 0) {
-        this.selectConfig(cs[0]);
+        let config_copy = {};
+        Object.assign(config_copy, cs[0]);
+        this.selectConfig(config_copy);
         return;
       }
+      this.selectedConfigId = -1;
       this.setEmptyConfig();
     }
   },

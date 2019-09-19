@@ -1,13 +1,13 @@
 <template>
   <div id="confirmation" :class="{ 'hide': !show }">
     <div class="confirmation-body">
-      <div class="title">Are you sure?</div>
-      <div class="message">
+      <div v-if="title" class="title">{{ title }}</div>
+      <div v-if="message" class="message">
         {{ message}}
       </div>
       <div class="action-buttons">
-        <button @click="cancel" class="uk-button uk-button-large cancel-button">Cancel</button>
-        <button @click="confirm" class="uk-button uk-button-large confirm-button">Yes, I'm sure</button>
+        <button @click="cancel" class="uk-button uk-button-large cancel-button">{{ nText }}</button>
+        <button @click="confirm" class="uk-button uk-button-large confirm-button">{{ yText }}</button>
       </div>
     </div>
   </div>
@@ -15,7 +15,24 @@
 
 <script>
 export default {
-  props: ["message"],
+  props: {
+    title: {
+      type: String,
+      default: "Are you sure?"
+    },
+    message: {
+      type: String,
+      required: false
+    },
+    yText: {
+      type: String,
+      default: "yes, i'm sure"
+    },
+    nText: {
+      type: String,
+      default: "cancel"
+    }
+  },
   name: "Confirmation",
   data() {
     return {
