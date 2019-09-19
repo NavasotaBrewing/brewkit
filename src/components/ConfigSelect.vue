@@ -1,6 +1,6 @@
 <template>
   <div id="configSelectContainer">
-    <div id="configSelect" :class="{ 'reveal': revealPane }" class="uk-card reveal uk-card-primary uk-card-body">
+    <div id="configSelect" :class="{ 'reveal': revealPane }" class="uk-card uk-card-primary uk-card-body">
       <!-- Teaser Icon -->
       <span id="teaserIcon" @click="reveal()" uk-icon="icon: server; ratio: 2;"></span>
 
@@ -8,16 +8,17 @@
       <div v-if="configs.length > 0" class="uk-child-width-1-2@s" uk-grid>
         <div class="uk-width-1-5@s">
           <ul class="uk-tab-left" uk-tab>
-            <li class="config-list-item" v-for="config in configs" :key="config" :class="{ 'uk-active': selectedConfig == config }" @click="selectedConfig = config">
-              <a class="config-list-item-text" href="#">{{ config }}</a>
+            <li class="config-list-item" v-for="config in configs" :key="config.id" :class="{ 'uk-active': selectedConfig.id == config.id }" @click="selectConfig(config)">
+              <a class="config-list-item-text" href="#">{{ config.name }}</a>
             </li>
           </ul>
         </div>
 
         <!-- Config details pane -->
         <div>
-          <h1>{{ selectedConfig }}</h1>
+          <h1>{{ selectedConfig.name }}</h1>
           <!-- Config details go here -->
+          <pre>{{ selectedConfig }}</pre>
         </div>
 
       </div>
@@ -71,6 +72,7 @@ function empty(obj) {
   return obj.toString.length == 0
 }
 
+import api from '@/api';
 
 export default {
   name: "configSelect",
@@ -83,7 +85,7 @@ export default {
   },
   mounted() {
     // this.getAllConfigs();
-    window.a = this
+    window.api = api
   },
   methods: {
     reveal() {
@@ -91,8 +93,11 @@ export default {
       this.getAllConfigs();
     },
 
-    getAllConfigs() {
-      // TODO: this
+    async getAllConfigs() {
+      this.configs = await api.getConfigurations();
+      if (empty(this.selectedConfig)) {
+        this.selectConfig(this.configs[0]);
+      }
     },
 
     selectConfig(config) {
