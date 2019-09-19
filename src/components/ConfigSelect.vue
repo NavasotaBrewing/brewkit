@@ -1,10 +1,11 @@
 <template>
-  <div id="container">
-    <div id="configSelect" class="uk-card fade uk-card-primary uk-card-body">
-      <span id="teaserIcon" uk-icon="icon: server; ratio: 2;"></span>
+  <div id="configSelectContainer">
+    <div id="configSelect" :class="{ 'reveal': revealPane }" class="uk-card reveal uk-card-primary uk-card-body">
+      <!-- Teaser Icon -->
+      <span id="teaserIcon" @click="reveal()" uk-icon="icon: server; ratio: 2;"></span>
 
       <!-- Config name tabs -->
-      <div class="uk-child-width-1-2@s" uk-grid>
+      <div v-if="configs.length > 0" class="uk-child-width-1-2@s" uk-grid>
         <div class="uk-width-1-5@s">
           <ul class="uk-tab-left" uk-tab>
             <li class="config-list-item" v-for="config in configs" :key="config" :class="{ 'uk-active': selectedConfig == config }" @click="selectedConfig = config">
@@ -14,14 +15,16 @@
         </div>
 
         <!-- Config details pane -->
-        <div v-if="configs.length > 0">
+        <div>
           <h1>{{ selectedConfig }}</h1>
-          Config details go here
+          <!-- Config details go here -->
         </div>
 
-        <div v-else>
-          <p class="placeholder-text">No configurations. Create one <router-link to="/configure">here</router-link></p>
-        </div>
+      </div>
+
+      <!-- No configurations placeholder -->
+      <div v-else>
+        <p>No configurations</p>
       </div>
 
     </div>
@@ -31,13 +34,8 @@
 
 <style scoped>
 
-#container {
-  float: right;
-}
-
-.placeholder-text {
-  font-size: 24px;
-  color: white;
+#configSelectContainer {
+  position: fixed;
 }
 
 .config-list-item-text {
@@ -56,13 +54,13 @@
   /* background-color: rgb(211, 137, 127); */
 }
 
-#configSelect:hover {
-  transition: all 1s;
-  clip-path: circle(100%);
+.reveal {
+  clip-path: circle(100%) !important;
 }
 
 #teaserIcon {
   float: right;
+  cursor: pointer;
 }
 
 </style>
@@ -79,21 +77,27 @@ export default {
   data() {
     return {
       configs: [],
-      selectedConfig: {}
+      selectedConfig: {},
+      revealPane: false
     };
   },
   mounted() {
-    window.a = this;
-    this.getAllConfigs();
+    // this.getAllConfigs();
+    window.a = this
   },
   methods: {
+    reveal() {
+      this.revealPane = !this.revealPane;
+      this.getAllConfigs();
+    },
+
     getAllConfigs() {
-      // To this
+      // TODO: this
     },
 
     selectConfig(config) {
       this.selectedConfig = config;
-      // Emit something here
+      // Emit config here
     }
   }
 };
