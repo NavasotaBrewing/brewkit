@@ -102,7 +102,7 @@ export default {
 
     selectConfig(config) {
       this.selectedConfig = config;
-      // Emit config here
+      this.$emit('selectConfig', this.selectedConfig);
     }
   }
 };

@@ -2,7 +2,7 @@
   <div id="app">
 
     <Navbar />
-    <ConfigSelect />
+    <ConfigSelect @selectConfig="selectConfig($event)" />
 
     <router-view/>
   </div>
@@ -23,9 +23,22 @@ import Navbar from '@/components/Navbar.vue';
 import ConfigSelect from '@/components/ConfigSelect';
 
 export default {
+  data() {
+    return {
+      config: {}
+    }
+  },
+  mounted() {
+    window.app = this
+  },
   components: {
     Navbar,
     ConfigSelect
+  },
+  methods: {
+    selectConfig(config) {
+      this.config = config;
+    }
   }
 }
 </script>
