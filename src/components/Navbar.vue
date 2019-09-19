@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="navBarWrapper">
     <nav id="mainNavbar" class="uk-navbar-container" uk-navbar>
       <div class="uk-navbar-left">
         <ul id="navItems" class="uk-navbar-nav">
@@ -29,6 +29,11 @@
 </template>
 
 <style lang="css">
+
+#navBarWrapper {
+  /* margin-bottom: 2em; */
+}
+
 #navItems {
   margin-left: 1em;
 }

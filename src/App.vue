@@ -2,7 +2,7 @@
   <div id="app">
 
     <Navbar />
-    <ConfigSelect @selectConfig="selectConfig($event)" />
+    <!-- <FancyConfigSelect @selectConfig="selectConfig($event)" /> -->
 
     <router-view/>
   </div>
@@ -20,7 +20,7 @@ Colors
 
 <script>
 import Navbar from '@/components/Navbar.vue';
-import ConfigSelect from '@/components/ConfigSelect';
+// import FancyConfigSelect from '@/components/FancyConfigSelect';
 
 export default {
   data() {
@@ -32,8 +32,7 @@ export default {
     window.app = this
   },
   components: {
-    Navbar,
-    ConfigSelect
+    Navbar
   },
   methods: {
     selectConfig(config) {

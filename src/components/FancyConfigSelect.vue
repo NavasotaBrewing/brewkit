@@ -84,7 +84,6 @@ export default {
     };
   },
   mounted() {
-    // this.getAllConfigs();
     window.api = api
   },
   methods: {
