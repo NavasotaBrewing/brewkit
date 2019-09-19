@@ -16,22 +16,28 @@
           <div class="uk-width-1-1@s">
             <div uk-margin>
               <button id="save-button" class="uk-button button-margin">Save</button>
-              <button id="reset-button" class="uk-button button-margin ">Reset</button>
+              <button id="reset-button" @click="confirm" class="uk-button button-margin ">Reset</button>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <Confirmation ref="confirmation" :message="'Are you really sure you want to do this? It can\'t be undone'" />
   </div>
 </template>
 
 <script>
 import { log } from 'util';
 import api from '@/api';
+import Confirmation from '@/components/Confirmation.vue';
 
 export default {
   name: "NewConfigInput",
   props: [],
+  components: {
+    Confirmation
+  },
   data() {
     return {
       config: {},
@@ -76,6 +82,9 @@ export default {
     };
   },
   methods: {
+    confirm() {
+      this.$refs.confirmation.toggle();
+    },
     selectConfig(config) {
       this.config = config;
       // this.$emit('selectedConfig', config);
