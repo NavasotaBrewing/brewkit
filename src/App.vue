@@ -8,6 +8,15 @@
   </div>
 </template>
 
+<style scoped>
+/*
+Colors
+ - #EDB271 - Burly wood
+ - #83315E - Eggplant
+ - #A85B60 - Violet red
+ - #A22455 - Rich purple
+*/
+</style>
 
 <script>
 import Navbar from '@/components/Navbar.vue';

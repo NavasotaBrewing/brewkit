@@ -3,8 +3,7 @@ import App from './App.vue'
 import router from './router'
 
 import 'uikit/dist/css/uikit.css';
-// import UIkit from 'uikit'
-import 'uikit';
+import UIkit from 'uikit'
 import Icons from 'uikit/dist/js/uikit-icons';
 
 UIkit.use(Icons);
