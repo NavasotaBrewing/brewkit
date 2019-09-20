@@ -24,7 +24,8 @@
 
     border-radius: 300px;
     text-align: center;
-    background-color: #D5D6CE;
+    background-color: #EDB271;
+    color: white;
 
     transition: clip-path 0.5s;
     clip-path: circle(0% at 0% 50%);
