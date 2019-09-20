@@ -9,6 +9,17 @@
         <NewConfigInput @selectedConfig="selectConfig($event)" />
       </div>
     </div>
+
+    <div class="uk-section" uk-grid>
+      <div class="uk-width-1-1@s">
+        <div class="uk-container">
+          <!-- Next thingy goes here -->
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque fugit sunt, animi beatae expedita nesciunt quia reiciendis ea officia laudantium quae odit nam tenetur saepe nihil eos accusantium magnam assumenda!
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </template>
 

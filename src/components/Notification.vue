@@ -69,17 +69,5 @@ export default {
     }
   },
 
-  methods: {
-    show(message, status="") {
-      this.status = status;
-      this.message = message;
-      this.showNotif = true;
-
-      window.setTimeout(() => {
-        this.showNotif = false;
-      }, 3500);
-    },
-  },
-
 }
 </script>
