@@ -1,5 +1,11 @@
 <template>
   <div @click="classes = status" id="notification" :class="classes">
+    <!-- Sucess Icon -->
+    <span v-if="status == 'success'" uk-icon="icon: check; ratio: 1.5" class="message-icon"></span>
+    <!-- Danger Icon -->
+    <span v-else-if="status == 'danger'" uk-icon="icon: warning; ratio: 1.5" class="message-icon"></span>
+    <!-- Default Icon -->
+    <span v-else uk-icon="icon: info; ratio: 1.5" class="message-icon"></span>
     <div class="message-text">
       {{ message }}
     </div>
@@ -8,6 +14,15 @@
 
 
 <style scoped>
+
+  .message-icon {
+    float: left;
+  }
+
+  .message-text {
+    padding-top: 0.2em;
+  }
+
   #notification {
     width: 20vw;
     position: fixed;
@@ -19,7 +34,7 @@
     margin-bottom: 2em;
     margin-left: 2em;
     padding: 1em;
-    padding-left: 2em;
+    padding-left: 0.8em;
     padding-right: 2em;
 
     border-radius: 300px;
@@ -60,14 +75,13 @@ export default {
     }, 1);
 
     window.setTimeout(() => {
-      this.classes = this.status;
+      // Just remove "show" class
+      // this.classes = this.status;
     }, 5000);
   },
 
   data() {
-    return {
-      classes: "",
-    }
+    return { classes: "" }
   },
 
 }
