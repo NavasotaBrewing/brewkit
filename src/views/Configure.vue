@@ -14,7 +14,7 @@
       <div class="uk-width-1-1@s">
         <div class="uk-container">
           <!-- Next thingy goes here -->
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque fugit sunt, animi beatae expedita nesciunt quia reiciendis ea officia laudantium quae odit nam tenetur saepe nihil eos accusantium magnam assumenda!
+          <ConfigDetailsInput v-if="config.id" :config="config" />
         </div>
 
       </div>
@@ -27,12 +27,14 @@
 
 import NewConfigInput from '@/components/NewConfigInput.vue';
 import Notification from '@/components/Notification.vue';
+import ConfigDetailsInput from '@/components/ConfigDetailsInput.vue';
 
 export default {
   name: 'Configure',
   components: {
     NewConfigInput,
     Notification,
+    ConfigDetailsInput,
   },
   data() {
     return {

@@ -4,21 +4,25 @@
       <div class="uk-card-body">
         <div class="uk-card-title">Create a Configuration</div>
         <div uk-grid>
+          <!-- Config Select -->
           <div class="uk-width-1-2@s">
             <select v-model="selectedConfigId" name="configSelect" id="configSelect" class="uk-select">
               <option value="-1" selected disabled>-- Select to Edit --</option>
               <option v-for="c in configs" :key="c.id" :value="c.id">{{ c.name }}</option>
             </select>
           </div>
+          <!-- New Config Input -->
           <div class="uk-width-1-2@s">
             <input type="text" v-model="newConfigName" placeholder="New Configuration Name" class="uk-input" />
           </div>
+          <!-- Save and Rest buttons -->
           <div class="uk-width-1-2@s">
             <div uk-margin>
-              <button id="save-button" class="uk-button button-margin">Save</button>
-              <button id="reset-button" @click="confirm" class="uk-button button-margin ">Reset</button>
+              <button class="uk-button uk-button-primary button-margin">Save</button>
+              <button @click="confirm" class="uk-button uk-button-danger button-margin ">Reset</button>
             </div>
           </div>
+          <!-- Create button -->
           <div class="uk-width-1-2@s">
             <div class="uk-margin">
               <button @click="createConfig" class="uk-button uk-button-primary">Create</button>
@@ -99,8 +103,8 @@ export default {
     },
 
     createConfig() {
-      if (!this.isNameUnique(this.newConfigName)) {
-        // Notify them
+      if (!this.isNameUnique(this.newConfigName) || this.newConfigName.length < 1) {
+        this.notify("Configuration name is taken or not valid", 'danger');
         return;
       }
 
@@ -109,13 +113,18 @@ export default {
       config.name = this.newConfigName;
 
       // Create it (write to db)
-      api.createConfiguration(config);
-      // Get all back
-      this.getAllConfigs();
-
-      // Get it back from the db
-      this.config = this.findConfigByName(this.newConfigName);
+      api.createConfiguration(config).then(() => {
+        this.notify("Configuration created!", 'success');
+        this.getAllConfigs();
+        this.config = this.findConfigByName(this.newConfigName);
       this.newConfigName = "";
+      }).catch(() => {
+        this.notify("Configuration could not be created :(", 'danger');
+      });
+    },
+
+    notify(message, status='') {
+      this.$parent.notify(message, status);
     },
 
     confirm() {
@@ -166,10 +175,6 @@ export default {
   margin-right: 0.5em;
 }
 
-.uk-button-primary {
-  background-color: #EDB271;
-}
-
 .uk-card-title {
   margin-bottom: 1em;
 }
@@ -179,21 +184,4 @@ export default {
   border-left: 0.6em solid #a85b60;
 }
 
-#reset-button {
-  background-color: #A22455;
-  color: white;
-}
-
-#reset-button:hover {
-  background-color: rgb(129, 31, 68);
-}
-
-#save-button {
-  background-color: #EDB271;
-  color: white;
-}
-
-#save-button:hover {
-  background-color: rgb(201, 150, 96)
-}
 </style>

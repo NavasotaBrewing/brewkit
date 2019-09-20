@@ -46,3 +46,26 @@ export default {
   }
 }
 </script>
+
+
+<style>
+.uk-input:focus, .uk-select:focus {
+  border: 1px solid #EDB271 !important;
+}
+
+.uk-button-primary {
+  background-color: #EDB271 !important;
+}
+.uk-button-primary:hover {
+  background-color: rgb(212, 158, 100) !important;
+}
+
+.uk-button-danger {
+  background-color: #A22455 !important;
+  color: white;
+}
+.uk-button-danger:hover {
+  background-color: rgb(129, 31, 68) !important;
+}
+
+</style>
