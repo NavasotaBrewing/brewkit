@@ -49,6 +49,10 @@ export default {
 
 
 <style>
+/* Global styles */
+/* ------------- */
+
+
 .uk-input:focus, .uk-select:focus {
   border: 1px solid #EDB271 !important;
 }
@@ -66,6 +70,15 @@ export default {
 }
 .uk-button-danger:hover {
   background-color: rgb(129, 31, 68) !important;
+}
+
+.uk-button-success {
+  background-color: rgb(64, 136, 88) !important;
+  color: white !important;
+}
+.uk-button-success:hover {
+  background-color: rgb(58, 117, 77) !important;
+
 }
 
 </style>

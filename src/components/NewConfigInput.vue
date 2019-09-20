@@ -18,7 +18,7 @@
           <!-- Save and Rest buttons -->
           <div class="uk-width-1-2@s">
             <div uk-margin>
-              <button class="uk-button uk-button-primary button-margin">Save</button>
+              <button class="uk-button uk-button-success button-margin">Save</button>
               <button @click="confirm" class="uk-button uk-button-danger button-margin ">Reset</button>
             </div>
           </div>
