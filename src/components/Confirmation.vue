@@ -1,13 +1,15 @@
 <template>
   <div id="confirmation" :class="{ 'hide': !show }">
     <div class="confirmation-body">
-      <div v-if="title" class="title">{{ title }}</div>
-      <div v-if="message" class="message">
-        {{ message}}
-      </div>
-      <div class="action-buttons">
-        <button @click="cancel" class="uk-button uk-button-large cancel-button">{{ nText }}</button>
-        <button @click="confirm" class="uk-button uk-button-large confirm-button">{{ yText }}</button>
+      <div class="text-wrapper">
+        <div v-if="title" class="title">{{ title }}</div>
+        <div v-if="message" class="message">
+          {{ message}}
+        </div>
+        <div class="action-buttons">
+          <button @click="cancel" class="uk-button uk-button-large cancel-button">{{ nText }}</button>
+          <button @click="confirm" class="uk-button uk-button-large confirm-button">{{ yText }}</button>
+        </div>
       </div>
     </div>
   </div>
@@ -36,7 +38,7 @@ export default {
   name: "Confirmation",
   data() {
     return {
-      show: false
+      show: true
     }
   },
   methods: {
@@ -51,7 +53,6 @@ export default {
     },
 
     toggle() {
-      console.log("toggling")
       this.show = !this.show;
     }
   },
@@ -73,31 +74,50 @@ export default {
   bottom: 0;
   left: 0;
 
-  /* height: 45vh; */
-  width: 30vw;
+  height: 100vh;
+  width: 100vw;
+  /* text-align: center; */
   background-color: #A22455;
-  text-align: center;
-
-  border-top-right-radius: 30px;
   color: white;
 
   transition: clip-path 0.5s;
-  clip-path: circle(150% at 100% 100%)
+  clip-path: circle(30% at 13% 93%);
 }
 
-
-/* Change to full width if screen is < 900px wide */
-/* Get rid of border and make it shorter */
-@media only screen and (max-width: 1024px) {
-  #confirmation {
-    /* height: 35vh; */
-    width: 100%;
-    border-radius: 0;
-  }
-}
 
 .confirmation-body {
+  position: fixed;
+  /* background-color: salmon; */
+  bottom: 0;
+  left: 0;
   padding: 3em;
+  width: 25vw;
+  height: 30vh;
+}
+
+/* Change to full width if screen is < 1078px wide */
+/* Get rid of border and make it shorter */
+@media only screen and (max-width: 1078px) {
+  #confirmation {
+    /* height: 35vh; */
+    width: 100vw;
+    height: 40vh;
+    margin: 0;
+    border: 0;
+    transition: clip-path 0.7s;
+    clip-path: circle(150% at 13% 93%);
+  }
+
+  .confirmation-body {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 90%;
+    height: 30vh;
+    margin: 0;
+    padding-right: 3em;
+    /* clip-path: circle(150% at 0% 0); */
+  }
 }
 
 .title {
