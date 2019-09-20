@@ -5,18 +5,23 @@
         <div class="uk-card-title">Create a Configuration</div>
         <div uk-grid>
           <div class="uk-width-1-2@s">
-            <input type="text" v-model="config.name" placeholder="New Configuration Name" class="uk-input" />
-          </div>
-          <div class="uk-width-1-2@s">
             <select v-model="selectedConfigId" name="configSelect" id="configSelect" class="uk-select">
               <option value="-1" selected disabled>-- Select to Edit --</option>
               <option v-for="c in configs" :key="c.id" :value="c.id">{{ c.name }}</option>
             </select>
           </div>
-          <div class="uk-width-1-1@s">
+          <div class="uk-width-1-2@s">
+            <input type="text" v-model="newConfigName" placeholder="New Configuration Name" class="uk-input" />
+          </div>
+          <div class="uk-width-1-2@s">
             <div uk-margin>
               <button id="save-button" class="uk-button button-margin">Save</button>
               <button id="reset-button" @click="confirm" class="uk-button button-margin ">Reset</button>
+            </div>
+          </div>
+          <div class="uk-width-1-2@s">
+            <div class="uk-margin">
+              <button @click="createConfig" class="uk-button uk-button-primary">Create</button>
             </div>
           </div>
         </div>
@@ -28,7 +33,6 @@
 </template>
 
 <script>
-import { log } from 'util';
 import api from '@/api';
 import Confirmation from '@/components/Confirmation.vue';
 
@@ -42,6 +46,7 @@ export default {
     return {
       config: {},
       configs: [],
+      newConfigName: "",
       selectedConfigId: -1,
       emptyConfig: {
         name: "",
@@ -82,13 +87,46 @@ export default {
     };
   },
   methods: {
+    findConfigByName(name) {
+      let c = this.configs.filter(c => c.name == name)[0];
+      return c;
+    },
+
+    isNameUnique(name) {
+      let c = this.findConfigByName(name);
+      if (c == undefined) return true;
+      return false;
+    },
+
+    createConfig() {
+      if (!this.isNameUnique(this.newConfigName)) {
+        // Notify them
+        return;
+      }
+
+      let config = {};
+      Object.assign(config, this.emptyConfig);
+      config.name = this.newConfigName;
+
+      // Create it (write to db)
+      api.createConfiguration(config);
+      // Get all back
+      this.getAllConfigs();
+
+      // Get it back from the db
+      this.config = this.findConfigByName(this.newConfigName);
+      this.newConfigName = "";
+    },
+
     confirm() {
       this.$refs.confirmation.toggle();
     },
+
     selectConfig(config) {
       this.config = config;
-      // this.$emit('selectedConfig', config);
+      this.$emit('selectedConfig', config);
     },
+
     async getAllConfigs() {
       this.configs = await api.getConfigurations();
     },
@@ -126,6 +164,10 @@ export default {
 
 .button-margin {
   margin-right: 0.5em;
+}
+
+.uk-button-primary {
+  background-color: #EDB271;
 }
 
 .uk-card-title {
