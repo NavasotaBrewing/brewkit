@@ -24,7 +24,7 @@ export default {
     },
     message: {
       type: String,
-      required: false
+      required: true
     },
     yText: {
       type: String,
