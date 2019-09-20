@@ -15,6 +15,11 @@ Colors
  - #83315E - Eggplant
  - #A85B60 - Violet red
  - #A22455 - Rich purple
+
+ - #325F41 - Muted Green
+ - #D5D6CE - Creamish
+ - #582329 - Dark - slight purple
+ - #C56B39 - light tan
 */
 </style>
 

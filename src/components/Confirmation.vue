@@ -24,7 +24,7 @@ export default {
     },
     message: {
       type: String,
-      required: true
+      required: false
     },
     yText: {
       type: String,
@@ -38,7 +38,7 @@ export default {
   name: "Confirmation",
   data() {
     return {
-      show: true
+      show: false
     }
   },
   methods: {
