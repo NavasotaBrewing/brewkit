@@ -1,11 +1,11 @@
 <template>
-  <div @click="classes = status" id="notification" :class="classes">
+  <div @click="close" id="notification" :class="classes" uk-grid>
     <!-- Sucess Icon -->
-    <span v-if="status == 'success'" uk-icon="icon: check; ratio: 1.5" class="message-icon"></span>
+    <span v-if="status == 'success'" uk-icon="icon: check; ratio: 1.5" class="uk-float-left message-icon"></span>
     <!-- Danger Icon -->
-    <span v-else-if="status == 'danger'" uk-icon="icon: warning; ratio: 1.5" class="message-icon"></span>
+    <span v-else-if="status == 'danger'" uk-icon="icon: warning; ratio: 1.5" class="uk-float-left message-icon"></span>
     <!-- Default Icon -->
-    <span v-else uk-icon="icon: info; ratio: 1.5" class="message-icon"></span>
+    <span v-else uk-icon="icon: info; ratio: 1.5" class="uk-float-left message-icon"></span>
     <div class="message-text">
       {{ message }}
     </div>
@@ -16,18 +16,22 @@
 <style scoped>
 
   .message-icon {
-    float: left;
+    position: absolute;
+    left: 5%;
+    top: 25%;
   }
 
   .message-text {
     padding-top: 0.2em;
+    margin-left: 2.5em;
   }
 
   #notification {
-    width: 20vw;
+    width: 400px;
     position: fixed;
     bottom: 0;
     left: 0;
+    z-index: 10;
 
     cursor: pointer;
 
@@ -43,11 +47,28 @@
     color: white;
 
     transition: clip-path 0.5s;
-    clip-path: circle(0% at 0% 50%);
+    clip-path: circle(0% at 50% 50%);
+  }
+
+  @media only screen and (max-width: 510px) {
+    #notification {
+      width: -webkit-fill-available;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+
+      margin: 0;
+      padding: 2em;
+      border-radius: 0;
+    }
+
+    .message-icon {
+      top: 35%;
+    }
   }
 
   .show {
-    clip-path: circle(150% at 0% 50%) !important;
+    clip-path: circle(100% at 50% 50%) !important;
   }
 
   .success {
@@ -65,7 +86,7 @@
 <script>
 export default {
   name: 'Notification',
-  props: ["message", "status"],
+  props: ["message", "status", "callback"],
   mounted() {
     this.classes = this.status;
 
@@ -75,9 +96,15 @@ export default {
     }, 1);
 
     window.setTimeout(() => {
+      this.close();
+    }, 4000);
+  },
+
+  methods: {
+    close() {
       // Just remove "show" class
-      this.classes = this.status;
-    }, 5000);
+      this.classes = this.classes.replace(/show/g, '');
+    }
   },
 
   data() {
