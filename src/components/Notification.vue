@@ -76,7 +76,7 @@ export default {
 
     window.setTimeout(() => {
       // Just remove "show" class
-      // this.classes = this.status;
+      this.classes = this.status;
     }, 5000);
   },
 
