@@ -3,8 +3,8 @@
     <div class="confirmation-body">
       <div class="text-wrapper">
         <div v-if="title" class="title">{{ title }}</div>
-        <div v-if="message" class="message">
-          {{ message}}
+        <div class="message">
+          <slot>Are you sure?</slot>
         </div>
         <div class="action-buttons">
           <button @click="cancel" class="uk-button uk-button-large cancel-button">{{ nText }}</button>
@@ -21,10 +21,6 @@ export default {
     title: {
       type: String,
       default: "Are you sure?"
-    },
-    message: {
-      type: String,
-      required: false
     },
     yText: {
       type: String,

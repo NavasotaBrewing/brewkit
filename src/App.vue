@@ -1,17 +1,49 @@
 <template>
   <div id="app">
-
+    <Notification v-for="n in notifications" :key="n.id" :message="n.message" :status="n.status" :ref="'notification' + n.id" />
     <Navbar />
-    <!-- <FancyConfigSelect @selectConfig="selectConfig($event)" /> -->
-
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
-<style scoped>
+<script>
+import Navbar from '@/components/Navbar.vue';
+import Notification from '@/components/Notification.vue';
+import api from '@/api';
+
+export default {
+  data() {
+    return {
+      notifications: [],
+    }
+  },
+  mounted() {
+    window.app = this
+  },
+
+  components: {
+    Navbar,
+    Notification
+  },
+
+  methods: {
+    notify(message, status="") {
+      let id = Math.floor(Math.random() * 100000000);
+      this.notifications.push({
+        message: message,
+        status: status,
+        id: id
+      });
+    }
+  }
+}
+</script>
+
+
+<style>
 /*
 Colors
- - #EDB271 - Burly wood
+ - #EDB271 - Burly wood - Primary
  - #83315E - Eggplant
  - #A85B60 - Violet red
  - #A22455 - Rich purple
@@ -23,55 +55,11 @@ Colors
 
  - Almost black (text) - rgb(63, 63, 63)
 */
-</style>
-
-<script>
-import Navbar from '@/components/Navbar.vue';
-// import FancyConfigSelect from '@/components/FancyConfigSelect';
-
-export default {
-  data() {
-    return {
-      config: {},
-      configs: []
-    }
-  },
-  mounted() {
-    window.app = this
-  },
-  components: {
-    Navbar
-  },
-  methods: {
-    selectConfig(config) {
-      this.config = config;
-    }
-  }
-}
-</script>
-
-
-<style>
 /* Global styles */
 /* ------------- */
 /* Mostly overriding uikit colors */
 
 /* Cards */
-.uk-card-primary {
-  background-color: white !important;
-  border-left: 0.6em solid #EDB271;
-}
-
-.uk-card-primary .uk-card-body {
-  color: rgb(63, 63, 63) !important;
-}
-
-
-/* Inputs */
-.uk-input:focus, .uk-select:focus, .uk-textarea:focus {
-  border: 1px solid #EDB271 !important;
-}
-
 
 /* Buttons */
 .uk-button-primary {
@@ -89,12 +77,12 @@ export default {
   background-color: rgb(129, 31, 68) !important;
 }
 
-.uk-button-success {
-  background-color: rgb(64, 136, 88) !important;
+.uk-button-secondary {
+  background-color: rgb(69, 160, 100) !important;
   color: white !important;
 }
-.uk-button-success:hover {
-  background-color: rgb(58, 117, 77) !important;
+.uk-button-secondary:hover {
+  background-color: rgb(65, 148, 92) !important;
 }
 
 </style>
