@@ -81,7 +81,6 @@ export default {
     },
 
     createConfig() {
-      // console.log(this.newConfigName)
       let foundConfig = this.configs.filter(c => c.name == this.newConfigName)[0];
       if (foundConfig != undefined || this.newConfigName.length < 1) {
         this.notify("Name not valid, pick another", 'danger');
@@ -90,15 +89,17 @@ export default {
 
       api.createConfiguration({name: this.newConfigName}).then(result => {
         this.refreshConfigs();
+        console.log(this.configs);
         this.newConfigName = "";
         this.notify("Configuration created", 'success');
       }).catch(e => {
+        this.notify("Something went wrong, configuration could not be created", 'danger');
         console.log(e);
       });
     },
 
     updateConfig() {
-      // do this
+
     }
   },
   watch: {
