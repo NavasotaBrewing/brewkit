@@ -6,20 +6,35 @@
         <div uk-grid>
           <!-- Config Select -->
           <div class="uk-width-1-2@s">
-            <select v-model="selectedConfigId" name="configSelect" id="configSelect" class="uk-select">
-              <option value="-1" selected disabled>-- Select to Edit --</option>
-              <option v-for="c in configs" :key="c.id" :value="c.id">{{ c.name }}</option>
-            </select>
+            <div class="uk-margin">
+              <div class="uk-inline" style="width: 100%">
+                <a class="uk-form-icon" @click="getAllConfigs" uk-icon="icon: refresh"></a>
+                <select
+                  v-model="selectedConfigId"
+                  name="configSelect"
+                  id="configSelect"
+                  class="uk-select"
+                >
+                  <option value="-1" selected disabled>-- Select to Edit --</option>
+                  <option v-for="c in configs" :key="c.id" :value="c.id">{{ c.name }}</option>
+                </select>
+              </div>
+            </div>
           </div>
           <!-- New Config Input -->
           <div class="uk-width-1-2@s">
-            <input type="text" v-model="newConfigName" placeholder="New Configuration Name" class="uk-input" />
+            <input
+              type="text"
+              v-model="newConfigName"
+              placeholder="New Configuration Name"
+              class="uk-input"
+            />
           </div>
           <!-- Save and Rest buttons -->
           <div class="uk-width-1-2@s">
             <div uk-margin>
-              <button class="uk-button uk-button-success button-margin">Save</button>
-              <button @click="confirm" class="uk-button uk-button-danger button-margin ">Reset</button>
+              <button @click="updateConfig" class="uk-button uk-button-success button-margin">Save</button>
+              <button @click="confirm" class="uk-button uk-button-danger button-margin">Reset</button>
             </div>
           </div>
           <!-- Create button -->
@@ -32,13 +47,17 @@
       </div>
     </div>
 
-    <Confirmation @confirm="setEmptyConfig" ref="confirmation" :message="'This can\'t be undone unless you\'ve already saved your configuration. Are you sure you want to continue?'" />
+    <Confirmation
+      @confirm="setEmptyConfig"
+      ref="confirmation"
+      :message="'This can\'t be undone unless you\'ve already saved your configuration. Are you sure you want to continue?'"
+    />
   </div>
 </template>
 
 <script>
-import api from '@/api';
-import Confirmation from '@/components/Confirmation.vue';
+import api from "@/api";
+import Confirmation from "@/components/Confirmation.vue";
 
 export default {
   name: "NewConfigInput",
@@ -103,8 +122,11 @@ export default {
     },
 
     createConfig() {
-      if (!this.isNameUnique(this.newConfigName) || this.newConfigName.length < 1) {
-        this.notify("Configuration name is taken or not valid", 'danger');
+      if (
+        !this.isNameUnique(this.newConfigName) ||
+        this.newConfigName.length < 1
+      ) {
+        this.notify("Configuration name is taken or not valid", "danger");
         return;
       }
 
@@ -113,17 +135,37 @@ export default {
       config.name = this.newConfigName;
 
       // Create it (write to db)
-      api.createConfiguration(config).then(() => {
-        this.notify("Configuration created!", 'success');
-        this.getAllConfigs();
-        this.config = this.findConfigByName(this.newConfigName);
-      this.newConfigName = "";
-      }).catch(() => {
-        this.notify("Configuration could not be created :(", 'danger');
-      });
+      api
+        .createConfiguration(config)
+        .then(() => {
+          this.notify("Configuration created!", "success");
+          this.getAllConfigs();
+          this.config = this.findConfigByName(this.newConfigName);
+          this.newConfigName = "";
+        })
+        .catch(() => {
+          this.notify("Configuration could not be created :(", "danger");
+        });
     },
 
-    notify(message, status='') {
+    updateConfig() {
+      if (!this.config.id) {
+        this.notify("No configuration selected, can't save", "danger");
+        return;
+      }
+
+      api.updateConfiguration(this.config.id, this.config)
+        .then((result) => {
+          this.config = result;
+          this.notify(this.config.name + " updated", "success");
+          this.$parent.$forceUpdate();
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+
+    notify(message, status = "") {
       this.$parent.notify(message, status);
     },
 
@@ -133,7 +175,7 @@ export default {
 
     selectConfig(config) {
       this.config = config;
-      this.$emit('selectedConfig', config);
+      this.$emit("selectedConfig", config);
     },
 
     async getAllConfigs() {
@@ -142,6 +184,7 @@ export default {
 
     setEmptyConfig() {
       Object.assign(this.config, this.emptyConfig);
+      this.selectedConfigId = -1;
     }
   },
   watch: {
@@ -161,12 +204,19 @@ export default {
   mounted() {
     this.getAllConfigs();
     this.setEmptyConfig();
-    window.nci = this
+    window.nci = this;
   }
 };
 </script>
 
 <style scoped>
+/* This is a fix */
+/* You're not supposed to have an icon inside a select */
+/* But i do it anything because fuck the rules */
+#configSelect {
+  padding-left: 40px
+}
+
 #newConfigCardWrapper {
   padding: 1em;
 }
@@ -181,7 +231,7 @@ export default {
 
 #newConfigCard {
   background-color: white;
-  border-left: 0.6em solid #a85b60;
+  /* border-left: 0.6em solid #a85b60; */
+  border-left: 0.6em solid #edb271;
 }
-
 </style>

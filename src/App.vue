@@ -20,6 +20,8 @@ Colors
  - #D5D6CE - Creamish
  - #582329 - Dark - slight purple
  - #C56B39 - light tan
+
+ - Almost black (text) - rgb(63, 63, 63)
 */
 </style>
 
@@ -30,7 +32,8 @@ import Navbar from '@/components/Navbar.vue';
 export default {
   data() {
     return {
-      config: {}
+      config: {},
+      configs: []
     }
   },
   mounted() {
@@ -51,12 +54,26 @@ export default {
 <style>
 /* Global styles */
 /* ------------- */
+/* Mostly overriding uikit colors */
+
+/* Cards */
+.uk-card-primary {
+  background-color: white !important;
+  border-left: 0.6em solid #EDB271;
+}
+
+.uk-card-primary .uk-card-body {
+  color: rgb(63, 63, 63) !important;
+}
 
 
-.uk-input:focus, .uk-select:focus {
+/* Inputs */
+.uk-input:focus, .uk-select:focus, .uk-textarea:focus {
   border: 1px solid #EDB271 !important;
 }
 
+
+/* Buttons */
 .uk-button-primary {
   background-color: #EDB271 !important;
 }
@@ -78,7 +95,6 @@ export default {
 }
 .uk-button-success:hover {
   background-color: rgb(58, 117, 77) !important;
-
 }
 
 </style>
