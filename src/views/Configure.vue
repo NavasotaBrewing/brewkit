@@ -14,9 +14,9 @@
         <Card id="selectConfigCard" :type="'primary'" :title="'Select a Configuration'">
           <div class="uk-margin">
 
-            <select id="configSelect" class="uk-select">
-                <option>Option 01</option>
-                <option>Option 02</option>
+            <select id="configSelect" v-model="configSelect" class="uk-select">
+              <option value="-1" disabled>-- Select a Configuration --</option>
+              <option v-for="c in configs" :key="c.id" :value="c.id">{{ c.name }}</option>
             </select>
 
           </div>
@@ -45,7 +45,8 @@ export default {
     return {
       config: {},
       configs: [],
-      newConfigName: ""
+      newConfigName: "",
+      configSelect: -1
     };
   },
 
@@ -61,7 +62,6 @@ export default {
 
     selectConfig(id) {
       let config = this.configs.filter(c => c.id == id)[0];
-      console.log("Config selected: " + config.id);
       this.config = config;
     },
 
@@ -88,6 +88,11 @@ export default {
       }).catch(e => {
         console.log(e);
       });
+    }
+  },
+  watch: {
+    configSelect: function() {
+      this.selectConfig(this.configSelect);
     }
   }
 };

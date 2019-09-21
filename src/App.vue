@@ -9,6 +9,9 @@
 <script>
 import Navbar from '@/components/Navbar.vue';
 import Notification from '@/components/Notification.vue';
+
+import UIkit from 'uikit';
+window.UIkit = UIkit;
 import api from '@/api';
 
 export default {
@@ -17,13 +20,12 @@ export default {
       notifications: [],
     }
   },
-  mounted() {
-    window.app = this
-  },
-
   components: {
     Navbar,
     Notification
+  },
+  mounted() {
+    window.app = this
   },
 
   methods: {
@@ -35,7 +37,7 @@ export default {
         id: id
       });
     }
-  }
+  },
 }
 </script>
 
