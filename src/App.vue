@@ -65,6 +65,7 @@ Colors
 /* Form */
 
 /* Buttons */
+
 .button-primary {
   background-color: #EDB271 !important;
   color: white !important;
@@ -91,6 +92,14 @@ Colors
 
 .button-margin {
   margin-right: 0.5em !important;
+}
+
+.button-primary:disabled {
+  background-color: rgba(212, 158, 100, 0.6) !important;
+}
+
+.uk-section-muted .uk-card {
+  background-color: #F8F8F8 !important;
 }
 
 </style>
