@@ -7,8 +7,8 @@
           <slot>Are you sure?</slot>
         </div>
         <div class="action-buttons">
-          <button @click="cancel" class="uk-button uk-button-large cancel-button">{{ nText }}</button>
-          <button @click="confirm" class="uk-button uk-button-large confirm-button">{{ yText }}</button>
+          <button @click="cancel" class="uk-button uk-button-large button-danger">{{ nText }}</button>
+          <button @click="confirm" class="uk-button uk-button-large button-primary">{{ yText }}</button>
         </div>
       </div>
     </div>
@@ -124,14 +124,6 @@ export default {
 
 .action-buttons {
   margin-top: 3em;
-}
-
-.confirm-button {
-  background-color: #EDB271;
-}
-
-.cancel-button {
-  background-color: #A22455;
 }
 
 </style>

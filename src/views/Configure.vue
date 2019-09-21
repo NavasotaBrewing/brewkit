@@ -1,12 +1,31 @@
 <template>
   <!-- Main column -->
   <div class="uk-container">
-
+    <!-- Create config confirmation -->
     <Confirmation @confirm="createConfig" :title="'Create a Config'" :yText="'Create'" ref="createConfigConfirmation">
       <input type="text" v-model="newConfigName" placeholder="New Configuration Name" class="uk-input">
     </Confirmation>
+    <!-- Create config confirmation show button -->
+    <button @click="showCreateConfigConfirmation" id="createConfigButton" class="uk-button uk-button-large button-secondary">Create</button>
 
-    <button @click="showCreateConfigConfirmation" id="createConfigButton" class="uk-button uk-button-large uk-button-secondary">Create</button>
+    <div class="uk-child-width-1-3" uk-grid>
+      <div></div>
+      <div>
+        <Card id="selectConfigCard" :type="'primary'" :title="'Select a Configuration'">
+          <div class="uk-margin">
+
+            <select id="configSelect" class="uk-select">
+                <option>Option 01</option>
+                <option>Option 02</option>
+            </select>
+
+          </div>
+        </Card>
+      </div>
+      <div></div>
+    </div>
+
+
   </div>
 </template>
 
@@ -76,6 +95,14 @@ export default {
 
 
 <style scoped>
+
+#selectConfigCard {
+  margin-top: 2em;
+}
+
+#selectConfigCard * {
+  color: black;
+}
 
 #createConfigButton {
   position: fixed;

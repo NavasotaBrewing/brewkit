@@ -57,31 +57,32 @@ Colors
 */
 /* Global styles */
 /* ------------- */
-/* Mostly overriding uikit colors */
 
-/* Cards */
+
+
+/* Form */
 
 /* Buttons */
-.uk-button-primary {
+.button-primary {
   background-color: #EDB271 !important;
 }
-.uk-button-primary:hover {
+.button-primary:hover {
   background-color: rgb(212, 158, 100) !important;
 }
 
-.uk-button-danger {
+.button-danger {
   background-color: #A22455 !important;
   color: white;
 }
-.uk-button-danger:hover {
+.button-danger:hover {
   background-color: rgb(129, 31, 68) !important;
 }
 
-.uk-button-secondary {
+.button-secondary {
   background-color: rgb(69, 160, 100) !important;
   color: white !important;
 }
-.uk-button-secondary:hover {
+.button-secondary:hover {
   background-color: rgb(65, 148, 92) !important;
 }
 

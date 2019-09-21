@@ -28,7 +28,7 @@
   </div>
 </template>
 
-<style lang="css">
+<style scoped>
 
 #navItems {
   margin-left: 1em;
