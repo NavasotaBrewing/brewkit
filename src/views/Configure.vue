@@ -8,23 +8,32 @@
     <!-- Create config confirmation show button -->
     <button @click="showCreateConfigConfirmation" id="createConfigButton" class="uk-button uk-button-large button-secondary">Create</button>
 
+    <!-- Select config -->
     <div class="uk-child-width-1-3" uk-grid>
+      <!-- Empty coloumn (offset) -->
       <div></div>
       <div>
-        <Card id="selectConfigCard" :type="'primary'" :title="'Select a Configuration'">
-          <div class="uk-margin">
 
+        <!-- Select config card -->
+        <Card id="selectConfigCard" :type="'primary'" :title="'Select a Configuration'">
+
+            <!-- Select config -->
+          <div class="uk-margin">
             <select id="configSelect" v-model="configSelect" class="uk-select">
               <option value="-1" disabled>-- Select a Configuration --</option>
               <option v-for="c in configs" :key="c.id" :value="c.id">{{ c.name }}</option>
             </select>
-
           </div>
-        </Card>
-      </div>
-      <div></div>
-    </div>
 
+          <!-- Save button -->
+          <div class="uk-margin">
+            <button @click="updateConfig" class="uk-button button-margin button-primary">Save</button>
+          </div>
+
+        </Card>
+
+      </div>
+    </div>
 
   </div>
 </template>
@@ -49,12 +58,10 @@ export default {
       configSelect: -1
     };
   },
-
   mounted() {
     window.configure = this;
     this.refreshConfigs();
   },
-
   methods: {
     async refreshConfigs() {
       this.configs = await api.getConfigurations();
@@ -77,7 +84,7 @@ export default {
       // console.log(this.newConfigName)
       let foundConfig = this.configs.filter(c => c.name == this.newConfigName)[0];
       if (foundConfig != undefined || this.newConfigName.length < 1) {
-        this.notify("Name not valid, pick another.", 'danger');
+        this.notify("Name not valid, pick another", 'danger');
         return;
       }
 
@@ -88,6 +95,10 @@ export default {
       }).catch(e => {
         console.log(e);
       });
+    },
+
+    updateConfig() {
+      // do this
     }
   },
   watch: {

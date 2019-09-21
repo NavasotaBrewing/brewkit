@@ -67,6 +67,7 @@ Colors
 /* Buttons */
 .button-primary {
   background-color: #EDB271 !important;
+  color: white !important;
 }
 .button-primary:hover {
   background-color: rgb(212, 158, 100) !important;
@@ -74,7 +75,7 @@ Colors
 
 .button-danger {
   background-color: #A22455 !important;
-  color: white;
+  color: white !important;
 }
 .button-danger:hover {
   background-color: rgb(129, 31, 68) !important;
@@ -86,6 +87,10 @@ Colors
 }
 .button-secondary:hover {
   background-color: rgb(65, 148, 92) !important;
+}
+
+.button-margin {
+  margin-right: 0.5em !important;
 }
 
 </style>
