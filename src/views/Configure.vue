@@ -148,7 +148,7 @@
     <!-- Device Section -->
     <div v-if="allRTUs().length > 0" class="uk-section uk-margin-top">
       <div class="uk-container">
-        <div uk-grid>
+        <div class="uk-grid-small" uk-grid="masonry: true">
           <!-- New Device Card -->
           <div class="uk-width-1-3@m">
             <AddDeviceCard @newDevice="addDevice($event)" :rtus="config.RTUs"></AddDeviceCard>
@@ -156,12 +156,14 @@
 
           <!-- All Devices -->
           <div class="uk-width-2-3@m">
-            <div v-for="rtu in allRTUs()" :key="rtu.id" uk-grid>
-              <div class="uk-width-1-2@m" v-for="device in rtu.devices" :key="device.id">
-                <Device @remove="rtu.devices = rtu.devices.filter(d => d.id != $event)" :device="device" :rtu="rtu"></Device>
+            <!-- <div v-for="rtu in allRTUs()" :key="rtu.id" uk-grid> -->
+              <!-- <div class="uk-width-1-2@m" v-for="device in rtu.devices" :key="device.id"> -->
+              <div uk-grid="masonry: true">
+                <div class="uk-width-1-2@m" v-for="device in allDevices()" :key="device.id">
+                  <Device @remove="rtu.devices = rtu.devices.filter(d => d.id != $event)" :device="device" :rtu="config.RTUs.filter(r => r.id == device.rtu)[0]"></Device>
+                </div>
               </div>
-
-            </div>
+            <!-- </div> -->
           </div>
         </div>
       </div>
