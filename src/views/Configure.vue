@@ -146,7 +146,7 @@
     </div>
 
     <!-- Device Section -->
-    <div v-if="config.id" class="uk-section uk-margin-top">
+    <div v-if="allRTUs().length > 0" class="uk-section uk-margin-top">
       <div class="uk-container">
         <div uk-grid>
           <!-- New Device Card -->
@@ -156,10 +156,9 @@
 
           <!-- All Devices -->
           <div class="uk-width-2-3@m">
-            <div v-for="rtu in config.RTUs" :key="rtu.id" uk-grid>
-
-              <div class="uk-width-1-3@m" v-for="device in rtu.devices" :key="device.id">
-                <Device :device="device"></Device>
+            <div v-for="rtu in allRTUs()" :key="rtu.id" uk-grid>
+              <div class="uk-width-1-2@m" v-for="device in rtu.devices" :key="device.id">
+                <Device @remove="rtu.devices = rtu.devices.filter(d => d.id != $event)" :device="device" :rtu="rtu"></Device>
               </div>
 
             </div>
@@ -316,6 +315,17 @@ export default {
       if (!rtu.devices) { rtu.devices = [] };
       rtu.devices.push(device);
       this.notify("Device added", 'success');
+    },
+
+    allDevices() {
+      return this.config.RTUs.map(r => r.devices).flat();
+    },
+
+    allRTUs() {
+      if (!this.config.id) {
+        return [];
+      }
+      return this.config.RTUs;
     }
 
   },

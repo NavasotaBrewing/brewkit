@@ -78,6 +78,7 @@ export default {
       }
 
       this.newRTU.id = uuid();
+      this.newRTU.devices = [];
 
       let vessel = {};
       Object.assign(vessel, this.newRTU)
