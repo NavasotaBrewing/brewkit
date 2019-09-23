@@ -129,28 +129,7 @@
 
           <!-- Add RTU card -->
           <div class="uk-width-1-3@m uk-margin-top uk-margin-bottom">
-            <Card :type="'secondary'" :title="'New RTU'">
-
-              <div class="uk-margin">
-                <label for="newRTUName">Name</label>
-                <input type="text" v-model="newRTU.name" id="newRTUName" placeholder="Name" class="uk-input">
-              </div>
-
-              <div class="uk-margin">
-                <label for="newRTULocation">Location</label>
-                <input type="text" class="uk-input" v-model="newRTU.location" placeholder="Location" id="newRTULocation">
-              </div>
-
-              <div class="uk-margin">
-                <label for="newRTUIPV4">Address</label>
-                <input type="text" class="uk-input" v-model="newRTU.ipv4" placeholder="Address" id="newRTUIPV4">
-              </div>
-
-              <div class="uk-margin">
-                <button @click="addRTU" class="uk-button button-secondary">Add</button>
-              </div>
-
-            </Card>
+            <AddRTUCard @newRTU="addRTU($event)"></AddRTUCard>
           </div>
 
           <!-- All RTUs -->
@@ -167,7 +146,7 @@
     </div>
 
     <!-- Device Section -->
-    <div class="uk-section uk-margin-top">
+    <div v-if="config.id" class="uk-section uk-margin-top">
       <div class="uk-container">
         <div uk-grid>
           <!-- New Device Card -->
@@ -237,7 +216,9 @@ import api from "@/api";
 
 import Card from "@/components/Card.vue";
 import Confirmation from "@/components/Confirmation.vue";
+import AddRTUCard from '@/components/AddRTUCard.vue';
 import RTU from '@/components/RTU.vue';
+// import AddDeviceCard from '@/components/AddDeviceCard.vue';
 import Device from '@/components/Device.vue';
 import Slack from '@/slack.js';
 
@@ -257,22 +238,17 @@ export default {
   components: {
     Card,
     Confirmation,
+    AddRTUCard,
     RTU,
+    // AddDeviceCard,
     Device
   },
   data() {
     return {
-      config: {"id":3,"name":"take us through the eyes","description":null,"mode":null,"slackChannel":null,"slackWebhook":"https://hooks.slack.com/services/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","RTUs":[{"name":"Main Valves","location":"location","id":"7ad95162-bd16-4823-8e68-80d9582d867b","ipv4":"192/12323.2/342.34234","devices":[]}]},
+      config: {},
       configs: [],
       newConfigName: "",
       configSelect: -1,
-      newRTU: {
-        name: "",
-        location: "",
-        id: "",
-        ipv4: "",
-        devices: [],
-      },
       newDevice: {
         driver: "",
         rtu: "",
@@ -331,7 +307,7 @@ export default {
       this.$refs.createConfigConfirmation.toggle();
     },
 
-    notify(message, status = "") {
+    notify(message, status = '') {
       this.$parent.notify(message, status);
     },
 
@@ -380,27 +356,12 @@ export default {
         });
     },
 
-    addRTU() {
-      if (empty(this.newRTU.name.length) || empty(this.newRTU.ipv4.length)) {
-        this.notify("Please fill in all required fields", 'danger');
-        return;
-      }
-
+    addRTU(rtu) {
       if (!this.config.RTUs) {
         this.config.RTUs = [];
       }
 
-      this.newRTU.id = uuid();
-
-      let vessel = {};
-      Object.assign(vessel, this.newRTU)
-      this.config.RTUs.push(vessel);
-
-      this.newRTU.name = '';
-      this.newRTU.id = '';
-      this.newRTU.location = '';
-      this.newRTU.ipv4 = '';
-
+      this.config.RTUs.push(rtu);
       this.notify("RTU added", 'success');
     },
 
