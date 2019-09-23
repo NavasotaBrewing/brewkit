@@ -3,6 +3,7 @@
     <Notification v-for="n in notifications" :key="n.id" :message="n.message" :status="n.status" :ref="'notification' + n.id" />
     <Navbar />
     <router-view />
+    <input type="color" name="" id="">
   </div>
 </template>
 

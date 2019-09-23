@@ -20,6 +20,12 @@
   color: none;
 }
 
+.card-tertiary {
+  background-color: white;
+  border-left: 0.6em solid rgb(236, 113, 97);
+  color: none;
+}
+
 .card-danger {
   background-color: white;
   border-left: 0.6em solid #A22455;
@@ -48,8 +54,9 @@ export default {
     return {
       classes: {
         primary: 'card-primary',
-        danger: 'card-danger',
         secondary: 'card-secondary',
+        tertiary: 'card-tertiary',
+        danger: 'card-danger',
         default: 'card-default'
       }
     }
