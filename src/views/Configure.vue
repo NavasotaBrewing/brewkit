@@ -153,6 +153,7 @@
             </Card>
           </div>
 
+          <!-- All RTUs -->
           <div class="uk-width-2-3@m uk-margin-top uk-margin-bottom">
             <div class="uk-child-width-1-3@m" uk-grid>
               <div v-for="rtu in config.RTUs" :key="rtu.id">
@@ -216,7 +217,13 @@
 
           <!-- All Devices -->
           <div class="uk-width-2-3@m">
+            <div v-for="rtu in config.RTUs" :key="rtu.id" uk-grid>
 
+              <div class="uk-width-1-3@m" v-for="device in rtu.devices" :key="device.id">
+                <Device :device="device"></Device>
+              </div>
+
+            </div>
           </div>
         </div>
       </div>
@@ -231,6 +238,7 @@ import api from "@/api";
 import Card from "@/components/Card.vue";
 import Confirmation from "@/components/Confirmation.vue";
 import RTU from '@/components/RTU.vue';
+import Device from '@/components/Device.vue';
 import Slack from '@/slack.js';
 
 function uuid() {
@@ -249,7 +257,8 @@ export default {
   components: {
     Card,
     Confirmation,
-    RTU
+    RTU,
+    Device
   },
   data() {
     return {
