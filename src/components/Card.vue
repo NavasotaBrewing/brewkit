@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes[type]" class="uk-card">
+  <div :class="classes[type]" class="uk-card rounded-corners shadow">
     <div class="uk-card-body dark-text">
       <div class="uk-card-title dark-text">{{ title }}</div>
       <slot></slot>
@@ -8,27 +8,38 @@
 </template>
 
 <style scoped>
+
+.rounded-corners {
+  border-radius: 7px;
+}
+
+.shadow {
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(173,173,173,0.36);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(173,173,173,0.36);
+  box-shadow: 0px 0px 10px 0px rgba(173,173,173,0.36);
+}
+
 .card-primary {
   background-color: white;
-  border-left: 0.6em solid #EDB271;
+  border: 0.2em solid #EDB271;
   color: none;
 }
 
 .card-secondary {
   background-color: white;
-  border-left: 0.6em solid rgb(64, 136, 88);
+  border: 0.2em solid rgb(64, 136, 88);
   color: none;
 }
 
 .card-tertiary {
   background-color: white;
-  border-left: 0.6em solid rgb(236, 113, 97);
+  border: 0.2em solid rgb(236, 113, 97);
   color: none;
 }
 
 .card-danger {
   background-color: white;
-  border-left: 0.6em solid #A22455;
+  border: 0.2em solid #A22455;
   color: none;
 }
 
