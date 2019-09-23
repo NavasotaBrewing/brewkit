@@ -1,36 +1,41 @@
 <template>
   <div id="app">
-    <Notification v-for="n in notifications" :key="n.id" :message="n.message" :status="n.status" :ref="'notification' + n.id" />
+    <Notification
+      v-for="n in notifications"
+      :key="n.id"
+      :message="n.message"
+      :status="n.status"
+      :ref="'notification' + n.id"
+    />
     <Navbar />
     <router-view />
-    <input type="color" name="" id="">
   </div>
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue';
-import Notification from '@/components/Notification.vue';
+import Navbar from "@/components/Navbar.vue";
+import Notification from "@/components/Notification.vue";
 
-import UIkit from 'uikit';
+import UIkit from "uikit";
 window.UIkit = UIkit;
 // import api from '@/api';
 
 export default {
   data() {
     return {
-      notifications: [],
-    }
+      notifications: []
+    };
   },
   components: {
     Navbar,
     Notification
   },
   mounted() {
-    window.app = this
+    window.app = this;
   },
 
   methods: {
-    notify(message, status="") {
+    notify(message, status = "") {
       let id = Math.floor(Math.random() * 100000000);
       this.notifications.push({
         message: message,
@@ -38,8 +43,8 @@ export default {
         id: id
       });
     }
-  },
-}
+  }
+};
 </script>
 
 
@@ -61,26 +66,16 @@ Colors
 /* Global styles */
 /* ------------- */
 
-
-
 /* Form */
 
 /* Buttons */
 
 .button-primary {
-  background-color: #EDB271 !important;
+  background-color: #edb271 !important;
   color: white !important;
 }
 .button-primary:hover {
   background-color: rgb(212, 158, 100) !important;
-}
-
-.button-danger {
-  background-color: #A22455 !important;
-  color: white !important;
-}
-.button-danger:hover {
-  background-color: rgb(129, 31, 68) !important;
 }
 
 .button-secondary {
@@ -89,6 +84,24 @@ Colors
 }
 .button-secondary:hover {
   background-color: rgb(65, 148, 92) !important;
+}
+
+.button-tertiary {
+  background-color: rgb(236, 113, 97) !important;
+  color: white !important;
+}
+
+.button-tertiary:hover {
+  background-color: rgb(207, 98, 83) !important;
+}
+
+
+.button-danger {
+  background-color: #a22455 !important;
+  color: white !important;
+}
+.button-danger:hover {
+  background-color: rgb(129, 31, 68) !important;
 }
 
 .button-margin {
@@ -100,7 +113,6 @@ Colors
 }
 
 .uk-section-muted .uk-card {
-  background-color: #F8F8F8 !important;
+  background-color: #f8f8f8 !important;
 }
-
 </style>

@@ -74,6 +74,8 @@ export default {
   height: 100vh;
   width: 100vw;
   /* text-align: center; */
+
+  /* Main color */
   background-color: #A22455;
   color: white;
 
