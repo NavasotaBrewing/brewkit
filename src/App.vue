@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+
     <Notification
       v-for="n in notifications"
       :key="n.id"
@@ -7,6 +8,7 @@
       :status="n.status"
       :ref="'notification' + n.id"
     />
+
     <Navbar />
     <router-view />
   </div>

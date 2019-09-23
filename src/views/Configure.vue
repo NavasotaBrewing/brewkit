@@ -164,6 +164,64 @@
         </div>
       </div>
     </div>
+
+    <!-- Device Section -->
+    <div class="uk-section uk-margin-top">
+      <div class="uk-container">
+        <div uk-grid>
+          <!-- New Device Card -->
+          <div class="uk-width-1-3@m">
+
+            <Card :title="'New Device'" :type="'tertiary'">
+
+              <div class="uk-margin">
+                <label for="newDeviceDriver">Driver</label>
+                <select name="driver" id="newDeviceDriver" v-model="newDevice.driver" class="uk-select">
+                  <option value="" disabled>-- Driver --</option>
+                  <option value="STR1">STR1</option>
+                  <option value="Omega">Omega</option>
+                </select>
+              </div>
+
+              <div class="uk-margin">
+                <label for="newDeviceRTU">RTU</label>
+                <select v-model="newDevice.rtu" id="newDeviceRTU" class="uk-select">
+                  <option value="" disabled>-- RTU --</option>
+                  <option v-for="rtu in config.RTUs" :key="rtu.id" :value="rtu.id">{{ rtu.name }}</option>
+                </select>
+              </div>
+
+              <div class="uk-margin">
+                <label for="newDeviceName">Name</label>
+                <input type="text" v-model="newDevice.name" placeholder="Name" class="uk-input" id="newDeviceName">
+              </div>
+
+              <div v-if="newDevice.driver == 'STR1'" class="uk-margin">
+                <label for="newDeviceAddr">Address</label>
+                <input type="text" v-model="newDevice.addr" placeholder="Address" class="uk-input" id="newDeviceAddr">
+              </div>
+
+              <div class="uk-margin">
+                <label for="newDeviceControllerAddr">Controller Address</label>
+                <input type="text" v-model="newDevice.controller_addr" placeholder="Controller Address" class="uk-input" id="newDeviceControllerAddr">
+              </div>
+
+              <div class="uk-margin">
+                <button @click="addDevice" class="uk-button button-tertiary">Add</button>
+              </div>
+
+            </Card>
+
+          </div>
+
+          <!-- All Devices -->
+          <div class="uk-width-2-3@m">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -182,6 +240,10 @@ function uuid() {
   });
 }
 
+function empty(thing) {
+  return thing == '';
+}
+
 export default {
   name: "Configure",
   components: {
@@ -191,7 +253,7 @@ export default {
   },
   data() {
     return {
-      config: {},
+      config: {"id":3,"name":"take us through the eyes","description":null,"mode":null,"slackChannel":null,"slackWebhook":"https://hooks.slack.com/services/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","RTUs":[{"name":"Main Valves","location":"location","id":"7ad95162-bd16-4823-8e68-80d9582d867b","ipv4":"192/12323.2/342.34234","devices":[]}]},
       configs: [],
       newConfigName: "",
       configSelect: -1,
@@ -201,6 +263,14 @@ export default {
         id: "",
         ipv4: "",
         devices: [],
+      },
+      newDevice: {
+        driver: "",
+        rtu: "",
+        name: "",
+        addr: "",
+        controller_addr: "",
+        id: "",
       }
     };
   },
@@ -302,7 +372,7 @@ export default {
     },
 
     addRTU() {
-      if (this.newRTU.name.length < 1 || this.newRTU.ipv4.length < 1) {
+      if (empty(this.newRTU.name.length) || empty(this.newRTU.ipv4.length)) {
         this.notify("Please fill in all required fields", 'danger');
         return;
       }
@@ -323,6 +393,39 @@ export default {
       this.newRTU.ipv4 = '';
 
       this.notify("RTU added", 'success');
+    },
+
+    addDevice() {
+      if (
+        empty(this.newDevice.name) ||
+        empty(this.newDevice.driver) ||
+        empty(this.newDevice.controller_addr ||
+        empty(this.newDevice.rtu)))
+      {
+        this.notify("Please fill in all required fields", 'danger');
+        return;
+      }
+
+      let vessel = {};
+      Object.assign(vessel, this.newDevice);
+
+      vessel.id = uuid();
+
+      let rtu = this.config.RTUs.filter(r => r.id == vessel.rtu)[0];
+
+      if (!rtu.devices) {
+        rtu.devices = [];
+      }
+
+      rtu.devices.push(vessel);
+
+      this.newDevice.name = "";
+      this.newDevice.driver = "";
+      this.newDevice.rtu = "";
+      this.newDevice.controller_addr = "";
+      this.newDevice.addr = "";
+
+      this.notify("Device added", 'success');
     }
   },
   watch: {
@@ -332,7 +435,6 @@ export default {
   }
 };
 </script>
-
 
 <style scoped>
 /* #selectConfigCard {
