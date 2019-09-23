@@ -12,7 +12,7 @@ import Notification from '@/components/Notification.vue';
 
 import UIkit from 'uikit';
 window.UIkit = UIkit;
-import api from '@/api';
+// import api from '@/api';
 
 export default {
   data() {

@@ -127,7 +127,7 @@
 
 
     <!-- RTU section -->
-    <div class="uk-section-muted uk-margin-top">
+    <div v-if="config.id" class="uk-section-muted uk-margin-top">
       <div class="uk-container">
         <div uk-grid>
 
@@ -151,18 +151,20 @@
               </div>
 
               <div class="uk-margin">
-                <button @click="addRTU" class="uk-button uk-button-primary">Add</button>
+                <button @click="addRTU" class="uk-button button-secondary">Add</button>
               </div>
 
             </Card>
           </div>
 
           <div class="uk-width-2-3@m uk-margin-top uk-margin-bottom">
-            All RTUs list
-            <br />
-            <!-- Lorem ipsum dolor, sit amet consectetur adipisicing elit. Exercitationem velit incidunt inventore quod amet, error consectetur, mollitia ad laboriosam rerum sit architecto? Natus enim odit animi doloremque provident corporis a. -->
-            {{ config }}
+            <div class="uk-child-width-1-3@m" uk-grid>
+              <div v-for="rtu in config.RTUs" :key="rtu.id">
+                <RTU @remove="config.RTUs = config.RTUs.filter(r => r.id != $event)" :rtu="rtu"></RTU>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -174,6 +176,7 @@ import api from "@/api";
 
 import Card from "@/components/Card.vue";
 import Confirmation from "@/components/Confirmation.vue";
+import RTU from '@/components/RTU.vue';
 
 function uuid() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -186,7 +189,8 @@ export default {
   name: "Configure",
   components: {
     Card,
-    Confirmation
+    Confirmation,
+    RTU
   },
   data() {
     return {
@@ -262,7 +266,7 @@ export default {
 
       api
         .createConfiguration({ name: this.newConfigName })
-        .then(result => {
+        .then(() => {
           this.refreshConfigs();
           console.log(this.configs);
           this.newConfigName = "";
@@ -285,10 +289,10 @@ export default {
 
       api
         .updateConfiguration(this.config.id, this.config)
-        .then(result => {
+        .then(() => {
           this.notify("Updated", "success");
         })
-        .catch(e => {
+        .catch(() => {
           this.notify(
             "Something went wrong, could not update configuration",
             "danger"
