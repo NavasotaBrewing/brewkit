@@ -90,16 +90,13 @@
                   <a
                     class="uk-form-icon uk-form-icon-flip"
                     uk-tooltip="You can register a webhook on your slack channel's page. This is optional."
-                    uk-icon="info"
-                  />
-                  <code>
-                    <input
-                      class="uk-input"
-                      v-model="config.slackWebhook"
-                      type="text"
-                      placeholder="Slack Webhook"
-                    />
-                  </code>
+                    uk-icon="info"/>
+                  <input
+                    class="uk-input slack-input"
+                    id="slackWebhookInput"
+                    v-model="config.slackWebhook"
+                    type="text"
+                    placeholder="Slack Webhook"/>
                 </div>
               </div>
               <div class="uk-width-1-3@s">
@@ -109,19 +106,18 @@
                     uk-tooltip="For display purposes only"
                     uk-icon="icon: info"
                   ></a>
-                  <code>
-                    <input
-                      class="uk-input"
-                      v-model="config.slackChannel"
-                      type="text"
-                      placeholder="Slack Channel"
-                    />
-                  </code>
+                  <input
+                    class="uk-input slack-input"
+                    v-model="config.slackChannel"
+                    type="text"
+                    placeholder="Slack Channel"
+                  />
                 </div>
               </div>
             </div>
           </Card>
         </div>
+
       </div>
     </div>
 
@@ -177,6 +173,7 @@ import api from "@/api";
 import Card from "@/components/Card.vue";
 import Confirmation from "@/components/Confirmation.vue";
 import RTU from '@/components/RTU.vue';
+import Slack from '@/slack.js';
 
 function uuid() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -222,6 +219,10 @@ export default {
     this.refreshConfigs();
   },
   methods: {
+    slack(msg) {
+      Slack.send(this.config.slackWebhook, msg);
+    },
+
     captureSave() {
       document.addEventListener(
         "keydown",
@@ -337,6 +338,14 @@ export default {
 /* #selectConfigCard {
   margin-top: 2em;
 } */
+
+.slack-input {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+#slackWebhookInput {
+  padding-right: 3em;
+}
 
 #selectConfigCard * {
   color: black;
