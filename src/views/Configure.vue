@@ -134,19 +134,34 @@
           <!-- Add RTU card -->
           <div class="uk-width-1-3@m uk-margin-top uk-margin-bottom">
             <Card :type="'secondary'" :title="'New RTU'">
+
               <div class="uk-margin">
-                <label for="driverSelect">Type</label>
-                <select id="driverSelect" class="uk-select">
-                  <option value="STR1">STR1</option>
-                  <option value="Omega">Omega</option>
-                </select>
+                <label for="newRTUName">Name</label>
+                <input type="text" v-model="newRTU.name" id="newRTUName" placeholder="Name" class="uk-input">
               </div>
+
+              <div class="uk-margin">
+                <label for="newRTULocation">Location</label>
+                <input type="text" class="uk-input" v-model="newRTU.location" placeholder="Location" id="newRTULocation">
+              </div>
+
+              <div class="uk-margin">
+                <label for="newRTUIPV4">Address</label>
+                <input type="text" class="uk-input" v-model="newRTU.ipv4" placeholder="Address" id="newRTUIPV4">
+              </div>
+
+              <div class="uk-margin">
+                <button @click="addRTU" class="uk-button uk-button-primary">Add</button>
+              </div>
+
             </Card>
           </div>
-          <div class="uk-width-2-3@m">
+
+          <div class="uk-width-2-3@m uk-margin-top uk-margin-bottom">
             All RTUs list
             <br />
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Exercitationem velit incidunt inventore quod amet, error consectetur, mollitia ad laboriosam rerum sit architecto? Natus enim odit animi doloremque provident corporis a.
+            <!-- Lorem ipsum dolor, sit amet consectetur adipisicing elit. Exercitationem velit incidunt inventore quod amet, error consectetur, mollitia ad laboriosam rerum sit architecto? Natus enim odit animi doloremque provident corporis a. -->
+            {{ config }}
           </div>
         </div>
       </div>
@@ -160,6 +175,13 @@ import api from "@/api";
 import Card from "@/components/Card.vue";
 import Confirmation from "@/components/Confirmation.vue";
 
+function uuid() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
 export default {
   name: "Configure",
   components: {
@@ -171,7 +193,14 @@ export default {
       config: {},
       configs: [],
       newConfigName: "",
-      configSelect: -1
+      configSelect: -1,
+      newRTU: {
+        name: "",
+        location: "",
+        id: "",
+        ipv4: "",
+        devices: [],
+      }
     };
   },
   computed: {
@@ -265,6 +294,30 @@ export default {
             "danger"
           );
         });
+    },
+
+    addRTU() {
+      if (this.newRTU.name.length < 1 || this.newRTU.ipv4.length < 1) {
+        this.notify("Please fill in all required fields", 'danger');
+        return;
+      }
+
+      if (!this.config.RTUs) {
+        this.config.RTUs = [];
+      }
+
+      this.newRTU.id = uuid();
+
+      let vessel = {};
+      Object.assign(vessel, this.newRTU)
+      this.config.RTUs.push(vessel);
+
+      this.newRTU.name = '';
+      this.newRTU.id = '';
+      this.newRTU.location = '';
+      this.newRTU.ipv4 = '';
+
+      this.notify("RTU added", 'success');
     }
   },
   watch: {
@@ -289,5 +342,6 @@ export default {
   position: fixed;
   bottom: 2.3em;
   left: 4em;
+  z-index: 8;
 }
 </style>
