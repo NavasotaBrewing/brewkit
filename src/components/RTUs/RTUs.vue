@@ -1,9 +1,9 @@
 <template>
   <div>
     <!-- Grid | Large screens -->
-    <RTUGrid class="uk-visible@l" @remove="removeRTU(rtu.id)" :rtus="rtus"></RTUGrid>
+    <RTUGrid class="uk-visible@l" @remove="removeRTU($event)" :rtus="rtus"></RTUGrid>
     <!-- Table | Medium Screens -->
-    <RTUTable class="uk-hidden@l uk-visible@s" @remove="removeRTU(rtu.id)" :rtus="rtus"></RTUTable>
+    <RTUTable class="uk-hidden@l uk-visible@s" @remove="removeRTU($event)" :rtus="rtus"></RTUTable>
     <!-- List | Small Screens -->
     <ul class="uk-list uk-list-divider uk-hidden@s">
       <li v-for="rtu in rtus" :key="rtu.id">

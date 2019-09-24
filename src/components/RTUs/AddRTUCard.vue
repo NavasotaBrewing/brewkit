@@ -63,7 +63,12 @@ export default {
   },
   data() {
     return {
-      newRTU: {}
+      newRTU: {
+        name: "",
+        ipv4: "",
+        devices: [],
+        location: "",
+      }
     }
   },
   methods: {
