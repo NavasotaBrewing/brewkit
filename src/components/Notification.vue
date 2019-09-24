@@ -43,7 +43,7 @@
 
     border-radius: 300px;
     text-align: center;
-    background-color: #EDB271;
+    background-color: var(--color-dark);
     color: white;
 
     transition: clip-path 0.5s;
@@ -72,12 +72,12 @@
   }
 
   .success {
-    background-color: #325F41 !important;
+    background-color: var(--color-primary) !important;
     color: white;
   }
 
   .danger {
-    background-color: #A22455 !important;
+    background-color: var(--color-danger) !important;
     color: white;
   }
 </style>

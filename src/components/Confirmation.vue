@@ -7,7 +7,7 @@
           <slot>Are you sure?</slot>
         </div>
         <div class="action-buttons">
-          <button @click="cancel" class="uk-button uk-button-large button-danger">{{ nText }}</button>
+          <button @click="cancel" class="uk-button uk-button-large button-secondary">{{ nText }}</button>
           <button @click="confirm" class="uk-button uk-button-large button-primary">{{ yText }}</button>
         </div>
       </div>
@@ -76,7 +76,7 @@ export default {
   /* text-align: center; */
 
   /* Main color */
-  background-color: #A22455;
+  background-color: var(--color-secondary);
   color: white;
 
   transition: clip-path 0.5s;
