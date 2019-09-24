@@ -255,16 +255,15 @@ export default {
     },
 
     createConfig() {
-      let foundConfig = this.configs.filter(
-        c => c.name == this.newConfigName
-      )[0];
+      let foundConfig = this.configs.filter(c => c.name == this.newConfigName)[0];
+
       if (foundConfig != undefined || this.newConfigName.length < 1) {
         this.notify("Name not valid, pick another", "danger");
         return;
       }
 
       api
-        .createConfiguration({ name: this.newConfigName })
+        .createConfiguration({ name: this.newConfigName, RTUs: [] })
         .then(() => {
           this.refreshConfigs();
           console.log(this.configs);
