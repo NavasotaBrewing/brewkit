@@ -56,8 +56,8 @@
         </div>
 
         <!-- Config details -->
-        <div v-if="config.id" class="uk-width-2-3@s">
-          <Card id="configDetailsCard" class="uk-margin-top">
+        <div v-if="config.id" class="uk-width-2-3@m">
+          <Card id="configDetailsCard" :type="''" class="uk-margin-top">
             <!-- Name -->
             <div class="uk-margin">
               <!-- <label for="configNameInput" class="uk-text-uppercase uk-text-lead">Name</label> -->
@@ -123,21 +123,30 @@
     <!-- RTU section -->
     <div v-if="config.id" class="uk-section-muted uk-margin-top">
       <div class="uk-container">
-        <div uk-grid>
+        <div uk-grid class="uk-margin-top uk-margin-bottom">
 
           <!-- Add RTU card -->
-          <div class="uk-width-1-3@m uk-margin-top uk-margin-bottom">
+          <div class="uk-width-1-3@m">
             <AddRTUCard @newRTU="addRTU($event)"></AddRTUCard>
           </div>
 
           <!-- All RTUs -->
-          <div class="uk-width-2-3@m uk-margin-top uk-margin-bottom">
+          <div class="uk-width-expand">
+            <RTUGrid class="uk-visible@l" @remove="config.RTUs = config.RTUs.filter(r => r.id != $event)" :rtus="allRTUs()"></RTUGrid>
+            <RTUTable class="uk-hidden@l uk-visible@s" @remove="config.RTUs = config.RTUs.filter(r => r.id != $event)" :rtus="allRTUs()"></RTUTable>
+            <ul class="uk-list uk-list-divider uk-hidden@s">
+              <li v-for="rtu in allRTUs()" :key="rtu.id">
+                {{ rtu.name }}
+              </li>
+            </ul>
+          </div>
+          <!-- <div class="uk-width-2-3@m uk-margin-top uk-margin-bottom">
             <div class="uk-child-width-1-3@m" uk-grid>
               <div v-for="rtu in config.RTUs" :key="rtu.id">
                 <RTU @remove="config.RTUs = config.RTUs.filter(r => r.id != $event)" :rtu="rtu"></RTU>
               </div>
             </div>
-          </div>
+          </div> -->
 
         </div>
       </div>
@@ -177,6 +186,8 @@ import Card from "@/components/Card.vue";
 import Confirmation from "@/components/Confirmation.vue";
 import AddRTUCard from '@/components/AddRTUCard.vue';
 import RTU from '@/components/RTU.vue';
+import RTUGrid from '@/components/RTUGrid.vue';
+import RTUTable from '@/components/RTUTable.vue';
 import AddDeviceCard from '@/components/AddDeviceCard.vue';
 import Device from '@/components/Device.vue';
 import Slack from '@/slack.js';
@@ -189,6 +200,8 @@ export default {
     Confirmation,
     AddRTUCard,
     RTU,
+    RTUGrid,
+    RTUTable,
     AddDeviceCard,
     Device
   },
