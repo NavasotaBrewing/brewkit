@@ -21,25 +21,25 @@
 
 .card-primary {
   background-color: white;
-  border: 0.2em solid #EDB271;
+  border: 0.2em solid var(--color-primary);
   color: none;
 }
 
 .card-secondary {
   background-color: white;
-  border: 0.2em solid rgb(64, 136, 88);
+  border: 0.2em solid var(--color-secondary);
   color: none;
 }
 
 .card-tertiary {
   background-color: white;
-  border: 0.2em solid rgb(236, 113, 97);
+  border: 0.2em solid var(--color-tertiary);
   color: none;
 }
 
 .card-danger {
   background-color: white;
-  border: 0.2em solid #A22455;
+  border: 0.2em solid var(--color-danger);
   color: none;
 }
 
