@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import RTU from "@/components/RTU.vue";
+import RTU from "@/components/RTUs/RTU.vue";
 
 export default {
   name: "RTUGrid",
