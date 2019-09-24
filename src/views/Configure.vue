@@ -27,8 +27,6 @@
     <!-- Config select and details -->
     <div class="uk-container">
       <div uk-grid>
-
-
         <!-- Select config -->
         <div class="uk-width-1-3@m">
           <!-- Select config card -->

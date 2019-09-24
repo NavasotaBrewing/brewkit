@@ -72,46 +72,80 @@ Colors
 
 /* Buttons */
 
+:root {
+  /* Primary */
+  --color-primary: #69BF8A;
+  --color-primary-dark: rgb(88, 160, 116);
+
+
+  /* Secondary */
+  --color-secondary: #1C5D99;
+  --color-secondary-dark: rgb(26, 80, 131);
+
+  /* Tertiary */
+  --color-tertiary: #F4C095;
+  --color-tertiary-dark: rgb(224, 176, 136);
+
+  /* Dark */
+  --color-dark: #071E22;
+  --color-dark-darker: rgb(5, 21, 24);
+
+  /* Danger */
+  --color-danger: #EE2E31;
+  --color-danger-dark: rgb(214, 46, 49);
+}
+
+
 .button-primary {
-  background-color: #edb271 !important;
+  background-color: var(--color-primary) !important;
   color: white !important;
 }
 .button-primary:hover {
-  background-color: rgb(212, 158, 100) !important;
+  background-color: var(--color-primary-dark) !important;
 }
 
 .button-secondary {
-  background-color: rgb(69, 160, 100) !important;
+  background-color: var(--color-secondary) !important;
   color: white !important;
 }
 .button-secondary:hover {
-  background-color: rgb(65, 148, 92) !important;
+  background-color: var(--color-secondary-dark) !important;
 }
 
 .button-tertiary {
-  background-color: rgb(236, 113, 97) !important;
+  background-color: var(--color-tertiary) !important;
   color: white !important;
 }
 
 .button-tertiary:hover {
-  background-color: rgb(207, 98, 83) !important;
+  background-color: var(--color-tertiary-dark) !important;
 }
 
 
 .button-danger {
-  background-color: #a22455 !important;
+  background-color: var(--color-danger) !important;
   color: white !important;
 }
+
 .button-danger:hover {
-  background-color: rgb(129, 31, 68) !important;
+  background-color: var(--color-danger-dark) !important;
+}
+
+.button-dark {
+  background-color: var(--color-dark) !important;
+  color: white;
+}
+
+.button-dark:hover {
+  background-color: var(--color-dark-darker) !important;
 }
 
 .button-margin {
   margin-right: 0.5em !important;
 }
 
-.button-primary:disabled {
-  background-color: rgba(212, 158, 100, 0.6) !important;
+button:disabled {
+  opacity: 0.6;
 }
 
 .uk-section-muted .uk-card {
