@@ -5,7 +5,8 @@
       @confirm="createConfig"
       :title="'Create a Configuration'"
       :yText="'Create'"
-      ref="createConfigConfirmation">
+      ref="createConfigConfirmation"
+    >
       <div class="uk-inline">
         <input
           type="text"
@@ -21,8 +22,8 @@
     <button
       @click="showCreateConfigConfirmation"
       id="createConfigButton"
-      class="uk-button uk-button-large button-primary">Create
-    </button>
+      class="uk-button uk-button-large button-primary"
+    >Create</button>
 
     <!-- Config select and details -->
     <div class="uk-container">
@@ -88,13 +89,15 @@
                   <a
                     class="uk-form-icon uk-form-icon-flip"
                     uk-tooltip="You can register a webhook on your slack channel's page. This is optional."
-                    uk-icon="info"/>
+                    uk-icon="info"
+                  />
                   <input
                     class="uk-input slack-input"
                     id="slackWebhookInput"
                     v-model="config.slackWebhook"
                     type="text"
-                    placeholder="Slack Webhook"/>
+                    placeholder="Slack Webhook"
+                  />
                 </div>
               </div>
               <div class="uk-width-1-3@s">
@@ -115,16 +118,13 @@
             </div>
           </Card>
         </div>
-
       </div>
     </div>
-
 
     <!-- RTU section -->
     <div v-if="config.id" class="uk-section-muted uk-margin-top">
       <div class="uk-container">
         <div uk-grid class="uk-margin-top uk-margin-bottom">
-
           <!-- Add RTU card -->
           <div class="uk-width-1-3@m">
             <AddRTUCard @newRTU="addRTU($event)"></AddRTUCard>
@@ -134,7 +134,6 @@
           <div class="uk-width-expand">
             <RTUs :rtus="allRTUs()" @remove="config.RTUs = config.RTUs.filter(r => r.id != $event)"></RTUs>
           </div>
-
         </div>
       </div>
     </div>
@@ -150,19 +149,11 @@
 
           <!-- All Devices -->
           <div class="uk-width-2-3@m">
-            <!-- <div v-for="rtu in allRTUs()" :key="rtu.id" uk-grid> -->
-              <!-- <div class="uk-width-1-2@m" v-for="device in rtu.devices" :key="device.id"> -->
-              <div uk-grid="masonry: true">
-                <div class="uk-width-1-2@m" v-for="device in allDevices()" :key="device.id">
-                  <Device @remove="rtu.devices = rtu.devices.filter(d => d.id != $event)" :device="device" :rtu="config.RTUs.filter(r => r.id == device.rtu)[0]"></Device>
-                </div>
-              </div>
-            <!-- </div> -->
+            <DeviceTable @remove="removeDevice($event)" :devices="allDevices()" :rtus="allRTUs()"></DeviceTable>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -172,13 +163,13 @@ import api from "@/api";
 import Card from "@/components/Card.vue";
 import Confirmation from "@/components/Confirmation.vue";
 
-import AddRTUCard from '@/components/RTUs/AddRTUCard.vue';
-import RTUs from '@/components/RTUs/RTUs.vue';
+import AddRTUCard from "@/components/RTUs/AddRTUCard.vue";
+import RTUs from "@/components/RTUs/RTUs.vue";
 
-import AddDeviceCard from '@/components/AddDeviceCard.vue';
-import Device from '@/components/Device.vue';
-import Slack from '@/slack.js';
+import AddDeviceCard from "@/components/AddDeviceCard.vue";
+import DeviceTable from "@/components/DeviceTable.vue";
 
+import Slack from "@/slack.js";
 
 export default {
   name: "Configure",
@@ -188,14 +179,14 @@ export default {
     AddRTUCard,
     RTUs,
     AddDeviceCard,
-    Device
+    DeviceTable
   },
   data() {
     return {
       config: {},
       configs: [],
       newConfigName: "",
-      configSelect: -1,
+      configSelect: -1
     };
   },
   computed: {
@@ -246,12 +237,14 @@ export default {
       this.$refs.createConfigConfirmation.toggle();
     },
 
-    notify(message, status = '') {
+    notify(message, status = "") {
       this.$parent.notify(message, status);
     },
 
     createConfig() {
-      let foundConfig = this.configs.filter(c => c.name == this.newConfigName)[0];
+      let foundConfig = this.configs.filter(
+        c => c.name == this.newConfigName
+      )[0];
 
       if (foundConfig != undefined || this.newConfigName.length < 1) {
         this.notify("Name not valid, pick another", "danger");
@@ -300,18 +293,32 @@ export default {
       }
 
       this.config.RTUs.push(rtu);
-      this.notify("RTU added", 'success');
+      this.notify("RTU added", "success");
     },
 
     addDevice(device) {
       let rtu = this.config.RTUs.filter(r => r.id == device.rtu)[0];
       if (!rtu) {
-        this.notify("Could not add device", 'danger');
+        this.notify("Could not add device", "danger");
         return;
       }
-      if (!rtu.devices) { rtu.devices = [] };
+      if (!rtu.devices) {
+        rtu.devices = [];
+      }
       rtu.devices.push(device);
-      this.notify("Device added", 'success');
+      this.notify("Device added", "success");
+    },
+
+    removeDevice(deviceId) {
+      console.log("got device " + deviceId);
+      this.config.RTUs.forEach(rtu => {
+        for (let i = 0; i < rtu.devices.length; i++) {
+          const device = rtu.devices[i];
+          if (device.id == deviceId) {
+            rtu.devices.splice(i, 1);
+          }
+        }
+      });
     },
 
     allDevices() {
@@ -324,7 +331,6 @@ export default {
       }
       return this.config.RTUs;
     }
-
   },
   watch: {
     configSelect: function() {
@@ -340,7 +346,7 @@ export default {
 } */
 
 .slack-input {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }
 
 #slackWebhookInput {
