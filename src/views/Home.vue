@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-
     <div class="uk-container">
       <Timer></Timer>
     </div>
@@ -15,6 +14,12 @@ export default {
   name: 'home',
   components: {
     Timer
+  },
+
+  methods: {
+    notify(msg, status = '') {
+      this.$parent.notify(msg, status);
+    }
   }
 }
 </script>

@@ -133,7 +133,7 @@ Colors
 
 .button-dark {
   background-color: var(--color-dark) !important;
-  color: white;
+  color: white !important;
 }
 
 .button-dark:hover {
