@@ -11,12 +11,15 @@
       </div>
       <div id="inputCell">
         <div id="inputWrapper">
-          <div class="uk-margin">
+          <div class="uk-margin uk-inline">
+            <span class="uk-form-icon" uk-icon="icon: clock"></span>
             <input v-model="timerInput" type="text" placeholder="Time" class="uk-input" />
           </div>
-          <button @click="start" class="uk-button button-secondary">Start</button>
-          <button @click="clear" class="uk-button button-dark">Clear</button>
-          <hr class="uk-divider-icon" />
+          <div class="uk-inline">
+            <button @click="start" class="uk-button button-secondary">Start</button>
+            <button @click="clear" class="uk-button button-dark">Clear</button>
+          </div>
+          <!-- <hr class="uk-divider-icon" /> -->
           <h3 class="uk-heading-small">{{ prettyTimeRemaining() }}</h3>
         </div>
       </div>
@@ -26,9 +29,6 @@
 
 
 <style scoped>
-button {
-  width: 100%;
-}
 
 #timerImage {
   height: 300px;
