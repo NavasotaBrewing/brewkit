@@ -1,29 +1,35 @@
 <template>
   <div id="timer">
+    <Card class="uk-hidden-touch" :type="'secondary'">
+      <div uk-grid>
+        <div id="timerCell">
+          <!-- Full hourglass -->
+          <img id="timerImage" src="@/assets/hourglass.svg" alt="Timer" />
 
-    <div uk-grid>
-      <div id="timerCell">
-        <!-- Full hourglass -->
-        <img id="timerImage" src="@/assets/hourglass.svg" alt="Timer" />
-
-        <!-- Hourglass outline -->
-        <img id="outlineImage" src="@/assets/hourglass_outline.svg" alt="Timer" />
-      </div>
-      <div id="inputCell">
-        <div id="inputWrapper">
-          <div class="uk-margin uk-inline">
-            <span class="uk-form-icon" uk-icon="icon: clock"></span>
-            <input v-model="timerInput" type="text" placeholder="Time" class="uk-input" />
+          <!-- Hourglass outline -->
+          <img id="outlineImage" src="@/assets/hourglass_outline.svg" alt="Timer" />
+        </div>
+        <div id="inputCell">
+          <div id="inputWrapper">
+            <div class="uk-margin uk-inline">
+              <span class="uk-form-icon" uk-icon="icon: clock"></span>
+              <input v-model="timerInput" type="text" placeholder="Time" class="uk-input" />
+            </div>
+            <div class="uk-inline">
+              <button @click="start" class="uk-button button-secondary">Start</button>
+              <button @click="clear" class="uk-button button-dark">Clear</button>
+            </div>
+            <!-- <hr class="uk-divider-icon" /> -->
+            <h3 class="uk-heading-small">{{ prettyTimeRemaining() }}</h3>
           </div>
-          <div class="uk-inline">
-            <button @click="start" class="uk-button button-secondary">Start</button>
-            <button @click="clear" class="uk-button button-dark">Clear</button>
-          </div>
-          <!-- <hr class="uk-divider-icon" /> -->
-          <h3 class="uk-heading-small">{{ prettyTimeRemaining() }}</h3>
         </div>
       </div>
-    </div>
+    </Card>
+
+    <!-- Mobile only timer -->
+    <!-- <div class="uk-hidden-notouch">
+
+    </div> -->
   </div>
 </template>
 
@@ -65,8 +71,14 @@
 
 
 <script>
+import Card from '@/components/Card.vue';
+
 export default {
   name: "Timer",
+
+  components: {
+    Card
+  },
 
   data() {
     return {
