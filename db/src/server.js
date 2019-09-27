@@ -20,14 +20,14 @@ let database = new Sequelize({
 let Configuration = database.define('configuration', {
   name: Sequelize.STRING,
   description: Sequelize.STRING,
+  // Just a string, not a DATE or anything fancy
+  date: Sequelize.STRING,
   mode: Sequelize.STRING,
   slackChannel: Sequelize.STRING,
   slackWebhook: Sequelize.STRING,
   RTUs: Sequelize.JSON
-  // These are old
-  // websocket: Sequelize.STRING,
-  // devices: Sequelize.JSON
 }, {
+  // I'm not sure i need this but i'm too lazy to check
   timestamps: false
 })
 

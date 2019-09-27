@@ -60,15 +60,27 @@
         <div v-if="config.id" class="uk-width-2-3@m">
           <Card id="configDetailsCard" :type="''" class="uk-margin-top">
             <!-- Name -->
-            <div class="uk-margin">
-              <!-- <label for="configNameInput" class="uk-text-uppercase uk-text-lead">Name</label> -->
-              <input
-                type="text"
-                id="configNameInput"
-                placeholder="Configuration Name"
-                v-model="config.name"
-                class="uk-input"
-              />
+            <div class="uk-margin uk-grid-small" uk-grid>
+              <div class="uk-width-3-4@s">
+                <input
+                  type="text"
+                  id="configNameInput"
+                  placeholder="Configuration Name"
+                  v-model="config.name"
+                  class="uk-input"
+                />
+              </div>
+              <div class="uk-width-1-4@s">
+                <div class="uk-inline">
+                  <a
+                    class="uk-form-icon uk-form-icon-flip"
+                    uk-tooltip="For display purposes only"
+                    uk-icon="icon: info"
+                  ></a>
+                  <input v-model="config.date" type="text" placeholder="Date" class="uk-input">
+
+                </div>
+              </div>
             </div>
             <!-- Description -->
             <div class="uk-margin">
@@ -132,7 +144,7 @@
 
           <!-- All RTUs -->
           <div class="uk-width-expand">
-            <RTUs :rtus="allRTUs()" @remove="config.RTUs = config.RTUs.filter(r => r.id != $event)"></RTUs>
+            <RTUs :rtus="allRTUs()" @remove="removeRTU($event)"></RTUs>
           </div>
         </div>
       </div>
@@ -294,6 +306,12 @@ export default {
 
       this.config.RTUs.push(rtu);
       this.notify("RTU added", "success");
+      this.updateConfig();
+    },
+
+    removeRTU(rtuId) {
+      this.config.RTUs = this.config.RTUs.filter(r => r.id != rtuId);
+      this.updateConfig();
     },
 
     addDevice(device) {
@@ -307,6 +325,7 @@ export default {
       }
       rtu.devices.push(device);
       this.notify("Device added", "success");
+      this.updateConfig();
     },
 
     removeDevice(deviceId) {
@@ -316,6 +335,7 @@ export default {
           const device = rtu.devices[i];
           if (device.id == deviceId) {
             rtu.devices.splice(i, 1);
+            this.updateConfig();
           }
         }
       });
