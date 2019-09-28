@@ -2,7 +2,7 @@
   <div class="home">
     <div class="uk-container">
       <div uk-grid class="uk-margin-top">
-        <div class="uk-width-1-2@l">
+        <div class="uk-width-1-2">
           <Timer></Timer>
         </div>
       </div>

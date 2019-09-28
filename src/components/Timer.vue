@@ -1,67 +1,98 @@
 <template>
-  <div id="timer">
-    <Card class="uk-hidden-touch" :type="'secondary'">
-      <div uk-grid>
-        <div id="timerCell">
-          <!-- Full hourglass -->
-          <img id="timerImage" src="@/assets/hourglass.svg" alt="Timer" />
+  <div>
+    <div id="timer">
+      <Card :type="'secondary'">
+        <div uk-grid>
+          <div id="timerCell">
+            <!-- Full hourglass -->
+            <img id="timerImage" class="progress" src="@/assets/hourglass.svg" alt="Timer" />
 
-          <!-- Hourglass outline -->
-          <img id="outlineImage" src="@/assets/hourglass_outline.svg" alt="Timer" />
-        </div>
-        <div id="inputCell">
-          <div id="inputWrapper">
-            <div class="uk-margin uk-inline">
-              <span class="uk-form-icon" uk-icon="icon: clock"></span>
-              <input v-model="timerInput" type="text" placeholder="Time" class="uk-input" />
+            <!-- Hourglass outline -->
+            <img id="outlineImage" src="@/assets/hourglass_outline.svg" alt="Timer" />
+          </div>
+          <div id="inputCell">
+            <div id="inputWrapper">
+              <div class="uk-margin uk-inline">
+                <span class="uk-form-icon" uk-icon="icon: clock"></span>
+                <input v-model="timerInput" type="text" placeholder="Time" class="uk-input" />
+              </div>
+              <div class="uk-inline">
+                <button @click="start" class="uk-button button-secondary">Start</button>
+                <button @click="clear" class="uk-button button-dark">Clear</button>
+              </div>
+              <!-- <hr class="uk-divider-icon" /> -->
+              <h3 class="uk-heading-small">{{ prettyTimeRemaining() }}</h3>
             </div>
-            <div class="uk-inline">
-              <button @click="start" class="uk-button button-secondary">Start</button>
-              <button @click="clear" class="uk-button button-dark">Clear</button>
-            </div>
-            <!-- <hr class="uk-divider-icon" /> -->
-            <h3 class="uk-heading-small">{{ prettyTimeRemaining() }}</h3>
           </div>
         </div>
-      </div>
-    </Card>
+      </Card>
 
-    <!-- Mobile only timer -->
-    <!-- <div class="uk-hidden-notouch">
+      <!-- Mobile only timer -->
+      <!-- <div class="uk-hidden-notouch">
 
-    </div> -->
+      </div> -->
+    </div>
+    <div id="mobileTimer">
+      <div id="timerBar" class="progress"></div>
+    </div>
   </div>
 </template>
 
 
 <style scoped>
 
+#mobileTimer {
+  display: none;
+}
+
+#timerBar {
+  position: fixed;
+  width: 100vw;
+  height: 10px;
+  background-color: var(--color-secondary);
+  bottom: 0;
+  left: 0;
+  transition: clip-path 1s;
+  clip-path: circle(0% at 0% 100%);
+}
+
+@media only screen and (max-width: 1123px) {
+  #timer {
+    display: none;
+  }
+
+  #mobileTimer {
+    display: block;
+  }
+}
+
+
 #timerImage {
-  height: 300px;
+  height: 200px;
   position: absolute;
   transition: clip-path 1s;
   z-index: 2;
   clip-path: circle(0% at 49.5% 50%);
 }
 
+#outlineImage {
+  height: 200px;
+  position: absolute;
+}
+
 #timerCell {
-  width: 169px;
+  width: 145px;
 }
 
 #inputCell {
   width: 265px;
-  height: 300px;
+  height: 200px;
   display: table;
 }
 
 #inputWrapper {
   display: table-cell;
   vertical-align: middle;
-}
-
-#outlineImage {
-  height: 300px;
-  position: absolute;
 }
 
 .full {
@@ -153,10 +184,15 @@ export default {
       // Timer is actually filled at 69% (nice)
       // Divide by this, makes 100% == 69
 
+      let els;
       progress /= 1.4492753623188406;
       let clipPathString = "circle(" + progress + "% at 49.5% 50%)";
-      let el = document.getElementById("timerImage");
-      el.style.clipPath = clipPathString;
+      els = document.querySelectorAll(".progress");
+      els.forEach(el => {
+        el.style.clipPath = clipPathString;
+      });
+
+
     },
 
     clear() {
