@@ -16,10 +16,10 @@
         <ul class="uk-navbar-nav">
           <a target="_blank" href="http://navasotabrewing.com/">
             <!-- TODO: serve this -->
-            <img class="uk-visible@s"
+            <img id="mapleLeaf" class="uk-visible@s"
               width="40px"
               src="https://cdn1.iconfinder.com/data/icons/agriculture-13/48/7-512.png"
-              alt
+              alt="Navasota Brewing Cooperative"
             />
           </a>
         </ul>
@@ -29,6 +29,10 @@
 </template>
 
 <style scoped>
+
+#navBarWrapper {
+  z-index: -1;
+}
 
 #navItems {
   margin-left: 1em;
