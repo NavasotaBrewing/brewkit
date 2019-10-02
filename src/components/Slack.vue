@@ -64,7 +64,7 @@ export default {
   data() {
     return {
       slackMessage: "",
-      showReplPane: true,
+      showReplPane: false,
       replacements: [
         {
           pattern: "{time}",
