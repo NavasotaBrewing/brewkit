@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="uk-container">
-      <div uk-grid class="uk-margin-top">
+      <div uk-grid class="uk-margin-top uk-grid-column-small">
         <div class="uk-width-1-2@m">
           <Timer />
         </div>

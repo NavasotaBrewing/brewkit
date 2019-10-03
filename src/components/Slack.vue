@@ -9,7 +9,7 @@
           id="slackMessage"
           cols="30"
           placeholder="Slack Message"
-          rows="5"
+          rows="3"
           class="uk-textarea"
         ></textarea>
         <div class="uk-margin">
@@ -120,8 +120,9 @@ export default {
 }
 
 #closeButton {
-  position: fixed;
-  top: 0;
+  position: relative;
+  float: right;
+  top: 10px;
   right: 0;
   color: white;
 
@@ -135,12 +136,14 @@ export default {
 
 #replPane {
   width: 500px;
-  height: 100vh;
+  height: 50vh;
   position: fixed;
   z-index: 5;
 
   right: 0;
-  top: 0;
+  bottom: 0;
+
+  border-top-left-radius: 15px;
 
   padding-left: 4em;
   color: white;
