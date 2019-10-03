@@ -106,6 +106,7 @@ export default {
       Object.assign(vessel, this.newDevice);
 
       vessel.id = uuid();
+      vessel.state = "Off"
 
       this.newDevice.name = "";
       this.newDevice.driver = "";

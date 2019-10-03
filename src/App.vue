@@ -104,6 +104,10 @@ Colors
   background-color: var(--color-primary-dark) !important;
 }
 
+.label-primary {
+  background-color: var(--color-primary) !important;
+}
+
 .button-secondary {
   background-color: var(--color-secondary) !important;
   color: white !important;
@@ -131,6 +135,10 @@ Colors
   background-color: var(--color-danger-dark) !important;
 }
 
+.label-danger {
+  background-color: var(--color-danger) !important;
+}
+
 .button-dark {
   background-color: var(--color-dark) !important;
   color: white !important;
@@ -151,4 +159,13 @@ button:disabled {
 .uk-section-muted .uk-card {
   background-color: #f8f8f8 !important;
 }
+
+.cursor {
+  cursor: pointer;
+}
+
+.uk-subnav-pill > .uk-active > a {
+  background-color: var(--color-secondary) !important;
+}
+
 </style>
