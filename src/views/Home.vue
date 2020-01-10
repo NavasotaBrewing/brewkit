@@ -104,7 +104,6 @@ export default {
       setTimeout(() => {
         let enactors = document.querySelectorAll(".enactor");
         enactors.forEach(en => {
-          console.log(en);
           en.addEventListener('click', () => {
             this.update('Write');
           })
@@ -129,8 +128,6 @@ export default {
     },
 
     update(mode="Read") {
-      console.log("Updating. Mode: " + mode);
-
       if (this.config == {}) {
         this.notify("No configuration selected, can't update", "danger");
         return;
@@ -150,7 +147,7 @@ export default {
           'Content-Type': 'application/json'
         }
       }).then(resp => {
-        console.log(resp);
+        // console.log(resp);
         this.config = resp.data;
       }).catch(err => {
         console.log(err);
