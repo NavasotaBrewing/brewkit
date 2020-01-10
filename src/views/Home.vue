@@ -56,6 +56,11 @@
 
       </div>
     </div>
+
+    <!-- Thermo graphs -->
+    <div class="uk-section">
+      <ThermoChart :thermo="thermo" :key="thermo.id" v-for="thermo in thermos()"></ThermoChart>
+    </div>
   </div>
 </template>
 
@@ -64,7 +69,7 @@ import axios from 'axios';
 
 import Timer from "@/components/Timer.vue";
 import Slack from "@/components/Slack.vue";
-// import Card from "@/components/Card.vue";
+import ThermoChart from "@/components/ThermoChart.vue";
 
 import api from '@/api.js';
 
@@ -72,7 +77,8 @@ export default {
   name: "home",
   components: {
     Timer,
-    Slack
+    Slack,
+    ThermoChart
   },
 
   data() {
@@ -98,6 +104,25 @@ export default {
   methods: {
     notify(msg, status = "") {
       this.$parent.notify(msg, status);
+    },
+
+    thermos() {
+
+      if (this.config.RTUs == undefined) return;
+
+
+      let thermos = [];
+      let vessel = {};
+      this.config.RTUs.forEach(rtu => {
+        rtu.devices.forEach(device => {
+          if (device.driver == "Omega") {
+            vessel = {};
+            Object.assign(vessel, device);
+            thermos.push(vessel);
+          }
+        });
+      });
+      return thermos;
     },
 
     registerEnactors() {
@@ -158,4 +183,3 @@ export default {
   }
 };
 </script>
-OFF
