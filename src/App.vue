@@ -44,7 +44,7 @@ export default {
         status: status,
         id: id
       });
-    }
+    },
   }
 };
 </script>

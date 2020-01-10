@@ -1,5 +1,7 @@
 <template>
   <div class="home">
+    <button @click="update('Read')" class="uk-button uk-button-primary">Update</button>
+    <button @click="update('Write')" class="uk-button uk-button-default">Write</button>
     <!-- Tools -->
     <div class="uk-section">
       <div class="uk-container">
@@ -58,9 +60,11 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 import Timer from "@/components/Timer.vue";
 import Slack from "@/components/Slack.vue";
-import Card from "@/components/Card.vue";
+// import Card from "@/components/Card.vue";
 
 import api from '@/api.js';
 
@@ -68,8 +72,7 @@ export default {
   name: "home",
   components: {
     Timer,
-    Slack,
-    Card
+    Slack
   },
 
   data() {
@@ -89,6 +92,44 @@ export default {
   methods: {
     notify(msg, status = "") {
       this.$parent.notify(msg, status);
+    },
+
+    prepareConfig(config) {
+      config.mode = config.mode || "Read";
+
+      config.RTUs.forEach(rtu => {
+        rtu.devices.forEach(device => {
+          device.addr = parseInt(device.addr) || 0;
+          device.controller_addr = parseInt(device.controller_addr) || 0;
+          device.pv = parseFloat(device.pv) || 0.0;
+          device.sv = parseFloat(device.sv) || 0.0;
+          device.state = device.state || "Off";
+        });
+      });
+
+      return config;
+    },
+
+    update(mode="Read") {
+      let master_addr = 'http://192.168.0.120:8000/configuration';
+
+      // Set default values for anything that might be null
+      this.config = this.prepareConfig(this.config)
+
+      // If the mode is write then set it, 'Read' is the default value provided by prepareConfig()
+      this.config.mode = mode;
+
+      // Send it to the master
+      axios.post(master_addr, this.config, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(resp => {
+        console.log(resp);
+        this.config = resp.data;
+      }).catch(err => {
+        console.log(err);
+      });
     }
   }
 };

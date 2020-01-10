@@ -34,5 +34,5 @@ export default {
   },
   deleteConfiguration(id) {
     return this.execute('delete', `/configuration/${id}`)
-  }
+  },
 }
