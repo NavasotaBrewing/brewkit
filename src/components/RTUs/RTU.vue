@@ -4,6 +4,10 @@
       <dl class="uk-description-list">
         <!-- <dt>Name</dt>
         <dd>{{ rtu.name }}</dd> -->
+        <dt v-if="rtu.id">ID</dt>
+        <dd v-if="rtu.id">
+          <code>{{ rtu.id }}</code>
+        </dd>
         <dt v-if="rtu.location">Location</dt>
         <dd v-if="rtu.location">{{ rtu.location }}</dd>
         <dt>Address</dt>

@@ -2,6 +2,17 @@
   <div>
     <Card :type="'secondary'" :title="'New RTU'">
       <div class="uk-margin">
+        <label for="newRTUId">ID</label>
+        <input
+          type="text"
+          v-model="newRTU.id"
+          id="newRTUId"
+          placeholder="ID"
+          class="uk-input"
+        />
+      </div>
+
+      <div class="uk-margin">
         <label for="newRTUName">Name</label>
         <input
           type="text"
@@ -64,6 +75,7 @@ export default {
   data() {
     return {
       newRTU: {
+        id: "",
         name: "",
         ipv4: "",
         devices: [],
@@ -77,12 +89,15 @@ export default {
     },
 
     addRTU() {
-      if (empty(this.newRTU.name.length) || empty(this.newRTU.ipv4.length)) {
+      if (empty(this.newRTU.name) || empty(this.newRTU.ipv4)) {
         this.notify("Please fill in all required fields", 'danger');
         return;
       }
 
-      this.newRTU.id = uuid();
+      if (empty(this.newRTU.id)) {
+        this.newRTU.id = uuid();
+      }
+      console.log(this.newRTU.id);
       this.newRTU.devices = [];
 
       let vessel = {};
@@ -92,6 +107,7 @@ export default {
       this.newRTU.id = '';
       this.newRTU.location = '';
       this.newRTU.ipv4 = '';
+      console.log(vessel)
 
       this.$emit('newRTU', vessel);
     },

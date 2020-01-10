@@ -81,7 +81,9 @@ export default {
   async mounted() {
     window.home = this;
     window.api = api;
+    // This is just for dev
     this.config = (await api.getConfigurations())[0];
+    window.config = this.config;
   },
 
   methods: {
