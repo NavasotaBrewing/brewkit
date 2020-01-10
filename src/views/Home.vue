@@ -19,8 +19,6 @@
     <!-- Devices -->
     <div class="uk-section-muted">
       <div class="uk-container uk-margin-top uk-padding">
-
-
         <div v-for="rtu in config.RTUs" :key="rtu.id" uk-filter="target: #deviceFilter">
           <h3>{{ rtu.name }}</h3>
           <ul class="uk-subnav uk-subnav-pill">
@@ -35,16 +33,33 @@
             </li>
           </ul>
 
-          <ul id="deviceFilter" class="uk-child-width-1-3@s uk-child-width-1-4@l" uk-grid="masonry: true">
+          <ul
+            id="deviceFilter"
+            class="uk-child-width-1-3@s uk-child-width-1-4@l"
+            uk-grid="masonry: true"
+          >
             <!-- Device Loop -->
-            <li v-for="device in rtu.devices" :key="device.id" class="device" :class="'tag-' + device.driver">
+            <li
+              v-for="device in rtu.devices"
+              :key="device.id"
+              class="device"
+              :class="'tag-' + device.driver"
+            >
               <div class="uk-card uk-card-default uk-card-body">
                 <div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
                   <div>
                     <dl>
                       <dt>{{ device.name }}</dt>
-                      <span @click="device.state = 'On'" v-if="device.state == 'Off'" class="cursor enactor uk-label label-danger">{{ device.state }}</span>
-                      <span @click="device.state = 'Off'" v-else class="cursor enactor uk-label label-primary">{{ device.state }}</span>
+                      <span
+                        @click="device.state = 'On'"
+                        v-if="device.state == 'Off'"
+                        class="cursor enactor uk-label label-danger"
+                      >{{ device.state }}</span>
+                      <span
+                        @click="device.state = 'Off'"
+                        v-else
+                        class="cursor enactor uk-label label-primary"
+                      >{{ device.state }}</span>
                     </dl>
                   </div>
                 </div>
@@ -52,26 +67,55 @@
             </li>
           </ul>
         </div>
-
-
       </div>
     </div>
 
     <!-- Thermo graphs -->
     <div class="uk-section">
-      <ThermoChart :thermo="thermo" :key="thermo.id" v-for="thermo in thermos()"></ThermoChart>
+      <div class="uk-container">
+        <div uk-grid>
+
+          <div class="uk-width-auto@m">
+            <ul class="uk-tab-left" uk-tab="connect: #component-tab-left; animation: uk-animation-fade">
+              <li v-for="thermo in thermos()" :key="thermo.id">
+                <a href="#">{{ thermo.name }}</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="uk-width-expand@m">
+            <ul id="component-tab-left" class="uk-switcher">
+              <li v-for="thermo in thermos()" :key="thermo.id">
+
+                <div class="uk-margin">
+                  <p class="uk-text-lead">
+                    Current: {{ thermo.pv }} &deg;F &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Target: {{ thermo.sv }} &deg;F
+                  </p>
+                </div>
+                <div class="uk-margin">
+                  <input :id="'newSV' + thermo.id" placeholder="Set SV" type="text" class="uk-input uk-form-width-medium">
+                  <button class="uk-button enactor uk-button-primary">Set</button>
+                </div>
+
+                <ThermoChart :thermo="thermo"></ThermoChart>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 import Timer from "@/components/Timer.vue";
 import Slack from "@/components/Slack.vue";
 import ThermoChart from "@/components/ThermoChart.vue";
 
-import api from '@/api.js';
+import api from "@/api.js";
 
 export default {
   name: "home",
@@ -96,7 +140,7 @@ export default {
 
     this.update();
     setInterval(() => {
-      this.update('Read');
+      this.update("Read");
     }, 5000);
     this.registerEnactors();
   },
@@ -107,9 +151,7 @@ export default {
     },
 
     thermos() {
-
       if (this.config.RTUs == undefined) return;
-
 
       let thermos = [];
       let vessel = {};
@@ -129,16 +171,15 @@ export default {
       setTimeout(() => {
         let enactors = document.querySelectorAll(".enactor");
         enactors.forEach(en => {
-          en.addEventListener('click', () => {
-            this.update('Write');
-          })
+          en.addEventListener("click", () => {
+            this.update("Write");
+          });
         });
       }, 0);
     },
 
     prepareConfig(config) {
       config.mode = config.mode || "Read";
-
       config.RTUs.forEach(rtu => {
         rtu.devices.forEach(device => {
           device.addr = parseInt(device.addr) || 0;
@@ -146,40 +187,56 @@ export default {
           device.pv = parseFloat(device.pv) || 0.0;
           device.sv = parseFloat(device.sv) || 0.0;
           device.state = device.state || "Off";
+
+          if (device.driver == "Omega") {
+            let new_sv = document.querySelector("#newSV" + device.id);
+            if (new_sv) {
+              if (config.mode == "Write") {
+                device.sv = parseFloat(new_sv.value);
+                new_sv.value = "";
+              }
+            }
+          }
+
         });
       });
 
       return config;
     },
 
-    update(mode="Read") {
+    update(mode = "Read") {
       if (this.config == {}) {
         this.notify("No configuration selected, can't update", "danger");
         return;
       }
 
-      let master_addr = 'http://192.168.0.120:8000/configuration';
-
-      // Set default values for anything that might be null
-      this.config = this.prepareConfig(this.config)
+      let master_addr = "http://192.168.0.120:8000/configuration";
 
       // If the mode is write then set it, 'Read' is the default value provided by prepareConfig()
-      this.config.mode = mode;
+      this.config.mode = mode
+      ;
+      // Set default values for anything that might be null
+      this.config = this.prepareConfig(this.config);
+
+
+      console.log("Updating. Mode " + this.config.mode);
+      console.log(this.config);
 
       // Send it to the master
-      axios.post(master_addr, this.config, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }).then(resp => {
-        // console.log(resp);
-        this.config = resp.data;
-      }).catch(err => {
-        console.log(err);
-      });
+      axios
+        .post(master_addr, this.config, {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        })
+        .then(resp => {
+          // console.log(resp);
+          this.config = resp.data;
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
-
-
   }
 };
 </script>
