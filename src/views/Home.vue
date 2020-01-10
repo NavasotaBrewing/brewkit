@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <button @click="update('Read')" class="uk-button uk-button-primary">Update</button>
-    <button @click="update('Write')" class="uk-button uk-button-default">Write</button>
+    <!-- <button @click="update('Read')" class="uk-button uk-button-primary">Update</button> -->
+    <!-- <button @click="update('Write')" class="uk-button uk-button-default">Write</button> -->
     <!-- Tools -->
     <div class="uk-section">
       <div class="uk-container">
@@ -87,11 +87,29 @@ export default {
     // This is just for dev
     this.config = (await api.getConfigurations())[0];
     window.config = this.config;
+
+    this.update();
+    setInterval(() => {
+      this.update('Read');
+    }, 5000);
+    this.registerEnactors();
   },
 
   methods: {
     notify(msg, status = "") {
       this.$parent.notify(msg, status);
+    },
+
+    registerEnactors() {
+      setTimeout(() => {
+        let enactors = document.querySelectorAll(".enactor");
+        enactors.forEach(en => {
+          console.log(en);
+          en.addEventListener('click', () => {
+            this.update('Write');
+          })
+        });
+      }, 0);
     },
 
     prepareConfig(config) {
@@ -111,6 +129,13 @@ export default {
     },
 
     update(mode="Read") {
+      console.log("Updating. Mode: " + mode);
+
+      if (this.config == {}) {
+        this.notify("No configuration selected, can't update", "danger");
+        return;
+      }
+
       let master_addr = 'http://192.168.0.120:8000/configuration';
 
       // Set default values for anything that might be null
@@ -131,6 +156,9 @@ export default {
         console.log(err);
       });
     }
+
+
   }
 };
 </script>
+OFF
