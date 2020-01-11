@@ -93,7 +93,21 @@
                 class="uk-textarea"
               ></textarea>
             </div>
-            <!-- <hr> -->
+            <div class="uk-margin">
+              <code>
+                <div class="uk-inline uk-width-1-1">
+                  <span class="uk-form-icon uk-margin-left">http://</span>
+                  <input v-model="config.masterAddr" id="masterAddrInput" placeholder="Master Address" type="text" class="uk-input">
+                  <a
+                    class="uk-form-icon uk-form-icon-flip"
+                    @click="testMasterConnection"
+                    uk-tooltip="IP and port of the master server. Click here to test connection"
+                    uk-icon="info"
+                  />
+                </div>
+
+              </code>
+            </div>
             <!-- Slack -->
             <div uk-grid>
               <div class="uk-width-2-3@s">
@@ -171,6 +185,7 @@
 
 <script>
 import api from "@/api";
+import axios from 'axios';
 
 import Card from "@/components/Card.vue";
 import Confirmation from "@/components/Confirmation.vue";
@@ -350,6 +365,18 @@ export default {
         return [];
       }
       return this.config.RTUs;
+    },
+
+    testMasterConnection() {
+      axios.get("http://" + this.config.masterAddr + "/running")
+      .then(response => {
+        console.log(response);
+        if (response.data.running) this.notify("Master API running", "success");
+      })
+      .catch(error => {
+        console.log(error);
+        this.notify("Error occurred. Incorrect address or master API is not running", "danger");
+      });
     }
   },
   watch: {
@@ -364,6 +391,10 @@ export default {
 /* #selectConfigCard {
   margin-top: 2em;
 } */
+
+#masterAddrInput {
+  padding-left: 70px !important;
+}
 
 .slack-input {
   font-family: "Courier New", Courier, monospace;

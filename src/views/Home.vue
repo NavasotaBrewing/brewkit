@@ -17,7 +17,7 @@
     </div>
 
     <!-- Devices -->
-    <div class="uk-section-muted">
+    <div v-if="devices().length > 0" class="uk-section-muted">
       <div class="uk-container uk-margin-top uk-padding">
         <div v-for="rtu in config.RTUs" :key="rtu.id" uk-filter="target: #deviceFilter">
           <h3>{{ rtu.name }}</h3>
@@ -71,7 +71,7 @@
     </div>
 
     <!-- Thermo graphs -->
-    <div class="uk-section">
+    <div v-if="thermos().length > 0" class="uk-section">
       <div class="uk-container">
         <div uk-grid>
 
@@ -105,6 +105,7 @@
         </div>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -151,20 +152,24 @@ export default {
     },
 
     thermos() {
-      if (this.config.RTUs == undefined) return;
+      let devices = this.devices();
 
-      let thermos = [];
-      let vessel = {};
+      let thermos = devices.filter(d => d.driver == "Omega");
+      return thermos;
+    },
+
+    devices() {
+      if (this.config.RTUs == undefined) return [];
+
+      let devices = [];
+
       this.config.RTUs.forEach(rtu => {
         rtu.devices.forEach(device => {
-          if (device.driver == "Omega") {
-            vessel = {};
-            Object.assign(vessel, device);
-            thermos.push(vessel);
-          }
+          devices.push(device);
         });
       });
-      return thermos;
+
+      return devices;
     },
 
     registerEnactors() {
@@ -210,21 +215,20 @@ export default {
         return;
       }
 
-      let master_addr = "http://192.168.0.120:8000/configuration";
+      let master_addr = this.config.masterAddr;
 
       // If the mode is write then set it, 'Read' is the default value provided by prepareConfig()
-      this.config.mode = mode
-      ;
+      this.config.mode = mode;
       // Set default values for anything that might be null
       this.config = this.prepareConfig(this.config);
 
 
-      console.log("Updating. Mode " + this.config.mode);
-      console.log(this.config);
+      // console.log("Updating. Mode " + this.config.mode);
+      // console.log(this.config);
 
       // Send it to the master
       axios
-        .post(master_addr, this.config, {
+        .post("http://" + master_addr + "/configuration", this.config, {
           headers: {
             "Content-Type": "application/json"
           }

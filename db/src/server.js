@@ -23,6 +23,7 @@ let Configuration = database.define('configuration', {
   // Just a string, not a DATE or anything fancy
   date: Sequelize.STRING,
   mode: Sequelize.STRING,
+  masterAddr: Sequelize.STRING,
   slackChannel: Sequelize.STRING,
   slackWebhook: Sequelize.STRING,
   RTUs: Sequelize.JSON
