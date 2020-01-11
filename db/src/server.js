@@ -46,7 +46,7 @@ let userResource = epilogue.resource({
 
 // Resets the database if true and launches the express app on :8081
 database
-  .sync({ force: true })
+  .sync({ force: false })
   .then(() => {
     app.listen(8081, () => {
       console.log('listening to port localhost:8081')

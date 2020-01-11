@@ -128,7 +128,8 @@ export default {
 
   data() {
     return {
-      config: {}
+      config: {},
+      writeWaiting: false,
     };
   },
 
@@ -141,8 +142,14 @@ export default {
 
     this.update();
     setInterval(() => {
-      this.update("Read");
+      if (this.writeWaiting) {
+        this.update("Write");
+        this.writeWaiting = false;
+      } else {
+        this.update("Read");
+      }
     }, 5000);
+
     this.registerEnactors();
   },
 
@@ -177,7 +184,8 @@ export default {
         let enactors = document.querySelectorAll(".enactor");
         enactors.forEach(en => {
           en.addEventListener("click", () => {
-            this.update("Write");
+            // this.update("Write");
+            this.writeWaiting = true;
           });
         });
       }, 0);
@@ -226,10 +234,7 @@ export default {
       // console.log("Updating. Mode " + this.config.mode);
       // console.log(this.config);
 
-      if (mode == 'Write') {
-        console.log(this.config);
-
-      }
+      console.log("Updating with mode: " + mode);
 
       // Send it to the master
       axios
