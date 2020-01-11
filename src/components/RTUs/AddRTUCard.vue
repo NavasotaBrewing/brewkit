@@ -3,13 +3,7 @@
     <Card :type="'secondary'" :title="'New RTU'">
       <div class="uk-margin">
         <label for="newRTUId">ID</label>
-        <input
-          type="text"
-          v-model="newRTU.id"
-          id="newRTUId"
-          placeholder="ID"
-          class="uk-input"
-        />
+        <input type="text" v-model="newRTU.id" id="newRTUId" placeholder="ID" class="uk-input" />
       </div>
 
       <div class="uk-margin">
@@ -35,14 +29,19 @@
       </div>
 
       <div class="uk-margin">
-        <label for="newRTUIPV4">Address</label>
-        <input
-          type="text"
-          class="uk-input"
-          v-model="newRTU.ipv4"
-          placeholder="Address"
-          id="newRTUIPV4"
-        />
+        <label for="RTUAddrInput">Address</label>
+        <code>
+          <div class="uk-inline uk-width-1-1">
+            <span class="uk-form-icon uk-margin-left">http://</span>
+            <input v-model="newRTU.ipv4" id="RTUAddrInput" placeholder="RTU Address" type="text" class="uk-input" />
+            <a
+              class="uk-form-icon uk-form-icon-flip"
+              @click="testRTUConnection"
+              uk-tooltip="IP and port of the RTU server. Click here to test connection"
+              uk-icon="info"
+            />
+          </div>
+        </code>
       </div>
 
       <div class="uk-margin">
@@ -53,19 +52,21 @@
 </template>
 
 <script>
+import axios from "axios";
+
 import Card from "@/components/Card.vue";
 
 function uuid() {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
+    var r = (Math.random() * 16) | 0,
+      v = c == "x" ? r : (r & 0x3) | 0x8;
     return v.toString(16);
   });
 }
 
 function empty(thing) {
-  return thing == '';
+  return thing == "";
 }
-
 
 export default {
   name: "AddRTUCard",
@@ -79,18 +80,18 @@ export default {
         name: "",
         ipv4: "",
         devices: [],
-        location: "",
+        location: ""
       }
-    }
+    };
   },
   methods: {
-    notify(msg, status='') {
+    notify(msg, status = "") {
       this.$parent.notify(msg, status);
     },
 
     addRTU() {
       if (empty(this.newRTU.name) || empty(this.newRTU.ipv4)) {
-        this.notify("Please fill in all required fields", 'danger');
+        this.notify("Please fill in all required fields", "danger");
         return;
       }
 
@@ -101,16 +102,44 @@ export default {
       this.newRTU.devices = [];
 
       let vessel = {};
-      Object.assign(vessel, this.newRTU)
+      Object.assign(vessel, this.newRTU);
 
-      this.newRTU.name = '';
-      this.newRTU.id = '';
-      this.newRTU.location = '';
-      this.newRTU.ipv4 = '';
-      console.log(vessel)
+      this.newRTU.name = "";
+      this.newRTU.id = "";
+      this.newRTU.location = "";
+      this.newRTU.ipv4 = "";
+      console.log(vessel);
 
-      this.$emit('newRTU', vessel);
+      this.$emit("newRTU", vessel);
     },
+
+    testRTUConnection() {
+      console.log("running");
+      if (this.newRTU.ipv4 == "") {
+        this.notify("Enter an RTU address before testing");
+        return;
+      }
+
+      let addr = "http://" + this.newRTU.ipv4 + "/running";
+
+      axios.get(addr)
+        .then(resp => {
+          console.log(resp);
+          if (resp.data.running) {
+            this.notify("RTU running", 'success');
+          }
+        })
+        .catch(err => {
+          console.log(err);
+          this.notify("Could not connect to RTU", "danger");
+        });
+    }
   }
 };
 </script>
+
+<style scoped>
+#RTUAddrInput {
+  padding-left: 70px !important;
+}
+</style>
