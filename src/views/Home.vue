@@ -197,7 +197,7 @@ export default {
             let new_sv = document.querySelector("#newSV" + device.id);
             if (new_sv) {
               if (config.mode == "Write") {
-                device.sv = parseFloat(new_sv.value);
+                device.sv = parseFloat(new_sv.value) || device.sv;
                 new_sv.value = "";
               }
             }
@@ -225,6 +225,11 @@ export default {
 
       // console.log("Updating. Mode " + this.config.mode);
       // console.log(this.config);
+
+      if (mode == 'Write') {
+        console.log(this.config);
+
+      }
 
       // Send it to the master
       axios
