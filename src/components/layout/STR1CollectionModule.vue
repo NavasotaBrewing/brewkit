@@ -38,9 +38,16 @@ export default {
             required: true,
         }
     },
+
     data: function() {
         return {
             devices: []
+        }
+    },
+
+    mounted() {
+        if (this.devices.length == 0) {
+            this.devices = this.$root.devices().filter((dev) => (dev.rtu == this.content.rtuID) && (dev.driver == 'STR1'));
         }
     },
 

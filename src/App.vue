@@ -14,6 +14,7 @@
   </div>
 </template>
 
+
 <script>
 import Navbar from "@/components/Navbar.vue";
 import Notification from "@/components/Notification.vue";
@@ -32,6 +33,7 @@ export default {
     Navbar,
     Notification
   },
+
   mounted() {
     window.app = this;
   },
@@ -40,9 +42,9 @@ export default {
     notify(message, status = "") {
       let id = Math.floor(Math.random() * 100000000);
       this.notifications.push({
-        message: message,
-        status: status,
-        id: id
+          message: message,
+          status: status,
+          id: id
       });
     },
   }
@@ -65,12 +67,23 @@ Colors
 
  - Almost black (text) - rgb(63, 63, 63)
 */
-/* Global styles */
-/* ------------- */
 
-/* Form */
 
-/* Buttons */
+@font-face {
+  font-family: "Titillium";
+  src: url('assets/fonts/TitilliumWeb-Regular.ttf');
+}
+
+@font-face {
+  font-family: "Titillium Bold";
+  src: url('assets/fonts/TitilliumWeb-Bold.ttf');
+}
+
+@font-face {
+  font-family: "Titillium Light";
+  src: url('assets/fonts/TitilliumWeb-Light.ttf');
+}
+
 
 :root {
   /* Primary */
@@ -93,8 +106,13 @@ Colors
   /* Danger */
   --color-danger: #EE2E31;
   --color-danger-dark: rgb(214, 46, 49);
+
+  font-family: "Titillium" !important;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Titillium Light' !important;
+}
 
 .button-primary {
   background-color: var(--color-primary) !important;

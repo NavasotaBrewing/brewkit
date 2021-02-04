@@ -44,7 +44,6 @@
 
             <!-- Content: timer -->
             <TimerModule v-else-if="content.driver == 'timer'"></TimerModule>
-
         </div>
 
     </li>

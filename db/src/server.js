@@ -30,19 +30,31 @@ let Configuration = database.define('configuration', {
 }, {
   // I'm not sure i need this but i'm too lazy to check
   timestamps: false
+});
+
+let Layout = database.define('layout', {
+  name: Sequelize.STRING,
+  modules: Sequelize.JSON
+}, {
+  timestamps: false
 })
 
 // Initialize epilogue
 epilogue.initialize({
   app: app,
   sequelize: database
-})
+});
 
 // Create the dynamic REST resource for our Configuration model
 let userResource = epilogue.resource({
   model: Configuration,
   endpoints: ['/configuration', '/configuration/:id']
-})
+});
+
+epilogue.resource({
+  model: Layout,
+  endpoints: ['/layout', '/layout/:id']
+});
 
 // Resets the database if true and launches the express app on :8081
 database

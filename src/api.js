@@ -20,6 +20,8 @@ export default {
       return req.data
     })
   },
+
+  // Configurations
   getConfigurations() {
     return this.execute('get', '/configuration')
   },
@@ -35,4 +37,23 @@ export default {
   deleteConfiguration(id) {
     return this.execute('delete', `/configuration/${id}`)
   },
+
+  // Configurations
+  getLayouts() {
+    return this.execute('get', '/layout')
+  },
+  getLayout(id) {
+    return this.execute('get', `/layout/${id}`)
+  },
+  createLayout(data) {
+    return this.execute('post', '/layout', data)
+  },
+  updateLayout(id, data) {
+    return this.execute('put', `/layout/${id}`, data)
+  },
+  deleteLayout(id) {
+    return this.execute('delete', `/layout/${id}`)
+  },
+
+
 }

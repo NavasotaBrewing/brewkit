@@ -21,7 +21,7 @@ export default {
 
     setInterval(() => {
       this.updateChart();
-    }, 4000);
+    }, 2000);
 
     window.chart = this;
   },
@@ -49,11 +49,13 @@ export default {
         }
 
         if (set.label == "Process Value") {
-          set.data.push(this.thermo.pv);
+          // set.data.push(this.thermo.pv);
+          set.data.push(Math.random() * 100);
         }
 
         if (set.label == "Setpoint Value") {
-          set.data.push(this.thermo.sv);
+          // set.data.push(this.thermo.sv);
+          set.data.push(Math.random() * 100);
         }
       });
 
@@ -83,6 +85,7 @@ export default {
         },
         options: {
           responsive: true,
+          aspectRatio: 3,
           title: {
             display: true,
             text: "Temperatures (F)"

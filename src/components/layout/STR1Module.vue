@@ -20,6 +20,13 @@ export default {
             type: Object,
             required: true
         }
+    },
+    mounted() {
+        // This is a hacky work around
+        // We need to make sure the data this component is running on is part of
+        // the config stored in $root, not a copy passed through. This keeps all
+        // components on the dashboard in sync.
+        this.device = this.$root.devices().find(dev => dev.id == this.device.id);
     }
 }
 </script>

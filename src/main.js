@@ -15,39 +15,41 @@ Vue.config.productionTip = false
 import api from '@/api.js';
 
 new Vue({
-  router,
-  data() {
-    return {
-      config: {}
-    }
-  },
-  async mounted() {
-    // This is just for dev
-    // Gets the first config in the db and sets it as active
-    this.config = (await api.getConfigurations())[0];
-  },
-  methods: {
-    devices() {
-      if (this.config.RTUs == undefined) return [];
-
-      let devices = [];
-
-      this.config.RTUs.forEach(rtu => {
-        rtu.devices.forEach(device => {
-          devices.push(device);
-        });
-      });
-
-      return devices;
+    router,
+    data() {
+        return {
+            config: {},
+            notifications: []
+        }
     },
+    async mounted() {
+        // This is just for dev
+        // Gets the first config in the db and sets it as active
+        this.config = (await api.getConfigurations())[0];
+        window.api = api;
+    },
+    methods: {
+        devices() {
+            if (this.config.RTUs == undefined) return [];
 
-    RTUs() {
-      if (this.config == undefined) {
-        return [];
-      } else {
-        return this.config['RTUs'];
-      }
-    }
-  },
-  render: h => h(App)
+            let devices = [];
+
+            this.config.RTUs.forEach(rtu => {
+                rtu.devices.forEach(device => {
+                    devices.push(device);
+                });
+            });
+
+            return devices;
+        },
+
+        RTUs() {
+            if (this.config == undefined) {
+                return [];
+            } else {
+                return this.config['RTUs'];
+            }
+        },
+    },
+    render: h => h(App)
 }).$mount('#app')
