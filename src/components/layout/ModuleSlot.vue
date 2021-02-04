@@ -1,21 +1,49 @@
 <template>
     <li id="moduleSlot" :class="'uk-width-' + clean(width) + '@l'">
-        <!-- Content: None -->
-        <div v-if="content.driver == 'none'" class="uk-card slot uk-card-body">
-            <input type="text" class="uk-input uk-form-small uk-position-center" v-model="widthInput" placeholder="1/3">
-        </div>
+        <div class="uk-card slot">
+
+            <!-- Content: None -->
+            <div v-if="content.driver == 'none'" class="uk-height-medium empty-slot uk-card-body">
+                <div class="uk-container">
+                    <div class="uk-margin">
+                        Content:
+                        <select v-model="selectedContent"  name="content" id="contentSelect" class="uk-select uk-form-small">
+                            <option :key="device.id" v-for="device in $root.devices()" :value="device.id">
+                                {{ device.name }} on {{ device.rtu }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="uk-margin">
+                        Width:
+                        <input type="text" class="uk-input uk-form-small " v-model="widthInput" placeholder="1/3">
+                    </div>
+
+                    <!-- Activate button -->
+                    <div class="uk-margin">
+                        <button @click="$emit('activate', [id, selectedContent])" class="uk-button button-primary">Activate</button>
+                        &nbsp;
+                        <button @click="$emit('remove', id)" class="uk-button uk-button-text">Remove</button>
+                    </div>
+                </div>
+            </div>
+
+
 
         <!-- Content: STR1 -->
         <STR1Module v-else-if="content.driver == 'STR1'" :device="content"></STR1Module>
 
+        <!-- Content: Omega -->
         <OmegaModule v-else-if="content.driver == 'Omega'" :device="content"></OmegaModule>
+        </div>
+
+
+
     </li>
 </template>
 
 <style>
-    .slot {
-        min-height: 300px;
-        background-color: rgba(204, 204, 204, 0.5);
+    .empty-slot {
+        border: 1px dashed var(--color-dark);
     }
 </style>
 
@@ -33,6 +61,10 @@ export default {
         content: {
             type: Object,
             required: true
+        },
+        id: {
+            type: Number,
+            required: true
         }
     },
     components: {
@@ -41,7 +73,8 @@ export default {
     },
     data: function() {
         return {
-            widthInput: ""
+            widthInput: "",
+            selectedContent: ""
         }
     },
     watch: {

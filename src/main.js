@@ -26,5 +26,20 @@ new Vue({
     // Gets the first config in the db and sets it as active
     this.config = (await api.getConfigurations())[0];
   },
+  methods: {
+    devices() {
+      if (this.config.RTUs == undefined) return [];
+
+      let devices = [];
+
+      this.config.RTUs.forEach(rtu => {
+        rtu.devices.forEach(device => {
+          devices.push(device);
+        });
+      });
+
+      return devices;
+    },
+  },
   render: h => h(App)
 }).$mount('#app')
