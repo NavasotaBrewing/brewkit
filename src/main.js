@@ -40,6 +40,14 @@ new Vue({
 
       return devices;
     },
+
+    RTUs() {
+      if (this.config == undefined) {
+        return [];
+      } else {
+        return this.config['RTUs'];
+      }
+    }
   },
   render: h => h(App)
 }).$mount('#app')

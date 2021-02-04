@@ -2,7 +2,7 @@
     <div id="layout">
         <ul class="uk-grid-small" uk-sortable="handle: .uk-card" uk-grid="masonry: false">
             <ModuleSlot
-                v-for="mdl in modules"
+                v-for="mdl in layout"
                 :key="mdl.id"
                 :id="mdl.id"
                 :ref="mdl.id"
@@ -12,6 +12,7 @@
                 @activate="activateModule($event[0], $event[1])"
                 @new-width="mdl.width = $event"
             />
+            <ModuleSlot :id="0" :width="'1/3'" @add="addModule()" :content="{'driver': 'add'}"></ModuleSlot>
         </ul>
     </div>
 </template>
@@ -32,22 +33,28 @@ export default {
     },
     data: function() {
         return {
-            modules: [
-                {id: 0, width: "1/2", content: {driver: "none"}},
-                {id: 1, width: "1/4", content: {driver: "none"}},
+            layout: [
+                {id: 1, width: "1/2", content: {driver: "none"}},
                 {id: 2, width: "1/4", content: {driver: "none"}},
                 {id: 3, width: "1/4", content: {driver: "none"}},
                 {id: 4, width: "1/4", content: {driver: "none"}},
-                {id: 5, width: "1/2", content: {driver: "none"}},
-                {id: 6, width: "1/3", content: {driver: "none"}},
+                {id: 5, width: "1/4", content: {driver: "none"}},
+                {id: 6, width: "1/2", content: {driver: "none"}},
                 {id: 7, width: "1/3", content: {driver: "none"}},
                 {id: 8, width: "1/3", content: {driver: "none"}},
+                {id: 9, width: "1/3", content: {driver: "none"}},
             ]
         }
     },
     methods: {
         removeModule(id) {
-            this.modules = this.modules.filter(mdl => mdl.id != id);
+            this.layout = this.layout.filter(mdl => mdl.id != id);
+        },
+
+        addModule() {
+            let latest = this.layout[this.layout.length - 1].id;
+            console.log("Latest id: " + latest);
+            this.layout.push({id: latest + 1, width: "1/3", content: {driver: "none"}});
         },
 
         activateModule(id, content) {

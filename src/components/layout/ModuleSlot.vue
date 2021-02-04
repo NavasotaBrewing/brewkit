@@ -1,6 +1,6 @@
 <template>
     <li id="moduleSlot" :class="'uk-width-' + clean(width) + '@l'">
-        <div class="uk-card slot">
+        <div class="uk-card">
 
             <!-- Content: None -->
             <div v-if="content.driver == 'none'" class="uk-height-medium empty-slot uk-card-body">
@@ -27,21 +27,30 @@
                 </div>
             </div>
 
+            <!-- Add -->
+            <div @click="$emit('add')" v-if="content.driver == 'add'" class="uk-height-medium empty-slot uk-card-body">
+                <div class="uk-container"><span uk-icon="icon: plus; ratio: 2;" class="uk-position-center"></span></div>
+            </div>
+
 
 
             <!-- Content: STR1 -->
             <STR1Module v-else-if="content.driver == 'STR1'" :device="content"></STR1Module>
 
+            <STR1CollectionModule v-else-if="content.driver == 'STR1Collection'"></STR1CollectionModule>
+
             <!-- Content: Omega -->
             <OmegaModule v-else-if="content.driver == 'Omega'" :device="content"></OmegaModule>
 
+            <!-- Content: timer -->
             <TimerModule v-else-if="content.driver == 'timer'"></TimerModule>
+
         </div>
 
     </li>
 </template>
 
-<style>
+<style scoped>
     .empty-slot {
         border: 1px dashed var(--color-dark);
     }
@@ -51,6 +60,7 @@
 import UIkit from 'uikit';
 
 import STR1Module from '@/components/layout/STR1Module.vue';
+import STR1CollectionModule from '@/components/layout/STR1CollectionModule.vue';
 import OmegaModule from '@/components/layout/OmegaModule.vue';
 import TimerModule from '@/components/layout/TimerModule.vue';
 
@@ -72,6 +82,7 @@ export default {
 
     components: {
         STR1Module,
+        STR1CollectionModule,
         OmegaModule,
         TimerModule
     },
@@ -83,7 +94,7 @@ export default {
     data: function() {
         return {
             widthInput: "",
-            selectedContent: {}
+            selectedContent: {driver: 'none'}
         }
     },
 
@@ -132,6 +143,10 @@ export default {
                 {
                     driver: 'timer',
                     name: 'Timer'
+                },
+                {
+                    driver: 'STR1Collection',
+                    name: "STR1 Collection"
                 }
             ];
 
