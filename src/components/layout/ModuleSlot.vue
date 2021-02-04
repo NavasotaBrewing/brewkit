@@ -1,9 +1,14 @@
 <template>
-    <li id="moduleSlot" :class="'uk-width-' + clean(width) + '@m'">
-        <div class="uk-card slot uk-card-body">
+    <li id="moduleSlot" :class="'uk-width-' + clean(width) + '@l'">
+        <!-- Content: None -->
+        <div v-if="content.driver == 'none'" class="uk-card slot uk-card-body">
             <input type="text" class="uk-input uk-form-small uk-position-center" v-model="widthInput" placeholder="1/3">
-            <slot></slot>
         </div>
+
+        <!-- Content: STR1 -->
+        <STR1Module v-else-if="content.driver == 'STR1'" :device="content"></STR1Module>
+
+        <OmegaModule v-else-if="content.driver == 'Omega'" :device="content"></OmegaModule>
     </li>
 </template>
 
@@ -17,11 +22,22 @@
 <script>
 import UIkit from 'uikit';
 
+import STR1Module from '@/components/layout/STR1Module.vue';
+import OmegaModule from '@/components/layout/OmegaModule.vue';
+
 export default {
     props: {
         width: {
             type: String,
+        },
+        content: {
+            type: Object,
+            required: true
         }
+    },
+    components: {
+        STR1Module,
+        OmegaModule
     },
     data: function() {
         return {

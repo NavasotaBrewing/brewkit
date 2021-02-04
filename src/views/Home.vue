@@ -1,13 +1,6 @@
 <template>
     <div id="home">
-        <ul class="uk-grid-small" uk-sortable="handle: .uk-card" uk-grid="masonry: false">
-            <ModuleSlot
-                v-for="mdl in modules"
-                :key="mdl.id"
-                :width="mdl.width"
-                @new-width="mdl.width = $event"
-            ></ModuleSlot>
-        </ul>
+        <Layout></Layout>
     </div>
 </template>
 
@@ -18,28 +11,17 @@
 </style>
 
 <script>
-import ModuleSlot from '@/components/ModuleSlot.vue';
+import Layout from '@/components/layout/Layout.vue'
 
 export default {
     name: "home",
     components: {
-        ModuleSlot
+        Layout
     },
     data: function() {
-        return {
-            modules: [
-                {id: 0, width: "1/3"},
-                {id: 1, width: "1/3"},
-                {id: 2, width: "1/3"},
-                {id: 3, width: "1/3"},
-                {id: 4, width: "1/3"},
-                {id: 5, width: "1/3"},
-                {id: 6, width: "1/3"},
-                {id: 7, width: "1/3"},
-                {id: 8, width: "1/3"},
-            ]
-        }
+        return {}
     },
+    methods: {},
     mounted() {
         window.home = this;
     }
