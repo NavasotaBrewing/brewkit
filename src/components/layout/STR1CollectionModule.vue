@@ -3,7 +3,7 @@
         <div class="uk-margin">
             <label for="rtuSelect">
                 RTU:
-                <select v-model="rtuID" id="rtuSelect" class="uk-select uk-form-width-medium">
+                <select v-model="content.rtuID" id="rtuSelect" class="uk-select uk-form-width-medium">
                     <option :key="rtu.id" v-for="rtu in $root.RTUs()" :value="rtu.id">{{ rtu.name }}</option>
                 </select>
             </label>
@@ -30,16 +30,23 @@
 <script>
 export default {
     name: "STR1Collection",
+    props: {
+        // We pass in the content that holds {rtuID: '...'} as a prop so when
+        // the layout is saved, the RTU will be remembered.
+        content: {
+            type: Object,
+            required: true,
+        }
+    },
     data: function() {
         return {
-            rtuID: "",
             devices: []
         }
     },
 
     watch: {
-        rtuID: function() {
-            this.devices = this.$root.devices().filter((dev) => (dev.rtu == this.rtuID) && (dev.driver == 'STR1'));
+        content: function() {
+            this.devices = this.$root.devices().filter((dev) => (dev.rtu == this.content.rtuID) && (dev.driver == 'STR1'));
         }
     }
 }

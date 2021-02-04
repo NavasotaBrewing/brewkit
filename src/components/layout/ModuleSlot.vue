@@ -37,7 +37,7 @@
             <!-- Content: STR1 -->
             <STR1Module v-else-if="content.driver == 'STR1'" :device="content"></STR1Module>
 
-            <STR1CollectionModule v-else-if="content.driver == 'STR1Collection'"></STR1CollectionModule>
+            <STR1CollectionModule v-else-if="content.driver == 'STR1Collection'" :content="content"></STR1CollectionModule>
 
             <!-- Content: Omega -->
             <OmegaModule v-else-if="content.driver == 'Omega'" :device="content"></OmegaModule>
@@ -85,10 +85,6 @@ export default {
         STR1CollectionModule,
         OmegaModule,
         TimerModule
-    },
-
-    mounted() {
-        window.mdlslot = this;
     },
 
     data: function() {

@@ -52,18 +52,18 @@ export default {
         },
 
         addModule() {
-            let latest = this.layout[this.layout.length - 1].id;
-            console.log("Latest id: " + latest);
-            this.layout.push({id: latest + 1, width: "1/3", content: {driver: "none"}});
+            if (this.layout.length == 0) {
+                this.layout.push({id: 0, width: "1/3", content: {driver: "none"}});
+            } else {
+                let latest = this.layout[this.layout.length - 1].id;
+                console.log("Latest id: " + latest);
+                this.layout.push({id: latest + 1, width: "1/3", content: {driver: "none"}});
+            }
         },
 
         activateModule(id, content) {
-            let component = this.$refs[id][0];
-            if (component == undefined) {
-                return false;
-            }
-
-            component.content = content;
+            let mdl = this.layout.find(mdl => mdl.id == id);
+            mdl.content = content;
         }
     },
     mounted() {
