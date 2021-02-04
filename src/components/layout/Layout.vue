@@ -55,21 +55,8 @@ export default {
             if (component == undefined) {
                 return false;
             }
-            // If the content is a device id, set the content to that device
-            // If it's something else, set it to the appropriate content
-            // Example, if content == 'timer', return {driver: 'timer'}
 
-            if (content == 'timer') {
-                component.content = {driver: 'timer'};
-            }
-
-
-            // Try to find a device
-            this.$root.devices().forEach((device) => {
-                if (device.id == content) {
-                    component.content = device;
-                }
-            })
+            component.content = content;
         }
     },
     mounted() {

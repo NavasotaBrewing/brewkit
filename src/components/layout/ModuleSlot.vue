@@ -7,9 +7,9 @@
                 <div class="uk-container">
                     <div class="uk-margin">
                         Content:
-                        <select v-model="selectedContent"  name="content" id="contentSelect" class="uk-select uk-form-small">
-                            <option :key="device.id" v-for="device in $root.devices()" :value="device.id">
-                                {{ device.name }} on {{ device.rtu }}
+                        <select v-model="selectedContent" name="content" id="contentSelect" class="uk-select uk-form-small">
+                            <option :key="option.id" v-for="option in contentOptions" :value="option">
+                                {{ option.name }}
                             </option>
                         </select>
                     </div>
@@ -29,14 +29,14 @@
 
 
 
-        <!-- Content: STR1 -->
-        <STR1Module v-else-if="content.driver == 'STR1'" :device="content"></STR1Module>
+            <!-- Content: STR1 -->
+            <STR1Module v-else-if="content.driver == 'STR1'" :device="content"></STR1Module>
 
-        <!-- Content: Omega -->
-        <OmegaModule v-else-if="content.driver == 'Omega'" :device="content"></OmegaModule>
+            <!-- Content: Omega -->
+            <OmegaModule v-else-if="content.driver == 'Omega'" :device="content"></OmegaModule>
+
+            <TimerModule v-else-if="content.driver == 'timer'"></TimerModule>
         </div>
-
-
 
     </li>
 </template>
@@ -52,8 +52,10 @@ import UIkit from 'uikit';
 
 import STR1Module from '@/components/layout/STR1Module.vue';
 import OmegaModule from '@/components/layout/OmegaModule.vue';
+import TimerModule from '@/components/layout/TimerModule.vue';
 
 export default {
+
     props: {
         width: {
             type: String,
@@ -67,22 +69,31 @@ export default {
             required: true
         }
     },
+
     components: {
         STR1Module,
-        OmegaModule
+        OmegaModule,
+        TimerModule
     },
+
+    mounted() {
+        window.mdlslot = this;
+    },
+
     data: function() {
         return {
             widthInput: "",
-            selectedContent: ""
+            selectedContent: {}
         }
     },
+
     watch: {
         widthInput: function() {
             this.validateWidthInput();
             this.updateSortable();
         }
     },
+
     methods: {
         updateSortable() {
             UIkit.sortable("#home").$update();
@@ -112,7 +123,21 @@ export default {
             }
 
             this.$emit('new-width', this.widthInput);
-        }
+        },
     },
+
+    computed: {
+        contentOptions: function() {
+            let options = [
+                {
+                    driver: 'timer',
+                    name: 'Timer'
+                }
+            ];
+
+            options.push(this.$root.devices());
+            return options.flat();
+        }
+    }
 }
 </script>
