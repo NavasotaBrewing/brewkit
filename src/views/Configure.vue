@@ -18,6 +18,13 @@
       </div>
     </Confirmation>
 
+    <Confirmation
+      @confirm="deleteConfig"
+      :title="'Delete Configuration'"
+      :yText="'Delete'"
+      ref="deleteConfigConfirmation"
+    ></Confirmation>
+
     <!-- Create config confirmation show button -->
     <button
       @click="showCreateConfigConfirmation"
@@ -45,13 +52,17 @@
               </select>
             </div>
 
-            <!-- Save button -->
-            <div class="uk-margin">
+            <!-- Save and Delete buttons -->
+            <div v-show="config != {} && config.id != undefined" class="uk-margin">
               <button
                 @click="updateConfig"
-                v-show="config.id != undefined"
                 class="uk-button button-margin button-primary"
               >Save</button>
+
+              <button
+                class="uk-button button-danger"
+                @click="showDeleteConfigConfirmation"
+              >Delete</button>
             </div>
           </Card>
         </div>
@@ -206,7 +217,8 @@ export default {
     AddRTUCard,
     RTUs,
     AddDeviceCard,
-    DeviceTable
+    DeviceTable,
+    Confirmation
   },
   data() {
     return {
@@ -253,6 +265,9 @@ export default {
 
     async refreshConfigs() {
       this.configs = await api.getConfigurations();
+      this.newConfigName = "";
+      this.config = {};
+      this.configSelect = -1;
     },
 
     selectConfig(id) {
@@ -262,6 +277,10 @@ export default {
 
     showCreateConfigConfirmation() {
       this.$refs.createConfigConfirmation.toggle();
+    },
+    
+    showDeleteConfigConfirmation() {
+      this.$refs.deleteConfigConfirmation.toggle();
     },
 
     notify(message, status = "") {
@@ -293,6 +312,12 @@ export default {
           );
           console.log(e);
         });
+    },
+
+    deleteConfig() {
+      api.deleteConfiguration(this.config.id);
+      this.config = {};
+      this.refreshConfigs();
     },
 
     updateConfig() {
