@@ -178,10 +178,6 @@ export default {
       // }, 1000)
     },
 
-    notify(msg, status = '') {
-      this.$parent.notify(msg, status);
-    },
-
     start() {
       let time = this.timerInput.padStart(8, '00:');
       let parts = time.split(":");
@@ -191,7 +187,7 @@ export default {
       let hours = parseInt(parts[parts.length - 3]);
 
       if (Number.isNaN(seconds) || Number.isNaN(minutes) || Number.isNaN(hours)) {
-        this.notify("Time not valid", 'danger');
+        this.$root.notify("Time not valid", 'danger');
         this.timerInput = '';
         return;
       }

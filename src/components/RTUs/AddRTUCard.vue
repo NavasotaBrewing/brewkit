@@ -85,13 +85,9 @@ export default {
     };
   },
   methods: {
-    notify(msg, status = "") {
-      this.$parent.notify(msg, status);
-    },
-
     addRTU() {
       if (empty(this.newRTU.name) || empty(this.newRTU.ipv4)) {
-        this.notify("Please fill in all required fields", "danger");
+        this.$root.notify("Please fill in all required fields", "danger");
         return;
       }
 
@@ -116,7 +112,7 @@ export default {
     testRTUConnection() {
       console.log("running");
       if (this.newRTU.ipv4 == "") {
-        this.notify("Enter an RTU address before testing");
+        this.$root.notify("Enter an RTU address before testing");
         return;
       }
 
@@ -126,12 +122,12 @@ export default {
         .then(resp => {
           console.log(resp);
           if (resp.data.running) {
-            this.notify("RTU running", 'success');
+            this.$root.notify("RTU running", 'success');
           }
         })
         .catch(err => {
           console.log(err);
-          this.notify("Could not connect to RTU", "danger");
+          this.$root.notify("Could not connect to RTU", "danger");
         });
     }
   }

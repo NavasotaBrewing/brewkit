@@ -10,13 +10,13 @@ UIkit.use(Icons);
 
 require("uikit");
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
-import api from '@/api.js';
 import axios from 'axios';
 
 new Vue({
     router,
+
     data() {
         return {
             config: {},
@@ -27,13 +27,8 @@ new Vue({
             statusMsg: "Welcome to Brewkit",
         }
     },
-    async mounted() {
-        // This is just for dev
-        // Gets the first config in the db and sets it as active
-        // this.config = (await api.getConfigurations())[0];
-        window.api = api;
-        window.r = this;
 
+    async mounted() {
         // update loop
         this.updateLoopHandle = setInterval(() => {
             if (this.config.id != undefined) {
@@ -46,30 +41,40 @@ new Vue({
             }
         }, 4000);
     },
+
     methods: {
+        notify(msg, status = '') {
+            // This has to live on App instead of here because
+            // it requires refs to DOM elements.
+            this.$children[0].notify(msg, status);
+        },
+
+        // Returns a device by id, else {}. Looks under all RTUs.
         device(id) {
             return this.devices().find(dev => dev.id == id) || {};
         },
 
+        // Returns all devices, flattened.
         devices() {
             if (this.config.RTUs == undefined) return [];
 
             let devices = [];
 
             this.config.RTUs.forEach(rtu => {
-                rtu.devices.forEach(device => {
-                    devices.push(device);
-                });
+                devices.push(rtu.devices);
             });
 
-            return devices;
+            return devices.flat();
         },
 
+        // Returns all RTUs, else []
         RTUs() {
             // RTUs, or [] as a default
             return this.config['RTUs'] || [];
         },
 
+        // Ensures all config properties have the correct default values
+        // to prevent accessing undefined keys.
         prepareConfig(config) {
             config.mode = config.mode || "Read";
             config.RTUs.forEach(rtu => {
@@ -99,9 +104,11 @@ new Vue({
             return config;
         },
 
+        // Sends the configuration to the master API from brewdrivers.
+        // Updates the configuration to match the one returned from the API.
         update(mode = "Read") {
             if (this.config == {}) {
-                // this.notify("No configuration selected, can't update", "danger");
+                this.notify("No configuration selected, can't update", "danger");
                 return;
             }
 
@@ -149,6 +156,22 @@ new Vue({
                     this.statusMsg = "Request Error: see console.";
                 });
         },
+
+        testMasterConnection(masterAddr) {
+            axios.get("http://" + masterAddr + "/running")
+            .then(response => {
+              console.log(response);
+              if (response.data.running) {
+                  this.notify("Master API running", "success");
+                  return true;
+              }
+            })
+            .catch(error => {
+              console.log(error);
+              this.notify("Error occurred. Incorrect address or master API is not running", "danger");
+              return false;
+            });
+          }
     },
     render: h => h(App)
 }).$mount('#app')

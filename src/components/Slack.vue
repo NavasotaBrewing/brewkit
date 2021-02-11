@@ -78,10 +78,6 @@ export default {
   },
 
   methods: {
-    notify(msg, status = "") {
-      this.$parent.notify(msg, status);
-    },
-
     processMessage() {
       var replace;
       var re;
@@ -93,14 +89,14 @@ export default {
 
     send() {
       if (this.slackMessage == "") {
-        this.notify("Type a message to send", "danger");
+        this.$root.notify("Type a message to send", "danger");
         return;
       }
 
       this.processMessage();
 
       Slack.send(this.webhook, this.slackMessage);
-      this.notify("Message sent", "success");
+      this.$root.notify("Message sent", "success");
       this.slackMessage = "";
     }
   },

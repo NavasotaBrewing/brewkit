@@ -39,6 +39,7 @@ export default {
   },
 
   methods: {
+    // This should be called from $root, not here. There's a reason it's here, tho.
     notify(message, status = "") {
       let id = Math.floor(Math.random() * 100000000);
       this.notifications.push({

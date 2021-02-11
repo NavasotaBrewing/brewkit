@@ -167,18 +167,18 @@ export default {
 
     saveLayout() {
       if (this.layout.name == "") {
-        this.notify("Enter a name");
+        this.$root.notify("Enter a name");
         return;
       } else if (this.layout.modules.length == 0) {
-        this.notify("Place at least one module");
+        this.$root.notify("Place at least one module");
         return;
       }
       if (this.layout.id == null) {
         api.createLayout(this.layout);
-        this.notify("New layout created", "success");
+        this.$root.notify("New layout created", "success");
       } else {
         api.updateLayout(this.layout.id, this.layout);
-        this.notify("Layout saved", "success");
+        this.$root.notify("Layout saved", "success");
       }
     },
 
@@ -194,12 +194,8 @@ export default {
       if (confirm("Are you sure you want to delete this layout?")) {
         api.deleteLayout(this.layout.id);
         this.resetLayout();
-        this.notify("layout deleted");
+        this.$root.notify("layout deleted");
       }
-    },
-
-    notify(message, status = "") {
-      this.$parent.$parent.notify(message, status);
     },
   },
 

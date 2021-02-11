@@ -88,17 +88,13 @@ export default {
     };
   },
   methods: {
-    notify(msg, status = "") {
-      this.$parent.notify(msg, status);
-    },
-
     addDevice() {
       if (
         empty(this.newDevice.name) ||
         empty(this.newDevice.driver) ||
         empty(this.newDevice.controller_addr || empty(this.newDevice.rtu))
       ) {
-        this.notify("Please fill in all required fields", "danger");
+        this.$root.notify("Please fill in all required fields", "danger");
         return;
       }
 

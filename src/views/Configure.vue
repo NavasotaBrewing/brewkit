@@ -217,8 +217,7 @@ export default {
     AddRTUCard,
     RTUs,
     AddDeviceCard,
-    DeviceTable,
-    Confirmation
+    DeviceTable
   },
   data() {
     return {
@@ -243,6 +242,10 @@ export default {
     this.refreshConfigs();
   },
   methods: {
+    testMasterConnection() {
+      this.$root.testMasterConnection(this.config.masterAddr)
+    },
+
     slack(msg) {
       Slack.send(this.config.slackWebhook, msg);
     },
@@ -283,17 +286,13 @@ export default {
       this.$refs.deleteConfigConfirmation.toggle();
     },
 
-    notify(message, status = "") {
-      this.$parent.notify(message, status);
-    },
-
     createConfig() {
       let foundConfig = this.configs.filter(
         c => c.name == this.newConfigName
       )[0];
 
       if (foundConfig != undefined || this.newConfigName.length < 1) {
-        this.notify("Name not valid, pick another", "danger");
+        this.$root.notify("Name not valid, pick another", "danger");
         return;
       }
 
@@ -303,10 +302,10 @@ export default {
           this.refreshConfigs();
           console.log(this.configs);
           this.newConfigName = "";
-          this.notify("Configuration created", "success");
+          this.$root.notify("Configuration created", "success");
         })
         .catch(e => {
-          this.notify(
+          this.$root.notify(
             "Something went wrong, configuration could not be created",
             "danger"
           );
@@ -322,7 +321,7 @@ export default {
 
     updateConfig() {
       if (this.config.id == undefined) {
-        this.notify("Select a configuration to update", "danger");
+        this.$root.notify("Select a configuration to update", "danger");
         return;
       }
 
@@ -330,10 +329,10 @@ export default {
       api
         .updateConfiguration(this.config.id, this.$root.prepareConfig(this.config))
         .then(() => {
-          this.notify("Updated", "success");
+          this.$root.notify("Updated", "success");
         })
         .catch(() => {
-          this.notify(
+          this.$root.notify(
             "Something went wrong, could not update configuration",
             "danger"
           );
@@ -346,7 +345,7 @@ export default {
       }
 
       this.config.RTUs.push(rtu);
-      this.notify("RTU added", "success");
+      this.$root.notify("RTU added", "success");
       this.updateConfig();
     },
 
@@ -358,14 +357,14 @@ export default {
     addDevice(device) {
       let rtu = this.config.RTUs.filter(r => r.id == device.rtu)[0];
       if (!rtu) {
-        this.notify("Could not add device", "danger");
+        this.$root.notify("Could not add device", "danger");
         return;
       }
       if (!rtu.devices) {
         rtu.devices = [];
       }
       rtu.devices.push(device);
-      this.notify("Device added", "success");
+      this.$root.notify("Device added", "success");
       this.updateConfig();
     },
 
@@ -392,18 +391,6 @@ export default {
       }
       return this.config.RTUs;
     },
-
-    testMasterConnection() {
-      axios.get("http://" + this.config.masterAddr + "/running")
-      .then(response => {
-        console.log(response);
-        if (response.data.running) this.notify("Master API running", "success");
-      })
-      .catch(error => {
-        console.log(error);
-        this.notify("Error occurred. Incorrect address or master API is not running", "danger");
-      });
-    }
   },
   watch: {
     configSelect: function() {
