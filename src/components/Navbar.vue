@@ -4,8 +4,8 @@
       <div class="uk-navbar-left">
         <ul id="navItems" class="uk-navbar-nav">
           <li
-            :key="route.path"
             v-for="route in $router.options.routes"
+            :key="route.path"
             :class="{ 'uk-active': route.path == $route.path }"
           >
             <router-link :to="route.path">{{ route.name }}</router-link>
@@ -22,6 +22,17 @@
               alt="Navasota Brewing Cooperative"
             />
           </a>
+        </ul>
+      </div>
+      <div class="uk-navbar-right">
+        <ul class="uk-navbar-nav">
+          <li class="uk-margin-right">
+            <!-- We disable this on the configure page, it has it's own select -->
+            <select v-model="configSelect" @click="fetchConfigs" :disabled="$route.path == '/configure'" class="uk-select">
+              <option value="-1" selected>Select a Configuration</option>
+              <option v-for="config in configs" :key="config.id" :value="config.id">{{ config.name }}</option>
+            </select>
+          </li>
         </ul>
       </div>
     </nav>
@@ -41,7 +52,41 @@
 
 
 <script>
+import api from "@/api.js";
+
 export default {
-  name: "Navbar"
+  name: "Navbar",
+  data() {
+    return {
+      configSelect: -1,
+      configs: []
+    }
+  },
+
+  methods: {
+    async fetchConfigs() {
+      this.configs = await api.getConfigurations();
+    },
+
+    selectConfig() {
+      let found = this.configs.find(config => config.id == this.configSelect);
+      if (found) {
+        this.$root.config = found;
+      } else {
+        this.$root.config = {};
+      }
+    }
+  },
+
+  mounted() {
+    this.fetchConfigs();
+  },
+
+  watch: {
+    configSelect: function() {
+      this.selectConfig();
+    }
+  }
+
 };
 </script>

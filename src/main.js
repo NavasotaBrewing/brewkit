@@ -13,20 +13,29 @@ require("uikit");
 Vue.config.productionTip = false
 
 import api from '@/api.js';
+import axios from 'axios';
 
 new Vue({
     router,
     data() {
         return {
             config: {},
-            notifications: []
+            notifications: [],
+            updateLoopHandle: null
         }
     },
     async mounted() {
         // This is just for dev
         // Gets the first config in the db and sets it as active
-        this.config = (await api.getConfigurations())[0];
+        // this.config = (await api.getConfigurations())[0];
         window.api = api;
+
+        // update loop
+        this.updateLoopHandle = setInterval(() => {
+            if (this.config.id != undefined) {
+                // this.update('Read');
+            }
+        }, 4000);
     },
     methods: {
         devices() {
@@ -44,11 +53,77 @@ new Vue({
         },
 
         RTUs() {
-            if (this.config == undefined) {
-                return [];
-            } else {
-                return this.config['RTUs'];
+            // RTUs, or [] as a default
+            return this.config['RTUs'] || [];
+        },
+
+        prepareConfig(config) {
+            config.mode = config.mode || "Read";
+            config.RTUs.forEach(rtu => {
+                rtu.devices.forEach(device => {
+                    device.addr = parseInt(device.addr) || 0;
+                    device.controller_addr = parseInt(device.controller_addr) || 0;
+                    device.pv = parseFloat(device.pv) || 0.0;
+                    device.sv = parseFloat(device.sv) || 0.0;
+                    device.state = device.state || "Off";
+
+                    if (device.driver == "Omega") {
+                        let new_sv = document.querySelector("#newSV" + device.id);
+                        if (new_sv) {
+                            if (config.mode == "Write") {
+                                device.sv = parseFloat(new_sv.value) || device.sv;
+                                new_sv.value = "";
+                            }
+                        }
+                    }
+
+                });
+            });
+
+            return config;
+        },
+
+        update(mode = "Read") {
+            if (this.config == {}) {
+                // this.notify("No configuration selected, can't update", "danger");
+                return;
             }
+
+            let master_addr = this.config.masterAddr;
+
+            // If the mode is write then set it, 'Read' is the default value provided by prepareConfig()
+            this.config.mode = mode;
+            // Set default values for anything that might be null
+            this.config = this.prepareConfig(this.config);
+
+            console.log("Updating with mode: " + mode);
+
+            // Send it to the master
+            axios
+                .post(`http://${master_addr}/configuration`, this.config, {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                })
+                .then((resp) => {
+                    // console.log(resp);
+                    // I despise the next ~10 lines of code
+                    for (let rtu_index = 0; rtu_index < resp.data.RTUs.length; rtu_index++) {
+                        let rtu = resp.data.RTUs[rtu_index];
+                        for (let device_index = 0; device_index < rtu.devices.length; device_index++) {
+                            const device = rtu.devices[device_index];
+                            this.config.RTUs[rtu_index].devices[device_index].state = device.state;
+                            if (device.pv && device.sv) {
+                                this.config.RTUs[rtu_index].devices[device_index].pv = device.pv;
+                                this.config.RTUs[rtu_index].devices[device_index].sv = device.sv;
+                            }
+                        }
+                    }
+                    // this.config = resp.data;
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         },
     },
     render: h => h(App)

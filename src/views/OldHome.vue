@@ -230,10 +230,6 @@ export default {
       // Set default values for anything that might be null
       this.config = this.prepareConfig(this.config);
 
-
-      // console.log("Updating. Mode " + this.config.mode);
-      // console.log(this.config);
-
       console.log("Updating with mode: " + mode);
 
       // Send it to the master
