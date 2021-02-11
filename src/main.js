@@ -23,7 +23,8 @@ new Vue({
             notifications: [],
             updateLoopHandle: null,
             writeWaiting: false,
-            requestOut: false
+            requestOut: false,
+            statusMsg: "Welcome to Brewkit",
         }
     },
     async mounted() {
@@ -115,6 +116,7 @@ new Vue({
 
             // Send it to the master
             this.requestOut = true;
+            this.statusMsg = "Request Out...";
             axios
                 .post(`http://${master_addr}/configuration`, this.config, {
                     headers: {
@@ -139,10 +141,12 @@ new Vue({
                     // loaded into memory, and all the Vue components that use the devices in the config
                     // would have to rebind to them. This way, we only update the state, not the whole object.
                     this.requestOut = false;
+                    this.statusMsg = "Request returned OK.";
                 })
                 .catch((err) => {
                     console.log(err);
                     this.requestOut = false;
+                    this.statusMsg = "Request Error: see console.";
                 });
         },
     },

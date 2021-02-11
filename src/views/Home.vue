@@ -1,20 +1,28 @@
 <template>
   <div id="home">
-      <pre>{{ $root.config }}</pre>
-      <button @click="$root.update('Read')" class="uk-button">Update (read)</button>
-      <button @click="$root.update('Write')" class="uk-button">Update (write)</button>
     <Layout v-if="$root.config.id != undefined"></Layout>
     <div v-else>
       <div class="uk-container uk-text-center uk-margin-top">
         <p class="uk-text-lead">Select a configuration with the box above.</p>
       </div>
     </div>
+    <div id="statusBar">{{ $root.statusMsg }}</div>
   </div>
+
 </template>
 
 <style>
 #home {
   padding: 10px;
+}
+
+#statusBar {
+  font-family: 'Mono';
+  font-size: 14px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin-right: 10px;
 }
 </style>
 
