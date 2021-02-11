@@ -19,8 +19,8 @@
             <tbody>
                 <tr :key="dev.id" v-for="dev in rtu.devices.filter(dev => dev.driver == 'STR1')">
                     <td>{{ dev.name }}</td>
-                    <td @click="dev.state = 'Off'" v-if="dev.state == 'On'"><button class="uk-button button-primary" type="button">On</button></td>
-                    <td @click="dev.state = 'On'" v-if="dev.state == 'Off'"><button class="uk-button button-danger" type="button">Off</button></td>
+                    <td @click="dev.state = 'Off'" v-if="dev.state == 'On'"><button :disabled="$root.requestOut" class="uk-button enactor button-primary" type="button">On</button></td>
+                    <td @click="dev.state = 'On'" v-if="dev.state == 'Off'"><button :disabled="$root.requestOut" class="uk-button enactor button-danger" type="button">Off</button></td>
                 </tr>
             </tbody>
         </table>
@@ -49,7 +49,6 @@ export default {
     methods: {
         loadRTU() {
             let found_rtu = this.$root.RTUs().find(rtu => rtu.id == this.content.rtuID);
-            console.log(found_rtu);
             if (found_rtu) {
                 this.rtu = found_rtu;
             } else {

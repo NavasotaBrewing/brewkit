@@ -11,7 +11,7 @@ export default {
   props: ["thermo"],
   data: function() {
     return {
-      chart: {}
+      chart: {},
     };
   },
 
@@ -49,13 +49,13 @@ export default {
         }
 
         if (set.label == "Process Value") {
-          // set.data.push(this.thermo.pv);
-          set.data.push(Math.random() * 100);
+          set.data.push(this.thermo.pv);
+          // set.data.push(Math.random() * 100);
         }
 
         if (set.label == "Setpoint Value") {
-          // set.data.push(this.thermo.sv);
-          set.data.push(Math.random() * 100);
+          set.data.push(this.thermo.sv);
+          // set.data.push(Math.random() * 100);
         }
       });
 

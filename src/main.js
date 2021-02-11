@@ -21,7 +21,9 @@ new Vue({
         return {
             config: {},
             notifications: [],
-            updateLoopHandle: null
+            updateLoopHandle: null,
+            writeWaiting: false,
+            requestOut: false
         }
     },
     async mounted() {
@@ -29,15 +31,25 @@ new Vue({
         // Gets the first config in the db and sets it as active
         // this.config = (await api.getConfigurations())[0];
         window.api = api;
+        window.r = this;
 
         // update loop
         this.updateLoopHandle = setInterval(() => {
             if (this.config.id != undefined) {
-                // this.update('Read');
+                if (this.writeWaiting) {
+                    this.update('Write');
+                    this.writeWaiting = false;
+                } else {
+                    this.update('Read');
+                }
             }
         }, 4000);
     },
     methods: {
+        device(id) {
+            return this.devices().find(dev => dev.id == id) || {};
+        },
+
         devices() {
             if (this.config.RTUs == undefined) return [];
 
@@ -63,10 +75,13 @@ new Vue({
                 rtu.devices.forEach(device => {
                     device.addr = parseInt(device.addr) || 0;
                     device.controller_addr = parseInt(device.controller_addr) || 0;
-                    device.pv = parseFloat(device.pv) || 0.0;
-                    device.sv = parseFloat(device.sv) || 0.0;
+                    device.pv = parseFloat(device.pv) || -1.0;
+                    // We set sv to negative one so it won't just override whatever is
+                    // already set on the Omega when the config is updated the first time.
+                    device.sv = parseFloat(device.sv) || -1.0;
                     device.state = device.state || "Off";
 
+                    // Capture this at the last possible moment to avoid collisions.
                     if (device.driver == "Omega") {
                         let new_sv = document.querySelector("#newSV" + device.id);
                         if (new_sv) {
@@ -99,6 +114,7 @@ new Vue({
             console.log("Updating with mode: " + mode);
 
             // Send it to the master
+            this.requestOut = true;
             axios
                 .post(`http://${master_addr}/configuration`, this.config, {
                     headers: {
@@ -113,16 +129,20 @@ new Vue({
                         for (let device_index = 0; device_index < rtu.devices.length; device_index++) {
                             const device = rtu.devices[device_index];
                             this.config.RTUs[rtu_index].devices[device_index].state = device.state;
-                            if (device.pv && device.sv) {
-                                this.config.RTUs[rtu_index].devices[device_index].pv = device.pv;
-                                this.config.RTUs[rtu_index].devices[device_index].sv = device.sv;
-                            }
+                            this.config.RTUs[rtu_index].devices[device_index].pv = device.pv;
+                            this.config.RTUs[rtu_index].devices[device_index].sv = device.sv;
                         }
                     }
+                    // We don't just want to do this:
                     // this.config = resp.data;
+                    // Because then every time the config is updated (frequently), a new object would be
+                    // loaded into memory, and all the Vue components that use the devices in the config
+                    // would have to rebind to them. This way, we only update the state, not the whole object.
+                    this.requestOut = false;
                 })
                 .catch((err) => {
                     console.log(err);
+                    this.requestOut = false;
                 });
         },
     },

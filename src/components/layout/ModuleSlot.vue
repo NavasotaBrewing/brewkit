@@ -35,12 +35,12 @@
 
 
             <!-- Content: STR1 -->
-            <STR1Module v-else-if="content.driver == 'STR1'" :device="content"></STR1Module>
+            <STR1Module v-else-if="content.driver == 'STR1'" :content="content"></STR1Module>
 
             <STR1CollectionModule v-else-if="content.driver == 'STR1Collection'" :content="content"></STR1CollectionModule>
 
             <!-- Content: Omega -->
-            <OmegaModule v-else-if="content.driver == 'Omega'" :device="content"></OmegaModule>
+            <OmegaModule v-else-if="content.driver == 'Omega'" :content="content"></OmegaModule>
 
             <!-- Content: timer -->
             <TimerModule v-else-if="content.driver == 'timer'"></TimerModule>
@@ -145,8 +145,15 @@ export default {
                 }
             ];
 
-            options.push(this.$root.devices());
-            return options.flat();
+            
+            this.$root.devices().forEach(dev => {
+                options.push({
+                    name: dev.name,
+                    driver: dev.driver,
+                    id: dev.id,
+                })
+            })
+            return options;
         }
     }
 }

@@ -72,6 +72,7 @@ export default {
       let found = this.configs.find(config => config.id == this.configSelect);
       if (found) {
         this.$root.config = found;
+        this.$root.update('Read');
       } else {
         this.$root.config = {};
       }

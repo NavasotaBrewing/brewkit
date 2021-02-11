@@ -326,8 +326,9 @@ export default {
         return;
       }
 
+      
       api
-        .updateConfiguration(this.config.id, this.config)
+        .updateConfiguration(this.config.id, this.$root.prepareConfig(this.config))
         .then(() => {
           this.notify("Updated", "success");
         })
