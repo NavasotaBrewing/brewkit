@@ -5,8 +5,8 @@
         <br>
         State: <code>{{ device.state }}</code>
         <div class="uk-margin">
-            <button class="uk-button enactor button-margin button-primary">On</button>
-            <button class="uk-button enactor button-margin">Off</button>
+            <button @click="device.state = 'On'" :class="{ 'button-primary': device.state == 'On' }" class="uk-button enactor button-margin">On</button>
+            <button @click="device.state = 'Off'" :class="{ 'button-danger': device.state == 'Off' }" class="uk-button enactor button-margin">Off</button>
         </div>
     </div>
 </template>

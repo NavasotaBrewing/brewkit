@@ -60,8 +60,6 @@ export default {
 
     mounted() {
         this.loadRTU();
-        // if (this.rtu == {}) {
-        // }
     },
 
     watch: {
