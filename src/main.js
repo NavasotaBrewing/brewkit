@@ -112,7 +112,7 @@ new Vue({
                 return;
             }
 
-            let master_addr = this.config.masterAddr;
+            let masterAddr = this.config.masterAddr;
 
             // If the mode is write then set it, 'Read' is the default value provided by prepareConfig()
             this.config.mode = mode;
@@ -125,7 +125,7 @@ new Vue({
             this.requestOut = true;
             this.statusMsg = "Request Out...";
             axios
-                .post(`http://${master_addr}/configuration`, this.config, {
+                .post(`http://${masterAddr}/model`, this.config, {
                     headers: {
                         "Content-Type": "application/json",
                     },
@@ -150,8 +150,9 @@ new Vue({
                     this.requestOut = false;
                     this.statusMsg = "Request returned OK.";
                 })
-                .catch((err) => {
-                    console.log(err);
+                .catch((_err) => {
+                    // console.log(err);
+                    console.error("The master API is not responding (tried at %s). Is it running?", masterAddr);
                     this.requestOut = false;
                     this.statusMsg = "Request Error: see console.";
                 });

@@ -127,6 +127,7 @@ export default {
         let enactors = document.querySelectorAll(".enactor");
         enactors.forEach((en) => {
           en.addEventListener("click", () => {
+            console.log("clicked an enactor");
             this.$root.writeWaiting = true;
           });
         });

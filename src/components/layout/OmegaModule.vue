@@ -19,6 +19,8 @@
 
             <input type="text" :id="'newSV' + content.id" placeholder="Setpoint" class="uk-input uk-form-width-medium">
             <button :disabled="$root.requestOut" class="uk-button enactor button-primary">Set</button>
+            <button @click="device.state = 'Off'" v-if="device.state == 'On'" :disabled="$root.requestOut" class="uk-button enactor button-primary">On</button>
+            <button @click="device.state = 'On'" v-if="device.state == 'Off'" :disabled="$root.requestOut" class="uk-button enactor button-danger">Off</button>
         </div>
         <ThermoChart :thermo="device"></ThermoChart>
     </div>
